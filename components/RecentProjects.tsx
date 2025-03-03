@@ -6,6 +6,7 @@ const PinContainer = dynamic(
   { ssr: false }
 );
 import { FaLocationArrow } from "react-icons/fa6";
+import Image from "next/image";
 
 const RecentProjects = () => {
   return (
@@ -23,9 +24,20 @@ const RecentProjects = () => {
             <PinContainer title={link} href={link}>
               <div className="relative flex items-center justify-center sm:w-[570px] w-[80vw] overflow-hidden sm:h-[40vh] h-[30vh] mb-10">
                 <div className="relative w-full h-full overflow-hidden lg:rounded-3xl bg-[#13162d]">
-                  <img src="/bg.png" alt="bg-png" />
+                  <Image
+                    src="/bg.png"
+                    alt="bg-png"
+                    width={1000}
+                    height={1000}
+                  />
                 </div>
-                <img src={img} alt={title} className="z-10 absolute bottom-0" />
+                <Image
+                  src={img}
+                  alt={title}
+                  width={451}
+                  height={254}
+                  className="z-10 absolute bottom-0"
+                />
               </div>
 
               <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1">
@@ -44,7 +56,13 @@ const RecentProjects = () => {
                       className="border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
                       style={{ transform: `translateX(-${5 * index * 2}px)` }}
                     >
-                      <img src={icon} alt={icon} className="p-2" />
+                      <Image
+                        src={icon}
+                        alt={icon}
+                        width={40}
+                        height={40}
+                        className="p-2"
+                      />
                     </div>
                   ))}
                 </div>
