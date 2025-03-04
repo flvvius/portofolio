@@ -107,31 +107,23 @@ export const projects = [
 export const testimonials = [
   {
     quote:
-      "During the time I spent in college, Flavius was the person I learned with for every exam, and also the person with whom I realised every team project. He is smart, dedicated to programming, especially when it comes about web development and also very organized. I had a lot of things to learn from him and I am happy to say that at the end of the college, I would be happy to work with him again at any other project. He is a team player, an optimistic person and also one of the greatest programmers that I've met.",
-    name: "Andreea Maria Constantin",
-    title: "Dev Engineer @ ING Hubs",
-    photo: "/andreea.jpeg",
+      "As the Team Lead of the IT division, Flavius was a passionate worker who knew how to motivate his team. He was always friendly and encouraging, while assertive enough to make sure no deadlines are passed. He learned new technologies with speed and ease and had a strong creative vision. I'm honored to have had the privilage of working with him.",
+    name: "Alexandru Predescu",
+    title: "Director of IT department @ SiSC",
+    photo: "/predescu.jpg",
   },
   {
     quote:
       "During the time I spent in college, Flavius was the person I learned with for every exam, and also the person with whom I realised every team project. He is smart, dedicated to programming, especially when it comes about web development and also very organized. I had a lot of things to learn from him and I am happy to say that at the end of the college, I would be happy to work with him again at any other project. He is a team player, an optimistic person and also one of the greatest programmers that I've met.",
     name: "Andreea Maria Constantin",
     title: "Dev Engineer @ ING Hubs",
-    photo: "/andreea.jpeg",
+    photo: "/andreea.jpg",
   },
   {
-    quote:
-      "During the time I spent in college, Flavius was the person I learned with for every exam, and also the person with whom I realised every team project. He is smart, dedicated to programming, especially when it comes about web development and also very organized. I had a lot of things to learn from him and I am happy to say that at the end of the college, I would be happy to work with him again at any other project. He is a team player, an optimistic person and also one of the greatest programmers that I've met.",
-    name: "Andreea Maria Constantin",
-    title: "Dev Engineer @ ING Hubs",
-    photo: "/andreea.jpeg",
-  },
-  {
-    quote:
-      "During the time I spent in college, Flavius was the person I learned with for every exam, and also the person with whom I realised every team project. He is smart, dedicated to programming, especially when it comes about web development and also very organized. I had a lot of things to learn from him and I am happy to say that at the end of the college, I would be happy to work with him again at any other project. He is a team player, an optimistic person and also one of the greatest programmers that I've met.",
-    name: "Andreea Maria Constantin",
-    title: "Dev Engineer @ ING Hubs",
-    photo: "/andreea.jpeg",
+    quote: `I highly recommend Flavius as a software developer. He's incredibly innovative, hardworking, and always open to new ideas. Working with him has been an amazing experience—he brings fresh perspectives to every project and is never afraid to tackle challenges head-on. Flavius's problem-solving skills and adaptability make him a valuable teammate. He's always willing to learn, collaborate, and improve, which makes working with him both productive and enjoyable. His passion for coding and creativity truly set him apart. Any team would be lucky to have him!`,
+    name: "Radu Petruța",
+    title: "Full Stack Software Engineer @ Operative",
+    photo: "/petruta.jpg",
   },
 ];
 
