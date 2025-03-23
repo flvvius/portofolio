@@ -185,14 +185,14 @@ export const workExperience = [
     id: 2,
     title: "Lead IT of Academia SpEranței",
     desc: "Academia SpEranței was a project close to my heart, as it represents the mark I left on SiSC. I led a team of 20 passionate IT members, and together we built strong, meaningful relationships in addition to developing the website itself.",
-    className: "md:col-span-2", // change to md:col-span-2
+    className: "md:col-span-2",
     thumbnail: "/exp2.svg",
   },
   {
     id: 3,
     title: "IT Back-End Developer - SiSC",
     desc: "Professionally, I gained hands-on experience in Back-End Development, including learning Node.js and Express. On a personal level, collaborating with a team of dedicated and driven individuals helped me enhance my communication, critical thinking, and teamwork skills.",
-    className: "md:col-span-2", // change to md:col-span-2
+    className: "md:col-span-2",
     thumbnail: "/exp3.svg",
   },
   {

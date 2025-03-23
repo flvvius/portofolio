@@ -2,18 +2,14 @@
 
 import Script from "next/script";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 
-export default function GoogleAnalytics({
-  gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
-}: {
-  gaId?: string;
-}) {
+function Analytics({ gaId }: { gaId?: string }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (!gaId || !window.gtag) return;
+    if (!gaId || typeof window === "undefined" || !window.gtag) return;
 
     const url =
       pathname +
@@ -24,6 +20,14 @@ export default function GoogleAnalytics({
     });
   }, [pathname, searchParams, gaId]);
 
+  return null;
+}
+
+export default function GoogleAnalytics({
+  gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID,
+}: {
+  gaId?: string;
+}) {
   if (!gaId) {
     return null;
   }
@@ -50,6 +54,9 @@ export default function GoogleAnalytics({
           `,
         }}
       />
+      <Suspense fallback={null}>
+        <Analytics gaId={gaId} />
+      </Suspense>
     </>
   );
 }

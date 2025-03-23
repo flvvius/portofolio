@@ -1,5 +1,3 @@
-"use client";
-
 import Approach from "@/components/Approach";
 import Clients from "@/components/Clients";
 import Experience from "@/components/Experience";
@@ -9,6 +7,12 @@ import Hero from "@/components/Hero";
 import RecentProjects from "@/components/RecentProjects";
 import { FloatingNav } from "@/components/ui/FloatingNav";
 import { navItems } from "@/data";
+
+export const metadata = {
+  title: "Flavius Cojocaru | Home",
+  description:
+    "Full-stack web developer specialized in Next.js, React, and TypeScript. Building applications that matter with a focus on user experience and performance.",
+};
 
 export default function Home() {
   return (
