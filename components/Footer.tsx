@@ -42,6 +42,7 @@ const Footer = () => {
                 alt={profile.img}
                 width={20}
                 height={20}
+                className="w-auto h-auto"
               />
             </a>
           ))}

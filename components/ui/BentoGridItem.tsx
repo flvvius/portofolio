@@ -11,7 +11,7 @@ import { useIsClient } from "@/lib/client-utils";
 
 const LottieWrapper = dynamic(
   () => import("./LottieWrapper").then((mod) => mod.default),
-  { ssr: false }
+  { ssr: false, loading: () => <div className="w-[150px] h-[150px]" /> }
 );
 
 const BackgroundGradientAnimation = dynamic(
@@ -45,12 +45,19 @@ export const BentoGridItem = ({
   spareImg?: string;
 }) => {
   const [copied, setCopied] = useState(false);
+  const [confettiKey, setConfettiKey] = useState<string>("initial");
   const isClient = useIsClient();
 
   const handleCopy = () => {
     if (isClient) {
-      navigator.clipboard.writeText("flaviuscojocaru19@gmail.com");
-      setCopied(true);
+      try {
+        navigator.clipboard.writeText("flaviuscojocaru19@gmail.com");
+        setConfettiKey(`confetti-${Date.now()}`);
+        setCopied(true);
+      } catch (error) {
+        console.error("Failed to copy: ", error);
+        setCopied(true);
+      }
     }
   };
 
@@ -87,7 +94,10 @@ export const BentoGridItem = ({
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
               priority={id === 1}
               loading={id === 1 ? "eager" : "lazy"}
-              className={cn(imgClassName, "object-cover object-center")}
+              className={cn(
+                imgClassName,
+                "object-cover object-center w-full h-auto"
+              )}
             />
           )}
         </div>
@@ -104,7 +114,7 @@ export const BentoGridItem = ({
               height={300}
               sizes="(max-width: 640px) 80vw, (max-width: 768px) 40vw, 25vw"
               loading="lazy"
-              className={"object-cover object-center w-full h-full"}
+              className="object-cover object-center w-full h-auto"
             />
           )}
         </div>
@@ -161,6 +171,7 @@ export const BentoGridItem = ({
               <div className={`absolute -bottom-5 right-0`}>
                 {isClient && copied && (
                   <LottieWrapper
+                    key={confettiKey}
                     isActive={copied}
                     animationData={animationData}
                   />

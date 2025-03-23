@@ -29,6 +29,7 @@ const RecentProjects = () => {
                     alt="bg-png"
                     width={1000}
                     height={1000}
+                    className="w-full h-auto"
                   />
                 </div>
                 <Image
@@ -36,7 +37,7 @@ const RecentProjects = () => {
                   alt={title}
                   width={451}
                   height={254}
-                  className="z-10 absolute bottom-0"
+                  className="z-10 absolute bottom-0 w-auto h-auto"
                 />
               </div>
 
@@ -61,7 +62,7 @@ const RecentProjects = () => {
                         alt={icon}
                         width={40}
                         height={40}
-                        className="p-2"
+                        className="p-2 w-auto h-auto"
                       />
                     </div>
                   ))}

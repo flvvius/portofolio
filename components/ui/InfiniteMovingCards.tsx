@@ -111,9 +111,9 @@ export const InfiniteMovingCards = ({
                     <Image
                       src={item.photo}
                       alt="profile"
-                      width={10}
-                      height={10}
-                      className="w-10 h-10 rounded-full"
+                      width={40}
+                      height={40}
+                      className="w-10 h-10 rounded-full object-cover"
                     />
                   </div>
                   <div className="flex flex-col gap-1">

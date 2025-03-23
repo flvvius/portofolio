@@ -7,6 +7,7 @@ import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/globe.json";
 import * as THREE from "three";
 import React from "react";
+import { OrbitControls as ThreeOrbitControls } from "three-stdlib";
 declare module "@react-three/fiber" {
   interface ThreeElements {
     threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe>;
@@ -207,18 +208,30 @@ export function Globe({ globeConfig, data }: WorldProps) {
     if (!globeRef.current || !globeData) return;
 
     let lastUpdate = 0;
-    const updateInterval = 4000;
+    const updateInterval = 5000;
     let frameSkip = 0;
-    const maxFrameSkip = 2;
+    const maxFrameSkip = 3;
+    let rafId: number;
+    let isAnimating = true;
 
     const minIndex = 0;
     const maxIndex = data.length;
-    const targetRingCount = Math.min(Math.floor((data.length * 2) / 5), 8);
+    const targetRingCount = Math.min(Math.floor((data.length * 2) / 6), 6);
+
+    let precomputedRingIndices: number[][] = [];
+    for (let i = 0; i < 5; i++) {
+      precomputedRingIndices.push(
+        genRandomNumbers(minIndex, maxIndex, targetRingCount)
+      );
+    }
+    let ringSetIndex = 0;
 
     const updateRings = (timestamp: number) => {
+      if (!isAnimating) return;
+
       if (frameSkip < maxFrameSkip) {
         frameSkip++;
-        animationFrame = requestAnimationFrame(updateRings);
+        rafId = requestAnimationFrame(updateRings);
         return;
       }
       frameSkip = 0;
@@ -228,25 +241,28 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
         if (!globeRef.current || !globeData) return;
 
-        numbersOfRings = genRandomNumbers(minIndex, maxIndex, targetRingCount);
-
         try {
-          globeRef.current.ringsData(
-            globeData.filter((d, i) => numbersOfRings.includes(i))
+          numbersOfRings = precomputedRingIndices[ringSetIndex];
+          ringSetIndex = (ringSetIndex + 1) % precomputedRingIndices.length;
+
+          const newRings = globeData.filter((d, i) =>
+            numbersOfRings.includes(i)
           );
+          globeRef.current.ringsData(newRings);
         } catch (e) {
-          console.error(e);
+          console.error("Error updating rings:", e);
         }
       }
 
-      animationFrame = requestAnimationFrame(updateRings);
+      rafId = requestAnimationFrame(updateRings);
     };
 
-    let animationFrame = requestAnimationFrame(updateRings);
+    rafId = requestAnimationFrame(updateRings);
 
     return () => {
-      if (animationFrame) {
-        cancelAnimationFrame(animationFrame);
+      isAnimating = false;
+      if (rafId) {
+        cancelAnimationFrame(rafId);
       }
     };
   }, [globeRef.current, globeData]);
@@ -270,9 +286,44 @@ export function WebGLRendererConfig() {
     gl.shadowMap.enabled = false;
     gl.toneMapping = THREE.NoToneMapping;
 
+    gl.domElement.style.zIndex = "-1";
+
+    const handleContextLost = (event: Event) => {
+      event.preventDefault();
+      console.warn("WebGL context lost. Trying to restore...");
+
+      setTimeout(() => {
+        try {
+          gl.forceContextRestore();
+        } catch (e) {
+          console.error("Failed to restore WebGL context:", e);
+        }
+      }, 300);
+    };
+
+    const handleContextRestored = () => {
+      console.log("WebGL context restored");
+    };
+
+    const canvas = gl.domElement;
+    canvas.addEventListener("webglcontextlost", handleContextLost);
+    canvas.addEventListener("webglcontextrestored", handleContextRestored);
+
     const originalCompile = gl.compile;
     gl.compile = function (scene, camera) {
       return originalCompile.call(this, scene, camera);
+    };
+
+    return () => {
+      canvas.removeEventListener("webglcontextlost", handleContextLost);
+      canvas.removeEventListener("webglcontextrestored", handleContextRestored);
+
+      try {
+        gl.dispose();
+        gl.forceContextLoss();
+      } catch (e) {
+        console.error("Error disposing WebGL context:", e);
+      }
     };
   }, []);
 
@@ -280,13 +331,49 @@ export function WebGLRendererConfig() {
 }
 
 const OptimizedOrbitControls = React.memo(function OptimizedOrbitControls() {
+  const controlsRef = useRef<ThreeOrbitControls | null>(null);
+
+  useEffect(() => {
+    if (controlsRef.current) {
+      const domElement = controlsRef.current.domElement;
+
+      if (domElement && typeof window !== "undefined") {
+        const handler = window.requestIdleCallback || window.setTimeout;
+        handler(() => {
+          const originalAddEventListener = domElement.addEventListener;
+          domElement.addEventListener = function (
+            type: string,
+            listener: EventListenerOrEventListenerObject,
+            options?: boolean | AddEventListenerOptions
+          ) {
+            let newOptions = options;
+            if (type === "wheel" || type === "mousewheel") {
+              if (typeof options === "object") {
+                newOptions = { ...options, passive: true };
+              } else {
+                newOptions = { passive: true };
+              }
+            }
+            return originalAddEventListener.call(
+              this,
+              type,
+              listener,
+              newOptions
+            );
+          };
+        });
+      }
+    }
+  }, [controlsRef.current]);
+
   return (
     <OrbitControls
+      ref={controlsRef}
       enablePan={false}
       enableZoom={false}
       minDistance={cameraZ}
       maxDistance={cameraZ}
-      autoRotateSpeed={1}
+      autoRotateSpeed={0.5}
       autoRotate={true}
       minPolarAngle={Math.PI / 3.5}
       maxPolarAngle={Math.PI - Math.PI / 3}
@@ -301,7 +388,7 @@ const OptimizedOrbitControls = React.memo(function OptimizedOrbitControls() {
         ONE: undefined,
         TWO: undefined,
       }}
-      rotateSpeed={0.5}
+      rotateSpeed={0.3}
       domElement={
         typeof document !== "undefined"
           ? document.getElementById("globe-container") || undefined
@@ -347,6 +434,7 @@ export function World(props: WorldProps) {
       scene={scene}
       camera={new PerspectiveCamera(50, aspect, 180, 1800)}
       frameloop="demand"
+      performance={{ min: 0.5 }}
     >
       <WebGLRendererConfig />
       <ambientLight color={globeConfig.ambientLight} intensity={0.6} />
