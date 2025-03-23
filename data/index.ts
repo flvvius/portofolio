@@ -1,3 +1,16 @@
+export const hero = [
+  {
+    id: 1,
+    title: "full stack engineer",
+    description: "building stuff that matters",
+  },
+  {
+    id: 2,
+    aboutMe:
+      "coding idealist, thirst for knowledge and working on becoming better, romania based, wanting to shape my future",
+  },
+];
+
 export const navItems = [
   { name: "About", link: "#about" },
   { name: "Projects", link: "#projects" },

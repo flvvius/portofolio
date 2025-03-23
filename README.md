@@ -20,6 +20,24 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Google Analytics Setup
+
+This project is configured to work with Google Analytics 4. To set it up:
+
+1. Create a Google Analytics 4 property in your [Google Analytics account](https://analytics.google.com/)
+2. Get your Measurement ID (starts with G-)
+3. Add the Measurement ID to your `.env.local` file:
+
+```
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+The analytics implementation includes:
+
+- Automatic page view tracking
+- Core Web Vitals reporting
+- Google Analytics 4 integration
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import { BackgroundGradientAnimation } from "./GradientBg";
 import { GlobeDemo } from "./GridGlobe";
 import Lottie from "react-lottie";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import animationData from "@/data/confetti.json";
 import MagicButton from "./MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
@@ -53,10 +53,21 @@ export const BentoGridItem = ({
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("flaviuscojocaru19@gmail.com");
-
-    setCopied(true);
+    if (typeof navigator !== "undefined") {
+      navigator.clipboard.writeText("flaviuscojocaru19@gmail.com");
+      setCopied(true);
+    }
   };
+
+  useEffect(() => {
+    if (copied) {
+      const timer = setTimeout(() => {
+        setCopied(false);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [copied]);
 
   return (
     <div
@@ -76,9 +87,12 @@ export const BentoGridItem = ({
             <Image
               src={img}
               alt={img}
-              width={100}
-              height={100}
-              className={cn(imgClassName, "object-cover, object-center")}
+              width={400}
+              height={400}
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+              priority={id === 1}
+              loading={id === 1 ? "eager" : "lazy"}
+              className={cn(imgClassName, "object-cover object-center")}
             />
           )}
         </div>
@@ -91,9 +105,11 @@ export const BentoGridItem = ({
             <Image
               src={spareImg}
               alt={spareImg}
-              width={100}
-              height={100}
-              className={"object-cover, object-center, w-full, h-full"}
+              width={300}
+              height={300}
+              sizes="(max-width: 640px) 80vw, (max-width: 768px) 40vw, 25vw"
+              loading="lazy"
+              className={"object-cover object-center w-full h-full"}
             />
           )}
         </div>
