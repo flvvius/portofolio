@@ -5,6 +5,7 @@ import ThreeGlobe from "three-globe";
 import { useThree, Object3DNode, Canvas, extend } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/globe.json";
+import * as THREE from "three";
 declare module "@react-three/fiber" {
   interface ThreeElements {
     threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe>;
@@ -302,3 +303,39 @@ export function genRandomNumbers(min: number, max: number, count: number) {
 
   return arr;
 }
+
+// Add this function to check for NaN values in vertices
+const ensureValidBufferGeometry = (
+  geometry: THREE.BufferGeometry
+): THREE.BufferGeometry => {
+  if (geometry && geometry.attributes && geometry.attributes.position) {
+    const positions = geometry.attributes.position.array;
+    let hasNaN = false;
+
+    // Check for NaN values
+    for (let i = 0; i < positions.length; i++) {
+      if (isNaN(positions[i])) {
+        hasNaN = true;
+        positions[i] = 0; // Replace NaN with 0
+      }
+    }
+
+    // Update the attribute if we fixed any NaN values
+    if (hasNaN) {
+      geometry.attributes.position.needsUpdate = true;
+    }
+  }
+
+  return geometry;
+};
+
+// Add this to patch the ComputeBoundingSphere method to avoid NaN errors
+const originalComputeBoundingSphere =
+  THREE.BufferGeometry.prototype.computeBoundingSphere;
+THREE.BufferGeometry.prototype.computeBoundingSphere = function () {
+  // First sanitize the geometry
+  ensureValidBufferGeometry(this);
+
+  // Then call the original method
+  return originalComputeBoundingSphere.call(this);
+};
