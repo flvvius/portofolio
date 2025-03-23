@@ -10,6 +10,18 @@ const inter = Inter({ subsets: ["latin"] });
 
 const baseUrl = "https://flavius.pro";
 
+const noFlashScript = `
+  (function() {
+    var style = document.createElement('style');
+    style.innerHTML = 'body { visibility: hidden; }';
+    document.head.appendChild(style);
+    
+    window.addEventListener('DOMContentLoaded', function() {
+      document.head.removeChild(style);
+    });
+  })();
+`;
+
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
@@ -56,7 +68,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Flavius Cojocaru | Full-Stack Web Developer",
     description:
-      "Full-stack web developer specialized in Next.js, React, and TypeScript. Building applications that matter with a focus on user experience and performance.",
+      "building stuff that matters | coding idealist, thirst for knowledge and working on becoming better, romania based, wanting to shape my future",
     url: baseUrl,
     siteName: "Flavius Cojocaru Portfolio",
     type: "website",
@@ -74,7 +86,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Flavius Cojocaru | Full-Stack Web Developer",
     description:
-      "Full-stack web developer specialized in Next.js, React, and TypeScript. Building applications that matter with a focus on user experience and performance.",
+      "building stuff that matters | coding idealist, thirst for knowledge and working on becoming better, romania based, wanting to shape my future",
     images: [`${baseUrl}/main.png`],
     site: "@flaviuscj1",
     creator: "@flaviuscj1",
@@ -117,6 +129,7 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: noFlashScript }} />
         <link rel="icon" href="/main.png" sizes="any" />
         <meta
           name="format-detection"

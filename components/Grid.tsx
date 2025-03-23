@@ -1,7 +1,8 @@
 "use client";
 
 import { gridItems } from "@/data";
-import { BentoGrid, BentoGridItem } from "./ui/BentoGrid";
+import { BentoGrid } from "./ui/BentoGrid";
+import { BentoGridItem } from "./ui/BentoGridItem";
 
 const Grid = () => {
   return (

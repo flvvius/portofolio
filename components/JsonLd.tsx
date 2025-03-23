@@ -19,7 +19,7 @@ export default function JsonLd() {
       name: "Self-employed",
     },
     description:
-      "Full-stack web developer specialized in Next.js, React, and TypeScript. Building applications that matter with a focus on user experience and performance.",
+      "building stuff that matters | coding idealist, thirst for knowledge and working on becoming better, romania based, wanting to shape my future",
     knowsAbout: [
       "Web Development",
       "React",
