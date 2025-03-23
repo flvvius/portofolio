@@ -6,6 +6,7 @@ import { useThree, Object3DNode, Canvas, extend } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/globe.json";
 import * as THREE from "three";
+import React from "react";
 declare module "@react-three/fiber" {
   interface ThreeElements {
     threeGlobe: Object3DNode<ThreeGlobe, typeof ThreeGlobe>;
@@ -206,20 +207,36 @@ export function Globe({ globeConfig, data }: WorldProps) {
     if (!globeRef.current || !globeData) return;
 
     let lastUpdate = 0;
-    const updateInterval = 3000;
+    const updateInterval = 4000;
+    let frameSkip = 0;
+    const maxFrameSkip = 2;
+
+    const minIndex = 0;
+    const maxIndex = data.length;
+    const targetRingCount = Math.min(Math.floor((data.length * 2) / 5), 8);
 
     const updateRings = (timestamp: number) => {
+      if (frameSkip < maxFrameSkip) {
+        frameSkip++;
+        animationFrame = requestAnimationFrame(updateRings);
+        return;
+      }
+      frameSkip = 0;
+
       if (timestamp - lastUpdate > updateInterval) {
         lastUpdate = timestamp;
 
         if (!globeRef.current || !globeData) return;
 
-        const targetRingCount = Math.min(Math.floor((data.length * 2) / 5), 10);
-        numbersOfRings = genRandomNumbers(0, data.length, targetRingCount);
+        numbersOfRings = genRandomNumbers(minIndex, maxIndex, targetRingCount);
 
-        globeRef.current.ringsData(
-          globeData.filter((d, i) => numbersOfRings.includes(i))
-        );
+        try {
+          globeRef.current.ringsData(
+            globeData.filter((d, i) => numbersOfRings.includes(i))
+          );
+        } catch (e) {
+          console.error(e);
+        }
       }
 
       animationFrame = requestAnimationFrame(updateRings);
@@ -228,7 +245,9 @@ export function Globe({ globeConfig, data }: WorldProps) {
     let animationFrame = requestAnimationFrame(updateRings);
 
     return () => {
-      cancelAnimationFrame(animationFrame);
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
     };
   }, [globeRef.current, globeData]);
 
@@ -243,13 +262,54 @@ export function WebGLRendererConfig() {
   const { gl, size } = useThree();
 
   useEffect(() => {
-    gl.setPixelRatio(window.devicePixelRatio);
+    const maxPixelRatio = Math.min(window.devicePixelRatio, 2);
+    gl.setPixelRatio(maxPixelRatio);
     gl.setSize(size.width, size.height);
     gl.setClearColor(0xffaaff, 0);
+
+    gl.shadowMap.enabled = false;
+    gl.toneMapping = THREE.NoToneMapping;
+
+    const originalCompile = gl.compile;
+    gl.compile = function (scene, camera) {
+      return originalCompile.call(this, scene, camera);
+    };
   }, []);
 
   return null;
 }
+
+const OptimizedOrbitControls = React.memo(function OptimizedOrbitControls() {
+  return (
+    <OrbitControls
+      enablePan={false}
+      enableZoom={false}
+      minDistance={cameraZ}
+      maxDistance={cameraZ}
+      autoRotateSpeed={1}
+      autoRotate={true}
+      minPolarAngle={Math.PI / 3.5}
+      maxPolarAngle={Math.PI - Math.PI / 3}
+      enableDamping={true}
+      dampingFactor={0.05}
+      mouseButtons={{
+        LEFT: undefined,
+        MIDDLE: undefined,
+        RIGHT: undefined,
+      }}
+      touches={{
+        ONE: undefined,
+        TWO: undefined,
+      }}
+      rotateSpeed={0.5}
+      domElement={
+        typeof document !== "undefined"
+          ? document.getElementById("globe-container") || undefined
+          : undefined
+      }
+    />
+  );
+});
 
 export function World(props: WorldProps) {
   const { globeConfig } = props;
@@ -283,7 +343,11 @@ export function World(props: WorldProps) {
   }, []);
 
   return (
-    <Canvas scene={scene} camera={new PerspectiveCamera(50, aspect, 180, 1800)}>
+    <Canvas
+      scene={scene}
+      camera={new PerspectiveCamera(50, aspect, 180, 1800)}
+      frameloop="demand"
+    >
       <WebGLRendererConfig />
       <ambientLight color={globeConfig.ambientLight} intensity={0.6} />
       <directionalLight
@@ -300,32 +364,7 @@ export function World(props: WorldProps) {
         intensity={0.8}
       />
       <Globe {...props} />
-      <OrbitControls
-        enablePan={false}
-        enableZoom={false}
-        minDistance={cameraZ}
-        maxDistance={cameraZ}
-        autoRotateSpeed={1}
-        autoRotate={true}
-        minPolarAngle={Math.PI / 3.5}
-        maxPolarAngle={Math.PI - Math.PI / 3}
-        enableDamping={true}
-        dampingFactor={0.05}
-        mouseButtons={{
-          LEFT: undefined,
-          MIDDLE: undefined,
-          RIGHT: undefined,
-        }}
-        touches={{
-          ONE: undefined,
-          TWO: undefined,
-        }}
-        domElement={
-          typeof document !== "undefined"
-            ? document.getElementById("globe-container") || undefined
-            : undefined
-        }
-      />
+      <OptimizedOrbitControls />
     </Canvas>
   );
 }
@@ -347,16 +386,32 @@ export function hexToRgb(hex: string) {
 }
 
 export function genRandomNumbers(min: number, max: number, count: number) {
-  const arr = [];
-  while (arr.length < count) {
-    const r = Math.floor(Math.random() * (max - min)) + min;
-    if (arr.indexOf(r) === -1) arr.push(r);
+  const range = max - min;
+  count = Math.min(count, range);
+
+  if (range <= 100) {
+    const arr: number[] = [];
+    while (arr.length < count) {
+      const r = Math.floor(Math.random() * range) + min;
+      if (arr.indexOf(r) === -1) arr.push(r);
+    }
+    return arr;
   }
 
-  return arr;
+  const result: number[] = [];
+  const used = new Set<number>();
+
+  while (result.length < count) {
+    const r = Math.floor(Math.random() * range) + min;
+    if (!used.has(r)) {
+      used.add(r);
+      result.push(r);
+    }
+  }
+
+  return result;
 }
 
-// Add this function to check for NaN values in vertices
 const ensureValidBufferGeometry = (
   geometry: THREE.BufferGeometry
 ): THREE.BufferGeometry => {
@@ -364,15 +419,13 @@ const ensureValidBufferGeometry = (
     const positions = geometry.attributes.position.array;
     let hasNaN = false;
 
-    // Check for NaN values
     for (let i = 0; i < positions.length; i++) {
       if (isNaN(positions[i])) {
         hasNaN = true;
-        positions[i] = 0; // Replace NaN with 0
+        positions[i] = 0;
       }
     }
 
-    // Update the attribute if we fixed any NaN values
     if (hasNaN) {
       geometry.attributes.position.needsUpdate = true;
     }
@@ -381,13 +434,9 @@ const ensureValidBufferGeometry = (
   return geometry;
 };
 
-// Add this to patch the ComputeBoundingSphere method to avoid NaN errors
 const originalComputeBoundingSphere =
   THREE.BufferGeometry.prototype.computeBoundingSphere;
 THREE.BufferGeometry.prototype.computeBoundingSphere = function () {
-  // First sanitize the geometry
   ensureValidBufferGeometry(this);
-
-  // Then call the original method
   return originalComputeBoundingSphere.call(this);
 };
