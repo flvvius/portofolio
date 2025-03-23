@@ -205,21 +205,30 @@ export function Globe({ globeConfig, data }: WorldProps) {
   useEffect(() => {
     if (!globeRef.current || !globeData) return;
 
-    const interval = setInterval(() => {
-      if (!globeRef.current || !globeData) return;
-      numbersOfRings = genRandomNumbers(
-        0,
-        data.length,
-        Math.floor((data.length * 4) / 5)
-      );
+    let lastUpdate = 0;
+    const updateInterval = 3000;
 
-      globeRef.current.ringsData(
-        globeData.filter((d, i) => numbersOfRings.includes(i))
-      );
-    }, 2000);
+    const updateRings = (timestamp: number) => {
+      if (timestamp - lastUpdate > updateInterval) {
+        lastUpdate = timestamp;
+
+        if (!globeRef.current || !globeData) return;
+
+        const targetRingCount = Math.min(Math.floor((data.length * 2) / 5), 10);
+        numbersOfRings = genRandomNumbers(0, data.length, targetRingCount);
+
+        globeRef.current.ringsData(
+          globeData.filter((d, i) => numbersOfRings.includes(i))
+        );
+      }
+
+      animationFrame = requestAnimationFrame(updateRings);
+    };
+
+    let animationFrame = requestAnimationFrame(updateRings);
 
     return () => {
-      clearInterval(interval);
+      cancelAnimationFrame(animationFrame);
     };
   }, [globeRef.current, globeData]);
 
@@ -246,6 +255,33 @@ export function World(props: WorldProps) {
   const { globeConfig } = props;
   const scene = new Scene();
   scene.fog = new Fog(0xffffff, 400, 2000);
+
+  useEffect(() => {
+    if (
+      typeof document !== "undefined" &&
+      !document.getElementById("globe-container")
+    ) {
+      const container = document.createElement("div");
+      container.id = "globe-container";
+      container.style.position = "absolute";
+      container.style.top = "0";
+      container.style.left = "0";
+      container.style.width = "0";
+      container.style.height = "0";
+      container.style.pointerEvents = "none";
+      document.body.appendChild(container);
+    }
+
+    return () => {
+      if (typeof document !== "undefined") {
+        const container = document.getElementById("globe-container");
+        if (container) {
+          document.body.removeChild(container);
+        }
+      }
+    };
+  }, []);
+
   return (
     <Canvas scene={scene} camera={new PerspectiveCamera(50, aspect, 180, 1800)}>
       <WebGLRendererConfig />
@@ -273,6 +309,22 @@ export function World(props: WorldProps) {
         autoRotate={true}
         minPolarAngle={Math.PI / 3.5}
         maxPolarAngle={Math.PI - Math.PI / 3}
+        enableDamping={true}
+        dampingFactor={0.05}
+        mouseButtons={{
+          LEFT: undefined,
+          MIDDLE: undefined,
+          RIGHT: undefined,
+        }}
+        touches={{
+          ONE: undefined,
+          TWO: undefined,
+        }}
+        domElement={
+          typeof document !== "undefined"
+            ? document.getElementById("globe-container") || undefined
+            : undefined
+        }
       />
     </Canvas>
   );

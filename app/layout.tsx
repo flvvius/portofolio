@@ -141,14 +141,10 @@ export default function RootLayout({
           href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
-        <meta
-          httpEquiv="Content-Security-Policy"
-          content="default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://*.sentry.io https://*.sentry-cdn.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://vitals.vercel-insights.com https://*.google-analytics.com https://*.sentry.io https://region1.google-analytics.com; object-src 'none'; worker-src 'self' blob:; frame-src 'self'"
-        />
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
         <meta
           httpEquiv="Permissions-Policy"
-          content="camera=(), microphone=(), geolocation=(), interest-cohort=()"
+          content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), screen-wake-lock=(), display-capture=()"
         />
         <meta property="og:locale" content="en_US" />
         <link rel="alternate" hrefLang="en" href="https://flavius.pro" />
