@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 
 export const InfiniteMovingCards = ({
   items,
@@ -24,11 +24,43 @@ export const InfiniteMovingCards = ({
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     addAnimation();
   }, []);
+
   const [start, setStart] = useState(false);
+
+  const handleTouchStart = useCallback(() => {
+    if (pauseOnHover) {
+      setIsPaused(true);
+    }
+  }, [pauseOnHover]);
+
+  const handleTouchEnd = useCallback(() => {
+    if (pauseOnHover) {
+      setIsPaused(false);
+    }
+  }, [pauseOnHover]);
+
+  useEffect(() => {
+    const scroller = scrollerRef.current;
+    if (!scroller) return;
+
+    scroller.addEventListener("touchstart", handleTouchStart, {
+      passive: true,
+    });
+    scroller.addEventListener("touchend", handleTouchEnd, { passive: true });
+    scroller.addEventListener("touchcancel", handleTouchEnd, { passive: true });
+
+    return () => {
+      scroller.removeEventListener("touchstart", handleTouchStart);
+      scroller.removeEventListener("touchend", handleTouchEnd);
+      scroller.removeEventListener("touchcancel", handleTouchEnd);
+    };
+  }, [handleTouchStart, handleTouchEnd]);
+
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children);
@@ -45,6 +77,7 @@ export const InfiniteMovingCards = ({
       setStart(true);
     }
   }
+
   const getDirection = () => {
     if (containerRef.current) {
       if (direction === "left") {
@@ -60,6 +93,7 @@ export const InfiniteMovingCards = ({
       }
     }
   };
+
   const getSpeed = () => {
     if (containerRef.current) {
       if (speed === "fast") {
@@ -71,6 +105,7 @@ export const InfiniteMovingCards = ({
       }
     }
   };
+
   return (
     <div
       ref={containerRef}
@@ -84,7 +119,8 @@ export const InfiniteMovingCards = ({
         className={cn(
           " flex min-w-full shrink-0 gap-16 py-4 w-max flex-nowrap",
           start && "animate-scroll ",
-          pauseOnHover && "hover:[animation-play-state:paused]"
+          pauseOnHover && "hover:[animation-play-state:paused]",
+          isPaused && "[animation-play-state:paused]"
         )}
       >
         {items.map((item, idx) => (
