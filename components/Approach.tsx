@@ -3,18 +3,18 @@ import React from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
 import { CanvasRevealEffect } from "@/components/ui/CanvasRevealEffect";
-
+import { aboutMe } from "@/data";
 const Approach = () => {
   return (
     <section className="w-full py-20">
       <h1 className="heading">
-        My <span className="text-purple">approach</span>
+        About <span className="text-purple">me</span>
       </h1>
       <div className="my-20 flex flex-col lg:flex-row items-center justify-center gap-4">
         <Card
-          title="Planning & Strategy"
-          icon={<AceternityIcon order="Phase 1" />}
-          description="We'll collaborate to map out your webiste's goals, target audience, and key functionalities. We'll discuss things like site structure, navigation and content requirements."
+          title={aboutMe[0].title}
+          icon={<AceternityIcon order={aboutMe[0].face} />}
+          description={aboutMe[0].description}
         >
           <CanvasRevealEffect
             animationSpeed={5.1}
@@ -22,9 +22,9 @@ const Approach = () => {
           />
         </Card>
         <Card
-          title="Development & Progress Update"
-          icon={<AceternityIcon order="Phase 2" />}
-          description="Once we agree on the plan, I cue my lofi playlist and dive into coding. From initial sketches to polished code, I keep you updated every step of the way."
+          title={aboutMe[1].title}
+          icon={<AceternityIcon order={aboutMe[1].face} />}
+          description={aboutMe[1].description}
         >
           <CanvasRevealEffect
             animationSpeed={3}
@@ -37,9 +37,9 @@ const Approach = () => {
           />
         </Card>
         <Card
-          title="Development & Launch"
-          icon={<AceternityIcon order="Phase 3" />}
-          description="This is where the magic happens! Based on the approved design, I'll translate everything into functional code, building your website from the ground up."
+          title={aboutMe[2].title}
+          icon={<AceternityIcon order={aboutMe[2].face} />}
+          description={aboutMe[2].description}
         >
           <CanvasRevealEffect
             animationSpeed={3}

@@ -204,6 +204,30 @@ export const workExperience = [
   },
 ];
 
+export const aboutMe = [
+  {
+    id: 1,
+    face: "know",
+    title: "hiking",
+    description:
+      "It's all about being outdoors, walking new trails, and seeing nature at its best. For me, every hike is an adventure, and each step brings excitement, peace, and a deeper connection with the world around me.",
+  },
+  {
+    id: 2,
+    face: "me",
+    title: "playing chess",
+    description:
+      "It's fun, challenging, and makes me think in a different way. Sometimes I get pretty mad when I mess up or lose a good position, but that's part of the game. I play the Sicilian Defense a lot and enjoy the back-and-forth, the quiet focus, and how every match feels like a new challenge.",
+  },
+  {
+    id: 3,
+    face: "better",
+    title: "music",
+    description:
+      "I listen to all kinds of stuff — some weirder than others — but it's what makes me feel alive. Prog rock is probably my favorite, but I'm also into rap and metal. I like mixing up genres and finding new artists to get inspired by.",
+  },
+];
+
 export const socialMedia = [
   {
     id: 1,
@@ -221,3 +245,9 @@ export const socialMedia = [
     link: "https://www.linkedin.com/in/flavius-cojocaru-20834a246/",
   },
 ];
+
+export const footer = {
+  title: "Need a developer who actually loves this stuff?",
+  description:
+    "Whether it's a fast-paced startup or a well-established team, I'm excited to bring ideas to life through clean code and creative problem-solving. Let's get in touch and see how we can work together!",
+};
