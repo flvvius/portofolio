@@ -12,17 +12,17 @@ export const hero = [
 ];
 
 export const navItems = [
-  { name: "About", link: "#about" },
-  { name: "Projects", link: "#projects" },
-  { name: "Testimonials", link: "#testimonials" },
-  { name: "Contact", link: "#contact" },
+  { name: "about", link: "#about" },
+  { name: "projects", link: "#projects" },
+  { name: "testimonials", link: "#testimonials" },
+  { name: "contact", link: "#contact" },
 ];
 
 export const gridItems = [
   {
     id: 1,
-    title: "I prioritize client collaboration, fostering open communication ",
-    description: "",
+    title: "i don't just code — i collaborate.",
+    description: "clear talks. quick feedback. no ego. just good work.",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
     titleClassName: "justify-end",
@@ -31,8 +31,8 @@ export const gridItems = [
   },
   {
     id: 2,
-    title: "I'm very flexible with time zone communications",
-    description: "",
+    title: "async? sync? middle of the night?",
+    description: "i'll show up — timezone-flexible and always caffeinated.",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-start",
@@ -41,8 +41,8 @@ export const gridItems = [
   },
   {
     id: 3,
-    title: "My tech stack",
-    description: "I constantly try to improve",
+    title: "my tech stack?",
+    description: "full and always growing.",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-center",
@@ -51,19 +51,18 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "Tech enthusiast with a passion for development.",
-    description: "",
+    title: "lead dev. mentor. caffeine-powered debugger.",
+    description: "led a team of 20 people. smooth shipping.",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
     titleClassName: "justify-start",
     img: "/grid.svg",
     spareImg: "/b4.svg",
   },
-
   {
     id: 5,
-    title: "Currently building an AI based news aggregator app.",
-    description: "",
+    title: "currently building an ai-powered news app.",
+    description: "real news. no doomscroll. smart feeds with smart code.",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-center",
@@ -72,7 +71,7 @@ export const gridItems = [
   },
   {
     id: 6,
-    title: "Do you want to start a project together?",
+    title: "got an open role or a cool idea?",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -85,32 +84,32 @@ export const gridItems = [
 export const projects = [
   {
     id: 1,
-    title: "Banking App with Finance Management Dashboard",
-    des: "An app that connects multiple bank accounts, displays real-time transactions, and allows you to transfer money to other users on the platform using Next.js 14.",
+    title: "banking app + finance dashboard",
+    des: "connected accounts, real-time transactions, smooth transfers — built with next.js 14 and a lot of coffee.",
     img: "/banking1.png",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/c.svg"],
     link: "https://github.com/flvvius/banking-app",
   },
   {
     id: 2,
-    title: "Employee Management App",
-    des: "An app that allows you to manage your employees, track their performance, and generate reports using React.js.",
+    title: "employee manager app",
+    des: "track performance, manage teams, generate reports — all in a clean react-powered interface.",
     img: "/employee.png",
     iconLists: ["/re.svg"],
     link: "https://github.com/flvvius/Bachelors-Degree-Graduation-Project",
   },
   {
     id: 3,
-    title: "Moodle clone - Student Management App",
-    des: "A Moodle clone that allows you to interact in real time as a student with the course you are taking.",
+    title: "student management (moodle-style)",
+    des: "real-time feedback, course tracking, smoother experience for students and profs alike.",
     img: "/student.png",
     iconLists: ["/re.svg"],
     link: "https://github.com/flvvius/continuous-feedback-application",
   },
   {
     id: 4,
-    title: "Interactive Map of Craiova - Travel App",
-    des: "An interactive map of Craiova, Romania, that allows you to explore the city and its attractions.",
+    title: "interactive map of craiova",
+    des: "a travel app for my hometown — built to explore the hidden gems of craiova, romania.",
     img: "/craiova.png",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/c.svg"],
     link: "https://craiova-app.vercel.app/",
@@ -143,66 +142,43 @@ export const testimonials = [
 export const companies = [
   {
     id: 1,
-    name: "cloudinary",
-    img: "/cloud.svg",
-    nameImg: "/cloudName.svg",
-  },
-  {
-    id: 2,
-    name: "appwrite",
-    img: "/app.svg",
-    nameImg: "/appName.svg",
-  },
-  {
-    id: 3,
-    name: "HOSTINGER",
-    img: "/host.svg",
-    nameImg: "/hostName.svg",
-  },
-  {
-    id: 4,
-    name: "stream",
-    img: "/s.svg",
-    nameImg: "/streamName.svg",
-  },
-  {
-    id: 5,
-    name: "docker.",
-    img: "/dock.svg",
-    nameImg: "/dockerName.svg",
+    name: "example",
+    img: "/example.svg",
+    nameImg: "/exampleName.svg",
   },
 ];
 
 export const workExperience = [
   {
     id: 1,
-    title: "Web Developer Intern",
-    desc: `I took part in courses offered by Ubisoft, where I learned about key technologies and concepts like JavaScript, React, API calls, monitoring, and Docker for containerization.`,
+    title: "lead dev - Academia SpEranței @ SiSC",
+    desc: "ran a 20-person dev team, built the site, fixed merge hell, and made it all work. a project close to my heart — lots of growth, both technical and human.",
     className: "md:col-span-2",
-    thumbnail: "/exp1.svg",
+    thumbnail: "/exp3.svg",
   },
   {
     id: 2,
-    title: "Lead IT of Academia SpEranței",
-    desc: "Academia SpEranței was a project close to my heart, as it represents the mark I left on SiSC. I led a team of 20 passionate IT members, and together we built strong, meaningful relationships in addition to developing the website itself.",
+    title: "web dev intern @ ubisoft",
+    desc: "got hands-on with react, js, apis, monitoring, and docker. learned from pros. soaked up everything like a sponge.",
     className: "md:col-span-2",
     thumbnail: "/exp2.svg",
   },
   {
     id: 3,
-    title: "IT Back-End Developer - SiSC",
-    desc: "Professionally, I gained hands-on experience in Back-End Development, including learning Node.js and Express. On a personal level, collaborating with a team of dedicated and driven individuals helped me enhance my communication, critical thinking, and teamwork skills.",
+    title: "back-end dev @ SiSC",
+    desc: "node.js + express + teamwork = growth. sharpened my logic, built real stuff, and learned how to communicate like a dev who gets things done.",
     className: "md:col-span-2",
-    thumbnail: "/exp3.svg",
+    thumbnail: "/exp1.svg",
   },
   {
     id: 4,
-    title: "Freelancer - Web Developer",
-    desc: "I worked as a freelancer for a client, where I built a website using Next.js and Tailwind CSS. I also assisted in the development of a mobile app for both iOS and Android platforms using React Native.",
+    title: "freelance dev (next.js + react native)",
+    desc: "built a website and helped ship a mobile app for a real client. next.js for the web, react native for ios + android. solo, but solid.",
     className: "md:col-span-2",
     thumbnail: "/exp4.svg",
   },
 ];
+
 
 export const aboutMe = [
   {
@@ -247,7 +223,7 @@ export const socialMedia = [
 ];
 
 export const footer = {
-  title: "Need a developer who actually loves this stuff?",
+  title: "looking for a dev who actually enjoys this stuff?",
   description:
-    "Whether it's a fast-paced startup or a well-established team, I'm excited to bring ideas to life through clean code and creative problem-solving. Let's get in touch and see how we can work together!",
+    "i'm down to build cool things — solo or with a team. startups, solid teams, side gigs — if it involves clean code and good vibes, i’m in. let’s talk.",
 };

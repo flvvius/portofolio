@@ -9,18 +9,17 @@ const Footer = () => {
     <footer className="w-full pb-10 mb-[100px] md:mb-5" id="contact">
       <div className="flex flex-col items-center">
         <h1 className="heading lg:max-w-[45vw]">
-          Need a developer who actually{" "}
-          <span className="text-purple">loves</span> this stuff?
+          looking for a dev who actually{" "}
+          <span className="text-purple">enjoys</span> this stuff?
         </h1>
         <p className="text-white-200 md:mt-10 my-5 text-center">
-          Whether it&apos;s a fast-paced startup or a well-established team,
-          I&apos;m excited to bring ideas to life through clean code and
-          creative problem-solving. Let&apos;s get in touch and see how we can
-          work together!
+          i&apos;m down to build cool things — solo or with a team. startups,
+          solid teams, side gigs — if it involves clean code and good vibes, i&apos;m
+          in.
         </p>
         <a href="mailto:flaviuscojocaru19@gmail.com">
           <MagicButton
-            title="Let's get in touch"
+            title="let&apos;s talk"
             icon={<FaLocationArrow />}
             position="right"
           />

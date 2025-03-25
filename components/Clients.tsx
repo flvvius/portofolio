@@ -29,7 +29,7 @@ const Clients = () => {
   return (
     <div className="py-20" id="testimonials">
       <h1 className="heading">
-        Kind words from{" "}
+        kind words from{" "}
         <span className="text-purple">people I&apos;ve worked with</span>
       </h1>
       <div className="flex flex-col items-center max-lg:mt-10">
