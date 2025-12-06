@@ -2,8 +2,10 @@
 
 import * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { type ThemeProviderProps } from "next-themes/dist/types";
 import { useReportWebVitals } from "next/web-vitals";
+
+// Types from next-themes v0.4+
+type ThemeProviderProps = React.ComponentProps<typeof NextThemesProvider>;
 
 declare global {
   interface Window {

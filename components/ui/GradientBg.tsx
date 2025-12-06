@@ -83,10 +83,11 @@ export const BackgroundGradientAnimation = ({
     }
   };
 
-  const [isSafari, setIsSafari] = useState(false);
-  useEffect(() => {
-    setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
-  }, []);
+  // Detect Safari browser - using useMemo to compute on first render
+  // This is acceptable because navigator.userAgent is a stable value
+  const isSafari = typeof navigator !== "undefined" 
+    ? /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+    : false;
 
   return (
     <div

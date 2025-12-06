@@ -24,57 +24,47 @@ export const InfiniteMovingCards = ({
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
-
-  useEffect(() => {
-    addAnimation();
-  }, []);
-
+  const animationInitializedRef = React.useRef(false);
   const [start, setStart] = useState(false);
 
-  function addAnimation() {
-    if (containerRef.current && scrollerRef.current) {
-      const scrollerContent = Array.from(scrollerRef.current.children);
+  // Initialize animation on mount
+  useEffect(() => {
+    if (animationInitializedRef.current) return;
+    if (!containerRef.current || !scrollerRef.current) return;
+    
+    animationInitializedRef.current = true;
 
-      scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-        if (scrollerRef.current) {
-          scrollerRef.current.appendChild(duplicatedItem);
-        }
-      });
+    // Clone items for infinite scroll
+    const scrollerContent = Array.from(scrollerRef.current.children);
+    scrollerContent.forEach((item) => {
+      const duplicatedItem = item.cloneNode(true);
+      if (scrollerRef.current) {
+        scrollerRef.current.appendChild(duplicatedItem);
+      }
+    });
 
-      getDirection();
-      getSpeed();
+    // Set direction
+    if (direction === "left") {
+      containerRef.current.style.setProperty("--animation-direction", "forwards");
+    } else {
+      containerRef.current.style.setProperty("--animation-direction", "reverse");
+    }
+
+    // Set speed
+    if (speed === "fast") {
+      containerRef.current.style.setProperty("--animation-duration", "20s");
+    } else if (speed === "normal") {
+      containerRef.current.style.setProperty("--animation-duration", "40s");
+    } else {
+      containerRef.current.style.setProperty("--animation-duration", "80s");
+    }
+
+    // Start animation after setup is complete via requestAnimationFrame
+    // This ensures the DOM updates are flushed before we trigger the animation
+    requestAnimationFrame(() => {
       setStart(true);
-    }
-  }
-
-  const getDirection = () => {
-    if (containerRef.current) {
-      if (direction === "left") {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "forwards"
-        );
-      } else {
-        containerRef.current.style.setProperty(
-          "--animation-direction",
-          "reverse"
-        );
-      }
-    }
-  };
-
-  const getSpeed = () => {
-    if (containerRef.current) {
-      if (speed === "fast") {
-        containerRef.current.style.setProperty("--animation-duration", "20s");
-      } else if (speed === "normal") {
-        containerRef.current.style.setProperty("--animation-duration", "40s");
-      } else {
-        containerRef.current.style.setProperty("--animation-duration", "80s");
-      }
-    }
-  };
+    });
+  }, [direction, speed]);
 
   return (
     <div

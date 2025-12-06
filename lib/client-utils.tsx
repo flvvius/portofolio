@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useSyncExternalStore } from "react";
+
+const emptySubscribe = () => () => {};
 
 export function useIsClient() {
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  return isClient;
+  return useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false
+  );
 }
 
 export function isBrowser(): boolean {

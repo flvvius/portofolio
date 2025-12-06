@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useMemo } from "react";
 import { useIsClient } from "@/lib/client-utils";
 import lottie from "lottie-web";
 
@@ -14,23 +14,9 @@ const LottieWrapper = ({ isActive, animationData }: LottieWrapperProps) => {
   const isClient = useIsClient();
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<any>(null);
-  const [shouldRender, setShouldRender] = useState(false);
-
-  useEffect(() => {
-    if (isActive && isClient) {
-      setShouldRender(true);
-    }
-  }, [isActive, isClient]);
-
-  useEffect(() => {
-    if (!isActive && shouldRender) {
-      const timer = setTimeout(() => {
-        setShouldRender(false);
-      }, 100);
-
-      return () => clearTimeout(timer);
-    }
-  }, [isActive, shouldRender]);
+  
+  // Compute shouldRender as derived state instead of using useState + useEffect
+  const shouldRender = useMemo(() => isActive && isClient, [isActive, isClient]);
 
   useEffect(() => {
     if (!containerRef.current || !isClient || !shouldRender) return;
