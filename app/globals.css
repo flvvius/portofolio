@@ -109,3 +109,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+.sentry-feedback-widget, 
+#sentry-feedback,
+[id^="sentry-feedback"] {
+  z-index: 9999999999 !important;
+  position: fixed !important;
+}

@@ -1,20 +1,14 @@
 import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
-
-export async function GET() {
-  return NextResponse.json({
-    success: true,
-    message: "Sentry API route working",
-  });
-}
-
-export async function POST() {
-  const shouldError = Math.random() > 0.5;
-
-  if (shouldError) {
-    throw new Error("This is an example error from the Sentry API route");
+class SentryExampleAPIError extends Error {
+  constructor(message: string | undefined) {
+    super(message);
+    this.name = "SentryExampleAPIError";
   }
-
-  return NextResponse.json({ success: true, message: "No error occurred" });
+}
+// A faulty API route to test Sentry's error monitoring
+export function GET() {
+  throw new SentryExampleAPIError("This error is raised on the backend called by the example page.");
+  return NextResponse.json({ data: "Testing Sentry Error..." });
 }

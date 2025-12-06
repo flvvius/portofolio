@@ -1,5 +1,6 @@
+"use client";
+
 import { projects } from "@/data";
-import React from "react";
 import dynamic from "next/dynamic";
 const PinContainer = dynamic(
   () => import("./ui/3d-pin").then((mod) => mod.PinContainer),
