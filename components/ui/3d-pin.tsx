@@ -59,11 +59,7 @@ export const PinContainer = ({
   );
 };
 
-export const PinPerspective = ({
-  title,
-}: {
-  title?: string;
-}) => {
+export const PinPerspective = ({ title }: { title?: string }) => {
   return (
     <div className="pointer-events-none  w-full h-80 flex items-center justify-center opacity-0 group-hover/pin:opacity-100 z-[60] transition duration-500">
       <div className=" w-full h-full -mt-7 flex-none  inset-0">
@@ -102,7 +98,16 @@ export const PinPerspective = ({
                 repeat: Infinity,
                 delay: 0,
               }}
-              style={{ position: "absolute", left: "50%", top: "50%", height: "11.25rem", width: "11.25rem", borderRadius: "50%", background: "rgba(14, 165, 233, 0.08)", boxShadow: "0 8px 16px rgb(0 0 0 / 0.4)" }}
+              style={{
+                position: "absolute",
+                left: "50%",
+                top: "50%",
+                height: "11.25rem",
+                width: "11.25rem",
+                borderRadius: "50%",
+                background: "rgba(14, 165, 233, 0.08)",
+                boxShadow: "0 8px 16px rgb(0 0 0 / 0.4)",
+              }}
             />
             <motion.div
               initial={{
@@ -121,7 +126,16 @@ export const PinPerspective = ({
                 repeat: Infinity,
                 delay: 2,
               }}
-              style={{ position: "absolute", left: "50%", top: "50%", height: "11.25rem", width: "11.25rem", borderRadius: "50%", background: "rgba(14, 165, 233, 0.08)", boxShadow: "0 8px 16px rgb(0 0 0 / 0.4)" }}
+              style={{
+                position: "absolute",
+                left: "50%",
+                top: "50%",
+                height: "11.25rem",
+                width: "11.25rem",
+                borderRadius: "50%",
+                background: "rgba(14, 165, 233, 0.08)",
+                boxShadow: "0 8px 16px rgb(0 0 0 / 0.4)",
+              }}
             />
             <motion.div
               initial={{
@@ -140,7 +154,16 @@ export const PinPerspective = ({
                 repeat: Infinity,
                 delay: 4,
               }}
-              style={{ position: "absolute", left: "50%", top: "50%", height: "11.25rem", width: "11.25rem", borderRadius: "50%", background: "rgba(14, 165, 233, 0.08)", boxShadow: "0 8px 16px rgb(0 0 0 / 0.4)" }}
+              style={{
+                position: "absolute",
+                left: "50%",
+                top: "50%",
+                height: "11.25rem",
+                width: "11.25rem",
+                borderRadius: "50%",
+                background: "rgba(14, 165, 233, 0.08)",
+                boxShadow: "0 8px 16px rgb(0 0 0 / 0.4)",
+              }}
             />
           </>
         </div>

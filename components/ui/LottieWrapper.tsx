@@ -14,9 +14,12 @@ const LottieWrapper = ({ isActive, animationData }: LottieWrapperProps) => {
   const isClient = useIsClient();
   const containerRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<any>(null);
-  
+
   // Compute shouldRender as derived state instead of using useState + useEffect
-  const shouldRender = useMemo(() => isActive && isClient, [isActive, isClient]);
+  const shouldRender = useMemo(
+    () => isActive && isClient,
+    [isActive, isClient]
+  );
 
   useEffect(() => {
     if (!containerRef.current || !isClient || !shouldRender) return;

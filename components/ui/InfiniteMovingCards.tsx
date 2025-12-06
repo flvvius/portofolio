@@ -31,7 +31,7 @@ export const InfiniteMovingCards = ({
   useEffect(() => {
     if (animationInitializedRef.current) return;
     if (!containerRef.current || !scrollerRef.current) return;
-    
+
     animationInitializedRef.current = true;
 
     // Clone items for infinite scroll
@@ -45,9 +45,15 @@ export const InfiniteMovingCards = ({
 
     // Set direction
     if (direction === "left") {
-      containerRef.current.style.setProperty("--animation-direction", "forwards");
+      containerRef.current.style.setProperty(
+        "--animation-direction",
+        "forwards"
+      );
     } else {
-      containerRef.current.style.setProperty("--animation-direction", "reverse");
+      containerRef.current.style.setProperty(
+        "--animation-direction",
+        "reverse"
+      );
     }
 
     // Set speed
