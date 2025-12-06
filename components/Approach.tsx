@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { CanvasRevealEffect } from "@/components/ui/CanvasRevealEffect";
 import { aboutMe } from "@/data";
+
 const Approach = () => {
   return (
     <section className="w-full py-20">
