@@ -3,8 +3,6 @@ import { BlogHeader } from "@/components/blog/BlogHeader";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { FloatingNav } from "@/components/ui/FloatingNav";
 import { navItems } from "@/data";
-import Link from "next/link";
-import { FaArrowLeft } from "react-icons/fa6";
 
 export const metadata = {
   title: "Blog | Flavius Cojocaru",
@@ -24,17 +22,6 @@ const Blog = () => {
           title="thoughts from the trenches"
           subtitle="raw reflections on coding, learning, and the emotional rollercoaster of being a developer. no polish, no pretense — just honest thoughts."
         />
-
-        {/* Back to home */}
-        <div className="flex justify-center mb-12">
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 text-white-100/60 hover:text-purple transition-colors duration-300 text-sm"
-          >
-            <FaArrowLeft className="w-3 h-3" />
-            <span>back to home</span>
-          </Link>
-        </div>
 
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pb-20">

@@ -1,12 +1,19 @@
 import { Spotlight } from "@/components/ui/Spotlight";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
+import Link from "next/link";
+import { FaArrowLeft } from "react-icons/fa6";
 
 type BlogHeaderProps = {
   title: string;
   subtitle?: string;
+  showBackButton?: boolean;
 };
 
-export const BlogHeader = ({ title, subtitle }: BlogHeaderProps) => {
+export const BlogHeader = ({
+  title,
+  subtitle,
+  showBackButton = true,
+}: BlogHeaderProps) => {
   return (
     <div className="relative pb-20 pt-36">
       {/* Spotlights */}
@@ -32,6 +39,19 @@ export const BlogHeader = ({ title, subtitle }: BlogHeaderProps) => {
           bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"
         />
       </div>
+
+      {/* Back button - positioned absolutely */}
+      {showBackButton && (
+        <div className="relative z-10 mb-8">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 text-white-100/60 hover:text-purple transition-colors duration-300 text-sm group"
+          >
+            <FaArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform duration-300" />
+            <span>back to home</span>
+          </Link>
+        </div>
+      )}
 
       {/* Content */}
       <div className="flex justify-center relative z-10">
