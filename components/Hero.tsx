@@ -68,15 +68,15 @@ const Hero = () => {
             ))}
           </div>
 
-          <div className="mt-10">
-            <a href="#about" className="ml-6 mr-6">
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+            <a href="#about">
               <MagicButton
                 title="show my work"
                 icon={<FaLocationArrow />}
                 position="right"
               />
             </a>
-            <Link href="/blog" className="ml-6 mr-6">
+            <Link href="/blog">
               <MagicButton
                 title="blog"
                 icon={<FaLocationArrow />}
