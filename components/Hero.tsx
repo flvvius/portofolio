@@ -5,6 +5,7 @@ import { Spotlight } from "./ui/Spotlight";
 import { TextGenerateEffect } from "./ui/TextGenerateEffect";
 import { socialMedia } from "@/data";
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero = () => {
   return (
@@ -47,32 +48,41 @@ const Hero = () => {
           </p>
 
           <div className="flex items-center md:gap-3 gap-6">
-          {socialMedia.map((profile) => (
-            <a
-              href={profile.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              key={profile.id}
-              className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300"
-            >
-              <Image
-                src={profile.img}
-                alt={profile.img}
-                width={20}
-                height={20}
-                className="w-auto h-auto"
+            {socialMedia.map((profile) => (
+              <a
+                href={profile.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                key={profile.id}
+                className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300"
+              >
+                <Image
+                  src={profile.img}
+                  alt={profile.img}
+                  width={20}
+                  height={20}
+                  className="w-auto h-auto"
+                />
+              </a>
+            ))}
+          </div>
+
+          <div className="mt-10">
+            <a href="#about" className="ml-6 mr-6">
+              <MagicButton
+                title="show my work"
+                icon={<FaLocationArrow />}
+                position="right"
               />
             </a>
-          ))}
-        </div>
-
-          <a href="#about" className="mt-10">
-            <MagicButton
-              title="show my work"
-              icon={<FaLocationArrow />}
-              position="right"
-            />
-          </a>
+            <Link href="/blog" className="ml-6 mr-6">
+              <MagicButton
+                title="blog"
+                icon={<FaLocationArrow />}
+                position="right"
+              />
+            </Link>
+          </div>
         </div>
       </div>
     </div>
