@@ -11,14 +11,14 @@ import Image from "next/image";
 
 const RecentProjects = () => {
   return (
-    <div className="py-20" id="projects">
-      <h1 className="heading">
+    <section className="py-20" id="projects" aria-labelledby="projects-heading">
+      <h2 id="projects-heading" className="heading">
         a small selection of{" "}
         <span className="text-purple">recent projects</span>
-      </h1>
+      </h2>
       <div className="flex flex-wrap items-center justify-center p-4 gap-x-24 gap-y-8 mt-10 flex-col lg:flex-row">
         {projects.map(({ id, title, des, img, iconLists, link }) => (
-          <div
+          <article
             key={id}
             className="h-[27rem] sm:h-[35rem] md:h-[40rem] flex items-center justify-center sm:w-[570px] w-[80vw] md:mb-[8rem]"
           >
@@ -77,10 +77,10 @@ const RecentProjects = () => {
                 </div>
               </div>
             </PinContainer>
-          </div>
+          </article>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

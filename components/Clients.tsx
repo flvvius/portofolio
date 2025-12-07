@@ -27,11 +27,15 @@ const Clients = () => {
   }, []);
 
   return (
-    <div className="py-20" id="testimonials">
-      <h1 className="heading">
+    <section
+      className="py-20"
+      id="testimonials"
+      aria-labelledby="testimonials-heading"
+    >
+      <h2 id="testimonials-heading" className="heading">
         kind words from{" "}
         <span className="text-purple">people I&apos;ve worked with</span>
-      </h1>
+      </h2>
       <div className="flex flex-col items-center max-lg:mt-10">
         {isMobile ? (
           <Carousel className="w-full max-w-sm md:max-w-xl">
@@ -114,7 +118,7 @@ const Clients = () => {
           ))}
         </div> */}
       </div>
-    </div>
+    </section>
   );
 };
 
