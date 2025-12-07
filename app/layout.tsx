@@ -18,18 +18,6 @@ const inter = Inter({
 
 const baseUrl = "https://flavius.pro";
 
-const noFlashScript = `
-  (function() {
-    var style = document.createElement('style');
-    style.innerHTML = 'body { visibility: hidden; }';
-    document.head.appendChild(style);
-    
-    window.addEventListener('DOMContentLoaded', function() {
-      document.head.removeChild(style);
-    });
-  })();
-`;
-
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "white" },
@@ -138,7 +126,6 @@ export default function RootLayout({
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
         <JsonLd />
-        <script dangerouslySetInnerHTML={{ __html: noFlashScript }} />
         <link rel="icon" href="/main.png" sizes="any" />
         <meta
           name="format-detection"
