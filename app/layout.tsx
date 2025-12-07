@@ -137,6 +137,7 @@ export default function RootLayout({
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>
       <head>
+        <JsonLd />
         <script dangerouslySetInnerHTML={{ __html: noFlashScript }} />
         <link rel="icon" href="/main.png" sizes="any" />
         <meta
@@ -167,7 +168,6 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <GoogleAnalytics />
-        <JsonLd />
       </body>
     </html>
   );

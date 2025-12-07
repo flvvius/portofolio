@@ -23,7 +23,6 @@ export async function generateStaticParams() {
   }));
 }
 
-// Generate metadata for each blog post (enhanced for SEO)
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
@@ -72,14 +71,6 @@ export async function generateMetadata({
   };
 }
 
-const moodEmoji: Record<string, string> = {
-  reflective: "🌙",
-  excited: "✨",
-  frustrated: "🔥",
-  hopeful: "🌱",
-  vulnerable: "💜",
-};
-
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { id } = await params;
   const post = getBlogPost(id);
@@ -111,9 +102,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div className="max-w-3xl w-full">
           <FloatingNav navItems={navItems} />
 
-          {/* Header with spotlights */}
           <div className="relative pb-12 pt-36">
-            {/* Spotlights */}
             <div>
               <Spotlight
                 className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
@@ -125,7 +114,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               />
             </div>
 
-            {/* Grid background */}
             <div
               className="h-[40vh] w-full dark:bg-black-100 bg-white dark:bg-grid-white/[0.02] bg-grid-black-100/[0.2]
             absolute top-0 left-0 flex items-center justify-center"
@@ -163,7 +151,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   <>
                     <span className="w-1 h-1 rounded-full bg-white-100/30" />
                     <span className="flex items-center gap-1">
-                      <span>{moodEmoji[post.mood]}</span>
                       <span className="text-purple/70">{post.mood}</span>
                     </span>
                   </>

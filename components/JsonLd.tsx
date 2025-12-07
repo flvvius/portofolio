@@ -1,5 +1,3 @@
-import Script from "next/script";
-
 const baseUrl = "https://flavius.pro";
 
 // Person schema - who you are
@@ -126,11 +124,10 @@ const combinedSchema = {
 
 export default function JsonLd() {
   return (
-    <Script
+    <script
       id="json-ld"
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(combinedSchema) }}
-      strategy="afterInteractive"
     />
   );
 }
@@ -182,11 +179,10 @@ export function BlogPostJsonLd({
   };
 
   return (
-    <Script
+    <script
       id={`json-ld-blog-${slug}`}
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
-      strategy="afterInteractive"
     />
   );
 }
@@ -213,11 +209,10 @@ export function BlogListJsonLd() {
   };
 
   return (
-    <Script
+    <script
       id="json-ld-blog-list"
       type="application/ld+json"
       dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }}
-      strategy="afterInteractive"
     />
   );
 }
