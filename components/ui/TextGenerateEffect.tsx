@@ -22,12 +22,11 @@ export const TextGenerateEffect = ({
               key={word + idx}
               className={cn(
                 idx > 2 ? "text-purple" : "dark:text-white text-black",
-                // First word visible immediately for better LCP
-                idx === 0 ? "inline-block opacity-100" : "inline-block opacity-0 animate-text-reveal"
+                "inline-block opacity-0 animate-text-reveal"
               )}
-              style={idx === 0 ? undefined : {
-                animationDelay: `${idx * 150}ms`,
-                animationDuration: `${duration * 800}ms`,
+              style={{
+                animationDelay: `${idx * 200}ms`,
+                animationDuration: `${duration * 1000}ms`,
                 animationFillMode: "forwards",
               }}
             >
