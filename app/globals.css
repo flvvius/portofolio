@@ -114,7 +114,7 @@
     animation: fade-in-up 0.4s cubic-bezier(0.25, 0.4, 0.25, 1) forwards;
   }
 
-  /* Text reveal animation (blur to clear) - GPU accelerated */
+  /* Text reveal animation - desktop uses blur, mobile uses simple fade */
   @keyframes text-reveal {
     from {
       opacity: 0;
@@ -126,10 +126,29 @@
     }
   }
 
+  /* Mobile-optimized: simple fade without blur (composited) */
+  @keyframes text-reveal-mobile {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   .animate-text-reveal {
     animation: text-reveal 0.5s ease-out forwards;
-    transform: translateZ(0); /* Force GPU layer */
+    transform: translateZ(0);
     backface-visibility: hidden;
+  }
+
+  /* On mobile: faster animation, no blur filter, faster stagger */
+  @media (max-width: 768px) {
+    .animate-text-reveal {
+      animation-name: text-reveal-mobile;
+      animation-duration: 0.3s;
+      animation-delay: var(--delay-mobile) !important;
+    }
   }
 }
 
