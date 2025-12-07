@@ -97,6 +97,38 @@
   .heading {
     @apply font-bold text-4xl md:text-5xl text-center;
   }
+
+  /* Performance-optimized fade-in animation (GPU-accelerated) */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.4s cubic-bezier(0.25, 0.4, 0.25, 1) forwards;
+  }
+
+  /* Text reveal animation (blur to clear) */
+  @keyframes text-reveal {
+    from {
+      opacity: 0;
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0px);
+    }
+  }
+
+  .animate-text-reveal {
+    animation: text-reveal 0.5s ease-out forwards;
+  }
 }
 
 

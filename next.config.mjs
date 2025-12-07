@@ -1,8 +1,65 @@
 import {withSentryConfig} from '@sentry/nextjs';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // ===== PERFORMANCE OPTIMIZATIONS =====
+  
+  // Tree-shake large packages (reduces bundle by ~50KB for icon libs)
+  experimental: {
+    optimizePackageImports: [
+      'react-icons',
+      'lucide-react', 
+      'motion/react',
+      '@react-three/drei',
+    ],
+  },
+
+  // Enable modern image formats (AVIF is 30-50% smaller than WebP)
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    // Cache optimized images for 1 year
+    minimumCacheTTL: 31536000,
+  },
+
+  // Enable gzip compression
+  compress: true,
+
+  // Strict React mode for catching bugs
+  reactStrictMode: true,
+
+  // ===== SECURITY & CACHING HEADERS =====
   async headers() {
     return [
+      // Cache static assets for 1 year (they have content hashes)
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      // Cache images for 1 year
+      {
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      // Cache fonts for 1 year
+      {
+        source: '/fonts/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      // Security headers for all routes
       {
         source: '/:path*',
         headers: [

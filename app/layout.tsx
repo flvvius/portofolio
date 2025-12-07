@@ -6,7 +6,15 @@ import { ThemeProvider } from "./provider";
 import JsonLd from "@/components/JsonLd";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 
-const inter = Inter({ subsets: ["latin"] });
+// Optimized font loading:
+// - 'swap' ensures text is visible immediately with fallback font
+// - 'variable' enables CSS variable for flexibility
+// - 'preload' is automatic with next/font
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 
 const baseUrl = "https://flavius.pro";
 

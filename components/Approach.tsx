@@ -1,9 +1,18 @@
 "use client";
 import React from "react";
-
+import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "motion/react";
-import { CanvasRevealEffect } from "@/components/ui/CanvasRevealEffect";
 import { aboutMe } from "@/data";
+
+// Dynamic import - CanvasRevealEffect uses Three.js (~200KB)
+// Only loads when user hovers on cards
+const CanvasRevealEffect = dynamic(
+  () =>
+    import("@/components/ui/CanvasRevealEffect").then(
+      (mod) => mod.CanvasRevealEffect
+    ),
+  { ssr: false }
+);
 
 const Approach = () => {
   return (

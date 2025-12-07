@@ -58,10 +58,11 @@ const Hero = () => {
               >
                 <Image
                   src={profile.img}
-                  alt={profile.img}
+                  alt={`${profile.id} social link`}
                   width={20}
                   height={20}
                   className="w-auto h-auto"
+                  priority
                 />
               </a>
             ))}

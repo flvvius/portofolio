@@ -8,6 +8,7 @@ import { IoCopyOutline } from "react-icons/io5";
 import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useIsClient } from "@/lib/client-utils";
+import { LazyLoad } from "./LazyLoad";
 
 const LottieWrapper = dynamic(
   () => import("./LottieWrapper").then((mod) => mod.default),
@@ -21,6 +22,13 @@ const BackgroundGradientAnimation = dynamic(
 const GlobeDemo = dynamic(
   () => import("./GridGlobe").then((mod) => mod.GlobeDemo),
   { ssr: false }
+);
+
+// Globe placeholder while loading
+const GlobePlaceholder = () => (
+  <div className="h-full w-full flex items-center justify-center">
+    <div className="w-[300px] h-[300px] rounded-full bg-gradient-to-br from-purple/10 to-blue-500/10 animate-pulse" />
+  </div>
 );
 
 export const BentoGridItem = ({
@@ -136,7 +144,11 @@ export const BentoGridItem = ({
           <div className="font-sans font-extralight text-[#c1c2d3] text-sm md:text-xs lg:text-base z-10">
             {description}
           </div>
-          {id === 2 && isClient && <GlobeDemo />}
+          {id === 2 && isClient && (
+            <LazyLoad placeholder={<GlobePlaceholder />}>
+              <GlobeDemo />
+            </LazyLoad>
+          )}
 
           {id === 3 && (
             <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
