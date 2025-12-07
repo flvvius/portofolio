@@ -15,6 +15,7 @@ export const navItems = [
   { name: "about", link: "#about" },
   { name: "projects", link: "#projects" },
   { name: "testimonials", link: "#testimonials" },
+  { name: "blog", link: "/blog" },
   { name: "contact", link: "#contact" },
 ];
 
@@ -178,7 +179,6 @@ export const workExperience = [
     thumbnail: "/exp4.svg",
   },
 ];
-
 
 export const aboutMe = [
   {
