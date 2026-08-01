@@ -1,28 +1,51 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Fraunces, Courier_Prime, Caveat } from "next/font/google";
 
 import "./globals.css";
-import { ThemeProvider } from "./provider";
 import JsonLd from "@/components/JsonLd";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { ConsoleNote } from "@/components/ConsoleNote";
 
-// Optimized font loading:
-// - 'swap' ensures text is visible immediately with fallback font
-// - 'variable' enables CSS variable for flexibility
-// - 'preload' is automatic with next/font
-const inter = Inter({
+/**
+ * Three fonts, each with exactly one job.
+ *
+ * Fraunces carries the display voice — the SOFT and WONK axes are what let the
+ * hero wobble while section titles stay composed (see globals.css).
+ * Courier Prime is everything you actually read. Caveat only ever writes two
+ * or three words at a time, in the margins.
+ */
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  axes: ["SOFT", "WONK", "opsz"],
+  display: "swap",
+  variable: "--font-fraunces",
+  preload: true,
+});
+
+const courier = Courier_Prime({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-courier",
+  preload: true,
+});
+
+const caveat = Caveat({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-caveat",
+  // Margin scribbles are decorative and below the fold — don't spend LCP on them.
+  preload: false,
 });
 
 const baseUrl = "https://flavius.pro";
 
+const description =
+  "flavius cojocaru — full-stack engineer in cluj-napoca. a shelf of things i've built, the stories behind them, and whatever's currently on rotation.";
+
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
+  themeColor: "#F4EFE6",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -31,42 +54,30 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: "Flavius Cojocaru | Full-Stack Web Developer",
+    default: "Flavius Cojocaru | Full-Stack Engineer",
     template: "%s | Flavius Cojocaru",
   },
-  description:
-    "building stuff that matters | coding idealist, thirst for knowledge and working on becoming better, romania based, wanting to shape my future",
+  description,
   keywords: [
     "Flavius Cojocaru",
-    "web developer",
     "full-stack developer",
+    "software engineer",
     "portfolio",
     "React",
     "Next.js",
     "TypeScript",
-    "Tailwind CSS",
     "Node.js",
-    "software engineer",
-    "frontend developer",
-    "backend developer",
-    "javascript developer",
-    "UI/UX",
+    "Cluj-Napoca",
     "Romania",
   ],
   creator: "Flavius Cojocaru",
   authors: [{ name: "Flavius Cojocaru", url: baseUrl }],
   publisher: "Flavius Cojocaru",
-  formatDetection: {
-    email: true,
-    address: true,
-    telephone: true,
-  },
   openGraph: {
-    title: "Flavius Cojocaru | Full-Stack Web Developer",
-    description:
-      "building stuff that matters | coding idealist, thirst for knowledge and working on becoming better, romania based, wanting to shape my future",
+    title: "Flavius Cojocaru | Full-Stack Engineer",
+    description,
     url: baseUrl,
-    siteName: "Flavius Cojocaru Portfolio",
+    siteName: "Flavius Cojocaru",
     type: "website",
     locale: "en_US",
     images: [
@@ -74,15 +85,14 @@ export const metadata: Metadata = {
         url: `${baseUrl}/main.png`,
         width: 1200,
         height: 630,
-        alt: "Flavius Cojocaru Portfolio",
+        alt: "Flavius Cojocaru — full-stack engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Flavius Cojocaru | Full-Stack Web Developer",
-    description:
-      "building stuff that matters | coding idealist, thirst for knowledge and working on becoming better, romania based, wanting to shape my future",
+    title: "Flavius Cojocaru | Full-Stack Engineer",
+    description,
     images: [`${baseUrl}/main.png`],
     site: "@flaviuscj1",
     creator: "@flaviuscj1",
@@ -90,7 +100,6 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
-    nocache: false,
     googleBot: {
       index: true,
       follow: true,
@@ -99,18 +108,9 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  icons: {
-    icon: [
-      { url: "/main.png", sizes: "32x32", type: "image/png" },
-      { url: "/main.png", sizes: "16x16", type: "image/png" },
-    ],
-    apple: [{ url: "/main.png", sizes: "180x180", type: "image/png" }],
-  },
   alternates: {
     canonical: baseUrl,
-    languages: {
-      en: baseUrl,
-    },
+    languages: { en: baseUrl },
   },
   verification: {
     google: "y0V0doFc5FrHOZkEACjH868tj1zOJy0dpOsEQNQFZTs",
@@ -123,37 +123,87 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
+    /*
+     * `suppressHydrationWarning` covers exactly one thing: the inline script
+     * below adds a `js` class to this element before React hydrates, so the
+     * server and client classNames legitimately differ. The suppression is
+     * one level deep — every child is still hydration-checked normally.
+     */
+    <html
+      lang="en"
+      dir="ltr"
+      className={`${fraunces.variable} ${courier.variable} ${caveat.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <JsonLd />
-        <link rel="icon" href="/main.png" sizes="any" />
-        <meta
-          name="format-detection"
-          content="telephone=no, date=no, email=no, address=no"
-        />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
         <meta
           httpEquiv="Permissions-Policy"
           content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), screen-wake-lock=(), display-capture=()"
         />
         <meta property="og:locale" content="en_US" />
-        <link rel="alternate" hrefLang="en" href="https://flavius.pro" />
+        <link rel="alternate" hrefLang="en" href={baseUrl} />
+        {/*
+          Sets the progressive-enhancement switch before first paint, so the
+          no-JS fallbacks never flash. One statement, no network, no shift.
+        */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add('js')`,
+          }}
+        />
       </head>
-      <body className={inter.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
+      <body>
+        {/*
+          The pen wobble. Every illustration is drawn with mathematically exact
+          curves and then pushed off-true by this displacement map, which is
+          what stops the set reading as clipart. One filter, defined once,
+          shared by every drawing — so the hand is identifiably the same hand.
+
+          Deliberately not applied to anything animated (see Turntable) or to
+          the stretched planks, where a uniform displacement would smear.
+        */}
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          width="0"
+          height="0"
+          className="pointer-events-none absolute"
         >
-          {children}
-        </ThemeProvider>
+          <filter
+            id="pencil"
+            x="-10%"
+            y="-10%"
+            width="120%"
+            height="120%"
+            filterUnits="objectBoundingBox"
+          >
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.03"
+              numOctaves="3"
+              seed="4"
+              result="wobble"
+            />
+            <feDisplacementMap
+              in="SourceGraphic"
+              in2="wobble"
+              scale="2.4"
+              xChannelSelector="R"
+              yChannelSelector="G"
+            />
+          </filter>
+        </svg>
+
+        <a
+          href="#the-shelf"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[10000] focus:bg-paper-warm focus:px-4 focus:py-2 focus:font-mono focus:text-caption"
+        >
+          skip to the shelf
+        </a>
+        {children}
+        <ConsoleNote />
         <GoogleAnalytics />
       </body>
     </html>

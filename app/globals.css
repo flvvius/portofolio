@@ -4,168 +4,329 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-
-    --radius: 0.5rem;
-
-    --chart-1: 12 76% 61%;
-
-    --chart-2: 173 58% 39%;
-
-    --chart-3: 197 37% 24%;
-
-    --chart-4: 43 74% 66%;
-
-    --chart-5: 27 87% 67%;
+    --paper: #f4efe6;
+    --paper-warm: #ede5d6;
+    --paper-shadow: #e0d5c2;
+    --ink: #2b211a;
+    --ink-soft: #5c4f43;
+    --accent: #d96b2b;
+    --accent-soft: #e8955c;
+    --tape: rgba(217, 201, 163, 0.7);
   }
 
-  .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
+  html {
+    scroll-behavior: smooth;
+    /* Anchored nav lands below the sticky header. */
+    scroll-padding-top: 96px;
+    -webkit-text-size-adjust: 100%;
+  }
 
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
+  body {
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-courier), ui-monospace, monospace;
+    font-size: 1rem;
+    line-height: 1.7;
+    /* The grain overlay is fixed, so nothing here may create a scroll trap. */
+    overflow-x: clip;
+  }
 
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
+  /*
+   * One global paper grain. feTurbulence, inlined — no PNG, no per-element
+   * texture. Multiply keeps it reading as fibre in the paper rather than
+   * a grey film on top of it.
+   */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.08;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23g)'/%3E%3C/svg%3E");
+  }
 
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
+  ::selection {
+    background: var(--accent);
+    color: var(--paper);
+  }
 
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
+  /* Keyboard focus has to survive on paper — orange ring, real offset. */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
 
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+  :focus:not(:focus-visible) {
+    outline: none;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border !scroll-smooth;
+@layer components {
+  /* ---- illustration ---------------------------------------------------- */
+
+  /*
+   * One pen, one nib. non-scaling-stroke means a 320px turntable and a 28px
+   * cuckoo carry identical line weight, the way they would if one hand drew
+   * both. `vector-effect` doesn't inherit, hence the descendant selector.
+   */
+  .ink-art * {
+    vector-effect: non-scaling-stroke;
   }
-  body {
-    @apply bg-background text-foreground;
+
+  /* The wobble. Filter is defined once, in the document body. */
+  .ink-art {
+    filter: url(#pencil);
   }
-  button {
-    @apply active:outline-none;
+
+  /*
+   * Opt out for anything that is animated (re-filtering every frame is not
+   * worth it) or stretched with preserveAspectRatio="none" (a uniform
+   * displacement smears badly once the axes have different scales).
+   * These draw their own wobble on the static parts instead.
+   */
+  .ink-art-plain {
+    filter: none;
+  }
+
+  /* ---- typography ------------------------------------------------------ */
+
+  .font-display-hero {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-variation-settings: "SOFT" 80, "WONK" 1, "opsz" 144;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  /* Section titles drop the WONK so the hero keeps its wobble to itself. */
+  .font-display-section {
+    font-family: var(--font-fraunces), Georgia, serif;
+    font-variation-settings: "SOFT" 80, "WONK" 0, "opsz" 96;
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+  }
+
+  .measure {
+    max-width: 62ch;
+  }
+
+  /* ---- physical elements ----------------------------------------------- */
+
+  /*
+   * Rule: a physical object gets EITHER a hairline ink border OR a hard
+   * offset paper shadow. Never both, never a blur.
+   */
+  .paper-edge {
+    border: 1px solid rgba(43, 33, 26, 0.6);
+    background-color: var(--paper-warm);
+  }
+
+  .paper-lift {
+    background-color: var(--paper-warm);
+    box-shadow: 2px 3px 0 var(--paper-shadow);
+  }
+
+  /* Masking tape, torn on both ends. */
+  .tape {
+    position: absolute;
+    background: var(--tape);
+    width: 76px;
+    height: 22px;
+    clip-path: polygon(
+      2% 12%,
+      98% 0%,
+      100% 84%,
+      74% 96%,
+      38% 82%,
+      6% 100%,
+      0% 22%
+    );
+  }
+
+  /* ---- interaction ----------------------------------------------------- */
+
+  .ink-link {
+    color: var(--ink);
+    text-decoration: none;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 100% 1px;
+    transition: background-size 180ms ease-out, color 180ms ease-out;
+  }
+
+  .ink-link:hover,
+  .ink-link:focus-visible {
+    color: var(--accent);
+    background-size: 100% 2px;
+  }
+
+  /*
+   * Shelf objects: lift 6px, tilt 1.5deg on top of their resting tilt, and
+   * turn orange. The hover target is the parent anchor (`.group`) so the
+   * taped label underneath stays put on the shelf while the object lifts off.
+   */
+  .shelf-object {
+    transition: transform 180ms ease-out, color 180ms ease-out;
+    transform: translateY(0) rotate(var(--rest-tilt, 0deg));
+    will-change: transform;
+  }
+
+  .group:hover .shelf-object,
+  .group:focus-visible .shelf-object {
+    transform: translateY(-6px) rotate(calc(var(--rest-tilt, 0deg) + 1.5deg));
+    color: var(--accent);
+  }
+
+  /*
+   * A custom cursor over shelf objects only — a small hand reaching for
+   * something. Full-page custom cursors are a 2022 tell.
+   */
+  .cursor-shelf {
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cg fill='none' stroke='%232B211A' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M11 16V7.4a1.9 1.9 0 0 1 3.8 0V15'/%3E%3Cpath d='M14.8 15v-2.2a1.8 1.8 0 0 1 3.6 0V15'/%3E%3Cpath d='M18.4 15v-1.4a1.8 1.8 0 0 1 3.6 0v6.2c0 4-2.6 7.2-6.6 7.2-3.4 0-5.6-1.6-6.8-4.4l-2.4-5.4a1.8 1.8 0 0 1 3-1.9L11 18'/%3E%3C/g%3E%3C/svg%3E")
+        14 6,
+      pointer;
+  }
+
+  .coaster {
+    transition: transform 180ms ease-out, color 180ms ease-out;
+    transform: rotate(var(--rest-tilt, 0deg));
+  }
+
+  .coaster:hover,
+  .coaster:focus-visible {
+    transform: rotate(calc(var(--rest-tilt, 0deg) + 4deg));
+    color: var(--accent);
   }
 }
 
 @layer utilities {
-  .heading {
-    @apply font-bold text-4xl md:text-5xl text-center;
+  /* ---- motion ---------------------------------------------------------- */
+
+  /*
+   * Entrance: fade + 12px rise, once, on scroll into view.
+   *
+   * The hidden start state is gated on `.js`, so a browser that never runs the
+   * IntersectionObserver never hides the content in the first place. Failing
+   * open is the only acceptable direction for an animation that hides things.
+   */
+  .js .rise {
+    opacity: 0;
+    transform: translateY(12px);
   }
 
-  /* Performance-optimized fade-in animation (GPU-accelerated) */
-  @keyframes fade-in-up {
+  .rise.is-in {
+    opacity: 1;
+    transform: none;
+    transition: opacity 400ms ease-out, transform 400ms ease-out;
+    transition-delay: var(--rise-delay, 0ms);
+  }
+
+  @keyframes record-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .spin-record {
+    animation: record-spin 4s linear infinite;
+    /* fill-box so the origin is the record's own centre, not the viewBox's. */
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+
+  @keyframes panel-in {
     from {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(24px);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: none;
     }
   }
 
-  .animate-fade-in-up {
-    animation: fade-in-up 0.4s cubic-bezier(0.25, 0.4, 0.25, 1) forwards;
+  .panel-in {
+    animation: panel-in 320ms cubic-bezier(0.32, 0.72, 0, 1) both;
   }
 
-  /* Text reveal animation - desktop uses blur, mobile uses simple fade */
-  @keyframes text-reveal {
-    from {
-      opacity: 0;
-      filter: blur(10px);
-    }
+  /*
+   * Progressive enhancement switch. The `js` class is set by a one-line inline
+   * script in the document head, so there is no flash of the fallback and no
+   * layout shift after hydration.
+   */
+  .js .no-js-only {
+    display: none;
+  }
+
+  @keyframes draw-in {
     to {
-      opacity: 1;
-      filter: blur(0px);
+      stroke-dashoffset: 0;
     }
   }
 
-  /* Mobile-optimized: simple fade without blur (composited) */
-  @keyframes text-reveal-mobile {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  .draw-in {
+    stroke-dasharray: var(--draw-length, 400);
+    stroke-dashoffset: var(--draw-length, 400);
+    animation: draw-in 600ms ease-out 400ms forwards;
   }
 
-  .animate-text-reveal {
-    animation: text-reveal 0.5s ease-out forwards;
-    transform: translateZ(0);
-    backface-visibility: hidden;
+  /* Sideways-scrolling nav on small screens, without the scrollbar artefact. */
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
-  /* On mobile: faster animation, no blur filter, faster stagger */
-  @media (max-width: 768px) {
-    .animate-text-reveal {
-      animation-name: text-reveal-mobile;
-      animation-duration: 0.3s;
-      animation-delay: var(--delay-mobile) !important;
-    }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .grid-12 {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
   }
 }
 
-
-
-@layer base {
-  * {
-    @apply border-border;
+/* -------------------------------------------------------------------------
+ * Reduced motion: the record stops, entrances stop rising, the underline is
+ * simply drawn. Everything still communicates — nothing is hidden.
+ * ---------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
 
-.sentry-feedback-widget, 
-#sentry-feedback,
-[id^="sentry-feedback"] {
-  z-index: 9999999999 !important;
-  position: fixed !important;
+  .spin-record {
+    animation: none;
+  }
+
+  .draw-in {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .js .rise,
+  .rise.is-in {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .shelf-object,
+  .coaster,
+  .ink-link {
+    transition-duration: 1ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
 }
