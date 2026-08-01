@@ -27,6 +27,7 @@ export const nav = [
  * ---------------------------------------------------------------------- */
 
 export const bar = {
+  eyebrow: "01. hello",
   // `underline` must appear verbatim inside `headlineTail` — it gets the
   // hand-drawn orange stroke, and it is the only underlined word on the page.
   headlineLead: "i build software that",
@@ -40,6 +41,28 @@ export const bar = {
   ctaPrimary: "pull up a chair",
   ctaSecondary: "or just say hi",
   scribbleMargin: "comfy web things live here",
+  turntableScribble: "always spinning",
+};
+
+/**
+ * The strip along the bottom of the hero — the things left lying on the
+ * counter. Three small objects, each a different kind of paper, so the eye
+ * reads them as a row of separate things rather than a card grid.
+ */
+export const counter = {
+  special: {
+    title: "today's special",
+    line: "polishing a tiny interaction, and a slower morning.",
+  },
+  shelf: {
+    title: "on the shelf",
+    line: "a curated mix of projects, experiments and notes.",
+    cta: "take a look",
+  },
+  location: {
+    title: "location",
+    line: "somewhere warm in bucharest :)",
+  },
 };
 
 /* -------------------------------------------------------------------------
@@ -166,12 +189,16 @@ export const projects: Project[] = [
 ];
 
 export const shelf = {
+  eyebrow: "02. projects",
   intro: [
     "a few things i've made.",
     "each one has a story attached, some more flattering than others.",
     "pick one off the shelf.",
   ],
   stickyNote: "built with curiosity, caffeine and a bit of recklessness.",
+  breakScribble: "time for a break?",
+  moreSoon: "more soon, promise.",
+  thanks: ["thanks for stopping by.", "you're rad."],
 };
 
 /* -------------------------------------------------------------------------
@@ -196,6 +223,7 @@ export type TabItem = {
 };
 
 export const tab = {
+  eyebrow: "03. experience",
   intro: [
     "four jobs, told the way you'd tell them at the bar",
     "rather than the way you'd put them on a cv.",
@@ -314,6 +342,7 @@ export const onRotation = [
 ];
 
 export const recordPlayer = {
+  eyebrow: "04. notes",
   intro: [
     "the part of the site that changes between project launches.",
     "notes i've written, things i started and haven't finished,",
@@ -326,6 +355,7 @@ export const recordPlayer = {
  * ---------------------------------------------------------------------- */
 
 export const door = {
+  eyebrow: "05. contact",
   about: [
     "i'm flavius. i write software, mostly full-stack, mostly typescript, and i've never quite shaken the feeling that the details are the whole job.",
     "i've led a twenty-person dev team, interned at ubisoft, and shipped things solo for real clients. the thread through all of it: i like the part where something confusing becomes obvious.",

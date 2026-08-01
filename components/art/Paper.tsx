@@ -69,6 +69,36 @@ export function StickyNote({
   );
 }
 
+/**
+ * A note pushed onto a board with a drawing pin. The pin is the one place on
+ * the site where orange is allowed to be purely decorative — it is a physical
+ * object that happens to be orange, not a signal.
+ */
+export function PinnedNote({
+  children,
+  tilt = -1.5,
+  className,
+}: {
+  children: ReactNode;
+  tilt?: number;
+  className?: string;
+}) {
+  return (
+    <div
+      className={["relative inline-block", className].filter(Boolean).join(" ")}
+      style={{ transform: `rotate(${tilt}deg)` }}
+    >
+      <div className="paper-edge px-4 pb-3 pt-5 font-mono text-caption text-ink-soft">
+        {children}
+      </div>
+      <span
+        aria-hidden="true"
+        className="absolute left-1/2 top-1.5 h-[11px] w-[11px] -translate-x-1/2 rounded-full bg-accent"
+      />
+    </div>
+  );
+}
+
 /** Ruled index card. Used for notes in the record player section. */
 export function IndexCard({
   children,

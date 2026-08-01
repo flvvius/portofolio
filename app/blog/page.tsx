@@ -44,7 +44,7 @@ export default function BlogIndex() {
   return (
     <>
       <BlogListJsonLd />
-      <Nav />
+      <Nav rail={false} />
       <main className="min-h-[70svh] py-rhythm lg:py-rhythm-lg">
         <Container>
           <Rise as="h1" className="font-display-section text-section text-ink">

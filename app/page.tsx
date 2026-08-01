@@ -13,7 +13,13 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <>
+    /*
+     * The left gutter is reserved for the nav rail at all times, not only once
+     * the rail fades in — otherwise the whole page would reflow 224px sideways
+     * on the first scroll. The rail is `fixed`, so it ignores this padding and
+     * sits in the space it leaves behind.
+     */
+    <div className="xl:pl-[224px]">
       <Nav />
       <main>
         <TheBar />
@@ -22,6 +28,6 @@ export default function Home() {
         <TheRecordPlayer />
         <TheDoor />
       </main>
-    </>
+    </div>
   );
 }

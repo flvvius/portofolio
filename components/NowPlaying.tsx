@@ -54,6 +54,8 @@ export function NowPlaying() {
     };
   }, []);
 
+  const sleeve = sleeveOf(track.track);
+
   return (
     <div className="inline-flex max-w-full items-start gap-3">
       <MiniRecord className="mt-1 h-7 w-7 shrink-0 text-ink" />
@@ -62,7 +64,7 @@ export function NowPlaying() {
           {live && track.nowPlaying ? "now playing" : "on the platter"}
         </span>
         <p
-          className="mt-1.5 truncate font-mono text-[0.95rem] leading-snug text-ink"
+          className="mt-1.5 truncate font-mono text-[0.95rem] leading-snug text-accent"
           aria-live="polite"
         >
           {track.track}
@@ -70,7 +72,31 @@ export function NowPlaying() {
         <p className="truncate font-mono text-caption text-ink-soft">
           {track.artist}
         </p>
+        {/* the small print on the sleeve — see sleeveOf */}
+        <p aria-hidden="true" className="font-mono text-caption text-ink-soft/80">
+          side {sleeve.side} · track {sleeve.track}
+        </p>
       </div>
     </div>
   );
+}
+
+/**
+ * Which side of the record, and which track on it.
+ *
+ * Derived from the title rather than stored, so it is stable for a given song
+ * and survives whatever last.fm hands back. It is set dressing and is marked
+ * aria-hidden accordingly — deliberately *not* a playback position, because a
+ * counter ticking against a record nobody is actually spinning is a lie the
+ * rest of this page doesn't tell.
+ */
+function sleeveOf(title: string) {
+  let hash = 0;
+  for (let i = 0; i < title.length; i += 1) {
+    hash = (hash * 31 + title.charCodeAt(i)) % 997;
+  }
+  return {
+    side: hash % 2 === 0 ? "a" : "b",
+    track: String((hash % 6) + 1).padStart(2, "0"),
+  };
 }

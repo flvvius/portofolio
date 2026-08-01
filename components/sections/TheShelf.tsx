@@ -5,7 +5,8 @@ import { projects, shelf, type Project } from "@/data/site";
 import { Container, Section, SectionHead } from "./Section";
 import { Rise } from "@/components/ink/Rise";
 import { ScribbleNote } from "@/components/ink/Arrow";
-import { StickyNote } from "@/components/art/Paper";
+import { StickyNote, TapedNote } from "@/components/art/Paper";
+import { HangingCuckoo, MokaPot } from "@/components/art/Props";
 import {
   Bracket,
   OBJECT_HEIGHT,
@@ -26,10 +27,19 @@ import { CaseStudy } from "@/components/CaseStudy";
  * stacked list, with the objects kept small beside them.
  */
 
-// Tall enough for the tallest object on the shelf. Kept in step with the
-// absolute offset used to place the plank.
+/*
+ * Three heights that have to agree, or the objects stop standing on the shelf:
+ *
+ *   NOTE_BAND  the annotation strip above the objects
+ *   ART_AREA   tall enough for the tallest object (the book, 246px at lg)
+ *   PLANK_TOP  NOTE_BAND + ART_AREA — where the plank is absolutely placed
+ *
+ * If you change either of the first two, change the third to match. Tailwind
+ * can't add these for us, so they are spelled out and kept next to each other.
+ */
+const NOTE_BAND = "h-[92px] lg:h-[104px]";
 const ART_AREA = "h-[210px] lg:h-[248px]";
-const PLANK_TOP = "top-[210px] lg:top-[248px]";
+const PLANK_TOP = "top-[302px] lg:top-[352px]";
 
 type OpenHandler = (project: Project) => void;
 
@@ -59,18 +69,45 @@ function ShelfRow({
   return (
     <div className="relative hidden sm:block">
       <ul className="relative z-10 flex items-stretch">
-        {items.map((project, index) => (
+        {items.map((project, index) => {
+          // Annotations alternate which side the arrow hangs off, so three of
+          // them in a row read as a hand working across the shelf rather than
+          // as a table of captions.
+          const leaning = index % 2 === 0;
+
+          return (
           <li
             key={project.slug}
             className="relative flex w-1/3 shrink-0 flex-col items-center"
           >
-            {/* the section's only scribble, right above the object it means */}
+            {/*
+              The annotation band. Every object gets one — this is the caption,
+              moved off the shelf and up into the margin where a note about a
+              thing belongs. Ink, not orange: six orange arrows would spend the
+              whole page's supply of orange on captions.
+            */}
+            <div className={`flex w-full items-start justify-center px-2 ${NOTE_BAND}`}>
+              <Rise delay={delayOffset + index * 60}>
+                <ScribbleNote
+                  tone="ink"
+                  variant={leaning ? "down-right" : "down-left"}
+                  seed={11 + index * 3}
+                  labelFirst={leaning}
+                  arrowClassName="w-8 shrink-0"
+                  className="max-w-[15rem] text-center"
+                >
+                  {project.caption}
+                </ScribbleNote>
+              </Rise>
+            </div>
+
+            {/* the section's only orange scribble, on the one object that asks */}
             {project.nudge && (
               <ScribbleNote
                 variant="down-left"
                 seed={21}
                 arrowClassName="w-9"
-                className="absolute -top-3 left-1/2 z-20 -translate-x-2"
+                className="absolute left-0 top-[86px] z-20 -translate-x-1/3"
                 labelFirst
               >
                 click me
@@ -109,12 +146,9 @@ function ShelfRow({
             >
               {project.label}
             </span>
-
-            <p className="mt-5 max-w-[15rem] px-2 text-center font-mono text-caption leading-snug text-ink-soft">
-              {project.caption}
-            </p>
           </li>
-        ))}
+          );
+        })}
       </ul>
 
       {/* the plank, drawn behind the objects so they stand on it */}
@@ -181,12 +215,52 @@ export function TheShelf() {
   return (
     <Section id="the-shelf" className="relative">
       <Container>
+        {/*
+          The clock on the wall, hung from the top edge of the section. It is
+          the only thing on the page that overhangs a section boundary, which
+          is the point — a wall clock belongs to the room, not to the shelf.
+        */}
+        {/*
+          Stacked, not side by side — the scribble sat level with the third
+          object's annotation and the two ran into each other. Above the clock
+          it is clear of the whole annotation band.
+        */}
+        <Rise className="pointer-events-none absolute right-0 top-0 z-10 hidden flex-col items-end lg:flex">
+          <ScribbleNote
+            variant="down-right"
+            seed={41}
+            arrowClassName="w-9"
+            className="mr-4 max-w-[7rem]"
+            labelFirst
+          >
+            {shelf.breakScribble}
+          </ScribbleNote>
+          <HangingCuckoo className="-mt-2 h-36 w-auto text-ink xl:h-44" />
+        </Rise>
+
         <div className="grid-12 gap-x-8 gap-y-12">
           <div className="col-span-12 lg:col-span-4">
-            <SectionHead title="the shelf" intro={shelf.intro} />
+            <SectionHead
+              eyebrow={shelf.eyebrow}
+              title="the shelf"
+              intro={shelf.intro}
+            />
 
             <Rise delay={120} className="mt-10 inline-block">
               <StickyNote tilt={-2.5}>{shelf.stickyNote}</StickyNote>
+            </Rise>
+
+            {/* the corner of the room the shelf lives in */}
+            <Rise delay={180} className="mt-14 hidden items-end gap-3 lg:flex">
+              <MokaPot className="h-32 w-auto shrink-0 text-ink" />
+              <ScribbleNote
+                variant="down-left"
+                seed={37}
+                arrowClassName="w-9"
+                className="mb-6 max-w-[8rem]"
+              >
+                {shelf.moreSoon}
+              </ScribbleNote>
             </Rise>
           </div>
 
@@ -194,6 +268,20 @@ export function TheShelf() {
             <ShelfRow items={projects.slice(0, 3)} onOpen={setOpen} />
             <ShelfRow items={projects.slice(3)} onOpen={setOpen} delayOffset={60} />
             <ShelfList items={projects} onOpen={setOpen} />
+
+            {/* the note left on the counter on your way past */}
+            <Rise delay={120} className="hidden justify-end sm:flex">
+              <TapedNote tilt={2.5} className="max-w-[13rem]">
+                {shelf.thanks.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+                <span aria-hidden="true" className="mt-1 block text-accent">
+                  ♥
+                </span>
+              </TapedNote>
+            </Rise>
           </div>
         </div>
       </Container>

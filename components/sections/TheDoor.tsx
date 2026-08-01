@@ -1,8 +1,8 @@
 import { door, socials } from "@/data/site";
-import { Container, Section } from "./Section";
+import { Container, Eyebrow, Section } from "./Section";
 import { Rise } from "@/components/ink/Rise";
 import { Scribble } from "@/components/ink/Scribble";
-import { ScribbleNote } from "@/components/ink/Arrow";
+import { Arrow, ScribbleNote } from "@/components/ink/Arrow";
 import { TapedNote } from "@/components/art/Paper";
 import { CuckooHeadphones } from "@/components/art/Cuckoo";
 import { Coaster, Counter } from "@/components/art/Bar";
@@ -33,8 +33,18 @@ export function TheDoor() {
   return (
     <Section id="the-door" className="relative pb-20 lg:pb-24">
       <Container>
+        <Rise className="mb-4 block">
+          <Eyebrow>{door.eyebrow}</Eyebrow>
+        </Rise>
         <Rise as="h2" className="font-display-section text-section text-ink">
           the door
+        </Rise>
+        {/* the rule under the title — the door is the only section that gets one */}
+        <Rise delay={40} className="mt-3 block">
+          <span
+            aria-hidden="true"
+            className="block h-[2px] w-[min(320px,60%)] bg-accent"
+          />
         </Rise>
 
         <div className="mt-14 grid-12 gap-x-8 gap-y-16">
@@ -59,14 +69,17 @@ export function TheDoor() {
 
             {/* mascot, appearance four of five */}
             <Rise delay={140} className="mt-12 block">
-              <div className="flex items-end gap-4">
-                <CuckooHeadphones className="h-24 w-auto text-ink sm:h-28" />
-                <p
-                  aria-hidden="true"
-                  className="mb-3 font-mono text-caption text-ink-soft"
+              <div className="flex items-end gap-3">
+                <ScribbleNote
+                  variant="right"
+                  seed={53}
+                  arrowClassName="w-12"
+                  className="mb-4 max-w-[6rem]"
+                  labelFirst
                 >
-                  ← {door.mascotScribble}
-                </p>
+                  {door.mascotScribble}
+                </ScribbleNote>
+                <CuckooHeadphones className="h-24 w-auto text-ink sm:h-28" />
               </div>
             </Rise>
           </div>
@@ -130,7 +143,13 @@ export function TheDoor() {
             </Rise>
 
             <Rise delay={180} className="mt-12 block">
-              <div className="flex justify-center sm:justify-end">
+              <div className="flex items-center justify-center gap-1 sm:justify-end">
+                {/* the arrow is the reason the note reads as pinned up, not typeset */}
+                <Arrow
+                  variant="right"
+                  seed={61}
+                  className="mb-2 hidden w-12 shrink-0 sm:block"
+                />
                 <TapedNote tilt={2}>{door.tapedNote}</TapedNote>
               </div>
             </Rise>

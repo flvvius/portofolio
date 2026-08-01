@@ -3,13 +3,44 @@
 import { useEffect, useState } from "react";
 import { nav, site } from "@/data/site";
 import { CuckooClock } from "@/components/art/Logo";
+import { ListeningBar } from "@/components/art/ListeningBar";
 
 /**
- * Anchored nav. The active link is the only orange thing up here, which is the
- * whole rule of the site in miniature: orange means "this, right here".
+ * The nav has two bodies and one mind.
+ *
+ * At the top of the page it is a horizontal row across the header, the way you
+ * read a sign above a door. Once you have actually walked in — 140px of scroll —
+ * it hands off to a fixed rail down the left margin, which is where a list of
+ * rooms belongs while you are inside one.
+ *
+ * The handoff is a crossfade, not a move: both bodies exist, one is always
+ * fading while the other fades up, and only one is ever focusable (`inert`).
+ * The rail only exists at >=1280px, where there is a real margin to put it in;
+ * below that `railed` never becomes true and the header row stays in charge.
+ *
+ * The active link is the only orange thing up here, which is the whole rule of
+ * the site in miniature: orange means "this, right here".
  */
-export function Nav() {
+
+/** Scroll distance before the header row hands off to the rail. */
+const HANDOFF = 140;
+
+/** Matches the `xl:pl-[224px]` gutter reserved for the rail in app/page.tsx. */
+const RAIL_QUERY = "(min-width: 1280px)";
+
+export function Nav({
+  /**
+   * Off for pages that aren't the one long room — the blog. The rail's links
+   * are same-page anchors, and there is no reserved gutter over there for it
+   * to sit in, so it would both overlap the text and point at nothing.
+   */
+  rail = true,
+}: {
+  rail?: boolean;
+} = {}) {
   const [active, setActive] = useState(nav[0].href.slice(1));
+  const [railedState, setRailed] = useState(false);
+  const railed = rail && railedState;
 
   useEffect(() => {
     const sections = nav
@@ -33,51 +64,124 @@ export function Nav() {
     return () => observer.disconnect();
   }, []);
 
-  return (
-    <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur-[2px]">
-      <div className="mx-auto flex max-w-[1180px] items-center justify-between gap-6 px-5 py-3 sm:px-8">
-        <a
-          href="#the-bar"
-          className="flex items-center gap-2.5 no-underline"
-          aria-label={`${site.name} — back to the top`}
-        >
-          <CuckooClock className="h-10 w-auto shrink-0 text-ink sm:h-12" />
-          <span
-            aria-hidden="true"
-            className="hidden font-hand text-lg leading-[0.95] text-ink-soft sm:block"
-          >
-            flavius
-            <br />
-            studio
-          </span>
-        </a>
+  /*
+   * `railed` is deliberately a single piece of state combining scroll and
+   * width. Both bodies of the nav read it, so they can never both be live —
+   * which matters, because the loser of the crossfade gets `inert`.
+   */
+  useEffect(() => {
+    if (typeof window === "undefined") return;
 
-        {/*
-          Five items no longer fit on a phone. Scrolling sideways keeps the nav
-          on one line and the header short; wrapping would eat three lines of a
-          sticky bar on the smallest screens.
-        */}
-        <nav aria-label="sections" className="min-w-0 overflow-x-auto no-scrollbar">
-          <ul className="flex items-center gap-3.5 whitespace-nowrap sm:gap-7">
+    const wide = window.matchMedia(RAIL_QUERY);
+    let frame = 0;
+
+    const sync = () => {
+      frame = 0;
+      setRailed(wide.matches && window.scrollY > HANDOFF);
+    };
+
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(sync);
+    };
+
+    sync();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    wide.addEventListener("change", sync);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      wide.removeEventListener("change", sync);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  const logo = (
+    <a
+      href="#the-bar"
+      className="inline-flex items-center gap-2.5 no-underline"
+      aria-label={`${site.name} — back to the top`}
+    >
+      <CuckooClock className="h-10 w-auto shrink-0 text-ink sm:h-12" />
+      <span
+        aria-hidden="true"
+        className="hidden font-hand text-lg leading-[0.95] text-ink-soft sm:block"
+      >
+        flavius
+        <br />
+        studio
+      </span>
+    </a>
+  );
+
+  return (
+    <>
+      {/* ---------------------------------------------------------------
+        The rail. Fixed in the left margin that app/page.tsx reserves for
+        it, so nothing reflows when it appears — only opacity moves.
+      ---------------------------------------------------------------- */}
+      <div
+        className={[
+          "pointer-events-none fixed inset-y-0 left-0 z-40 w-[224px]",
+          rail ? "hidden xl:block" : "hidden",
+        ].join(" ")}
+      >
+        {/* the counter line, turned on its side */}
+        <span
+          aria-hidden="true"
+          className="absolute inset-y-0 right-0 w-px bg-ink/15"
+          style={{
+            // fades out before the bottom so the rule reads as drawn, not printed
+            maskImage:
+              "linear-gradient(to bottom, transparent 0, #000 92px, #000 78%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent 0, #000 92px, #000 78%, transparent 100%)",
+          }}
+        />
+
+        <div className="pointer-events-auto px-8 pt-6">{logo}</div>
+
+        <nav
+          aria-label="sections"
+          inert={!railed}
+          className={[
+            "pointer-events-auto absolute left-0 top-[36vh] w-full px-8",
+            "transition-[opacity,transform] duration-[260ms] ease-out",
+            railed
+              ? "translate-x-0 opacity-100"
+              : "-translate-x-2 opacity-0",
+          ].join(" ")}
+        >
+          <ul className="space-y-3.5">
             {nav.map((item) => {
               const id = item.href.slice(1);
               const isActive = active === id;
               return (
-                // shrink-0 or flex squeezes the items instead of overflowing,
-                // which silently drops one off the end rather than scrolling.
-                <li key={item.href} className="shrink-0">
+                <li key={item.href}>
                   <a
                     href={item.href}
                     aria-current={isActive ? "true" : undefined}
                     className={[
-                      "font-mono text-[0.8rem] transition-colors duration-[180ms] sm:text-[0.95rem]",
-                      "underline-offset-[6px] hover:text-accent hover:underline hover:decoration-2",
+                      "group inline-flex items-baseline gap-2 font-mono text-[0.9rem] leading-tight no-underline",
+                      "transition-colors duration-[180ms]",
                       isActive
-                        ? "text-accent underline decoration-2"
-                        : "text-ink-soft no-underline",
+                        ? "text-accent"
+                        : "text-ink-soft hover:text-accent",
                     ].join(" ")}
                   >
-                    {item.label}
+                    <span>{item.label}</span>
+                    {/* the pointer only exists on the room you are standing in */}
+                    <span
+                      aria-hidden="true"
+                      className={[
+                        "transition-[opacity,transform] duration-[180ms] ease-out",
+                        isActive
+                          ? "translate-x-0 opacity-100"
+                          : "-translate-x-1 opacity-0",
+                      ].join(" ")}
+                    >
+                      →
+                    </span>
                   </a>
                 </li>
               );
@@ -85,8 +189,63 @@ export function Nav() {
           </ul>
         </nav>
       </div>
-      {/* the counter line the whole page hangs from */}
-      <div aria-hidden="true" className="h-px w-full bg-ink/15" />
-    </header>
+
+      {/* ---------------------------------------------------------------
+        The header row. Owns the nav until the rail takes over.
+      ---------------------------------------------------------------- */}
+      <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur-[2px]">
+        <div className="mx-auto flex max-w-[1180px] items-center justify-between gap-6 px-5 py-3 sm:px-8">
+          {/* At xl the logo lives in the rail instead — one lockup, never two. */}
+          <div className={rail ? "xl:hidden" : undefined}>{logo}</div>
+
+          {/*
+            Five items no longer fit on a phone. Scrolling sideways keeps the nav
+            on one line and the header short; wrapping would eat three lines of a
+            sticky bar on the smallest screens.
+          */}
+          <nav
+            aria-label={railed ? undefined : "sections"}
+            inert={railed}
+            className={[
+              "min-w-0 overflow-x-auto no-scrollbar",
+              "transition-opacity duration-[260ms] ease-out",
+              railed ? "opacity-0" : "opacity-100",
+            ].join(" ")}
+          >
+            <ul className="flex items-center gap-3.5 whitespace-nowrap sm:gap-7">
+              {nav.map((item) => {
+                const id = item.href.slice(1);
+                const isActive = active === id;
+                return (
+                  // shrink-0 or flex squeezes the items instead of overflowing,
+                  // which silently drops one off the end rather than scrolling.
+                  <li key={item.href} className="shrink-0">
+                    <a
+                      href={item.href}
+                      aria-current={isActive ? "true" : undefined}
+                      className={[
+                        "font-mono text-[0.8rem] transition-colors duration-[180ms] sm:text-[0.95rem]",
+                        "underline-offset-[6px] hover:text-accent hover:underline hover:decoration-2",
+                        isActive
+                          ? "text-accent underline decoration-2"
+                          : "text-ink-soft no-underline",
+                      ].join(" ")}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          {/* the sign in the window, on at all hours */}
+          <ListeningBar className="hidden shrink-0 lg:inline-flex" />
+        </div>
+
+        {/* the counter line the whole page hangs from */}
+        <div aria-hidden="true" className="h-px w-full bg-ink/15" />
+      </header>
+    </>
   );
 }

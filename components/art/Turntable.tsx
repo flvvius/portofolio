@@ -41,15 +41,48 @@ export function Turntable({ className }: { className?: string }) {
       </g>
 
       <g filter="url(#pencil)">
-        {/* tonearm */}
-        <circle cx="166" cy="42" r="9" fill={PAPER_WARM} />
-        <circle cx="166" cy="42" r="3" fill="currentColor" stroke="none" />
-        <path d="M164.6 50.4 148 100.6 121 112.4" />
-        <path d="m124.6 105.4 6.4 2.6-3.4 8-6.6-3.6z" fill={PAPER_WARM} />
+        {/*
+          THE PICKUP
+          Drawn as the assembly it actually is, back to front: base plate,
+          gimbal, arm *tube* (two edges and a fill, not a hairline), headshell
+          held at its own angle, cartridge, stylus touching the groove.
 
-        {/* counterweight */}
-        <path d="M172.6 34.6 180 27.4" />
-        <circle cx="182.5" cy="25" r="5" fill={PAPER_WARM} />
+          The arm is one straight run from pivot to headshell — the bent
+          polyline it replaces read as a piece of wire. Everything below hangs
+          off the two points P1 (163,50) and P2 (124,108); if you move the arm,
+          move both and re-derive, or the headshell detaches from the tube.
+        */}
+
+        {/* base plate the whole assembly is bolted to */}
+        <path
+          d="M150.6 41c0-1.6 1.3-2.9 2.9-2.9l19.8.2c1.6 0 2.8 1.4 2.8 3l-.2 19.6c0 1.6-1.4 2.9-3 2.8l-19.6-.2c-1.6 0-2.9-1.3-2.8-2.9Z"
+          fill={PAPER_WARM}
+        />
+        {/* gimbal housing, and the bolt through the middle of it */}
+        <circle cx="163" cy="48" r="8.5" fill={PAPER_WARM} />
+        <circle cx="163" cy="48" r="5" opacity="0.45" strokeWidth={1.1} />
+        <circle cx="163" cy="48" r="2.4" fill="currentColor" stroke="none" />
+
+        {/* the arm tube */}
+        <path d="M157.2 54.8 120.2 108.8l3.6 2.4 37-54Z" fill={PAPER_WARM} />
+        {/* one highlight down the length, so the tube reads as round */}
+        <path d="M159 56.4 122.3 110" opacity="0.3" strokeWidth={1} />
+
+        {/* headshell, set at its own angle to the arm */}
+        <path
+          d="M126.6 110.5 119.3 121.2l-6.9-4.7 7.3-10.7Z"
+          fill={PAPER_WARM}
+        />
+        {/* finger lift */}
+        <path d="M126.6 110.6 131 113.6" strokeWidth={1.5} />
+        {/* cartridge, and the stylus actually in the groove */}
+        <path d="M117 114 113.6 119" opacity="0.5" strokeWidth={1.1} />
+        <path d="M115.8 118.9 114.6 122.1" strokeWidth={1.3} />
+
+        {/* counterweight — stub, then the weight itself, threaded */}
+        <path d="M168.4 41.6 175 34.6" strokeWidth={1.5} />
+        <circle cx="179.4" cy="30.6" r="5.4" fill={PAPER_WARM} />
+        <path d="M176.4 26.6 183 33.4" opacity="0.4" strokeWidth={1.1} />
 
         {/* controls */}
         <path d="M150 150h22v10h-22z" fill={PAPER_WARM} />

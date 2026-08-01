@@ -69,7 +69,7 @@ export function TheTab() {
   return (
     <Section id="the-tab">
       <Container>
-        <SectionHead title="the tab" intro={tab.intro} />
+        <SectionHead eyebrow={tab.eyebrow} title="the tab" intro={tab.intro} />
 
         <div className="mt-16 flex justify-center">
           <Rise className="relative w-full max-w-[30rem]">

@@ -45,6 +45,7 @@ export function TheRecordPlayer() {
       <Container>
         {/* this section anchors right — the shelf anchored left */}
         <SectionHead
+          eyebrow={recordPlayer.eyebrow}
           title="the record player"
           intro={recordPlayer.intro}
           align="right"

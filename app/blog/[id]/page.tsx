@@ -83,7 +83,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         date={post.date}
         slug={post.id}
       />
-      <Nav />
+      <Nav rail={false} />
       <main className="py-rhythm lg:py-rhythm-lg">
         <Container>
           <p>

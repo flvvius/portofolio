@@ -239,6 +239,26 @@
     transform-origin: center;
   }
 
+  /*
+   * The level meter in the header. scaleY rather than height so it stays off
+   * the layout thread — the bars are anchored at the bottom, like real ones.
+   */
+  /* One-way keyframes plus `alternate` — a 0/50/100 set would have doubled
+     every duration set on the bars, which is not what those numbers say. */
+  @keyframes eq-bounce {
+    from {
+      transform: scaleY(0.28);
+    }
+    to {
+      transform: scaleY(1);
+    }
+  }
+
+  .eq-bar {
+    transform-origin: bottom;
+    animation: eq-bounce 1s ease-in-out infinite alternate;
+  }
+
   @keyframes panel-in {
     from {
       opacity: 0;
@@ -302,6 +322,12 @@
 
   .spin-record {
     animation: none;
+  }
+
+  /* The meter stops, but at a height that still reads as a meter. */
+  .eq-bar {
+    animation: none;
+    transform: scaleY(0.7);
   }
 
   .draw-in {
