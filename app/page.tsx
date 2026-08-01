@@ -1,7 +1,7 @@
 import { Nav } from "@/components/Nav";
 import { TheBar } from "@/components/sections/TheBar";
 import { TheShelf } from "@/components/sections/TheShelf";
-import { TheSetlist } from "@/components/sections/TheSetlist";
+import { TheTab } from "@/components/sections/TheTab";
 import { TheRecordPlayer } from "@/components/sections/TheRecordPlayer";
 import { TheDoor } from "@/components/sections/TheDoor";
 
@@ -18,7 +18,7 @@ export default function Home() {
       <main>
         <TheBar />
         <TheShelf />
-        <TheSetlist />
+        <TheTab />
         <TheRecordPlayer />
         <TheDoor />
       </main>

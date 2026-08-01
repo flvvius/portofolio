@@ -58,17 +58,19 @@ export function Nav() {
           sticky bar on the smallest screens.
         */}
         <nav aria-label="sections" className="min-w-0 overflow-x-auto no-scrollbar">
-          <ul className="flex items-center gap-4 whitespace-nowrap sm:gap-7">
+          <ul className="flex items-center gap-3.5 whitespace-nowrap sm:gap-7">
             {nav.map((item) => {
               const id = item.href.slice(1);
               const isActive = active === id;
               return (
-                <li key={item.href}>
+                // shrink-0 or flex squeezes the items instead of overflowing,
+                // which silently drops one off the end rather than scrolling.
+                <li key={item.href} className="shrink-0">
                   <a
                     href={item.href}
                     aria-current={isActive ? "true" : undefined}
                     className={[
-                      "font-mono text-caption transition-colors duration-[180ms] sm:text-[0.95rem]",
+                      "font-mono text-[0.8rem] transition-colors duration-[180ms] sm:text-[0.95rem]",
                       "underline-offset-[6px] hover:text-accent hover:underline hover:decoration-2",
                       isActive
                         ? "text-accent underline decoration-2"

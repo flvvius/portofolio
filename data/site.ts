@@ -17,7 +17,7 @@ export const site = {
 export const nav = [
   { label: "the bar", href: "#the-bar" },
   { label: "the shelf", href: "#the-shelf" },
-  { label: "the setlist", href: "#the-setlist" },
+  { label: "the tab", href: "#the-tab" },
   { label: "the record player", href: "#the-record-player" },
   { label: "the door", href: "#the-door" },
 ];
@@ -175,73 +175,99 @@ export const shelf = {
 };
 
 /* -------------------------------------------------------------------------
- * the setlist — where i've actually worked
+ * the tab — the roles, itemised
  * ---------------------------------------------------------------------- */
 
-export type Gig = {
-  role: string;
+/**
+ * The roles, told as a bar tab rather than a CV.
+ *
+ * Each job is a line item with a story instead of a bullet list, because the
+ * bullet list is the thing every portfolio already has. The receipt is one
+ * physical object, so the section reads as something left on the table.
+ */
+export type TabItem = {
+  /** What you'd call it if you were being funny about it. */
+  line: string;
   place: string;
-  period: string;
-  /** Two short lines. What the job actually was, then what it taught. */
-  lines: string[];
-  stack: string[];
-  /** The current one gets a marker. Only ever one. */
-  current?: boolean;
+  date: string;
+  /** The story. Short — it has to fit on a receipt. */
+  story: string[];
+  duration: string;
 };
 
-export const setlist = {
+export const tab = {
   intro: [
-    "where i've played, most recent first.",
-    "a couple of these were the whole education,",
-    "and one of them was mostly other people.",
+    "four jobs, told the way you'd tell them at the bar",
+    "rather than the way you'd put them on a cv.",
+    "the tab is still open.",
   ],
-  gigs: [
+  header: {
+    title: "the tab",
+    who: "flavius cojocaru",
+    where: "bucharest · table by the window",
+  },
+  items: [
     {
-      role: "full-stack developer",
-      place: "RASIROM R.A.",
-      period: "jun 2025 — now",
-      lines: [
-        "data-driven frontends in react and next, with tanstack query holding the state and ssr plus caching doing the part users actually notice.",
-        "underneath, a microservices architecture in spring boot and fastapi talking over kafka, with keycloak and properly granular roles deciding who gets to see what.",
+      line: "the internship",
+      place: "ubisoft romania",
+      date: "mar 2023",
+      story: [
+        "they asked for a chatbot that tells jokes.",
+        "i learned that the api call is the easy ten",
+        "percent and everything after it is the job.",
       ],
-      stack: ["react", "next.js", "tanstack query", "spring boot", "fastapi", "kafka", "keycloak"],
-      current: true,
+      duration: "3 months",
     },
     {
-      role: "team lead, it department",
-      place: "SiSC — Sindicatul Studenților din Cibernetică",
-      period: "oct 2023 — jun 2025",
-      lines: [
-        "twenty engineers, one platform, and twenty-odd people committing at once — which meant the git history needed more care than any feature in it. i fixed a great deal of merge hell.",
-        "started on the back end in node and express and ended up leading. the technical growth turned out to be the smaller half of it; the rest was learning how to talk to people so things actually ship.",
+      line: "the deep end",
+      place: "sisc — cybernetics students' union",
+      date: "oct 2023",
+      story: [
+        "started on the back end in node. ended up",
+        "leading twenty people, most of whom had",
+        "never shipped anything before. spent more",
+        "evenings in the git history than in any",
+        "feature. nobody got lost. some merges did.",
       ],
-      stack: ["react", "node.js", "express", "git"],
+      duration: "20 months",
     },
     {
-      role: "web development intern",
-      place: "Ubisoft Romania",
-      period: "mar 2023 — may 2023",
-      lines: [
-        "three months of react, apis, monitoring and docker, and the first time i put a model inside a product instead of reading about someone else doing it.",
-        "mostly i watched people who had been doing this for years, and took a lot of notes.",
+      line: "the day job",
+      place: "rasirom r.a.",
+      date: "jun 2025",
+      story: [
+        "react and next on top, spring boot and",
+        "fastapi arguing over kafka underneath, and",
+        "keycloak at the door deciding who's allowed",
+        "in. i now know exactly what a real",
+        "permissions model costs.",
       ],
-      stack: ["react", "openai api", "docker"],
+      duration: "still open",
     },
     {
-      role: "freelance developer",
-      place: "for actual clients",
-      period: "alongside the rest",
-      lines: [
-        "a website and a mobile app shipped for a paying client — next.js on the web, react native on both phones.",
-        "solo, which is a different job entirely: nobody else to catch it, and nobody else to ask.",
+      line: "side orders",
+      place: "for people who actually paid",
+      date: "whenever",
+      story: [
+        "a website and an app shipped for a real",
+        "client — next on the web, react native on",
+        "both phones. solo, which is a different job:",
+        "nobody to catch it, nobody to ask.",
       ],
-      stack: ["next.js", "react native"],
+      duration: "ongoing",
     },
-  ] satisfies Gig[],
-  education: [
-    "ASE Bucharest, Faculty of Cybernetics",
-    "msc e-business (2024—2026) · bsc computer science (2021—2024)",
+  ] satisfies TabItem[],
+  totals: [
+    { label: "subtotal", value: "4 roles, 1 team of twenty" },
+    { label: "service", value: "included, always" },
+    { label: "total", value: "three years, one long git log" },
   ],
+  education: {
+    title: "ase bucharest, cybernetics",
+    lines: ["bsc computer science  2021—2024", "msc e-business       2024—2026"],
+  },
+  stamp: "tab still open",
+  footer: "keep the receipt.",
 };
 
 /* -------------------------------------------------------------------------
