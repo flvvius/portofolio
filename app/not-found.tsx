@@ -1,24 +1,36 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { CuckooShrug } from "@/components/art/Cuckoo";
 
-export const metadata = {
-  title: "404 - Page Not Found | Flavius Cojocaru",
-  description:
-    "The page you're looking for doesn't exist. Return to the homepage of Flavius Cojocaru's portfolio.",
+export const metadata: Metadata = {
+  title: "this shelf is empty",
+  robots: { index: false, follow: true },
 };
 
+/** Appearance three of five for the cuckoo. He does not know either. */
 export default function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <h1 className="text-3xl font-bold mb-4">404 - Page Not Found</h1>
-      <p className="mb-6">
-        The page you&apos;re looking for doesn&apos;t exist.
+    <main
+      id="main"
+      tabIndex={-1}
+      className="flex min-h-[100svh] flex-col items-center justify-center px-6 text-center"
+    >
+      <CuckooShrug className="h-32 w-auto text-ink sm:h-40" />
+
+      <h1 className="mt-10 font-display-section text-[clamp(2rem,6vw,3.5rem)] text-ink">
+        this shelf is empty
+      </h1>
+
+      <p className="measure mt-4 font-mono text-caption text-ink-soft">
+        nothing here, and no note explaining why. the rest of the place is still
+        open.
       </p>
-      <Link
-        href="/"
-        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
-      >
-        Return Home
-      </Link>
-    </div>
+
+      <p className="mt-9">
+        <Link href="/" className="ink-link font-mono text-[0.95rem]">
+          ← back to the bar
+        </Link>
+      </p>
+    </main>
   );
 }

@@ -3,14 +3,10 @@ import {withSentryConfig} from '@sentry/nextjs';
 const nextConfig = {
   // ===== PERFORMANCE OPTIMIZATIONS =====
   
-  // Tree-shake large packages (reduces bundle by ~50KB for icon libs)
+  // The icon and 3D libraries this used to tree-shake are gone. The site's
+  // artwork is inline SVG now, so there is nothing left worth pre-optimizing.
   experimental: {
-    optimizePackageImports: [
-      'react-icons',
-      'lucide-react', 
-      'motion/react',
-      '@react-three/drei',
-    ],
+    optimizePackageImports: ['roughjs', 'react-rough-notation'],
   },
 
   // Enable modern image formats (AVIF is 30-50% smaller than WebP)

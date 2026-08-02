@@ -1,32 +1,26 @@
-import Approach from "@/components/Approach";
-import Clients from "@/components/Clients";
-import Experience from "@/components/Experience";
-import Footer from "@/components/Footer";
-import Grid from "@/components/Grid";
-import Hero from "@/components/Hero";
-import RecentProjects from "@/components/RecentProjects";
-import { FloatingNav } from "@/components/ui/FloatingNav";
-import { navItems } from "@/data";
+import { Nav } from "@/components/Nav";
+import { TheBar } from "@/components/sections/TheBar";
+import { TheShelf } from "@/components/sections/TheShelf";
+import { TheRecordPlayer } from "@/components/sections/TheRecordPlayer";
+import { TheDoor } from "@/components/sections/TheDoor";
 
 export const metadata = {
-  title: "Flavius Cojocaru | Home",
+  title: "Flavius Cojocaru | Full-Stack Engineer",
   description:
-    "building stuff that matters | coding idealist, thirst for knowledge and working on becoming better, romania based, wanting to shape my future",
+    "a shelf of things i've built, the stories behind them, and whatever's currently on rotation.",
 };
 
 export default function Home() {
   return (
-    <main className="relative bg-black-100 flex justify-center items-center flex-col mx-auto sm:px-10 px-5 overflow-clip">
-      <div className="max-w-7xl w-full">
-        <FloatingNav navItems={navItems} />
-        <Hero />
-        <Grid />
-        <RecentProjects />
-        <Clients />
-        <Experience />
-        <Approach />
-        <Footer />
-      </div>
-    </main>
+    <>
+      <Nav />
+      {/* `id`/`tabIndex` are the skip link's target, on every page. */}
+      <main id="main" tabIndex={-1}>
+        <TheBar />
+        <TheShelf />
+        <TheRecordPlayer />
+        <TheDoor />
+      </main>
+    </>
   );
 }

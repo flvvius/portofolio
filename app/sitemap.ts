@@ -28,6 +28,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    // The back room: books, film, art, places
+    {
+      url: `${baseUrl}/the-back-room`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
     // Individual blog posts
     ...blogUrls,
   ];
