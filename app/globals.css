@@ -19,30 +19,47 @@
     /* Anchored nav lands below the sticky header. */
     scroll-padding-top: 96px;
     -webkit-text-size-adjust: 100%;
-    /* Firefox: track disappears into the paper, thumb is just a shadow on it. */
-    scrollbar-color: var(--paper-shadow) var(--paper);
-    scrollbar-width: thin;
   }
 
-  /* WebKit wants the same in its own dialect. */
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
+  /*
+   * The paper scrollbar is for mice only.
+   *
+   * Touch platforms ship an *overlay* scrollbar: it floats above the page and
+   * takes no layout width. Styling it — any `::-webkit-scrollbar` width, or
+   * `scrollbar-width` — opts that back out to a classic scrollbar, which does
+   * take width, permanently, off the side of every line of text on the page.
+   * Ten pixels is not much on a desktop and is a whole word on a phone.
+   *
+   * So the styling is gated on a fine pointer. Touch keeps the native overlay
+   * bar, which is both invisible at rest and free.
+   */
+  @media (pointer: fine) {
+    html {
+      /* Firefox: track disappears into the paper, thumb is just a shadow on it. */
+      scrollbar-color: var(--paper-shadow) var(--paper);
+      scrollbar-width: thin;
+    }
 
-  ::-webkit-scrollbar-track,
-  ::-webkit-scrollbar-corner {
-    background: var(--paper);
-  }
+    /* WebKit wants the same in its own dialect. */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
 
-  ::-webkit-scrollbar-thumb {
-    background: var(--paper-shadow);
-    border: 2px solid var(--paper);
-    border-radius: 999px;
-  }
+    ::-webkit-scrollbar-track,
+    ::-webkit-scrollbar-corner {
+      background: var(--paper);
+    }
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--ink-soft);
+    ::-webkit-scrollbar-thumb {
+      background: var(--paper-shadow);
+      border: 2px solid var(--paper);
+      border-radius: 999px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--ink-soft);
+    }
   }
 
   body {
