@@ -176,9 +176,10 @@ export function ScribbleNote({
 }) {
   const label =
     tone === "ink" ? (
-      // Ink annotations are the quiet ones: smaller, softer, no accent. Same
-      // hand as everything else, just said under the breath.
-      <span className="font-mono text-[0.78rem] leading-snug text-ink-soft">
+      // Ink annotations are the quiet ones: softer, no accent. Quiet is a tone,
+      // though, not a size — on the shelf this is the only description a project
+      // gets above `sm`, so it has to be comfortably readable.
+      <span className="font-mono text-[0.95rem] leading-snug text-ink-soft">
         {children}
       </span>
     ) : (

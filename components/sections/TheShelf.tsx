@@ -145,9 +145,15 @@ function ShelfRow({
               {/* the plank's thickness, so the label clears it */}
               <span aria-hidden="true" className="h-[18px] w-full shrink-0" />
 
-              {/* taped label, sitting on the shelf edge */}
+              {/*
+                Taped label, sitting on the shelf edge. Inked rather than
+                paper-coloured: the project name is the only hard information on
+                the shelf, and a warm-paper plate on a paper page was a whisper.
+                The dark plate is its own edge, so it takes no shadow — one
+                device per object, as ever.
+              */}
               <span
-                className="relative z-10 -mt-1.5 max-w-[92%] bg-paper-warm px-2.5 py-1 text-center font-mono text-[0.72rem] leading-tight text-ink shadow-paper"
+                className="relative z-10 -mt-1.5 max-w-[92%] bg-ink px-3 py-1.5 text-center font-mono text-[1.05rem] leading-tight text-paper"
                 style={{ transform: `rotate(${project.tilt * -0.6}deg)` }}
               >
                 {project.label}
