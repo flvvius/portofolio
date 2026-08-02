@@ -12,7 +12,7 @@ const config = {
     "./data/**/*.{ts,tsx}",
   ],
   theme: {
-    // Not `extend` — replacing the default palette so no stray tailwind blue
+    // Not `extend`: replacing the default palette so no stray tailwind blue
     // can ever creep in.
     colors: {
       transparent: "transparent",

@@ -10,7 +10,7 @@ import { IndexCard } from "@/components/art/Paper";
 const baseUrl = "https://flavius.pro";
 
 const description =
-  "notes rather than articles — thinking out loud about building software, with none of it tidied up first.";
+  "notes rather than articles. thinking out loud about building software, with none of it tidied up first.";
 
 export const metadata: Metadata = {
   title: "the notes",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
         url: `${baseUrl}/main.png`,
         width: 1200,
         height: 630,
-        alt: "Flavius Cojocaru — the notes",
+        alt: "Flavius Cojocaru, the notes",
       },
     ],
   },
@@ -44,7 +44,7 @@ export default function BlogIndex() {
   return (
     <>
       <BlogListJsonLd />
-      <Nav rail={false} />
+      <Nav />
       <main className="min-h-[70svh] py-rhythm lg:py-rhythm-lg">
         <Container>
           <Rise as="h1" className="font-display-section text-section text-ink">

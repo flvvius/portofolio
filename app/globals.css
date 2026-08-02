@@ -19,6 +19,30 @@
     /* Anchored nav lands below the sticky header. */
     scroll-padding-top: 96px;
     -webkit-text-size-adjust: 100%;
+    /* Firefox: track disappears into the paper, thumb is just a shadow on it. */
+    scrollbar-color: var(--paper-shadow) var(--paper);
+    scrollbar-width: thin;
+  }
+
+  /* WebKit wants the same in its own dialect. */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track,
+  ::-webkit-scrollbar-corner {
+    background: var(--paper);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--paper-shadow);
+    border: 2px solid var(--paper);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--ink-soft);
   }
 
   body {
@@ -32,7 +56,7 @@
   }
 
   /*
-   * One global paper grain. feTurbulence, inlined — no PNG, no per-element
+   * One global paper grain. feTurbulence, inlined: no PNG, no per-element
    * texture. Multiply keeps it reading as fibre in the paper rather than
    * a grey film on top of it.
    */
@@ -52,7 +76,7 @@
     color: var(--paper);
   }
 
-  /* Keyboard focus has to survive on paper — orange ring, real offset. */
+  /* Keyboard focus has to survive on paper: orange ring, real offset. */
   :focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
@@ -183,7 +207,7 @@
   }
 
   /*
-   * A custom cursor over shelf objects only — a small hand reaching for
+   * A custom cursor over shelf objects only: a small hand reaching for
    * something. Full-page custom cursors are a 2022 tell.
    */
   .cursor-shelf {
@@ -241,9 +265,9 @@
 
   /*
    * The level meter in the header. scaleY rather than height so it stays off
-   * the layout thread — the bars are anchored at the bottom, like real ones.
+   * the layout thread. The bars are anchored at the bottom, like real ones.
    */
-  /* One-way keyframes plus `alternate` — a 0/50/100 set would have doubled
+  /* One-way keyframes plus `alternate`, because a 0/50/100 set would have doubled
      every duration set on the bars, which is not what those numbers say. */
   @keyframes eq-bounce {
     from {
@@ -257,6 +281,83 @@
   .eq-bar {
     transform-origin: bottom;
     animation: eq-bounce 1s ease-in-out infinite alternate;
+  }
+
+  /*
+   * Same bar, but the analyser is writing scaleY to it every frame, so the
+   * keyframes have to get out of the way, because a running animation wins over an
+   * inline transform and the meter would sit there bouncing on its own clock
+   * while real audio played underneath it.
+   *
+   * The short transition smooths the gap between animation frames without
+   * lagging behind the music; anything above ~90ms and the bars stop landing
+   * on the beat.
+   */
+  .eq-bar-live {
+    transform-origin: bottom;
+    animation: none;
+    transition: transform 70ms linear;
+  }
+
+  /*
+   * The sign crossfades between "listening bar" and "drop the needle" on
+   * hover. Both labels sit in the same grid cell, so the header never reflows;
+   * the blur is there because two sets of monospace text dissolving through
+   * each other reads as two labels overlapping, and blurred it reads as one
+   * label changing its mind.
+   */
+  .needle-label {
+    transition: opacity 180ms ease-out, filter 180ms ease-out;
+  }
+
+  /*
+   * The header getting out of the way on the way down, and coming back on the
+   * way up. Transform and opacity only, since this runs on every scroll reversal
+   * so it has no business touching layout.
+   */
+  .chrome {
+    transition: opacity 260ms ease-out, transform 260ms ease-out;
+  }
+
+  .chrome-hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+  }
+
+  /*
+   * Reduced motion keeps the behaviour and drops the travel: the header still
+   * gets out of the way, it just fades instead of sliding. Leaving it pinned
+   * would be the accessible-looking choice and the worse one: it would put a
+   * permanent band over the top of the page for the people least able to
+   * scroll past it.
+   */
+  @media (prefers-reduced-motion: reduce) {
+    .chrome-hidden {
+      transform: none;
+    }
+  }
+
+  /*
+   * The menu sheet's items, written down the page one after the other rather
+   * than arriving as a block. The delay is per item and set inline, so the
+   * order is the reading order and nothing here needs to know how many items
+   * there are.
+   *
+   * Transition rather than an animation, because the same rule has to run
+   * backwards when the sheet closes.
+   */
+  .menu-item {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 260ms ease-out,
+      transform 260ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  .menu-sheet-open .menu-item {
+    opacity: 1;
+    transform: none;
+    transition-delay: var(--stagger, 0ms);
   }
 
   @keyframes panel-in {
@@ -295,16 +396,6 @@
     animation: draw-in 600ms ease-out 400ms forwards;
   }
 
-  /* Sideways-scrolling nav on small screens, without the scrollbar artefact. */
-  .no-scrollbar {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
   .grid-12 {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -313,7 +404,7 @@
 
 /* -------------------------------------------------------------------------
  * Reduced motion: the record stops, entrances stop rising, the underline is
- * simply drawn. Everything still communicates — nothing is hidden.
+ * simply drawn. Everything still communicates, nothing is hidden.
  * ---------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -346,6 +437,16 @@
   .coaster,
   .ink-link {
     transition-duration: 1ms;
+  }
+
+  /* The menu still fades in, it just doesn't travel or wait its turn. */
+  .menu-item {
+    transform: none;
+    transition-delay: 0ms;
+  }
+
+  .menu-sheet-open .menu-item {
+    transition-delay: 0ms;
   }
 
   *,

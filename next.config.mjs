@@ -3,7 +3,7 @@ import {withSentryConfig} from '@sentry/nextjs';
 const nextConfig = {
   // ===== PERFORMANCE OPTIMIZATIONS =====
   
-  // The icon and 3D libraries this used to tree-shake are gone — the site's
+  // The icon and 3D libraries this used to tree-shake are gone. The site's
   // artwork is inline SVG now, so there is nothing left worth pre-optimizing.
   experimental: {
     optimizePackageImports: ['roughjs', 'react-rough-notation'],

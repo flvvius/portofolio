@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, type ElementType, type ReactNode } from "r
 /**
  * Section entrance: fade + 12px rise, once, when it scrolls into view.
  *
- * IntersectionObserver rather than a scroll library — this is 20 lines and
+ * IntersectionObserver rather than a scroll library: this is 20 lines and
  * ships no runtime. Without JS the element renders visible immediately, which
  * is the correct fallback: the content is the point, the rise is a garnish.
  */
@@ -29,7 +29,7 @@ export function Rise({
     if (!node) return;
 
     if (typeof IntersectionObserver === "undefined") {
-      // Nothing to observe with — reveal on the next frame and move on.
+      // Nothing to observe with, so reveal on the next frame and move on.
       const frame = requestAnimationFrame(() => setShown(true));
       return () => cancelAnimationFrame(frame);
     }

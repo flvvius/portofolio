@@ -2,7 +2,7 @@ import { InkArt, Hatch, PAPER_WARM } from "./ink";
 
 /**
  * The props. Objects that belong to the room but don't belong to any one
- * section's argument — a shelf of books on the counter, a moka pot in the
+ * section's argument: a shelf of books on the counter, a moka pot in the
  * corner, the clock on the wall.
  *
  * They obey the same protocol as everything else here: one nib, cross-hatch
@@ -20,7 +20,7 @@ export function Bookshelf({ className }: { className?: string }) {
       <path d="M23.6 24.2h7.6v34.6h-7.6z" fill={PAPER_WARM} />
       <path d="M25.6 29.6h3.6" opacity="0.45" strokeWidth={1.1} />
 
-      {/* one has fallen against the next — every shelf has this book */}
+      {/* one has fallen against the next, every shelf has this book */}
       <path d="M33.6 58.8 36 26.6l7.4 1.6-3.2 30.8z" fill={PAPER_WARM} />
 
       <path d="M44.8 17.8h10v41h-10z" fill={PAPER_WARM} />
@@ -52,7 +52,7 @@ export function MokaPot({ className }: { className?: string }) {
   return (
     <InkArt viewBox="0 0 150 118" className={className}>
       {/*
-        Steam. Long S-curves — drawn short they read as two tally marks
+        Steam. Long S-curves, because drawn short they read as two tally marks
         floating between the pot and the cup rather than as anything rising.
       */}
       <path
@@ -94,7 +94,7 @@ export function MokaPot({ className }: { className?: string }) {
 }
 
 /**
- * The cuckoo clock again — appearance three of five — this time hanging from a
+ * The cuckoo clock again, appearance three of five, this time hanging from a
  * cord with its weights down, the way it does on a wall.
  */
 export function HangingCuckoo({ className }: { className?: string }) {

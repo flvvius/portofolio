@@ -9,7 +9,7 @@ import type { ReactNode, SVGProps } from "react";
  *     `vector-effect: non-scaling-stroke` buys us (applied in globals.css via
  *     `.ink-art *`): a 320px turntable and a 28px cuckoo have identical line
  *     weight, the way they would if one hand drew both with one nib.
- *   - round caps and joins — no sharp mitres, nothing mechanical
+ *   - round caps and joins, no sharp mitres, nothing mechanical
  *   - shading is cross-hatch only, never a fill or a gradient
  *   - the only fills permitted: paper tones, ink for tiny solids (eyes,
  *     screw heads), and the orange record label. Nothing else.
@@ -26,7 +26,7 @@ export const ACCENT = "#D96B2B";
 type InkArtProps = SVGProps<SVGSVGElement> & {
   viewBox: string;
   children: ReactNode;
-  /** Decorative by default — pass a title to make it announced. */
+  /** Decorative by default. Pass a title to make it announced. */
   title?: string;
 };
 

@@ -5,11 +5,12 @@ import "./globals.css";
 import JsonLd from "@/components/JsonLd";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { ConsoleNote } from "@/components/ConsoleNote";
+import { RoomTone } from "@/components/RoomTone";
 
 /**
  * Three fonts, each with exactly one job.
  *
- * Fraunces carries the display voice — the SOFT and WONK axes are what let the
+ * Fraunces carries the display voice, and the SOFT and WONK axes are what let the
  * hero wobble while section titles stay composed (see globals.css).
  * Courier Prime is everything you actually read. Caveat only ever writes two
  * or three words at a time, in the margins.
@@ -35,14 +36,14 @@ const caveat = Caveat({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-caveat",
-  // Margin scribbles are decorative and below the fold — don't spend LCP on them.
+  // Margin scribbles are decorative and below the fold, so don't spend LCP on them.
   preload: false,
 });
 
 const baseUrl = "https://flavius.pro";
 
 const description =
-  "flavius cojocaru — full-stack engineer in cluj-napoca. a shelf of things i've built, the stories behind them, and whatever's currently on rotation.";
+  "flavius cojocaru, full-stack engineer in cluj-napoca. a shelf of things i've built, the stories behind them, and whatever's currently on rotation.";
 
 export const viewport: Viewport = {
   themeColor: "#F4EFE6",
@@ -85,7 +86,7 @@ export const metadata: Metadata = {
         url: `${baseUrl}/main.png`,
         width: 1200,
         height: 630,
-        alt: "Flavius Cojocaru — full-stack engineer",
+        alt: "Flavius Cojocaru, full-stack engineer",
       },
     ],
   },
@@ -127,7 +128,7 @@ export default function RootLayout({
      * `suppressHydrationWarning` covers exactly one thing: the inline script
      * below adds a `js` class to this element before React hydrates, so the
      * server and client classNames legitimately differ. The suppression is
-     * one level deep — every child is still hydration-checked normally.
+     * one level deep, and every child is still hydration-checked normally.
      */
     <html
       lang="en"
@@ -159,7 +160,7 @@ export default function RootLayout({
           The pen wobble. Every illustration is drawn with mathematically exact
           curves and then pushed off-true by this displacement map, which is
           what stops the set reading as clipart. One filter, defined once,
-          shared by every drawing — so the hand is identifiably the same hand.
+          shared by every drawing, so the hand is identifiably the same hand.
 
           Deliberately not applied to anything animated (see Turntable) or to
           the stretched planks, where a uniform displacement would smear.
@@ -203,6 +204,8 @@ export default function RootLayout({
           skip to the shelf
         </a>
         {children}
+        {/* Renders nothing, it listens. One instance for the whole site. */}
+        <RoomTone />
         <ConsoleNote />
         <GoogleAnalytics />
       </body>

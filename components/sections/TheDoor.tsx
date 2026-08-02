@@ -1,5 +1,5 @@
 import { door, socials } from "@/data/site";
-import { Container, Eyebrow, Section } from "./Section";
+import { Container, Section } from "./Section";
 import { Rise } from "@/components/ink/Rise";
 import { Scribble } from "@/components/ink/Scribble";
 import { Arrow, ScribbleNote } from "@/components/ink/Arrow";
@@ -33,13 +33,10 @@ export function TheDoor() {
   return (
     <Section id="the-door" className="relative pb-20 lg:pb-24">
       <Container>
-        <Rise className="mb-4 block">
-          <Eyebrow>{door.eyebrow}</Eyebrow>
-        </Rise>
         <Rise as="h2" className="font-display-section text-section text-ink">
           the door
         </Rise>
-        {/* the rule under the title — the door is the only section that gets one */}
+        {/* the rule under the title, and the door is the only section that gets one */}
         <Rise delay={40} className="mt-3 block">
           <span
             aria-hidden="true"
@@ -87,18 +84,23 @@ export function TheDoor() {
           {/* ---- coasters on the counter ---- */}
           <div className="relative col-span-12 lg:col-span-6">
             <Rise delay={100}>
-              <h3 className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-ink-soft">
-                pick a coaster
-              </h3>
-
-              <ul className="mt-8 flex flex-col items-center">
+              {/*
+                No heading over the stack. A pile of coasters with names on
+                them doesn't need to be told it's a pile of coasters, and the
+                list carries its own label for anyone not looking at it.
+              */}
+              <ul
+                aria-label="elsewhere on the internet"
+                className="flex flex-col items-center"
+              >
                 {socials.map((social, index) => (
                   <li
                     key={social.href}
                     /*
                      * A slumped stack: each coaster overlaps the one below and
-                     * slides sideways. The overlap stops short of the label —
-                     * the point of a coaster here is that you can read it.
+                     * slides sideways. The overlap stops short of the
+                     * label, because the point of a coaster here is that you
+                     * can read it.
                      */
                     className={[
                       "relative",
@@ -126,16 +128,20 @@ export function TheDoor() {
                       </span>
                     </a>
 
+                    {/*
+                      Handwriting on its own, no arrow. Sitting beside a round
+                      coaster there is nothing for an arrow to run into: it
+                      either stops short and points at paper or crosses the rim
+                      and draws over the thing it means. The word next to the
+                      coaster is unambiguous without one.
+                    */}
                     {social.nudge && (
-                      <ScribbleNote
-                        variant="down-left"
-                        seed={31}
-                        arrowClassName="w-10"
-                        className="absolute -right-2 top-1/2 hidden -translate-y-1/2 translate-x-full sm:inline-flex"
-                        labelFirst={false}
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-[calc(100%+16px)] font-hand text-xl leading-none text-accent sm:inline-block sm:text-2xl"
                       >
                         {social.nudge}
-                      </ScribbleNote>
+                      </span>
                     )}
                   </li>
                 ))}
@@ -163,7 +169,7 @@ export function TheDoor() {
       </div>
 
       <footer className="pt-8">
-        {/* the hearts stay ink — nothing decorative gets the accent */}
+        {/* the hearts stay ink, nothing decorative gets the accent */}
         <p className="text-center font-mono text-caption text-ink-soft">
           <span aria-hidden="true">♥</span> {door.footer}{" "}
           <span aria-hidden="true">♥</span>

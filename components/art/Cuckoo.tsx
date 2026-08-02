@@ -18,7 +18,7 @@ function Body() {
       <path d="M44 24.3 54.8 27.4 44.4 30.8" />
       {/* eye */}
       <circle cx="38.6" cy="23.8" r="1.7" fill="currentColor" stroke="none" />
-      {/* crest — two tufts, uneven */}
+      {/* crest, two tufts, uneven */}
       <path d="M29.6 13.4c-1.2-4.8 1.4-7.2 3.6-5.4" />
       <path d="M35.2 12.2c-.6-5 2.4-7 4.4-4.6" />
       {/* wing */}
@@ -49,7 +49,7 @@ export function CuckooHeadphones({ className }: { className?: string }) {
     <InkArt viewBox="0 0 60 62" className={className}>
       <Body />
       {/*
-        Side profile, so exactly one ear cup is visible — and it sits behind
+        Side profile, so exactly one ear cup is visible, and it sits behind
         the eye, over where an ear would actually be. Anywhere further forward
         and it covers the face, which is the whole readability of the doodle.
       */}
@@ -69,7 +69,7 @@ export function CuckooShrug({ className }: { className?: string }) {
   return (
     <InkArt viewBox="0 0 76 66" className={className}>
       <g transform="translate(8, 2)">
-        {/* body, minus the folded wing — the wings are out */}
+        {/* body, minus the folded wing, the wings are out */}
         <path d="M20.5 21.5C24 13.2 40 12.4 44.2 21.2c3.6 5.8 3 12.8 1 18.6-2.8 8.2-12.6 12.2-20.6 9.4C16.3 46.4 13.2 37.4 15.2 30c.9-3.4 2.9-6.2 5.3-8.5Z" />
         <path d="M44 24.3 54.8 27.4 44.4 30.8" />
         <circle cx="38.6" cy="24.6" r="1.7" fill="currentColor" stroke="none" />

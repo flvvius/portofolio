@@ -8,11 +8,11 @@ export function Turntable({ className }: { className?: string }) {
   return (
     // `ink-art-plain` keeps the wobble filter off the SVG as a whole, so the
     // record can spin without the browser re-running a displacement map 60
-    // times a second. The static furniture gets the filter on its own group —
+    // times a second. The static furniture gets the filter on its own group,
     // which is also more truthful: a vinyl record really is a perfect circle.
     <InkArt viewBox="0 0 200 190" className={`ink-art-plain ${className ?? ""}`}>
       <g filter="url(#pencil)">
-        {/* plinth — corners rounded by hand, so none of them match */}
+        {/* plinth, corners rounded by hand, so none of them match */}
         <path
           d="M12.5 17.5c0-3.9 3-7 6.9-6.9l162 1.6c3.7 0 6.7 3.1 6.6 6.9l-1.8 149.4c0 3.8-3.2 6.8-7 6.7l-160.6-1.7c-3.8 0-6.8-3.2-6.7-7Z"
           fill={PAPER_WARM}
@@ -25,7 +25,7 @@ export function Turntable({ className }: { className?: string }) {
         <circle cx="86" cy="88" r="59.5" opacity="0.45" strokeWidth={1.1} />
       </g>
 
-      {/* the spinning part — unfiltered, and round on purpose */}
+      {/* the spinning part, unfiltered and round on purpose */}
       <g className="spin-record">
         <circle cx="86" cy="88" r="55" fill="#2B211A" stroke="none" />
         {/* grooves, lighter so they read as reflections not lines */}
@@ -47,7 +47,7 @@ export function Turntable({ className }: { className?: string }) {
           gimbal, arm *tube* (two edges and a fill, not a hairline), headshell
           held at its own angle, cartridge, stylus touching the groove.
 
-          The arm is one straight run from pivot to headshell — the bent
+          The arm is one straight run from pivot to headshell. The bent
           polyline it replaces read as a piece of wire. Everything below hangs
           off the two points P1 (163,50) and P2 (124,108); if you move the arm,
           move both and re-derive, or the headshell detaches from the tube.
@@ -79,7 +79,7 @@ export function Turntable({ className }: { className?: string }) {
         <path d="M117 114 113.6 119" opacity="0.5" strokeWidth={1.1} />
         <path d="M115.8 118.9 114.6 122.1" strokeWidth={1.3} />
 
-        {/* counterweight — stub, then the weight itself, threaded */}
+        {/* counterweight: stub, then the weight itself, threaded */}
         <path d="M168.4 41.6 175 34.6" strokeWidth={1.5} />
         <circle cx="179.4" cy="30.6" r="5.4" fill={PAPER_WARM} />
         <path d="M176.4 26.6 183 33.4" opacity="0.4" strokeWidth={1.1} />

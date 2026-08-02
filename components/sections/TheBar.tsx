@@ -1,15 +1,16 @@
+import Link from "next/link";
 import { bar, counter } from "@/data/site";
-import { Container, Eyebrow, Section } from "./Section";
+import { Container, Section } from "./Section";
 import { Rise } from "@/components/ink/Rise";
 import { Scribble } from "@/components/ink/Scribble";
 import { ScribbleNote } from "@/components/ink/Arrow";
 import { Turntable } from "@/components/art/Turntable";
 import { Bookshelf } from "@/components/art/Props";
-import { TapedNote, PinnedNote } from "@/components/art/Paper";
+import { TapedNote } from "@/components/art/Paper";
 import { NowPlaying } from "@/components/NowPlaying";
 
 /**
- * The bar. Type first — if the headline doesn't hold the page on its own, no
+ * The bar. Type first: if the headline doesn't hold the page on its own, no
  * amount of illustration will save it.
  *
  * Exactly two orange marks are visible in the headline block: the underline
@@ -23,13 +24,14 @@ export function TheBar() {
         <div className="relative grid-12 items-start gap-y-14">
           {/* ---- headline column ---- */}
           <div className="col-span-12 lg:col-span-7">
-            <Rise className="mb-6 block">
-              <Eyebrow>{bar.eyebrow}</Eyebrow>
-            </Rise>
-
             <Rise as="h1" className="font-display-hero text-hero text-ink">
               {bar.headlineLead}{" "}
-              <Scribble type="underline" delay={500} strokeWidth={3} padding={2}>
+              <Scribble
+                type="underline"
+                delay={500}
+                strokeWidth={3}
+                padding={2}
+              >
                 {bar.underline}
               </Scribble>{" "}
               {bar.headlineTail}
@@ -59,7 +61,10 @@ export function TheBar() {
                     →
                   </span>
                 </a>
-                <a href="#the-door" className="ink-link font-mono text-[0.95rem]">
+                <a
+                  href="#the-door"
+                  className="ink-link font-mono text-[0.95rem]"
+                >
                   {bar.ctaSecondary}
                 </a>
               </div>
@@ -68,7 +73,15 @@ export function TheBar() {
 
           {/* ---- turntable column ---- */}
           <div className="relative col-span-12 lg:col-span-5">
-            <Rise delay={120}>
+            {/*
+              Indented to stand over the turntable rather than over the column.
+              The plinth's left edge is 8% (the overhang below) plus the 6.25%
+              the drawing is inset inside its own viewBox, so ~14%. Padding
+              rather than a translate: `.rise` animates transform and resets it
+              to none, and padding lets a long title truncate instead of
+              overflowing the column.
+            */}
+            <Rise delay={120} className="lg:pl-[14%]">
               <NowPlaying />
             </Rise>
 
@@ -83,34 +96,13 @@ export function TheBar() {
               seed={17}
               labelFirst
               arrowClassName="w-9 mb-1"
-              // Below the plinth, not beside it — at `bottom-6` the label ran
+              // Below the plinth, not beside it, because at `bottom-6` the label ran
               // into the corner hatching once the turntable overhangs its column.
               className="absolute -bottom-6 left-0 hidden max-w-[7rem] lg:inline-flex"
             >
               {bar.turntableScribble}
             </ScribbleNote>
           </div>
-
-          {/*
-            The margin scribble, hung off the outside of the grid rather than
-            the section — the section now runs all the way down past the
-            counter strip, and a percentage against it landed in the body copy.
-
-            It only appears once the window is wide enough to hold the nav rail
-            AND a real margin beside it. Below that there is nowhere to scribble
-            that isn't already someone's column.
-          */}
-          <ScribbleNote
-            variant="up-right"
-            seed={13}
-            labelFirst
-            arrowClassName="w-10 mb-1"
-            className="absolute left-0 top-[52%] hidden max-w-[8rem] -translate-x-[calc(100%+20px)] min-[1700px]:inline-flex"
-          >
-            comfy web
-            <br />
-            things live here
-          </ScribbleNote>
         </div>
       </Container>
 
@@ -121,11 +113,13 @@ export function TheBar() {
 
 /**
  * The strip along the bottom of the hero: the things left out on the counter
- * once the place is open. Three pieces of paper of three different kinds, plus
- * the shelf itself, so the row reads as objects rather than as three cards.
+ * once the place is open. Two objects, not four. The row used to carry a
+ * heading, a blurb and a second note as well, and the eye had nowhere to land;
+ * a note and a thing you can pick up is the whole strip now.
  *
- * It sits below a hairline, which is the same counter line the header hangs
- * from — the hero is the space between those two rules.
+ * It sits below a hairline. That rule used to be the second of a pair, with a
+ * matching one under the header; the header gave its up when it stopped being
+ * a bar, so this one now reads as the edge of the counter itself.
  */
 function TheCounter() {
   return (
@@ -133,7 +127,7 @@ function TheCounter() {
       <div aria-hidden="true" className="h-px w-full bg-ink/15" />
 
       <Container className="pt-9">
-        <div className="grid items-start gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid items-center gap-x-8 gap-y-12 sm:grid-cols-2">
           <Rise>
             <TapedNote tilt={-1.5} className="mt-2">
               <span className="mb-1.5 block border-b border-ink/25 pb-1 font-mono text-[0.8rem] text-ink">
@@ -143,38 +137,30 @@ function TheCounter() {
             </TapedNote>
           </Rise>
 
-          <Rise delay={60}>
-            <h2 className="inline-block border-b-2 border-accent pb-1 font-display-section text-[1.25rem] text-ink">
-              {counter.shelf.title}
-            </h2>
-            <p className="mt-3 font-mono text-caption leading-snug text-ink-soft">
-              {counter.shelf.line}
-            </p>
-            <a
-              href="#the-shelf"
-              className="group mt-3 inline-flex items-center gap-1.5 font-mono text-caption text-accent no-underline"
+          {/*
+            The one object in this row you can pick up. It behaves like a shelf
+            object rather than like a link: same lift, same tilt, same reaching
+            cursor, because it *is* one, it just happens to live down here.
+          */}
+          <Rise delay={60} className="flex justify-center sm:justify-end">
+            <Link
+              href="/the-back-room"
+              aria-label={counter.backRoom.aria}
+              className="group block cursor-shelf no-underline"
             >
-              {counter.shelf.cta}
+              <span className="shelf-object block text-ink">
+                <Bookshelf className="mx-auto h-auto w-full max-w-[210px]" />
+              </span>
               <span
                 aria-hidden="true"
-                className="transition-transform duration-[180ms] ease-out group-hover:translate-x-1"
+                className="mt-3 flex items-center justify-center gap-1.5 font-mono text-caption text-ink-soft transition-colors duration-[180ms] group-hover:text-accent"
               >
-                →
+                {counter.backRoom.label}
+                <span className="transition-transform duration-[180ms] ease-out group-hover:translate-x-1">
+                  →
+                </span>
               </span>
-            </a>
-          </Rise>
-
-          <Rise delay={120} className="flex justify-center">
-            <Bookshelf className="h-auto w-full max-w-[210px] text-ink" />
-          </Rise>
-
-          <Rise delay={180} className="flex sm:justify-end">
-            <PinnedNote tilt={1.5}>
-              <span className="mb-1.5 block font-mono text-[0.8rem] text-ink">
-                {counter.location.title}
-              </span>
-              {counter.location.line}
-            </PinnedNote>
+            </Link>
           </Rise>
         </div>
       </Container>

@@ -29,7 +29,7 @@ export function Counter({ className }: { className?: string }) {
       <path d="M3 20 997 16.5l1 8L2 28Z" fill={PAPER} />
       {/*
         The front of the counter, cross-hatched like a woodcut. The strokes are
-        deliberately uneven in spacing and length — this SVG is stretched, so it
+        deliberately uneven in spacing and length, because this SVG is stretched, so it
         can't take the wobble filter and has to earn its hand-drawn feel here.
       */}
       <Hatch d="M40 60 74 32M92 62 130 28M150 58 182 33M204 62 242 30M258 59 292 34M318 62 352 31M370 57 406 32M430 62 466 29M484 60 518 33M542 62 578 31M596 58 630 34M654 62 690 30M708 59 744 32M764 62 800 28M820 57 854 33M878 62 914 31M932 60 968 32" opacity={0.32} />
@@ -73,7 +73,7 @@ function GlyphArt({ glyph }: { glyph: Glyph }) {
 
 /**
  * A coaster. Pulpboard circle, slightly out of round, with the glyph pressed
- * into the top half — the bottom half is left clear for the real text label
+ * into the top half. The bottom half is left clear for the real text label
  * that sits over it. Tilt and hover colour come from the `.coaster` class.
  */
 export function Coaster({
@@ -85,7 +85,7 @@ export function Coaster({
 }) {
   return (
     <InkArt viewBox="0 0 92 92" className={className}>
-      {/* outer edge — four arcs of slightly different radius */}
+      {/* outer edge, four arcs of slightly different radius */}
       <path d="M46 4.5c22.6 0 41.2 18.4 41.5 41 .3 22.8-18.4 42-41 42.5-23 .5-42.2-18.4-42-41.5C4.7 23.2 23.2 4.5 46 4.5Z" fill={PAPER_WARM} />
       {/* pressed rim */}
       <path d="M46 10.5c19.4 0 35.3 15.8 35.5 35.2.2 19.6-15.8 36-35.4 36.3C26.4 82.2 10.6 66 10.5 46.4 10.4 26.6 26.2 10.5 46 10.5Z" opacity="0.45" strokeWidth={1.1} />

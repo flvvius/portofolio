@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 /**
  * Last.fm recent tracks, polled. No OAuth, no token refresh, no client secret
- * in the browser — just an API key on the server.
+ * in the browser, just an API key on the server.
  *
  * Set LASTFM_API_KEY and LASTFM_USER to turn this on. Without them the route
  * reports itself unconfigured and the chip falls back to a hardcoded rotation,

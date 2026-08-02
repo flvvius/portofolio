@@ -1,26 +1,41 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { fallbackTracks } from "@/data/site";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { fallbackTracks, houseRecord } from "@/data/site";
 import { MiniRecord } from "@/components/art/Turntable";
+import { houseRecordState } from "@/lib/vinyl";
 
 type Track = { track: string; artist: string; nowPlaying?: boolean };
 
 /**
  * The "now playing" chip above the turntable.
  *
- * If LASTFM_API_KEY / LASTFM_USER are set, this shows what's actually playing
- * (polled — no OAuth, no user gesture). If they aren't, it quietly cycles the
- * hardcoded list instead, which is indistinguishable to a visitor and means
- * the section is never empty.
+ * Three states, in order of precedence:
+ *
+ *  1. The house record is on. Then this chip says so, because something is
+ *     genuinely coming out of the speakers and it is not the thing last.fm
+ *     last saw. A chip naming one track while a different one audibly plays is
+ *     the only outright lie the page is capable of telling.
+ *  2. LASTFM_API_KEY / LASTFM_USER are set, so what's actually on, polled. No
+ *     OAuth, no user gesture.
+ *  3. Neither. It quietly cycles the hardcoded list, which is indistinguishable
+ *     to a visitor and means the section is never empty.
  */
 export function NowPlaying() {
   const [track, setTrack] = useState<Track>(fallbackTracks[0]);
   const [live, setLive] = useState(false);
 
-  // Fallback rotation. Runs until (and unless) last.fm answers.
+  const houseRecordOn = useSyncExternalStore(
+    houseRecordState.subscribe,
+    houseRecordState.get,
+    houseRecordState.getServerSnapshot
+  );
+
+  // Fallback rotation. Runs until (and unless) last.fm answers, and holds
+  // still while the house record has the platter, so that stopping the music
+  // doesn't drop you three tracks further down a list you never saw moving.
   useEffect(() => {
-    if (live) return;
+    if (live || houseRecordOn) return;
     const id = setInterval(() => {
       setTrack((current) => {
         const index = fallbackTracks.findIndex((t) => t.track === current.track);
@@ -28,7 +43,7 @@ export function NowPlaying() {
       });
     }, 9000);
     return () => clearInterval(id);
-  }, [live]);
+  }, [live, houseRecordOn]);
 
   useEffect(() => {
     let cancelled = false;
@@ -54,27 +69,38 @@ export function NowPlaying() {
     };
   }, []);
 
-  const sleeve = sleeveOf(track.track);
+  /*
+   * The house record wins outright while it is on. It is the only source here
+   * that is actually audible in the room, so it outranks a report of what was
+   * playing somewhere else an hour ago.
+   */
+  const shown = houseRecordOn ? houseRecord : track;
+  const derived = sleeveOf(track.track);
+  const sleeve = houseRecordOn
+    ? { side: houseRecord.side, position: houseRecord.position }
+    : { side: derived.side, position: `track ${derived.track}` };
 
   return (
     <div className="inline-flex max-w-full items-start gap-3">
       <MiniRecord className="mt-1 h-7 w-7 shrink-0 text-ink" />
       <div className="min-w-0">
         <span className="inline-block bg-ink px-2 py-0.5 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-paper">
-          {live && track.nowPlaying ? "now playing" : "on the platter"}
+          {houseRecordOn || (live && track.nowPlaying)
+            ? "now playing"
+            : "on the platter"}
         </span>
         <p
           className="mt-1.5 truncate font-mono text-[0.95rem] leading-snug text-accent"
           aria-live="polite"
         >
-          {track.track}
+          {shown.track}
         </p>
         <p className="truncate font-mono text-caption text-ink-soft">
-          {track.artist}
+          {shown.artist}
         </p>
-        {/* the small print on the sleeve — see sleeveOf */}
+        {/* the small print on the sleeve, see sleeveOf */}
         <p aria-hidden="true" className="font-mono text-caption text-ink-soft/80">
-          side {sleeve.side} · track {sleeve.track}
+          side {sleeve.side} · {sleeve.position}
         </p>
       </div>
     </div>
@@ -86,7 +112,7 @@ export function NowPlaying() {
  *
  * Derived from the title rather than stored, so it is stable for a given song
  * and survives whatever last.fm hands back. It is set dressing and is marked
- * aria-hidden accordingly — deliberately *not* a playback position, because a
+ * aria-hidden accordingly, and deliberately *not* a playback position, because a
  * counter ticking against a record nobody is actually spinning is a lie the
  * rest of this page doesn't tell.
  */

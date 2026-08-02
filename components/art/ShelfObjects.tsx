@@ -3,9 +3,12 @@ import { InkArt, Hatch, ACCENT, PAPER, PAPER_WARM } from "./ink";
 import type { ShelfObjectKind } from "@/data/site";
 
 /**
- * Five things standing on a shelf. Each one is drawn at the proportions it
+ * Six things standing on a shelf. Each one is drawn at the proportions it
  * would actually have leaning against a wall, so the row reads as objects of
  * different heights rather than icons in a grid.
+ *
+ * One object per project, never a repeat: two identical drawings on one plank
+ * stop reading as two things and start reading as a pattern.
  */
 
 function RecordSleeve() {
@@ -19,7 +22,7 @@ function RecordSleeve() {
       <circle cx="90" cy="58" r="1.6" fill={PAPER_WARM} stroke="none" />
       <circle cx="90" cy="58" r="34" />
 
-      {/* sleeve — a square that never quite was */}
+      {/* sleeve, a square that never quite was */}
       <path d="M5.5 12.5 94 10.6l2 96.4L7.5 108.5Z" fill={PAPER_WARM} />
       {/* opening along the right edge, where the record slid out */}
       <path d="M94 10.6 96 107" opacity="0.5" strokeWidth={1.1} />
@@ -114,12 +117,50 @@ function Notebook() {
   );
 }
 
+/**
+ * The tip jar. Glass, so it takes the lighter paper and the coins show through
+ * it; every other object here is the warmer stock.
+ *
+ * No orange on the coins, however much they ask for it. The record label is
+ * the only orange fill on the site and it stays that way.
+ */
+function TipJar() {
+  return (
+    <InkArt viewBox="0 0 74 98" className="h-full w-auto">
+      {/* the lid, and the screw band under it */}
+      <path d="M20.8 6.6 53.4 5.8l.9 9-34.3.9Z" fill={PAPER_WARM} />
+      <path d="M21.4 15.6 53.6 14.8" opacity="0.5" strokeWidth={1.1} />
+
+      {/* neck, shoulders, then straight down to the base it stands on */}
+      <path
+        d="M21.2 15.4 20.6 22.6c-4.4 3-8.4 7-9 12.6-1.2 18-.8 37 .6 54.6l49.2-.6c1.4-17.4 1.6-36.4.6-54.4-.6-5.6-4.6-9.6-8.8-12.6l-.4-7.2Z"
+        fill={PAPER}
+      />
+
+      {/* the coins, piled on the floor of it and none of them level */}
+      <circle cx="26.6" cy="80.4" r="6.4" fill={PAPER_WARM} />
+      <circle cx="39.8" cy="82.4" r="6.9" fill={PAPER_WARM} />
+      <circle cx="52.4" cy="79.6" r="5.8" fill={PAPER_WARM} />
+      <circle cx="33.2" cy="70.8" r="5.6" fill={PAPER_WARM} />
+      <circle cx="46.2" cy="69.4" r="6.1" fill={PAPER_WARM} />
+
+      {/* a label somebody wrote a number on and never corrected */}
+      <path d="M22.6 44.6 51.8 43.8l.5 13.4-29.4.8Z" fill={PAPER_WARM} />
+      <path d="M27.4 50.6 45.4 50M27.6 54 38.6 53.6" opacity="0.65" strokeWidth={1.1} />
+
+      {/* on the shoulder, where the light on a jar actually sits */}
+      <Hatch d="M16.6 40.4 20.8 34.8M16.8 48.4 20.6 43.4" />
+    </InkArt>
+  );
+}
+
 const OBJECTS: Record<ShelfObjectKind, () => ReactElement> = {
   record: RecordSleeve,
   book: BookSpine,
   cassette: Cassette,
   coffee: CoffeeBag,
   notebook: Notebook,
+  jar: TipJar,
 };
 
 /** Relative heights, so the shelf row has a real silhouette, not a card grid. */
@@ -129,6 +170,9 @@ export const OBJECT_HEIGHT: Record<ShelfObjectKind, string> = {
   cassette: "h-[96px] sm:h-[124px] lg:h-[142px]",
   coffee: "h-[146px] sm:h-[190px] lg:h-[218px]",
   notebook: "h-[154px] sm:h-[200px] lg:h-[232px]",
+  // Between the cassette and the coffee bag, so the second row rises, dips
+  // and rises again instead of running flat.
+  jar: "h-[118px] sm:h-[152px] lg:h-[176px]",
 };
 
 export function ShelfObject({ kind }: { kind: ShelfObjectKind }) {

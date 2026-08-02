@@ -10,12 +10,12 @@ const INK_SOFT = "#5C4F43";
  * path data, so the wobble is real rather than my impression of wobble.
  *
  * Two tones, and the difference is load-bearing:
- *   accent — points at something you can click. Orange is a promise.
- *   ink    — points at something you should read. Used for the annotations
+ *   accent: points at something you can click. Orange is a promise.
+ *   ink:    points at something you should read. Used for the annotations
  *            around the shelf, where six orange arrows would spend the entire
  *            page's supply of orange on captions.
  *
- * They are always aria-hidden — the thing being pointed at carries its own
+ * They are always aria-hidden, and the thing being pointed at carries its own
  * accessible label.
  */
 
@@ -106,7 +106,7 @@ export function Arrow({
       const rc = rough.svg(ref.current);
       const options = {
         stroke: tone === "ink" ? INK_SOFT : ACCENT,
-        // Annotation arrows are lighter — they sit next to body copy, not
+        // Annotation arrows are lighter, since they sit next to body copy, not
         // next to a call to action.
         strokeWidth: tone === "ink" ? 1.3 : 1.9,
         roughness: 1.5,
@@ -150,6 +150,12 @@ export function ScribbleNote({
   className,
   /** Put the label before the arrow instead of after. */
   labelFirst = false,
+  /**
+   * Stack the arrow under the label instead of beside it. For notes written
+   * directly above the thing they point at, where a sideways arrow would
+   * leave the label centred on the object and the arrow pointing past it.
+   */
+  stack = false,
 }: {
   children: React.ReactNode;
   variant?: Variant;
@@ -158,6 +164,7 @@ export function ScribbleNote({
   arrowClassName?: string;
   className?: string;
   labelFirst?: boolean;
+  stack?: boolean;
 }) {
   const label =
     tone === "ink" ? (
@@ -178,7 +185,11 @@ export function ScribbleNote({
   return (
     <span
       aria-hidden="true"
-      className={["pointer-events-none inline-flex items-end gap-1.5", className]
+      className={[
+        "pointer-events-none inline-flex",
+        stack ? "flex-col items-center gap-1" : "items-end gap-1.5",
+        className,
+      ]
         .filter(Boolean)
         .join(" ")}
     >

@@ -32,7 +32,7 @@ function usePrefersReducedMotion() {
  * this wrapper locks the colour, the weight and the timing so no annotation
  * anywhere on the site can drift off-system.
  *
- * Under prefers-reduced-motion the mark still appears — it just appears
+ * Under prefers-reduced-motion the mark still appears, it just appears
  * instantly. The underline carries meaning (it points at the important word),
  * so removing it would remove information.
  */
@@ -112,7 +112,7 @@ export function Scribble({
         /*
          * Under reduced motion the mark is drawn outright rather than with a
          * 1ms animation. A near-zero stroke-dash animation is not "less
-         * motion", it's a race — and when it loses, the underline never paints
+         * motion", it's a race, and when it loses, the underline never paints
          * at all, which silently removes meaning from the page.
          */
         animate={!reduced}

@@ -9,7 +9,7 @@ import { InkArt, Hatch, PAPER_WARM } from "./ink";
 export function CuckooClock({ className }: { className?: string }) {
   return (
     <InkArt viewBox="0 0 72 62" className={className}>
-      {/* roof — two planks, neither quite level */}
+      {/* roof, two planks, neither quite level */}
       <path d="M4.5 21.5 27 5l22.5 16.8" fill={PAPER_WARM} />
       <path d="M8.5 21 27 7.6 45.4 21.2" opacity="0.5" strokeWidth={1.1} />
       {/* housing */}

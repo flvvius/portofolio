@@ -7,7 +7,7 @@ import type { ReactNode } from "react";
  *
  * Every one of these is a physical object, so it obeys the two house rules:
  * a resting rotation between -3deg and +3deg, and either a hairline ink edge
- * or a hard offset shadow — never both, never a blur.
+ * or a hard offset shadow. Never both, never a blur.
  */
 
 /** Torn masking tape. Decorative, always. */
@@ -71,7 +71,7 @@ export function StickyNote({
 
 /**
  * A note pushed onto a board with a drawing pin. The pin is the one place on
- * the site where orange is allowed to be purely decorative — it is a physical
+ * the site where orange is allowed to be purely decorative: it is a physical
  * object that happens to be orange, not a signal.
  */
 export function PinnedNote({

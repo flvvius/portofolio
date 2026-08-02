@@ -1,46 +1,71 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import { nav, site } from "@/data/site";
 import { CuckooClock } from "@/components/art/Logo";
-import { ListeningBar } from "@/components/art/ListeningBar";
+import { HouseRecordToggle } from "@/components/HouseRecordToggle";
+import { HandUnderline } from "@/components/ink/Underline";
+import { MenuSheet, holdPage } from "@/components/MenuSheet";
 
 /**
- * The nav has two bodies and one mind.
+ * The top of the page, which is deliberately not a navbar.
  *
- * At the top of the page it is a horizontal row across the header, the way you
- * read a sign above a door. Once you have actually walked in — 140px of scroll —
- * it hands off to a fixed rail down the left margin, which is where a list of
- * rooms belongs while you are inside one.
+ * No bar, no blur, no rule underneath, no shadow. The links sit directly on
+ * the paper like the labels written along the top of a page, and the only
+ * background is the same `--paper` the body already has. A solid fill in the
+ * page's own colour is invisible as chrome but still stops body text sliding
+ * up behind the words, which is the one thing a transparent sticky header
+ * cannot do.
  *
- * The handoff is a crossfade, not a move: both bodies exist, one is always
- * fading while the other fades up, and only one is ever focusable (`inert`).
- * The rail only exists at >=1280px, where there is a real margin to put it in;
- * below that `railed` never becomes true and the header row stays in charge.
+ * Every label is underscored by hand. The active one is the only orange thing
+ * up here, which is the rule of the whole site in miniature: orange means
+ * "this, right here". Five orange scribbles would spend the page's entire
+ * allowance of it before you had read a word.
  *
- * The active link is the only orange thing up here, which is the whole rule of
- * the site in miniature: orange means "this, right here".
+ * It gets out of the way going down and comes back coming up, because on the
+ * way down you are reading and on the way up you are looking for something.
+ *
+ * The four labels run to about 500px of type, so below `md` they are not up
+ * here at all. The header keeps the mark, the record and one word, and the
+ * sections move into the sheet (see MenuSheet). Which means this row never has
+ * to squeeze, wrap or scroll sideways at any width.
  */
 
-/** Scroll distance before the header row hands off to the rail. */
-const HANDOFF = 140;
+/** Above this, the header is always shown, since a bounce at the top can't latch it shut. */
+const REVEAL_AT = 80;
 
-/** Matches the `xl:pl-[224px]` gutter reserved for the rail in app/page.tsx. */
-const RAIL_QUERY = "(min-width: 1280px)";
+/** Scroll noise below this is ignored, so a trackpad twitch can't flap the header. */
+const JITTER = 6;
 
-export function Nav({
-  /**
-   * Off for pages that aren't the one long room — the blog. The rail's links
-   * are same-page anchors, and there is no reserved gutter over there for it
-   * to sit in, so it would both overlap the text and point at nothing.
+export function Nav() {
+  /*
+   * Empty until the observer has actually seen something. Seeding it with the
+   * first section marked the bar orange on the blog, where none of these
+   * sections exist to disagree.
    */
-  rail = true,
-}: {
-  rail?: boolean;
-} = {}) {
-  const [active, setActive] = useState(nav[0].href.slice(1));
-  const [railedState, setRailed] = useState(false);
-  const railed = rail && railedState;
+  const [active, setActive] = useState("");
+  const [hidden, setHidden] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const pathname = usePathname();
+  const home = pathname === "/";
+
+  const button = useRef<HTMLButtonElement>(null);
+  /** Read by the scroll handler, which must not run while the sheet is up. */
+  const isOpen = useRef(false);
+
+  useEffect(() => {
+    isOpen.current = open;
+  }, [open]);
+
+  const close = useCallback((returnFocus?: boolean) => {
+    setOpen(false);
+    // The sheet lifts its own hold on the page when its effect tears down,
+    // which is a beat later than the link in this header may need it.
+    holdPage(false);
+    if (returnFocus) button.current?.focus({ preventScroll: true });
+  }, []);
 
   useEffect(() => {
     const sections = nav
@@ -64,20 +89,31 @@ export function Nav({
     return () => observer.disconnect();
   }, []);
 
-  /*
-   * `railed` is deliberately a single piece of state combining scroll and
-   * width. Both bodies of the nav read it, so they can never both be live —
-   * which matters, because the loser of the crossfade gets `inert`.
-   */
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const wide = window.matchMedia(RAIL_QUERY);
+    let last = window.scrollY;
     let frame = 0;
 
     const sync = () => {
       frame = 0;
-      setRailed(wide.matches && window.scrollY > HANDOFF);
+      const y = window.scrollY;
+
+      // While the sheet is up this header holds the only way to close it, and
+      // the scroll that reaches here is the sheet's own. Leave it alone.
+      if (isOpen.current) return;
+
+      if (y < REVEAL_AT) {
+        setHidden(false);
+        last = y;
+        return;
+      }
+
+      const delta = y - last;
+      // Deliberately not updating `last` here: small movements accumulate
+      // until they add up to a real direction, instead of being discarded.
+      if (Math.abs(delta) < JITTER) return;
+
+      setHidden(delta > 0);
+      last = y;
     };
 
     const onScroll = () => {
@@ -85,153 +121,97 @@ export function Nav({
       frame = requestAnimationFrame(sync);
     };
 
-    sync();
     window.addEventListener("scroll", onScroll, { passive: true });
-    wide.addEventListener("change", sync);
-
     return () => {
       window.removeEventListener("scroll", onScroll);
-      wide.removeEventListener("change", sync);
       if (frame) cancelAnimationFrame(frame);
     };
   }, []);
 
-  const logo = (
-    <a
-      href="#the-bar"
-      className="inline-flex items-center gap-2.5 no-underline"
-      aria-label={`${site.name} — back to the top`}
-    >
-      <CuckooClock className="h-10 w-auto shrink-0 text-ink sm:h-12" />
-      <span
-        aria-hidden="true"
-        className="hidden font-hand text-lg leading-[0.95] text-ink-soft sm:block"
-      >
-        flavius
-        <br />
-        studio
-      </span>
-    </a>
-  );
+  /*
+   * Turning a phone sideways can cross into the width where the links are back
+   * in the header and the sheet is `display: none`. Closing on the way past
+   * keeps that from leaving a page that is scroll-locked by an invisible menu.
+   */
+  useEffect(() => {
+    const wide = window.matchMedia("(min-width: 768px)");
+    const sync = () => {
+      if (wide.matches) setOpen(false);
+    };
+    wide.addEventListener("change", sync);
+    return () => wide.removeEventListener("change", sync);
+  }, []);
 
   return (
     <>
-      {/* ---------------------------------------------------------------
-        The rail. Fixed in the left margin that app/page.tsx reserves for
-        it, so nothing reflows when it appears — only opacity moves.
-      ---------------------------------------------------------------- */}
-      <div
-        className={[
-          "pointer-events-none fixed inset-y-0 left-0 z-40 w-[224px]",
-          rail ? "hidden xl:block" : "hidden",
-        ].join(" ")}
+      <header
+        /*
+         * A keyboard user tabbing into a header that scrolled away would be
+         * chasing focus around an invisible element, so focus brings it back.
+         * This is also why the links are never `inert` while hidden: inert
+         * would stop focus from ever arriving to un-hide it.
+         */
+        onFocusCapture={() => setHidden(false)}
+        className={`chrome sticky top-0 z-50 bg-paper ${
+          hidden && !open ? "chrome-hidden" : ""
+        }`}
       >
-        {/* the counter line, turned on its side */}
-        <span
-          aria-hidden="true"
-          className="absolute inset-y-0 right-0 w-px bg-ink/15"
-          style={{
-            // fades out before the bottom so the rule reads as drawn, not printed
-            maskImage:
-              "linear-gradient(to bottom, transparent 0, #000 92px, #000 78%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to bottom, transparent 0, #000 92px, #000 78%, transparent 100%)",
-          }}
-        />
-
-        <div className="pointer-events-auto px-8 pt-6">{logo}</div>
-
-        <nav
-          aria-label="sections"
-          inert={!railed}
-          className={[
-            "pointer-events-auto absolute left-0 top-[36vh] w-full px-8",
-            "transition-[opacity,transform] duration-[260ms] ease-out",
-            railed
-              ? "translate-x-0 opacity-100"
-              : "-translate-x-2 opacity-0",
-          ].join(" ")}
-        >
-          <ul className="space-y-3.5">
-            {nav.map((item) => {
-              const id = item.href.slice(1);
-              const isActive = active === id;
-              return (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    aria-current={isActive ? "true" : undefined}
-                    className={[
-                      "group inline-flex items-baseline gap-2 font-mono text-[0.9rem] leading-tight no-underline",
-                      "transition-colors duration-[180ms]",
-                      isActive
-                        ? "text-accent"
-                        : "text-ink-soft hover:text-accent",
-                    ].join(" ")}
-                  >
-                    <span>{item.label}</span>
-                    {/* the pointer only exists on the room you are standing in */}
-                    <span
-                      aria-hidden="true"
-                      className={[
-                        "transition-[opacity,transform] duration-[180ms] ease-out",
-                        isActive
-                          ? "translate-x-0 opacity-100"
-                          : "-translate-x-1 opacity-0",
-                      ].join(" ")}
-                    >
-                      →
-                    </span>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-      </div>
-
-      {/* ---------------------------------------------------------------
-        The header row. Owns the nav until the rail takes over.
-      ---------------------------------------------------------------- */}
-      <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur-[2px]">
-        <div className="mx-auto flex max-w-[1180px] items-center justify-between gap-6 px-5 py-3 sm:px-8">
-          {/* At xl the logo lives in the rail instead — one lockup, never two. */}
-          <div className={rail ? "xl:hidden" : undefined}>{logo}</div>
+        <div className="mx-auto flex w-full max-w-[1180px] items-start justify-between gap-4 px-5 pb-5 pt-5 sm:gap-6 sm:px-8 sm:pb-6">
+          {/* The mark, with the name written under it rather than beside it. */}
+          <a
+            href={home ? "#the-bar" : "/"}
+            onClick={() => close()}
+            className="flex shrink-0 flex-col items-start gap-1 no-underline"
+            aria-label={`${site.name}, back to the top`}
+          >
+            <CuckooClock className="h-9 w-auto text-ink sm:h-11" />
+            <span
+              aria-hidden="true"
+              className="hidden font-hand text-[1.05rem] leading-[0.9] text-ink-soft sm:block"
+            >
+              flavius
+              <br />
+              studio
+            </span>
+          </a>
 
           {/*
-            Five items no longer fit on a phone. Scrolling sideways keeps the nav
-            on one line and the header short; wrapping would eat three lines of a
-            sticky bar on the smallest screens.
+            The links appear at the width where all four fit on one line with
+            the mark and the record still beside them, and not one pixel
+            before. Below that they live in the sheet and this is
+            `display: none`, so the duplicate set is never in the tab order or
+            read out twice.
           */}
           <nav
-            aria-label={railed ? undefined : "sections"}
-            inert={railed}
-            className={[
-              "min-w-0 overflow-x-auto no-scrollbar",
-              "transition-opacity duration-[260ms] ease-out",
-              railed ? "opacity-0" : "opacity-100",
-            ].join(" ")}
+            aria-label="sections"
+            className="hidden min-w-0 flex-1 pt-1.5 md:block"
           >
-            <ul className="flex items-center gap-3.5 whitespace-nowrap sm:gap-7">
-              {nav.map((item) => {
+            <ul className="flex items-center justify-center gap-6 whitespace-nowrap lg:gap-9">
+              {nav.map((item, index) => {
                 const id = item.href.slice(1);
                 const isActive = active === id;
                 return (
-                  // shrink-0 or flex squeezes the items instead of overflowing,
-                  // which silently drops one off the end rather than scrolling.
                   <li key={item.href} className="shrink-0">
                     <a
-                      href={item.href}
+                      href={home ? item.href : `/${item.href}`}
                       aria-current={isActive ? "true" : undefined}
                       className={[
-                        "font-mono text-[0.8rem] transition-colors duration-[180ms] sm:text-[0.95rem]",
-                        "underline-offset-[6px] hover:text-accent hover:underline hover:decoration-2",
-                        isActive
-                          ? "text-accent underline decoration-2"
-                          : "text-ink-soft no-underline",
+                        "group relative inline-block pb-2 font-mono text-[0.9rem] no-underline lg:text-[1rem]",
+                        "transition-colors duration-[180ms]",
+                        isActive ? "text-accent" : "text-ink hover:text-accent",
                       ].join(" ")}
                     >
                       {item.label}
+                      <HandUnderline
+                        seed={index}
+                        className={[
+                          "absolute inset-x-0 bottom-0 h-[6px] w-full",
+                          "transition-colors duration-[180ms]",
+                          isActive
+                            ? "text-accent"
+                            : "text-ink/40 group-hover:text-accent",
+                        ].join(" ")}
+                      />
                     </a>
                   </li>
                 );
@@ -239,13 +219,65 @@ export function Nav({
             </ul>
           </nav>
 
-          {/* the sign in the window, on at all hours */}
-          <ListeningBar className="hidden shrink-0 lg:inline-flex" />
-        </div>
+          <div className="flex shrink-0 items-center gap-5 pt-1.5 sm:gap-6">
+            {/* the sign in the window, and the switch that puts a record on */}
+            <HouseRecordToggle />
 
-        {/* the counter line the whole page hangs from */}
-        <div aria-hidden="true" className="h-px w-full bg-ink/15" />
+            {/*
+              One word, underlined by the same hand as the links it stands in
+              for, not a hamburger. There is not a single icon anywhere else on
+              this site, and the top of the page is not the place to start.
+            */}
+            <button
+              ref={button}
+              type="button"
+              onClick={() => (open ? close(true) : setOpen(true))}
+              aria-expanded={open}
+              aria-controls="menu-sheet"
+              // The name stays "menu" in both states, and `aria-expanded` is what
+              // says which way it is, and a control that renames itself is a
+              // control screen-reader users have to find again.
+              aria-label="menu"
+              className="group relative inline-block pb-2 font-mono text-[0.9rem] lowercase text-ink transition-colors duration-[180ms] hover:text-accent md:hidden"
+            >
+              {/*
+                Both words in one grid cell, so the cell is always as wide as
+                "close" and the record beside it never shifts when the label
+                changes. Same trick, same reason, as the sign on the toggle.
+              */}
+              <span aria-hidden="true" className="grid">
+                <span
+                  className={`needle-label col-start-1 row-start-1 ${
+                    open ? "opacity-0" : "opacity-100"
+                  }`}
+                >
+                  menu
+                </span>
+                <span
+                  className={`needle-label col-start-1 row-start-1 ${
+                    open ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  close
+                </span>
+              </span>
+              <HandUnderline
+                seed={2}
+                className={`absolute inset-x-0 bottom-0 h-[6px] w-full transition-colors duration-[180ms] ${
+                  open ? "text-accent" : "text-ink/40 group-hover:text-accent"
+                }`}
+              />
+            </button>
+          </div>
+        </div>
       </header>
+
+      {/*
+        Outside the header on purpose: the header takes a transform when it
+        scrolls away, and a transformed ancestor would make the sheet's
+        `fixed` positioning relative to *it* rather than to the viewport.
+      */}
+      <MenuSheet open={open} active={active} onClose={close} />
     </>
   );
 }

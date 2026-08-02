@@ -4,9 +4,9 @@ import { useCallback, useEffect, useRef } from "react";
 import type { Project } from "@/data/site";
 
 /**
- * Liner notes. Story first, stack as a footnote at the bottom — the way a
- * record sleeve tells you what the session was like before it lists who
- * played bass.
+ * The panel behind a shelf object. Story first, stack as a footnote at the
+ * bottom, the way a record sleeve tells you what the session was like before
+ * it lists who played bass.
  *
  * Enhancement only: without JS the same content is already on the page as
  * plain sections (see TheShelf), and the shelf objects are ordinary anchors
@@ -77,7 +77,7 @@ export function CaseStudy({
     <div className="fixed inset-0 z-[200] flex items-end justify-center sm:items-center">
       <button
         type="button"
-        aria-label="close liner notes"
+        aria-label="close project"
         onClick={close}
         className="absolute inset-0 cursor-default bg-ink/35"
       />
@@ -91,10 +91,8 @@ export function CaseStudy({
         className="panel-in relative max-h-[88vh] w-full max-w-[640px] overflow-y-auto bg-paper-warm shadow-paper-ink outline-none sm:max-h-[82vh]"
         style={{ border: "1px solid rgba(43, 33, 26, 0.6)" }}
       >
-        <div className="sticky top-0 flex items-start justify-between gap-4 bg-paper-warm px-6 pb-3 pt-6 sm:px-9 sm:pt-8">
-          <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
-            liner notes
-          </p>
+        {/* nothing left in this bar but the way out, so it sits to the right */}
+        <div className="sticky top-0 flex items-start justify-end gap-4 bg-paper-warm px-6 pb-3 pt-6 sm:px-9 sm:pt-8">
           <button
             type="button"
             onClick={close}
@@ -116,46 +114,13 @@ export function CaseStudy({
             {project.caption}
           </p>
 
-          <div
-            aria-hidden="true"
-            className="my-6 h-px w-full bg-ink/20"
-          />
-
-          <div className="measure space-y-4 font-mono text-[0.95rem] leading-[1.75] text-ink">
-            {project.story.map((paragraph) => (
-              <p key={paragraph.slice(0, 24)}>{paragraph}</p>
-            ))}
-          </div>
-
-          {/* every record has a b-side */}
-          <div className="mt-8 border-l-2 border-accent pl-4">
-            <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
-              b-side
-            </p>
-            <p className="mt-1.5 measure font-mono text-caption text-ink-soft">
-              {project.bSide}
-            </p>
-          </div>
-
-          {/* the stack is a footnote, not a headline */}
-          <div className="mt-8">
-            <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
-              personnel
-            </p>
-            <ul className="mt-2.5 flex flex-wrap gap-2">
-              {project.stack.map((tech) => (
-                <li
-                  key={tech}
-                  className="border border-ink/60 px-2.5 py-1 font-mono text-[0.75rem] text-ink-soft"
-                >
-                  {tech}
-                </li>
-              ))}
-            </ul>
-          </div>
-
+          {/*
+            The way out to the actual thing, above the fold of the panel. The
+            story is worth reading, but nobody should have to scroll a wall of
+            it to find out the project is live and clickable.
+          */}
           {project.links.length > 0 && (
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3">
+            <div className="mt-5 flex flex-wrap gap-x-6 gap-y-3">
               {project.links.map((link) => (
                 <a
                   key={link.href}
@@ -167,6 +132,36 @@ export function CaseStudy({
                   {link.label} ↗
                 </a>
               ))}
+            </div>
+          )}
+
+          <div
+            aria-hidden="true"
+            className="my-6 h-px w-full bg-ink/20"
+          />
+
+          <div className="measure space-y-4 font-mono text-[0.95rem] leading-[1.75] text-ink">
+            {project.story.map((paragraph) => (
+              <p key={paragraph.slice(0, 24)}>{paragraph}</p>
+            ))}
+          </div>
+
+          {/* the stack is a footnote, not a headline, and never an empty one */}
+          {project.stack.length > 0 && (
+            <div className="mt-8">
+              <p className="font-mono text-[0.7rem] uppercase tracking-[0.16em] text-ink-soft">
+                personnel
+              </p>
+              <ul className="mt-2.5 flex flex-wrap gap-2">
+                {project.stack.map((tech) => (
+                  <li
+                    key={tech}
+                    className="border border-ink/60 px-2.5 py-1 font-mono text-[0.75rem] text-ink-soft"
+                  >
+                    {tech}
+                  </li>
+                ))}
+              </ul>
             </div>
           )}
         </div>
