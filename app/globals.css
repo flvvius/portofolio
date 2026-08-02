@@ -48,9 +48,11 @@
   body {
     background-color: var(--paper);
     color: var(--ink);
-    font-family: var(--font-courier), ui-monospace, monospace;
-    font-size: 1rem;
-    line-height: 1.7;
+    font-family: var(--font-schoolbell), "Comic Sans MS", cursive;
+    /* Schoolbell has a short x-height, so 1rem of it reads a size smaller than
+       1rem of the monospace it replaced. The bump puts it back. */
+    font-size: 1.0625rem;
+    line-height: 1.65;
     /* The grain overlay is fixed, so nothing here may create a scroll trap. */
     overflow-x: clip;
   }
@@ -117,21 +119,23 @@
 
   /* ---- typography ------------------------------------------------------ */
 
+  /*
+   * The wobble used to come from Fraunces' WONK axis. Schoolbell is static and
+   * already wobbles by hand, so there is nothing left to set: no variation
+   * settings, no synthetic bold, and no negative tracking — handwriting is
+   * drawn touching already, and pulling it tighter only makes it collide.
+   * Size alone carries the hierarchy now.
+   */
   .font-display-hero {
-    font-family: var(--font-fraunces), Georgia, serif;
-    font-variation-settings: "SOFT" 80, "WONK" 1, "opsz" 144;
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
+    font-family: var(--font-schoolbell), "Comic Sans MS", cursive;
+    font-weight: 400;
+    line-height: 1.1;
   }
 
-  /* Section titles drop the WONK so the hero keeps its wobble to itself. */
   .font-display-section {
-    font-family: var(--font-fraunces), Georgia, serif;
-    font-variation-settings: "SOFT" 80, "WONK" 0, "opsz" 96;
-    font-weight: 600;
-    line-height: 1.05;
-    letter-spacing: -0.015em;
+    font-family: var(--font-schoolbell), "Comic Sans MS", cursive;
+    font-weight: 400;
+    line-height: 1.1;
   }
 
   .measure {
@@ -325,9 +329,9 @@
   /*
    * The sign crossfades between "listening bar" and "drop the needle" on
    * hover. Both labels sit in the same grid cell, so the header never reflows;
-   * the blur is there because two sets of monospace text dissolving through
-   * each other reads as two labels overlapping, and blurred it reads as one
-   * label changing its mind.
+   * the blur is there because two sets of text dissolving through each other
+   * read as two labels overlapping, and blurred they read as one label
+   * changing its mind.
    */
   .needle-label {
     transition: opacity 180ms ease-out, filter 180ms ease-out;

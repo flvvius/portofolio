@@ -35,10 +35,13 @@ const config = {
       full: "9999px",
     },
     extend: {
+      // All three names survive because the markup reads better with them —
+      // `font-hand` on a margin note still says what it means. They just all
+      // resolve to the same hand now.
       fontFamily: {
-        display: ["var(--font-fraunces)", "Georgia", "serif"],
-        mono: ["var(--font-courier)", "ui-monospace", "monospace"],
-        hand: ["var(--font-caveat)", "cursive"],
+        display: ["var(--font-schoolbell)", "Comic Sans MS", "cursive"],
+        mono: ["var(--font-schoolbell)", "Comic Sans MS", "cursive"],
+        hand: ["var(--font-schoolbell)", "Comic Sans MS", "cursive"],
       },
       fontSize: {
         hero: ["clamp(3rem, 8vw, 7rem)", { lineHeight: "1.05" }],

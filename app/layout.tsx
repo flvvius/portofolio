@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Courier_Prime, Caveat } from "next/font/google";
+import { Schoolbell } from "next/font/google";
 
 import "./globals.css";
 import JsonLd from "@/components/JsonLd";
@@ -8,36 +8,20 @@ import { ConsoleNote } from "@/components/ConsoleNote";
 import { RoomTone } from "@/components/RoomTone";
 
 /**
- * Three fonts, each with exactly one job.
+ * One font, every job. Schoolbell writes the hero, the body copy and the
+ * margin scribbles alike, so the whole page reads as one hand rather than
+ * three voices taking turns.
  *
- * Fraunces carries the display voice, and the SOFT and WONK axes are what let the
- * hero wobble while section titles stay composed (see globals.css).
- * Courier Prime is everything you actually read. Caveat only ever writes two
- * or three words at a time, in the margins.
+ * It ships a single 400 weight and no italic. Bold and italic are therefore
+ * synthesised by the browser, which on a handwriting face reads as pressing
+ * harder and leaning in — which is what those two are for anyway.
  */
-const fraunces = Fraunces({
+const schoolbell = Schoolbell({
   subsets: ["latin"],
-  axes: ["SOFT", "WONK", "opsz"],
+  weight: "400",
   display: "swap",
-  variable: "--font-fraunces",
+  variable: "--font-schoolbell",
   preload: true,
-});
-
-const courier = Courier_Prime({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  display: "swap",
-  variable: "--font-courier",
-  preload: true,
-});
-
-const caveat = Caveat({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-caveat",
-  // Margin scribbles are decorative and below the fold, so don't spend LCP on them.
-  preload: false,
 });
 
 const baseUrl = "https://flavius.pro";
@@ -133,7 +117,7 @@ export default function RootLayout({
     <html
       lang="en"
       dir="ltr"
-      className={`${fraunces.variable} ${courier.variable} ${caveat.variable}`}
+      className={schoolbell.variable}
       suppressHydrationWarning
     >
       <head>

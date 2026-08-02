@@ -141,8 +141,7 @@ export function Arrow({
 }
 
 /**
- * An arrow with a handwritten word next to it. This is the only place Caveat
- * is allowed to appear, and never for more than a few words.
+ * An arrow with a handwritten word next to it. Never more than a few words.
  */
 export function ScribbleNote({
   children,
@@ -177,8 +176,8 @@ export function ScribbleNote({
 }) {
   const label =
     tone === "ink" ? (
-      // Annotations are typeset, not handwritten. Caveat stays reserved for
-      // the few marks that are genuinely asides.
+      // Ink annotations are the quiet ones: smaller, softer, no accent. Same
+      // hand as everything else, just said under the breath.
       <span className="font-mono text-[0.78rem] leading-snug text-ink-soft">
         {children}
       </span>
