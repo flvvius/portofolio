@@ -52,8 +52,8 @@
     /* Schoolbell has a short x-height, so it reads a good size smaller than the
        monospace it replaced at the same nominal size. 19px is what it takes for
        the body copy to sit where 16px monospace used to. */
-    font-size: 1.3125rem;
-    line-height: 1.6;
+    font-size: 1.5625rem;
+    line-height: 1.55;
     /* The grain overlay is fixed, so nothing here may create a scroll trap. */
     overflow-x: clip;
   }

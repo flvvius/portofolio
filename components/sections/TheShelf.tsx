@@ -153,7 +153,7 @@ function ShelfRow({
                 device per object, as ever.
               */}
               <span
-                className="relative z-10 -mt-1.5 max-w-[92%] bg-ink px-3 py-1.5 text-center font-mono text-[1.15rem] leading-tight text-paper"
+                className="relative z-10 -mt-1.5 max-w-[92%] bg-ink px-3 py-1.5 text-center font-mono text-[1.38rem] leading-tight text-paper"
                 style={{ transform: `rotate(${project.tilt * -0.6}deg)` }}
               >
                 {project.label}
@@ -203,7 +203,7 @@ function ShelfList({
                 <ShelfObject kind={project.object} />
               </span>
               <span className="min-w-0">
-                <span className="block font-mono text-[1.05rem] leading-snug text-ink transition-colors duration-[180ms] group-hover:text-accent">
+                <span className="block font-mono text-[1.26rem] leading-snug text-ink transition-colors duration-[180ms] group-hover:text-accent">
                   {project.label}
                 </span>
                 <span className="mt-1.5 block font-mono text-caption leading-snug text-ink-soft">
@@ -277,7 +277,7 @@ export function TheShelf() {
         <Rise className="pointer-events-none absolute right-0 top-0 z-10 hidden flex-col items-end xl:flex">
           <span
             aria-hidden="true"
-            className="mr-4 max-w-[7rem] font-hand text-2xl leading-none text-accent sm:text-3xl"
+            className="mr-4 max-w-[7rem] font-hand text-3xl leading-none text-accent sm:text-4xl"
           >
             {shelf.breakScribble}
           </span>
@@ -338,7 +338,7 @@ export function TheShelf() {
                 <p className="mt-2 font-mono text-caption italic text-ink-soft">
                   {project.caption}
                 </p>
-                <div className="measure mt-4 space-y-3 font-mono text-[1.05rem] text-ink">
+                <div className="measure mt-4 space-y-3 font-mono text-[1.26rem] text-ink">
                   {project.story.map((paragraph) => (
                     <p key={paragraph.slice(0, 24)}>{paragraph}</p>
                   ))}

@@ -26,10 +26,10 @@ import { IndexCard } from "@/components/art/Paper";
 function ColumnHead({ label, aside }: { label: string; aside: string }) {
   return (
     <div className="flex items-baseline justify-between gap-4 border-b border-ink/20 pb-2">
-      <h3 className="font-mono text-[0.8rem] uppercase tracking-[0.18em] text-ink">
+      <h3 className="font-mono text-[0.96rem] uppercase tracking-[0.18em] text-ink">
         {label}
       </h3>
-      <p className="font-mono text-[0.8rem] text-ink-soft">{aside}</p>
+      <p className="font-mono text-[0.96rem] text-ink-soft">{aside}</p>
     </div>
   );
 }
@@ -51,10 +51,10 @@ function TheTab() {
             }
           >
             <div className="flex items-baseline justify-between gap-4">
-              <h4 className="font-mono text-[1.15rem] leading-snug text-ink">
+              <h4 className="font-mono text-[1.38rem] leading-snug text-ink">
                 {item.line}
               </h4>
-              <span className="shrink-0 font-mono text-[0.8rem] uppercase tracking-[0.12em] text-ink-soft">
+              <span className="shrink-0 font-mono text-[0.96rem] uppercase tracking-[0.12em] text-ink-soft">
                 {item.date}
               </span>
             </div>
@@ -65,7 +65,7 @@ function TheTab() {
               {item.duration}
             </p>
 
-            <p className="measure mt-3 font-mono text-[1.05rem] leading-[1.75] text-ink-soft">
+            <p className="measure mt-3 font-mono text-[1.26rem] leading-[1.75] text-ink-soft">
               {item.story}
             </p>
           </li>
@@ -79,7 +79,7 @@ function TheTab() {
             key={row.label}
             className="flex items-baseline justify-between gap-4"
           >
-            <dt className="shrink-0 font-mono text-[0.8rem] uppercase tracking-[0.12em] text-ink-soft">
+            <dt className="shrink-0 font-mono text-[0.96rem] uppercase tracking-[0.12em] text-ink-soft">
               {row.label}
             </dt>
             <dd className="text-right font-mono text-caption text-ink">
@@ -98,7 +98,7 @@ function TheTab() {
 
       {/* school, kept where a footnote belongs */}
       <div className="mt-8">
-        <p className="font-mono text-[0.8rem] uppercase tracking-[0.12em] text-ink-soft">
+        <p className="font-mono text-[0.96rem] uppercase tracking-[0.12em] text-ink-soft">
           {tab.education.title}
         </p>
         <ul className="mt-2 space-y-1">
@@ -130,7 +130,7 @@ function TheNotes() {
           <li key={post.id}>
             <IndexCard tilt={index % 2 === 0 ? -1.5 : 1.5}>
               <Link href={`/blog/${post.id}`} className="group block no-underline">
-                <p className="font-mono text-[0.78rem] uppercase tracking-[0.12em] text-ink-soft">
+                <p className="font-mono text-[0.94rem] uppercase tracking-[0.12em] text-ink-soft">
                   {new Date(post.date).toLocaleDateString("en-GB", {
                     day: "2-digit",
                     month: "short",
@@ -139,7 +139,7 @@ function TheNotes() {
                   {" · "}
                   {post.readTime}
                 </p>
-                <p className="mt-1.5 font-mono text-[1.05rem] leading-snug text-ink transition-colors duration-[180ms] group-hover:text-accent">
+                <p className="mt-1.5 font-mono text-[1.26rem] leading-snug text-ink transition-colors duration-[180ms] group-hover:text-accent">
                   {post.title}
                 </p>
                 <p className="mt-2 font-mono text-caption leading-snug text-ink-soft">

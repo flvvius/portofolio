@@ -97,7 +97,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               <h1 className="font-display-section text-[clamp(2rem,5vw,3.4rem)] text-ink">
                 {post.title}
               </h1>
-              <p className="mt-5 font-mono text-[0.8rem] uppercase tracking-[0.14em] text-ink-soft">
+              <p className="mt-5 font-mono text-[0.96rem] uppercase tracking-[0.14em] text-ink-soft">
                 <time dateTime={post.date}>{formattedDate}</time>
                 {" · "}
                 {post.readTime}
@@ -107,7 +107,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
             <div aria-hidden="true" className="my-10 h-px w-full bg-ink/20" />
 
-            <div className="measure space-y-6 font-mono text-[1.1rem] leading-[1.8] text-ink">
+            <div className="measure space-y-6 font-mono text-[1.32rem] leading-[1.8] text-ink">
               {paragraphs.map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}

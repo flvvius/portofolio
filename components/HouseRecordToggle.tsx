@@ -222,7 +222,7 @@ export function HouseRecordToggle({ className }: { className?: string }) {
       */}
       <span
         aria-hidden="true"
-        className="hidden whitespace-nowrap font-mono text-[0.88rem] lowercase lg:grid"
+        className="hidden whitespace-nowrap font-mono text-[1.06rem] lowercase lg:grid"
       >
         <span className="needle-label col-start-1 row-start-1 blur-0 group-hover:opacity-0 group-hover:blur-[2px] group-focus-visible:opacity-0 group-focus-visible:blur-[2px]">
           listening bar

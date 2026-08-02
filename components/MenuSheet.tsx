@@ -108,7 +108,7 @@ export function MenuSheet({
         aria-label="menu"
         className="mx-auto flex w-full max-w-[1180px] flex-1 flex-col px-5 pb-12 pt-24 sm:px-8"
       >
-        <p className="font-hand text-[1.45rem] leading-none text-ink-soft">
+        <p className="font-hand text-[1.75rem] leading-none text-ink-soft">
           what&apos;s where
         </p>
 
@@ -130,7 +130,7 @@ export function MenuSheet({
                       labels up with each other rather than with the edge */}
                   <span
                     aria-hidden="true"
-                    className="shrink-0 font-mono text-[0.83rem] text-ink-soft"
+                    className="shrink-0 font-mono text-[1rem] text-ink-soft"
                   >
                     0{index + 1}
                   </span>
@@ -160,7 +160,7 @@ export function MenuSheet({
 
         {/* Pushed to the bottom of the sheet, the small print on a menu. */}
         <div className="mt-auto pt-12">
-          <p className="font-mono text-[0.83rem] lowercase text-ink-soft">
+          <p className="font-mono text-[1rem] lowercase text-ink-soft">
             or find me at
           </p>
           <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2">

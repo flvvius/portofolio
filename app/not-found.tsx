@@ -26,7 +26,7 @@ export default function NotFound() {
       </p>
 
       <p className="mt-9">
-        <Link href="/" className="ink-link font-mono text-[1.05rem]">
+        <Link href="/" className="ink-link font-mono text-[1.26rem]">
           ← back to the bar
         </Link>
       </p>

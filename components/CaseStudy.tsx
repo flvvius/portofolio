@@ -127,7 +127,7 @@ export function CaseStudy({
                   href={link.href}
                   target="_blank"
                   rel="noreferrer noopener"
-                  className="ink-link font-mono text-[1.05rem]"
+                  className="ink-link font-mono text-[1.26rem]"
                 >
                   {link.label} ↗
                 </a>
@@ -140,7 +140,7 @@ export function CaseStudy({
             className="my-6 h-px w-full bg-ink/20"
           />
 
-          <div className="measure space-y-4 font-mono text-[1.05rem] leading-[1.75] text-ink">
+          <div className="measure space-y-4 font-mono text-[1.26rem] leading-[1.75] text-ink">
             {project.story.map((paragraph) => (
               <p key={paragraph.slice(0, 24)}>{paragraph}</p>
             ))}
@@ -149,14 +149,14 @@ export function CaseStudy({
           {/* the stack is a footnote, not a headline, and never an empty one */}
           {project.stack.length > 0 && (
             <div className="mt-8">
-              <p className="font-mono text-[0.78rem] uppercase tracking-[0.16em] text-ink-soft">
+              <p className="font-mono text-[0.94rem] uppercase tracking-[0.16em] text-ink-soft">
                 personnel
               </p>
               <ul className="mt-2.5 flex flex-wrap gap-2">
                 {project.stack.map((tech) => (
                   <li
                     key={tech}
-                    className="border border-ink/60 px-2.5 py-1 font-mono text-[0.83rem] text-ink-soft"
+                    className="border border-ink/60 px-2.5 py-1 font-mono text-[1rem] text-ink-soft"
                   >
                     {tech}
                   </li>
