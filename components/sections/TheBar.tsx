@@ -51,7 +51,7 @@ export function TheBar() {
               <div className="flex flex-wrap items-center gap-x-7 gap-y-4">
                 <a
                   href="#the-shelf"
-                  className="group inline-flex items-center gap-2 border border-ink px-5 py-3 font-mono text-[0.95rem] text-ink no-underline transition-colors duration-[180ms] hover:border-accent hover:text-accent"
+                  className="group inline-flex items-center gap-2 border border-ink px-5 py-3 font-mono text-[1.05rem] text-ink no-underline transition-colors duration-[180ms] hover:border-accent hover:text-accent"
                 >
                   {bar.ctaPrimary}
                   <span
@@ -63,7 +63,7 @@ export function TheBar() {
                 </a>
                 <a
                   href="#the-door"
-                  className="ink-link font-mono text-[0.95rem]"
+                  className="ink-link font-mono text-[1.05rem]"
                 >
                   {bar.ctaSecondary}
                 </a>
@@ -130,7 +130,7 @@ function TheCounter() {
         <div className="grid items-center gap-x-8 gap-y-12 sm:grid-cols-2">
           <Rise>
             <TapedNote tilt={-1.5} className="mt-2">
-              <span className="mb-1.5 block border-b border-ink/25 pb-1 font-mono text-[0.8rem] text-ink">
+              <span className="mb-1.5 block border-b border-ink/25 pb-1 font-mono text-[0.88rem] text-ink">
                 {counter.special.title}
               </span>
               {counter.special.line}

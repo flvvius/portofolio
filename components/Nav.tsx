@@ -167,7 +167,7 @@ export function Nav() {
             <CuckooClock className="h-9 w-auto text-ink sm:h-11" />
             <span
               aria-hidden="true"
-              className="hidden font-hand text-[1.05rem] leading-[0.9] text-ink-soft sm:block"
+              className="hidden font-hand text-[1.15rem] leading-[0.9] text-ink-soft sm:block"
             >
               flavius
               <br />
@@ -196,7 +196,7 @@ export function Nav() {
                       href={home ? item.href : `/${item.href}`}
                       aria-current={isActive ? "true" : undefined}
                       className={[
-                        "group relative inline-block pb-2 font-mono text-[0.9rem] no-underline lg:text-[1rem]",
+                        "group relative inline-block pb-2 font-mono text-[1rem] no-underline lg:text-[1.1rem]",
                         "transition-colors duration-[180ms]",
                         isActive ? "text-accent" : "text-ink hover:text-accent",
                       ].join(" ")}
@@ -238,7 +238,7 @@ export function Nav() {
               // says which way it is, and a control that renames itself is a
               // control screen-reader users have to find again.
               aria-label="menu"
-              className="group relative inline-block pb-2 font-mono text-[0.9rem] lowercase text-ink transition-colors duration-[180ms] hover:text-accent md:hidden"
+              className="group relative inline-block pb-2 font-mono text-[1rem] lowercase text-ink transition-colors duration-[180ms] hover:text-accent md:hidden"
             >
               {/*
                 Both words in one grid cell, so the cell is always as wide as

@@ -68,7 +68,7 @@ export default function BlogIndex() {
                   <Rise delay={index * 60}>
                     <IndexCard tilt={index % 2 === 0 ? -1.2 : 1.2}>
                       <Link href={`/blog/${post.id}`} className="group block no-underline">
-                        <p className="font-mono text-[0.7rem] uppercase tracking-[0.12em] text-ink-soft">
+                        <p className="font-mono text-[0.78rem] uppercase tracking-[0.12em] text-ink-soft">
                           <time dateTime={post.date}>
                             {new Date(post.date).toLocaleDateString("en-GB", {
                               day: "2-digit",
@@ -102,7 +102,7 @@ export default function BlogIndex() {
           )}
 
           <p className="mt-20">
-            <Link href="/" className="ink-link font-mono text-[0.95rem]">
+            <Link href="/" className="ink-link font-mono text-[1.05rem]">
               ← back to the bar
             </Link>
           </p>

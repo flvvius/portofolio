@@ -179,11 +179,11 @@ export function ScribbleNote({
       // Ink annotations are the quiet ones: softer, no accent. Quiet is a tone,
       // though, not a size — on the shelf this is the only description a project
       // gets above `sm`, so it has to be comfortably readable.
-      <span className="font-mono text-[0.95rem] leading-snug text-ink-soft">
+      <span className="font-mono text-[1.05rem] leading-snug text-ink-soft">
         {children}
       </span>
     ) : (
-      <span className="font-hand text-xl leading-none text-accent sm:text-2xl">
+      <span className="font-hand text-2xl leading-none text-accent sm:text-3xl">
         {children}
       </span>
     );

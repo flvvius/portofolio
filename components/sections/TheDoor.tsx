@@ -48,7 +48,7 @@ export function TheDoor() {
           {/* ---- about ---- */}
           <div className="col-span-12 lg:col-span-6">
             <Rise delay={60}>
-              <div className="measure space-y-5 font-mono text-[0.95rem] leading-[1.8] text-ink">
+              <div className="measure space-y-5 font-mono text-[1.05rem] leading-[1.8] text-ink">
                 <p>
                   {beforeMark}
                   {afterMark !== "" && (
@@ -123,7 +123,7 @@ export function TheDoor() {
                       style={{ ["--rest-tilt" as string]: `${social.tilt}deg` }}
                     >
                       <Coaster glyph={GLYPHS[social.label]} className="w-full" />
-                      <span className="absolute inset-x-0 bottom-[26%] text-center font-mono text-[0.8rem] lowercase">
+                      <span className="absolute inset-x-0 bottom-[26%] text-center font-mono text-[0.88rem] lowercase">
                         {social.label}
                       </span>
                     </a>
@@ -138,7 +138,7 @@ export function TheDoor() {
                     {social.nudge && (
                       <span
                         aria-hidden="true"
-                        className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-[calc(100%+16px)] font-hand text-xl leading-none text-accent sm:inline-block sm:text-2xl"
+                        className="pointer-events-none absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-[calc(100%+16px)] font-hand text-2xl leading-none text-accent sm:inline-block sm:text-3xl"
                       >
                         {social.nudge}
                       </span>

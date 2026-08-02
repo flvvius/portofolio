@@ -48,7 +48,7 @@ const config = {
         section: ["clamp(2.5rem, 6vw, 5rem)", { lineHeight: "1.05" }],
         // Not just labels: this carries real prose too (shelf copy, blog
         // excerpts, the back room), so it has to stay readable, not merely legible.
-        caption: ["0.95rem", { lineHeight: "1.65" }],
+        caption: ["1.05rem", { lineHeight: "1.65" }],
       },
       maxWidth: {
         measure: "62ch",

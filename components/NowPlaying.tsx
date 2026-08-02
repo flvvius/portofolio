@@ -84,13 +84,13 @@ export function NowPlaying() {
     <div className="inline-flex max-w-full items-start gap-3">
       <MiniRecord className="mt-1 h-7 w-7 shrink-0 text-ink" />
       <div className="min-w-0">
-        <span className="inline-block bg-ink px-2 py-0.5 font-mono text-[0.7rem] uppercase tracking-[0.14em] text-paper">
+        <span className="inline-block bg-ink px-2 py-0.5 font-mono text-[0.78rem] uppercase tracking-[0.14em] text-paper">
           {houseRecordOn || (live && track.nowPlaying)
             ? "now playing"
             : "on the platter"}
         </span>
         <p
-          className="mt-1.5 truncate font-mono text-[0.95rem] leading-snug text-accent"
+          className="mt-1.5 truncate font-mono text-[1.05rem] leading-snug text-accent"
           aria-live="polite"
         >
           {shown.track}

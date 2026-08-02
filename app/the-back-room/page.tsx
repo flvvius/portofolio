@@ -53,11 +53,11 @@ function Shelf({ shelf, delay }: { shelf: BackRoomShelf; delay: number }) {
         <div className="flex items-baseline justify-between gap-4 border-b border-ink/20 pb-2">
           <h2
             id={`shelf-${shelf.slug}`}
-            className="font-mono text-[0.72rem] uppercase tracking-[0.18em] text-ink"
+            className="font-mono text-[0.8rem] uppercase tracking-[0.18em] text-ink"
           >
             {shelf.label}
           </h2>
-          <p className="font-mono text-[0.72rem] text-ink-soft">{shelf.aside}</p>
+          <p className="font-mono text-[0.8rem] text-ink-soft">{shelf.aside}</p>
         </div>
 
         <ul className="mt-6">
@@ -67,7 +67,7 @@ function Shelf({ shelf, delay }: { shelf: BackRoomShelf; delay: number }) {
               className={index === 0 ? "" : "mt-6 border-t border-ink/15 pt-6"}
             >
               <div className="flex items-baseline justify-between gap-4">
-                <h3 className="font-mono text-[1.05rem] leading-snug text-ink">
+                <h3 className="font-mono text-[1.15rem] leading-snug text-ink">
                   {entry.href ? (
                     <a
                       href={entry.href}
@@ -82,7 +82,7 @@ function Shelf({ shelf, delay }: { shelf: BackRoomShelf; delay: number }) {
                   )}
                 </h3>
                 {entry.by && (
-                  <span className="shrink-0 text-right font-mono text-[0.72rem] uppercase tracking-[0.12em] text-ink-soft">
+                  <span className="shrink-0 text-right font-mono text-[0.8rem] uppercase tracking-[0.12em] text-ink-soft">
                     {entry.by}
                   </span>
                 )}
@@ -165,7 +165,7 @@ export default function BackRoom() {
           </Rise>
 
           <p className="mt-16">
-            <Link href="/" className="ink-link font-mono text-[0.95rem]">
+            <Link href="/" className="ink-link font-mono text-[1.05rem]">
               {backRoom.back}
             </Link>
           </p>
