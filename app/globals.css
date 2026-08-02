@@ -49,10 +49,11 @@
     background-color: var(--paper);
     color: var(--ink);
     font-family: var(--font-schoolbell), "Comic Sans MS", cursive;
-    /* Schoolbell has a short x-height, so 1rem of it reads a size smaller than
-       1rem of the monospace it replaced. The bump puts it back. */
-    font-size: 1.0625rem;
-    line-height: 1.65;
+    /* Schoolbell has a short x-height, so it reads a good size smaller than the
+       monospace it replaced at the same nominal size. 19px is what it takes for
+       the body copy to sit where 16px monospace used to. */
+    font-size: 1.1875rem;
+    line-height: 1.6;
     /* The grain overlay is fixed, so nothing here may create a scroll trap. */
     overflow-x: clip;
   }

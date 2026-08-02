@@ -46,7 +46,9 @@ const config = {
       fontSize: {
         hero: ["clamp(3rem, 8vw, 7rem)", { lineHeight: "1.05" }],
         section: ["clamp(2.5rem, 6vw, 5rem)", { lineHeight: "1.05" }],
-        caption: ["0.85rem", { lineHeight: "1.6" }],
+        // Not just labels: this carries real prose too (shelf copy, blog
+        // excerpts, the back room), so it has to stay readable, not merely legible.
+        caption: ["0.95rem", { lineHeight: "1.65" }],
       },
       maxWidth: {
         measure: "62ch",
