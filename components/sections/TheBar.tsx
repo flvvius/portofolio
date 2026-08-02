@@ -14,8 +14,8 @@ import { NowPlaying } from "@/components/NowPlaying";
  * amount of illustration will save it.
  *
  * Exactly two orange marks are visible in the headline block: the underline
- * under "sits well", and the margin scribble's arrow. That is the ceiling, not
- * a coincidence. The counter strip below gets its own small allowance.
+ * under "matters", and the margin scribble's arrow. That is the ceiling, not a
+ * coincidence. The counter strip below gets its own small allowance.
  */
 export function TheBar() {
   return (

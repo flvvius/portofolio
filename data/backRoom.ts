@@ -5,9 +5,9 @@
  * sixth shelf (records, games, recipes) is just another object in the array,
  * no component changes.
  *
- * Voice, same as everywhere else: `note` is one line about why it stuck, not a
- * review and not a synopsis. Lowercase. If a note needs a semicolon it's too
- * long. Nothing here gets spoiled for anyone who hasn't read or seen it.
+ * Voice, same as everywhere else: `note` is one short line about why it stuck,
+ * never a review and never a synopsis. If it needs a comma it's probably long
+ * enough. Nothing here gets spoiled for anyone who hasn't read or seen it.
  */
 
 export type BackRoomEntry = {
@@ -35,14 +35,11 @@ export type BackRoomShelf = {
 
 export const backRoom = {
   title: "the back room",
-  intro: [
-    "the room off the main floor: the things i didn't make",
-    "but keep coming back to.",
-  ],
+  intro: ["things i didn't make but keep coming back to."],
   /** The one handwritten mark on the page. Two words, like everywhere else. */
   scribble: "borrowed taste",
   /** Sits under the last shelf, on paper. */
-  note: "this list is wrong by the time you read it. that's rather the point.",
+  note: "wrong by the time you read it. that's the point.",
   back: "← back to the bar",
 };
 
@@ -55,17 +52,17 @@ export const backRoomShelves: BackRoomShelf[] = [
       {
         title: "1984",
         by: "george orwell",
-        note: "the part that stays with me isn't the telescreen, it's newspeak. shrink the language and you shrink what anyone can think with it.",
+        note: "the telescreen isn't the frightening part. newspeak is.",
       },
       {
         title: "mindset",
         by: "carol dweck",
-        note: "one idea, and it happens to be the right one: what you believe about ability decides what you do with it.",
+        note: "one idea, and it happens to be the right one.",
       },
       {
         title: "four thousand weeks",
         by: "oliver burkeman",
-        note: "that's roughly the whole life, in weeks. the book isn't about fitting more in, it's about admitting you won't get to everything.",
+        note: "that's the whole life. you won't get to everything.",
       },
     ],
   },
@@ -77,17 +74,17 @@ export const backRoomShelves: BackRoomShelf[] = [
       {
         title: "the shawshank redemption",
         by: "darabont, 1994",
-        note: "patience as a plot device. twenty years of it, and it never once hurries you through them.",
+        note: "patience as a plot device, twenty years of it.",
       },
       {
         title: "the mist",
         by: "darabont, 2007",
-        note: "the ending, and that's all i'm saying about it. darabont twice on a list of three, which i only noticed writing this down.",
+        note: "the ending. that's all i'm saying.",
       },
       {
         title: "the truman show",
         by: "weir, 1998",
-        note: "a comedy about being watched that has got less funny every year since.",
+        note: "less funny every year since.",
       },
     ],
   },
@@ -99,12 +96,12 @@ export const backRoomShelves: BackRoomShelf[] = [
       {
         title: "frida kahlo",
         by: "painter",
-        note: "painted the thing itself rather than a polite version of it, and never asked anyone to feel sorry about it.",
+        note: "painted the thing itself, not a polite version of it.",
       },
       {
         title: "haken",
         by: "prog, uk",
-        note: "filed under art rather than under records on purpose. those albums are composed, not assembled.",
+        note: "filed under art on purpose. composed, not assembled.",
       },
     ],
   },
@@ -116,17 +113,17 @@ export const backRoomShelves: BackRoomShelf[] = [
       {
         title: "vârful piule",
         by: "retezat, romania",
-        note: "the kind of ridge where everyone stops talking on the way up.",
+        note: "everyone stops talking on the way up.",
       },
       {
         title: "cafeneaua nației",
         by: "bucharest",
-        note: "some rooms just let you think. this is one of them, and i've never worked out why.",
+        note: "some rooms just let you think.",
       },
       {
         title: "assisi",
         by: "umbria, italy",
-        note: "stone and hills, running on a slower clock than you arrived with.",
+        note: "stone, hills, a slower clock than you arrived with.",
       },
     ],
   },
@@ -139,15 +136,15 @@ export const backRoomShelves: BackRoomShelf[] = [
     entries: [
       {
         title: "raw nature",
-        note: "no path, no signage, nothing built. the thing as it already was.",
+        note: "no path, no signage. the thing as it already was.",
       },
       {
         title: "a sunny morning",
-        note: "the light that's only there before anyone else is up.",
+        note: "light that's only there before anyone else is up.",
       },
       {
         title: "a rainy afternoon in the mountains",
-        note: "inside, warm, with the weather happening to somebody else.",
+        note: "inside, warm, weather happening to somebody else.",
       },
     ],
   },

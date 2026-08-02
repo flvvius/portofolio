@@ -20,11 +20,7 @@ export function ConsoleNote() {
       "color:#D96B2B;font-family:ui-monospace,monospace;font-size:12px;line-height:1.3"
     );
     console.log(
-      "%cyou found the back room.",
-      "color:#2B211A;font-family:ui-monospace,monospace;font-size:13px;font-weight:700"
-    );
-    console.log(
-      `%chiring, or just want to argue about prog rock? ${site.email}`,
+      `%chiring, or want to argue about prog rock? ${site.email}`,
       "color:#5C4F43;font-family:ui-monospace,monospace;font-size:12px"
     );
   }, []);

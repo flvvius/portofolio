@@ -43,7 +43,7 @@ const caveat = Caveat({
 const baseUrl = "https://flavius.pro";
 
 const description =
-  "flavius cojocaru, full-stack engineer in bucharest. a shelf of things i've built, the stories behind them, and whatever's currently on rotation.";
+  "flavius cojocaru, full-stack engineer in bucharest. a shelf of things i've built and the stories behind them.";
 
 export const viewport: Viewport = {
   themeColor: "#F4EFE6",

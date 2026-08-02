@@ -10,7 +10,7 @@ import { IndexCard } from "@/components/art/Paper";
 const baseUrl = "https://flavius.pro";
 
 const description =
-  "notes rather than articles. thinking out loud about building software, with none of it tidied up first.";
+  "notes, not articles. thinking out loud about building software, untidied.";
 
 export const metadata: Metadata = {
   title: "the notes",
@@ -57,8 +57,7 @@ export default function BlogIndex() {
 
           <Rise delay={60} className="mt-5 block">
             <p className="measure font-mono text-ink-soft">
-              index cards, mostly. written for me, left out where anyone can
-              read them.
+              written for me, left out where anyone can read them.
             </p>
           </Rise>
 
@@ -98,7 +97,7 @@ export default function BlogIndex() {
             </ul>
           ) : (
             <p className="mt-16 font-mono text-caption text-ink-soft">
-              nothing written down yet. the pen is right there, though.
+              nothing written down yet.
             </p>
           )}
 

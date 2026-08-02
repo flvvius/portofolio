@@ -124,7 +124,6 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
 
           <p className="mt-10 text-center font-mono text-caption text-ink-soft">
-            thanks for reading.{" "}
             <Link href="/blog" className="ink-link">
               the rest of the notes →
             </Link>

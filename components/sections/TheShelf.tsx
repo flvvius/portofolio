@@ -5,7 +5,7 @@ import { projects, shelf, type Project } from "@/data/site";
 import { Container, Section, SectionHead } from "./Section";
 import { Rise } from "@/components/ink/Rise";
 import { ScribbleNote } from "@/components/ink/Arrow";
-import { StickyNote, TapedNote } from "@/components/art/Paper";
+import { StickyNote } from "@/components/art/Paper";
 import { HangingCuckoo, MokaPot } from "@/components/art/Props";
 import {
   Bracket,
@@ -303,17 +303,6 @@ export function TheShelf() {
               />
             ))}
             <ShelfList items={projects} onOpen={setOpen} />
-
-            {/* the note left on the counter on your way past */}
-            {/* <Rise delay={120} className="hidden justify-end sm:flex">
-              <TapedNote tilt={2.5} className="max-w-[13rem]">
-                {shelf.thanks.map((line) => (
-                  <span key={line} className="block">
-                    {line}
-                  </span>
-                ))}
-              </TapedNote>
-            </Rise> */}
           </div>
         </div>
       </Container>

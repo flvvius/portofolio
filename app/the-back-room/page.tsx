@@ -11,7 +11,7 @@ import { Bookshelf } from "@/components/art/Props";
 const baseUrl = "https://flavius.pro";
 
 const description =
-  "the room off the main floor: the books, films, art and places i didn't make but keep coming back to.";
+  "books, films, art and places i didn't make but keep coming back to.";
 
 export const metadata: Metadata = {
   title: "the back room",

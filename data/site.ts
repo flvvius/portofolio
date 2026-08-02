@@ -1,9 +1,8 @@
 /**
  * All the words on the site live here.
  *
- * Voice: warm, lowercase-friendly, lightly funny. Suggest, don't explain.
- * Captions are one evocative line, never a feature list. Stacks are footnotes
- * inside the story, never a headline.
+ * Voice: warm, lowercase, lightly funny. Suggest, don't explain. Two short
+ * paragraphs beat four good ones. If a line can go, it goes.
  */
 
 export const site = {
@@ -33,9 +32,8 @@ export const bar = {
   underline: "matters",
   headlineTail: "",
   intro: [
-    "full-stack, mostly typescript, occasionally too invested in the details.",
-    "based in bucharest.",
-    "currently: shipping things, breaking things, writing about both.",
+    "full-stack, mostly typescript, too invested in the details.",
+    "bucharest. shipping things, breaking things.",
   ],
   ctaPrimary: "pull up a chair",
   ctaSecondary: "or just say hi",
@@ -44,13 +42,12 @@ export const bar = {
 
 /**
  * The strip along the bottom of the hero: the things left lying on the
- * counter. Two things only — a note and an object — because the strip sits
- * directly under the headline and a row of four gave the eye nowhere to land.
+ * counter. A note and an object, nothing else.
  */
 export const counter = {
   special: {
     title: "today's special",
-    line: "a tiny interaction, polished. a paper on sleep, half read.",
+    line: "miez.news, still warm.",
   },
   /**
    * The label under the bookshelf drawing. The drawing is the link; this is
@@ -85,7 +82,7 @@ export type Project = {
   title: string;
   /** One evocative line. Not a feature list. */
   caption: string;
-  /** Why it exists, what actually happened. Story before stack. */
+  /** Why it exists, what actually happened. Two paragraphs, hard ceiling. */
   story: string[];
   stack: string[];
   links: { label: string; href: string }[];
@@ -101,10 +98,8 @@ export const projects: Project[] = [
     title: "miez.news, an ai news aggregator",
     caption: "reads the news all day so you don't have to scroll it",
     story: [
-      "the name is the whole thesis. miez is the core of a thing, what's left once you take the crust off.",
-      "the feed is the problem, not the news. so miez reads widely, condenses, and then stops: a finite thing you can actually get to the end of.",
-      "most of the work is the pipeline. pulling from a lot of sources on a schedule, transforming them all into one shape, and keeping the whole thing cheap enough to just run, continuously, without anyone watching it.",
-      "web and mobile come out of a single turborepo, which was the other thing i wanted to find out: how much of a product two platforms can genuinely share before the abstraction costs more than it saves. this is the biggest thing i've built, and the one still changing most weeks.",
+      "miez is the core of a thing, what's left once you take the crust off. that's the whole thesis: read widely, condense, then stop. a feed you can actually get to the end of.",
+      "most of it is pipeline, kept cheap enough to just run without anyone watching. web and mobile come out of one turborepo. biggest thing i've built, still changing most weeks.",
     ],
     stack: ["typescript", "tanstack start", "convex", "better auth", "vercel"],
     links: [{ label: "live", href: "https://miez.news" }],
@@ -117,9 +112,8 @@ export const projects: Project[] = [
     title: "commit.ink, a social platform for companies",
     caption: "twelve hours, one take, first place",
     story: [
-      "adobe's hackathon gave us twelve hours. that isn't enough time to design anything twice, so every decision had to be the one that shipped.",
-      "a social platform for companies: real-time feed, messages, notifications: three features that are each individually easy and collectively a state-management problem.",
-      "we leaned hard on agentic tooling to move at that pace, which turns the job into something closer to editing than typing. it won first place, which i'm choosing to read as evidence the approach holds up under a clock.",
+      "adobe's hackathon gave us twelve hours, which isn't enough time to design anything twice. every decision had to be the one that shipped.",
+      "feed, messages, notifications: three easy features and one state-management problem. we leaned hard on agentic tooling to hold that pace, and it won first place.",
     ],
     stack: ["typescript", "next.js", "convex", "clerk", "openai api"],
     links: [{ label: "live", href: "https://commit.ink/" }],
@@ -132,9 +126,8 @@ export const projects: Project[] = [
     title: "the sisc platform, built by twenty people",
     caption: "twenty people, one repo, nobody lost",
     story: [
-      "i led a twenty-person engineering team building the platform for sisc, and it taught me that the hard part of a big team is almost never the code.",
-      "twenty-odd concurrent contributors means the git history is the real architecture. i spent more time on delivery cycles, review flow and merge strategy than on any single feature in the thing.",
-      "what i'm actually proudest of isn't in the repo: people who had never shipped anything shipped something, and most of them stayed.",
+      "i led twenty engineers on this, and the hard part was never the code. at that size the git history is the real architecture, so that's where the evenings went.",
+      "what i'm proudest of isn't in the repo: people who had never shipped anything shipped something, and most of them stayed.",
     ],
     stack: ["react", "node.js", "git"],
     links: [{ label: "live", href: "https://hope.sisc.ro" }],
@@ -147,17 +140,10 @@ export const projects: Project[] = [
     title: "agrobot, a whatsapp bot for romanian farmers",
     caption: "a photo of a sick plant goes out, an answer comes back",
     story: [
-      "romanian farmers are not going to install your app. they already have whatsapp open all day, so that is where the tool had to live.",
-      "it answers the things that actually change a day's work: weather for the specific crop, live cereal prices, and a plant diagnosis from a photo you just took in the field.",
-      "it runs on cloudflare workers, which keeps it close to free, and that matters more than it sounds. a useful tool with running costs and no revenue quietly dies, and this one shouldn't.",
+      "romanian farmers are not going to install your app. whatsapp is already open all day, so that's where the tool had to live.",
+      "weather for the specific crop, live cereal prices, a plant diagnosis from a photo taken in the field. it runs on cloudflare workers, close to free, which is how a tool with no revenue survives.",
     ],
-    stack: [
-      "typescript",
-      "hono",
-      "drizzle",
-      "cloudflare workers",
-      "gemini api",
-    ],
+    stack: ["typescript", "hono", "drizzle", "cloudflare workers", "gemini api"],
     links: [{ label: "github", href: "https://github.com/flvvius/Agro-Bot" }],
     tilt: 2,
   },
@@ -168,9 +154,8 @@ export const projects: Project[] = [
     title: "pricele.online, a daily price-guessing game",
     caption: "an item, a country, one number to get right",
     story: [
-      "you're shown something ordinary and told where in the world it's being sold. you guess what it costs there. that's the entire game.",
-      "wordle's shape, because wordle's shape is the right one for this: one a day, everyone gets the same one, and a guess that's close has to feel different from a guess that's nowhere near. being 4% off and being 400% off are not the same kind of wrong, and the game has to say so.",
-      "it turned out not to be a game about prices. it's a game about how expensive you think a place is, which is a thing everyone has an opinion on and almost nobody has ever checked.",
+      "something ordinary, sold somewhere specific. guess what it costs there. that's the entire game.",
+      "wordle's shape, because being 4% off and being 400% off are not the same kind of wrong and the game has to say so. turns out it isn't about prices, it's about how expensive you think a place is.",
     ],
     // TODO: fill in the stack. Left empty on purpose rather than guessed:
     // both the panel and the no-js write-up skip the personnel line when it is.
@@ -185,9 +170,8 @@ export const projects: Project[] = [
     title: "a chatbot that tells jokes on request",
     caption: "give it a word, it gives you a bad joke about it",
     story: [
-      "my internship project at ubisoft: a chatbot that takes a keyword and returns a joke about it. the brief was genuinely that.",
-      "it was the first time i'd wired a model into a product rather than read about people doing it, and the useful lesson was how much of the work sits after the api call: the times it returns nothing, or something strange, or something you can't ship.",
-      "shipped in docker, which was also a first. small project, disproportionate amount learned.",
+      "my internship project at ubisoft: give it a keyword, get a joke back. the brief was genuinely that.",
+      "first time i'd wired a model into a product, and the lesson was how much of the job sits after the api call. shipped in docker, also a first.",
     ],
     stack: ["react", "openai api", "docker"],
     links: [],
@@ -197,11 +181,9 @@ export const projects: Project[] = [
 
 export const shelf = {
   intro: ["a few things i've made."],
-  stickyNote:
-    "built with curiosity, caffeine before noon, and a bit of recklessness.",
+  stickyNote: "curiosity, caffeine, a bit of recklessness.",
   breakScribble: "time for a break?",
   moreSoon: "more soon, promise.",
-  thanks: ["thanks for stopping by."],
 };
 
 /* -------------------------------------------------------------------------
@@ -210,26 +192,24 @@ export const shelf = {
 
 export const recordPlayer = {
   intro: [
-    "random notes of mine, and four jobs told the way",
+    "notes to myself, and four jobs told the way",
     "you'd tell them at the bar, not on a cv.",
-    "the reading pile is half engineering, half how the body works.",
   ],
 };
 
 /**
  * The roles, told as a bar tab rather than a CV.
  *
- * Each job is a line item with a story instead of a bullet list, because the
- * bullet list is the thing every portfolio already has. It's a tab in the
- * wording and the tally, not in the paper. The page already has a house
- * style, and a printed receipt sitting in the middle of it is a costume.
+ * A story instead of a bullet list, because the bullet list is the thing every
+ * portfolio already has. It's a tab in the wording and the tally, not in the
+ * paper: a printed receipt in the middle of this page would be a costume.
  */
 export type TabItem = {
   /** What you'd call it if you were being funny about it. */
   line: string;
   place: string;
   date: string;
-  /** The story. One short paragraph. This is a line on a tab, not a CV entry. */
+  /** The story. Two sentences, three if one of them is short. */
   story: string;
   duration: string;
 };
@@ -246,7 +226,7 @@ export const tab = {
       place: "rasirom r.a.",
       date: "jun 2025",
       story:
-        "react and next on top, spring boot and fastapi arguing over kafka underneath, and keycloak at the door deciding who's allowed in. i now know exactly what a real permissions model costs.",
+        "react and next on top, spring boot and fastapi arguing over kafka underneath, keycloak at the door. i now know exactly what a real permissions model costs.",
       duration: "still open",
     },
     {
@@ -254,7 +234,7 @@ export const tab = {
       place: "solo, building my own things",
       date: "ongoing",
       story:
-        "my own products, built and run end to end. miez.news is the one furthest along: nobody briefed it, so every call in it is mine to make and mine to get wrong. the parts you'd normally hand to someone else are the parts i've had to learn, and most of what i know about shipping came from doing exactly that.",
+        "my own products, end to end. nobody briefed miez.news, so every call in it is mine to get wrong, and most of what i know about shipping came from that.",
       duration: "nights and weekends",
     },
     {
@@ -262,7 +242,7 @@ export const tab = {
       place: "sisc, cybernetics students' union",
       date: "oct 2023",
       story:
-        "started on the back end in node, ended up leading twenty people, most of whom had never shipped anything before. spent more evenings in the git history than in any feature. nobody got lost. some merges did.",
+        "started on the back end in node, ended up leading twenty people, most of whom had never shipped anything. nobody got lost. some merges did.",
       duration: "20 months",
     },
     {
@@ -270,13 +250,12 @@ export const tab = {
       place: "ubisoft romania",
       date: "mar 2023",
       story:
-        "they asked for a chatbot that tells jokes. i learned that the api call is the easy ten percent and everything after it is the job.",
+        "they asked for a chatbot that tells jokes. i learned the api call is the easy ten percent.",
       duration: "3 months",
     },
   ] satisfies TabItem[],
   totals: [
     { label: "subtotal", value: "4 roles, 1 team of twenty" },
-    { label: "service", value: "included, always" },
     { label: "total", value: "three years, one long git log" },
   ],
   education: {
@@ -296,10 +275,9 @@ export const tab = {
 
 export const door = {
   about: [
-    "i'm flavius. i write software, mostly full-stack, mostly typescript, and i've never quite shaken the feeling that the details are the whole job.",
-    "i've led a twenty-person dev team, i spend my day job deep in a platform that a lot of people depend on, and everything left over goes into products of my own. the thread through all of it: i like the part where something confusing becomes obvious.",
-    "away from the keyboard it's hiking, chess i'm too emotionally invested in, and music loud enough to count as a personality trait.",
-    "the other thing i'm properly deep in is health. sleep, training, what food actually does: i read the papers rather than the headlines about the papers, and most of what i've learned so far is how often the claim is bigger than the study. same instinct as the code, honestly. i want to know why a thing works, not just that someone said it does.",
+    "i'm flavius. full-stack, mostly typescript, and i've never shaken the feeling that the details are the whole job.",
+    "i've led a twenty-person dev team, my day job is deep inside a platform a lot of people lean on, and every hour left over goes into products of my own.",
+    "away from the keyboard: hiking, chess i take far too personally, and reading the health papers rather than the headlines about them.",
   ],
   // Must appear verbatim in one of the paragraphs above.
   underline: "the details are the whole job",
@@ -334,11 +312,8 @@ export const socials: Social[] = [
 
 /**
  * The house record: what the chip says while the site is playing its own
- * music rather than reporting last.fm.
- *
- * Its sleeve markings are fixed rather than derived like the others, because
- * there is only ever one of it. "no end" instead of a track number is the
- * literal truth: the loop is generated and never reaches a run-out groove.
+ * music rather than reporting last.fm. "no end" instead of a track number is
+ * literal, the loop is generated and never reaches a run-out groove.
  */
 export const houseRecord = {
   track: "the house record",
@@ -348,10 +323,9 @@ export const houseRecord = {
 };
 
 /**
- * The rotation. Deliberately not sorted by band. The chip steps through this
- * in order every nine seconds, and four songs from neighbouring corners of the
- * same scene in a row reads as a playlist somebody generated rather than a
- * shelf somebody keeps.
+ * The rotation. Deliberately not sorted by band: the chip steps through this in
+ * order, and four songs from the same corner of a scene in a row read as a
+ * generated playlist rather than a shelf somebody keeps.
  */
 export const fallbackTracks = [
   { track: "Starless", artist: "King Crimson" },

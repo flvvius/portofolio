@@ -42,7 +42,7 @@ export function Section({
 }
 
 /**
- * Section title + the three-line mono intro that always follows it.
+ * Section title + the short mono intro that always follows it.
  * WONK is off here, so the hero keeps the wobble to itself.
  */
 export function SectionHead({

@@ -22,8 +22,7 @@ export default function NotFound() {
       </h1>
 
       <p className="measure mt-4 font-mono text-caption text-ink-soft">
-        nothing here, and no note explaining why. the rest of the place is still
-        open.
+        nothing here, and no note explaining why.
       </p>
 
       <p className="mt-9">

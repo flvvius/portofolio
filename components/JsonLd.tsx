@@ -71,7 +71,7 @@ const profilePageSchema = {
   url: baseUrl,
   name: "Flavius Cojocaru | Full-Stack Web Developer",
   description:
-    "Portfolio and blog of Flavius Cojocaru, featuring projects, testimonials, and thoughts on software development",
+    "Portfolio and blog of Flavius Cojocaru, featuring projects and notes on software development",
   mainEntity: {
     "@id": `${baseUrl}/#person`,
   },
@@ -197,7 +197,7 @@ export const BLOG_NAME = "the notes";
 // Blog listing page schema
 export function BlogListJsonLd({
   name = BLOG_NAME,
-  description = "notes rather than articles. thinking out loud about building software, with none of it tidied up first.",
+  description = "notes, not articles. thinking out loud about building software, untidied.",
 }: {
   name?: string;
   description?: string;
