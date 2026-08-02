@@ -26,8 +26,9 @@ export const nav = [
  * ---------------------------------------------------------------------- */
 
 export const bar = {
-  // `underline` must appear verbatim inside `headlineTail`: it gets
-  // the hand-drawn orange stroke, and it is the only underlined word on the page.
+  // TheBar renders these as three separate nodes, lead → underline → tail, and
+  // puts the hand-drawn orange stroke on `underline` itself. It is the only
+  // underlined word on the page. `headlineTail` may be empty.
   headlineLead: "i build software that",
   underline: "matters",
   headlineTail: "",
@@ -307,7 +308,16 @@ export const door = {
   footer: "brewed in Bucharest",
 };
 
-export const socials = [
+export type Social = {
+  label: string;
+  href: string;
+  /** Resting rotation of the coaster, -3deg..+3deg. */
+  tilt: number;
+  /** The handwritten aside beside it. At most one of these is ever set. */
+  nudge?: string;
+};
+
+export const socials: Social[] = [
   { label: "github", href: "https://github.com/flvvius", tilt: -3 },
   { label: "x", href: "https://x.com/flaviuscj1", tilt: 2 },
   {

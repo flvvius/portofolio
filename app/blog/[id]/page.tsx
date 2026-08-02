@@ -84,7 +84,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         slug={post.id}
       />
       <Nav />
-      <main className="py-rhythm lg:py-rhythm-lg">
+      <main id="main" tabIndex={-1} className="py-rhythm lg:py-rhythm-lg">
         <Container>
           <p>
             <Link href="/blog" className="ink-link font-mono text-caption">

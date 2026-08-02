@@ -12,17 +12,10 @@ import { InkArt, Hatch, PAPER, PAPER_WARM } from "./ink";
 
 export function Counter({ className }: { className?: string }) {
   return (
-    <svg
+    <InkArt
       viewBox="0 0 1000 64"
       preserveAspectRatio="none"
-      className={["ink-art ink-art-plain", className].filter(Boolean).join(" ")}
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.7}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      focusable="false"
+      className={["ink-art-plain", className].filter(Boolean).join(" ")}
     >
       {/* counter top, with the near edge slightly proud */}
       <path d="M4 6.5 996 3.5l1 13L3 20Z" fill={PAPER_WARM} />
@@ -33,7 +26,7 @@ export function Counter({ className }: { className?: string }) {
         can't take the wobble filter and has to earn its hand-drawn feel here.
       */}
       <Hatch d="M40 60 74 32M92 62 130 28M150 58 182 33M204 62 242 30M258 59 292 34M318 62 352 31M370 57 406 32M430 62 466 29M484 60 518 33M542 62 578 31M596 58 630 34M654 62 690 30M708 59 744 32M764 62 800 28M820 57 854 33M878 62 914 31M932 60 968 32" opacity={0.32} />
-    </svg>
+    </InkArt>
   );
 }
 

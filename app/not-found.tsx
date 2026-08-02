@@ -10,7 +10,11 @@ export const metadata: Metadata = {
 /** Appearance three of five for the cuckoo. He does not know either. */
 export default function NotFound() {
   return (
-    <main className="flex min-h-[100svh] flex-col items-center justify-center px-6 text-center">
+    <main
+      id="main"
+      tabIndex={-1}
+      className="flex min-h-[100svh] flex-col items-center justify-center px-6 text-center"
+    >
       <CuckooShrug className="h-32 w-auto text-ink sm:h-40" />
 
       <h1 className="mt-10 font-display-section text-[clamp(2rem,6vw,3.5rem)] text-ink">

@@ -105,7 +105,11 @@ export default function BackRoom() {
   return (
     <>
       <Nav />
-      <main className="min-h-[70svh] py-rhythm lg:py-rhythm-lg">
+      <main
+        id="main"
+        tabIndex={-1}
+        className="min-h-[70svh] py-rhythm lg:py-rhythm-lg"
+      >
         <Container>
           <div className="grid-12 items-end gap-x-8 gap-y-10">
             <div className="col-span-12 lg:col-span-7">

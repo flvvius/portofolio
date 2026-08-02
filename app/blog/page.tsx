@@ -43,9 +43,13 @@ export default function BlogIndex() {
 
   return (
     <>
-      <BlogListJsonLd />
+      <BlogListJsonLd name="the notes" description={description} />
       <Nav />
-      <main className="min-h-[70svh] py-rhythm lg:py-rhythm-lg">
+      <main
+        id="main"
+        tabIndex={-1}
+        className="min-h-[70svh] py-rhythm lg:py-rhythm-lg"
+      >
         <Container>
           <Rise as="h1" className="font-display-section text-section text-ink">
             the notes

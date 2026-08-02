@@ -9,6 +9,16 @@ import { useEffect, useRef, useState, type ElementType, type ReactNode } from "r
  * ships no runtime. Without JS the element renders visible immediately, which
  * is the correct fallback: the content is the point, the rise is a garnish.
  */
+
+/*
+ * Called on import, not on mount: this says "the bundle arrived", which is the
+ * condition the CSS failsafe in globals.css is actually waiting on. Doing it in
+ * an effect would say "React hydrated", which on a slow phone can land after
+ * the failsafe has already run and would then snap the page back to hidden.
+ */
+if (typeof document !== "undefined") {
+  document.documentElement.classList.add("rise-ready");
+}
 export function Rise({
   as: Tag = "div",
   delay = 0,

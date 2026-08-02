@@ -105,7 +105,10 @@ export function HouseRecordToggle({ className }: { className?: string }) {
     };
 
     const attempt = async () => {
-      if (cancelled || engine.playing) return;
+      // Not into a tab nobody is looking at. The listeners stay armed, so a
+      // visitor who arrives via a background tab gets the record on their
+      // first gesture instead.
+      if (cancelled || engine.playing || document.hidden) return;
       const started = await engine.start();
       if (cancelled || !started) return;
       houseRecordState.set(true);
@@ -140,6 +143,9 @@ export function HouseRecordToggle({ className }: { className?: string }) {
       else engine.resume();
     };
 
+    // A page can be loaded straight into a background tab, so the first read
+    // is here rather than waiting for a change that already happened.
+    setAwake(!document.hidden);
     document.addEventListener("visibilitychange", onVisibility);
     return () => document.removeEventListener("visibilitychange", onVisibility);
   }, []);

@@ -19,6 +19,7 @@ import type { ReactNode, SVGProps } from "react";
  * it is wrong for this site.
  */
 
+export const INK = "#2B211A";
 export const PAPER = "#F4EFE6";
 export const PAPER_WARM = "#EDE5D6";
 export const ACCENT = "#D96B2B";

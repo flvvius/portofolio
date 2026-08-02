@@ -14,7 +14,8 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <main>
+      {/* `id`/`tabIndex` are the skip link's target, on every page. */}
+      <main id="main" tabIndex={-1}>
         <TheBar />
         <TheShelf />
         <TheRecordPlayer />

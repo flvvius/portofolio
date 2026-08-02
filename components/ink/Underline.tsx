@@ -36,7 +36,10 @@ export function HandUnderline({
       preserveAspectRatio="none"
       className={["ink-art-plain", className].filter(Boolean).join(" ")}
     >
-      <path d={STROKES[Math.abs(seed) % STROKES.length]} strokeWidth={1.6} />
+      <path
+        d={STROKES[Math.abs(Math.trunc(seed)) % STROKES.length]}
+        strokeWidth={1.6}
+      />
     </InkArt>
   );
 }

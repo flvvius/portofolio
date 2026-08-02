@@ -66,8 +66,8 @@ export function SectionHead({
             align === "right" ? "sm:ml-auto" : "",
           ].join(" ")}
         >
-          {intro.map((line) => (
-            <span key={line} className="block">
+          {intro.map((line, index) => (
+            <span key={index} className="block">
               {line}
             </span>
           ))}

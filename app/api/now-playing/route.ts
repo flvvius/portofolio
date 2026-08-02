@@ -33,7 +33,12 @@ export async function GET() {
   url.searchParams.set("limit", "1");
 
   try {
-    const res = await fetch(url, { next: { revalidate: 30 } });
+    // A slow last.fm must not hold the route open: the chip has a perfectly
+    // good fallback, and an abort lands in the same catch as any other failure.
+    const res = await fetch(url, {
+      next: { revalidate: 30 },
+      signal: AbortSignal.timeout(4000),
+    });
     if (!res.ok) {
       return NextResponse.json({ configured: false }, { status: 200 });
     }

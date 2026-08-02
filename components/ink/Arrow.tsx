@@ -99,7 +99,10 @@ export function Arrow({
     if (!svg) return;
     let cancelled = false;
 
-    (async () => {
+    // The catch is the point: if the roughjs chunk never arrives, the arrow
+    // stays an empty decorative <svg>, which is a drawing nobody sees rather
+    // than an unhandled rejection in everyone's console.
+    void (async () => {
       const { default: rough } = await import("roughjs");
       if (cancelled || !ref.current) return;
 
@@ -118,7 +121,7 @@ export function Arrow({
       const head = rc.linearPath(preset.head, { ...options, seed: seed + 1 });
 
       ref.current.replaceChildren(shaft, head);
-    })();
+    })().catch(() => {});
 
     return () => {
       cancelled = true;
@@ -156,6 +159,11 @@ export function ScribbleNote({
    * leave the label centred on the object and the arrow pointing past it.
    */
   stack = false,
+  /**
+   * Off for the few notes that are the only copy describing the thing they
+   * point at (the shelf captions). The arrow hides itself either way.
+   */
+  decorative = true,
 }: {
   children: React.ReactNode;
   variant?: Variant;
@@ -165,6 +173,7 @@ export function ScribbleNote({
   className?: string;
   labelFirst?: boolean;
   stack?: boolean;
+  decorative?: boolean;
 }) {
   const label =
     tone === "ink" ? (
@@ -184,7 +193,7 @@ export function ScribbleNote({
 
   return (
     <span
-      aria-hidden="true"
+      aria-hidden={decorative ? "true" : undefined}
       className={[
         "pointer-events-none inline-flex",
         stack ? "flex-col items-center gap-1" : "items-end gap-1.5",

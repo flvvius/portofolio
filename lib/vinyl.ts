@@ -530,6 +530,21 @@ export class HouseRecord {
   private warp(osc: OscillatorNode) {
     this.wowDepth.connect(osc.detune);
     this.flutterDepth.connect(osc.detune);
+    /*
+     * The two warp gains outlive every voice they touch, and a loop that runs
+     * for an hour warps a few thousand oscillators. Dropping the connection
+     * when the note ends keeps their outgoing edges from being a list of every
+     * note the record has ever played. Addressed to this oscillator's detune
+     * only, so the voices still sounding are untouched.
+     */
+    osc.addEventListener(
+      "ended",
+      () => {
+        this.wowDepth.disconnect(osc.detune);
+        this.flutterDepth.disconnect(osc.detune);
+      },
+      { once: true }
+    );
   }
 
   private send(node: AudioNode, dry = 1) {

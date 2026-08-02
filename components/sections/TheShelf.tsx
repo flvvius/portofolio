@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { projects, shelf, type Project } from "@/data/site";
 import { Container, Section, SectionHead } from "./Section";
 import { Rise } from "@/components/ink/Rise";
@@ -48,7 +48,7 @@ function objectLinkProps(project: Project, onOpen: OpenHandler) {
   return {
     href: `#note-${project.slug}`,
     "aria-haspopup": "dialog" as const,
-    onClick: (event: React.MouseEvent) => {
+    onClick: (event: MouseEvent) => {
       // Modified clicks keep working as an ordinary link.
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
         return;
@@ -100,6 +100,9 @@ function ShelfRow({
                 <Rise delay={delayOffset + index * 60}>
                   <ScribbleNote
                     tone="ink"
+                    // Above `sm` this is the only place the caption appears, so
+                    // unlike every other note on the page it is not decoration.
+                    decorative={false}
                     variant={leaning ? "down-right" : "down-left"}
                     seed={11 + index * 3}
                     stack
@@ -212,8 +215,34 @@ function ShelfList({
   );
 }
 
+/** Three to a plank, however many projects there are. */
+function rows(items: Project[]) {
+  return Array.from({ length: Math.ceil(items.length / 3) }, (_, row) =>
+    items.slice(row * 3, row * 3 + 3)
+  );
+}
+
 export function TheShelf() {
   const [open, setOpen] = useState<Project | null>(null);
+
+  /*
+   * `#note-<slug>` is where the objects point, and with JS on that anchor is
+   * inside the hidden no-JS write-up. So a cmd-click, or a link from anywhere
+   * else, would land on the shelf with nothing to show for it. Resolve the
+   * hash through the panel instead, which is what the link means.
+   */
+  useEffect(() => {
+    const openFromHash = () => {
+      const slug = window.location.hash.match(/^#note-(.+)$/)?.[1];
+      if (!slug) return;
+      const project = projects.find((item) => item.slug === slug);
+      if (project) setOpen(project);
+    };
+
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+    return () => window.removeEventListener("hashchange", openFromHash);
+  }, []);
 
   return (
     <Section id="the-shelf" className="relative">
@@ -265,12 +294,14 @@ export function TheShelf() {
           </div>
 
           <div className="col-span-12 space-y-14 lg:col-span-8 lg:space-y-16">
-            <ShelfRow items={projects.slice(0, 3)} onOpen={setOpen} />
-            <ShelfRow
-              items={projects.slice(3)}
-              onOpen={setOpen}
-              delayOffset={60}
-            />
+            {rows(projects).map((row, index) => (
+              <ShelfRow
+                key={row[0].slug}
+                items={row}
+                onOpen={setOpen}
+                delayOffset={index * 60}
+              />
+            ))}
             <ShelfList items={projects} onOpen={setOpen} />
 
             {/* the note left on the counter on your way past */}

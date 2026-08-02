@@ -241,6 +241,29 @@
   .js .rise {
     opacity: 0;
     transform: translateY(12px);
+    /*
+     * The failsafe. `.js` is set by an inline script, so if the bundle then
+     * fails to arrive there is nothing left to add `is-in` and the entire page
+     * stays invisible. This fades everything in on its own after 2s.
+     *
+     * Rise cancels it (`.rise-ready`, set the moment its module evaluates,
+     * which is the earliest honest proof the bundle landed) rather than the
+     * animation simply being long enough to lose the race: left running, it
+     * would reveal every off-screen section too and there would be no
+     * entrance left to play on the way down.
+     */
+    animation: rise-failsafe 400ms ease-out 2s forwards;
+  }
+
+  .js.rise-ready .rise {
+    animation: none;
+  }
+
+  @keyframes rise-failsafe {
+    to {
+      opacity: 1;
+      transform: none;
+    }
   }
 
   .rise.is-in {

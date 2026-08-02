@@ -43,7 +43,7 @@ const caveat = Caveat({
 const baseUrl = "https://flavius.pro";
 
 const description =
-  "flavius cojocaru, full-stack engineer in cluj-napoca. a shelf of things i've built, the stories behind them, and whatever's currently on rotation.";
+  "flavius cojocaru, full-stack engineer in bucharest. a shelf of things i've built, the stories behind them, and whatever's currently on rotation.";
 
 export const viewport: Viewport = {
   themeColor: "#F4EFE6",
@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     "Next.js",
     "TypeScript",
     "Node.js",
-    "Cluj-Napoca",
+    "Bucharest",
     "Romania",
   ],
   creator: "Flavius Cojocaru",
@@ -138,13 +138,13 @@ export default function RootLayout({
     >
       <head>
         <JsonLd />
-        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-        <meta
-          httpEquiv="Permissions-Policy"
-          content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), screen-wake-lock=(), display-capture=()"
-        />
-        <meta property="og:locale" content="en_US" />
-        <link rel="alternate" hrefLang="en" href={baseUrl} />
+        {/*
+          No security meta tags here: `X-Content-Type-Options` and
+          `Permissions-Policy` are only honoured as response headers, and
+          next.config.mjs sets both for every path. og:locale and the hreflang
+          alternate come out of `metadata` above, so writing them by hand as
+          well only creates a second copy to keep in sync.
+        */}
         {/*
           Sets the progressive-enhancement switch before first paint, so the
           no-JS fallbacks never flash. One statement, no network, no shift.
@@ -197,11 +197,16 @@ export default function RootLayout({
           </filter>
         </svg>
 
+        {/*
+          Points at the `main` landmark every page carries, not at a section
+          that only exists on the homepage. On the blog and the back room,
+          `#the-shelf` was a link to nowhere.
+        */}
         <a
-          href="#the-shelf"
+          href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[10000] focus:bg-paper-warm focus:px-4 focus:py-2 focus:font-mono focus:text-caption"
         >
-          skip to the shelf
+          skip to the content
         </a>
         {children}
         {/* Renders nothing, it listens. One instance for the whole site. */}

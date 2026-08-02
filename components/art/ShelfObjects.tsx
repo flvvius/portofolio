@@ -1,5 +1,5 @@
 import type { ReactElement } from "react";
-import { InkArt, Hatch, ACCENT, PAPER, PAPER_WARM } from "./ink";
+import { InkArt, Hatch, ACCENT, INK, PAPER, PAPER_WARM } from "./ink";
 import type { ShelfObjectKind } from "@/data/site";
 
 /**
@@ -15,7 +15,7 @@ function RecordSleeve() {
   return (
     <InkArt viewBox="0 0 132 112" className="h-full w-auto">
       {/* the record, half out of the sleeve to the right */}
-      <circle cx="90" cy="58" r="34" fill="#2B211A" stroke="none" />
+      <circle cx="90" cy="58" r="34" fill={INK} stroke="none" />
       <circle cx="90" cy="58" r="26" stroke={PAPER_WARM} strokeWidth={0.8} opacity="0.3" />
       <circle cx="90" cy="58" r="19" stroke={PAPER_WARM} strokeWidth={0.8} opacity="0.22" />
       <circle cx="90" cy="58" r="11" fill={ACCENT} stroke="none" />

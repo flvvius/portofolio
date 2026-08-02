@@ -173,7 +173,7 @@ export function BlogPostJsonLd({
     inLanguage: "en-US",
     isPartOf: {
       "@type": "Blog",
-      name: "Thoughts from the Trenches",
+      name: BLOG_NAME,
       url: `${baseUrl}/blog`,
     },
   };
@@ -187,14 +187,26 @@ export function BlogPostJsonLd({
   );
 }
 
+/**
+ * The blog's own name, in one place. It is emitted twice (once by the listing,
+ * once as `isPartOf` on every post) and the two have to agree, or search
+ * engines are told about two different blogs at the same URL.
+ */
+export const BLOG_NAME = "the notes";
+
 // Blog listing page schema
-export function BlogListJsonLd() {
+export function BlogListJsonLd({
+  name = BLOG_NAME,
+  description = "notes rather than articles. thinking out loud about building software, with none of it tidied up first.",
+}: {
+  name?: string;
+  description?: string;
+} = {}) {
   const blogSchema = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "Thoughts from the Trenches",
-    description:
-      "Raw reflections on coding, learning, and the emotional rollercoaster of being a developer",
+    name,
+    description,
     url: `${baseUrl}/blog`,
     author: {
       "@type": "Person",

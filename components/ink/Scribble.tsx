@@ -69,7 +69,7 @@ export function Scribble({
 
     if (typeof IntersectionObserver === "undefined") {
       reveal();
-      return;
+      return () => clearTimeout(timer);
     }
 
     const observer = new IntersectionObserver(
