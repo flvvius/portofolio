@@ -37,7 +37,6 @@ export const bar = {
   ],
   ctaPrimary: "pull up a chair",
   ctaSecondary: "or just say hi",
-  turntableScribble: "always spinning",
 };
 
 /**

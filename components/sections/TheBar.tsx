@@ -3,7 +3,6 @@ import { bar, counter } from "@/data/site";
 import { Container, Section } from "./Section";
 import { Rise } from "@/components/ink/Rise";
 import { Scribble } from "@/components/ink/Scribble";
-import { ScribbleNote } from "@/components/ink/Arrow";
 import { Turntable } from "@/components/art/Turntable";
 import { Bookshelf } from "@/components/art/Props";
 import { TapedNote } from "@/components/art/Paper";
@@ -96,19 +95,6 @@ export function TheBar() {
               {/* the one element in this section that overhangs its column */}
               <Turntable className="mt-6 w-full max-w-[420px] text-ink lg:translate-x-[8%] lg:max-w-none" />
             </Rise>
-
-            {/* points at the platter, and only ever means the platter */}
-            <ScribbleNote
-              variant="up-right"
-              seed={17}
-              labelFirst
-              arrowClassName="w-9 mb-1"
-              // Below the plinth, not beside it, because at `bottom-6` the label ran
-              // into the corner hatching once the turntable overhangs its column.
-              className="absolute -bottom-6 left-0 hidden max-w-[7rem] lg:inline-flex"
-            >
-              {bar.turntableScribble}
-            </ScribbleNote>
           </div>
         </div>
       </Container>
