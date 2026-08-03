@@ -195,6 +195,21 @@
 
   /* ---- interaction ----------------------------------------------------- */
 
+  /*
+   * A box drawn round the words rather than laid out around them.
+   *
+   * Four corners whose horizontal and vertical radii disagree, and that is the
+   * whole trick: no SVG, no rough.js, no second element, no wrapper. Which is
+   * why it can sit directly on a real <a> and keep its own focus ring, and why
+   * a button can be hand-drawn without costing a drawing.
+   *
+   * It wants a 2px border. At 1px the long corner sweeps go wiry and the box
+   * stops reading as one continuous line round the label.
+   */
+  .sketch-box {
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  }
+
   .ink-link {
     color: var(--ink);
     text-decoration: none;

@@ -49,9 +49,16 @@ export function TheBar() {
 
             <Rise delay={140} className="mt-10">
               <div className="flex flex-wrap items-center gap-x-7 gap-y-4">
+                {/*
+                  The box round this is drawn, not laid out: same one border,
+                  four corners whose radii disagree. Nothing was added to the
+                  markup to get it, so this is still a plain link with its own
+                  focus ring. See `.sketch-box`, which is also where the 2px
+                  border is explained.
+                */}
                 <a
                   href="#the-shelf"
-                  className="group inline-flex items-center gap-2 border border-ink px-5 py-3 font-mono text-[1.26rem] text-ink no-underline transition-colors duration-[180ms] hover:border-accent hover:text-accent"
+                  className="group sketch-box inline-flex items-center gap-2 border-2 border-ink px-6 py-3 font-mono text-[1.26rem] text-ink no-underline transition-colors duration-[180ms] hover:border-accent hover:text-accent"
                 >
                   {bar.ctaPrimary}
                   <span
