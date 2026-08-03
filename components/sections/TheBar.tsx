@@ -126,7 +126,21 @@ function TheCounter() {
               <span className="mb-1.5 block border-b border-ink/25 pb-1 font-mono text-[1.06rem] text-ink">
                 {counter.special.title}
               </span>
-              {counter.special.line}
+              {/*
+                Underlined, unlike every other link on the page. The rest are
+                objects you can see are objects; this one is three words inside
+                a sentence, and nothing but a rule under it says so. Accent, to
+                match the one under the headline.
+              */}
+              <a
+                href={counter.special.href}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="text-ink underline decoration-accent/60 decoration-2 underline-offset-4 transition-colors duration-[180ms] hover:text-accent hover:decoration-accent"
+              >
+                {counter.special.linkLabel}
+              </a>
+              {counter.special.lineTail}
             </TapedNote>
           </Rise>
 

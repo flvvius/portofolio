@@ -46,7 +46,11 @@ export const bar = {
 export const counter = {
   special: {
     title: "today's special",
-    line: "miez.news, still warm.",
+    // Split link → tail so the anchor wraps only the name, which is the part
+    // you can actually go to. The comma belongs to the sentence, not the link.
+    linkLabel: "miez.news",
+    href: "https://miez.news",
+    lineTail: ", still warm.",
   },
   /**
    * The label under the bookshelf drawing. The drawing is the link; this is
