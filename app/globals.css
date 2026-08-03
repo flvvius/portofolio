@@ -248,6 +248,59 @@
     transform: rotate(calc(var(--rest-tilt, 0deg) + 4deg));
     color: var(--accent);
   }
+
+  /*
+   * Pinned crooked, squared up on hover.
+   *
+   * The shelf objects lift and tilt *further*, because you are picking them
+   * up. These do the opposite: they rest at an angle and come straight when
+   * you point at them, the way you'd nudge a crooked frame on a wall.
+   * Reaching for a thing and straightening a thing are different gestures, and
+   * one animation should not stand in for both.
+   */
+  .straighten {
+    transform: rotate(var(--rest-tilt, 0deg));
+    transition: transform 200ms ease-out, border-color 200ms ease-out,
+      color 200ms ease-out;
+  }
+
+  .straighten:hover,
+  .straighten:focus-visible,
+  .group:hover .straighten,
+  .group:focus-visible .straighten {
+    transform: rotate(0deg) scale(1.03);
+  }
+
+  /*
+   * A box drawn round the words rather than laid out around them.
+   *
+   * Four corners whose horizontal and vertical radii disagree, and that is the
+   * entire trick: no SVG, no rough.js, no second element, no wrapper. Which is
+   * why it can sit directly on a real <a> and keep its own focus ring, and why
+   * it costs nothing on a page that already ships two drawing libraries.
+   */
+  .sketch-box {
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+  }
+
+  /* Mirrored, for when two sit near each other and would otherwise read as twins. */
+  .sketch-box-alt {
+    border-radius: 15px 225px 15px 255px / 225px 15px 255px 15px;
+  }
+
+  /*
+   * The empty slot. Dashed, because a dashed outline is the one border that
+   * says "nothing here yet" without a word of copy explaining it.
+   */
+  .slot-open {
+    border: 2px dashed rgba(43, 33, 26, 0.3);
+    transition: border-color 200ms ease-out, transform 200ms ease-out;
+  }
+
+  .slot-open:hover,
+  .slot-open:focus-visible {
+    border-color: var(--accent);
+  }
 }
 
 @layer utilities {
@@ -293,6 +346,23 @@
     transform: none;
     transition: opacity 400ms ease-out, transform 400ms ease-out;
     transition-delay: var(--rise-delay, 0ms);
+  }
+
+  /*
+   * The bouncier entrance, for the things that are drawn rather than typeset.
+   *
+   * The 1.2 in the curve carries the element past its resting place and lets it
+   * settle back, which is the difference between "drawn onto the page" and
+   * "faded in". It is opt-in and stays that way: a page where every section
+   * overshoots is a page with no emphasis left to spend.
+   */
+  .js .rise-pop {
+    transform: translateY(14px) scale(0.96);
+  }
+
+  .rise-pop.is-in {
+    transition: opacity 500ms ease-out,
+      transform 500ms cubic-bezier(0.22, 1.2, 0.36, 1);
   }
 
   @keyframes record-spin {
@@ -429,16 +499,29 @@
     display: none;
   }
 
-  @keyframes draw-in {
-    to {
-      stroke-dashoffset: 0;
-    }
+  /*
+   * A line that draws itself.
+   *
+   * This used to carry `--draw-length: 400`: a number somebody had to measure
+   * off the path by hand and re-measure every time the path moved. `pathLength`
+   * retires it. A path that declares `pathLength="1"` reports itself as one
+   * unit long whatever its real geometry, so one dasharray draws a 30px strike
+   * and a 600px trail at the same rate and nothing in this file has to know how
+   * long the line it is drawing is.
+   *
+   * Transition rather than an animation, because these are triggered when the
+   * mark scrolls into view, not on load — and a transition can be handed a
+   * per-element delay without a second keyframe set.
+   */
+  .draw-in {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
   }
 
-  .draw-in {
-    stroke-dasharray: var(--draw-length, 400);
-    stroke-dashoffset: var(--draw-length, 400);
-    animation: draw-in 600ms ease-out 400ms forwards;
+  .draw-in.is-drawn {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset var(--draw-duration, 550ms) ease-out
+      var(--draw-delay, 0ms);
   }
 
   .grid-12 {
@@ -466,13 +549,22 @@
     transform: scaleY(0.7);
   }
 
-  .draw-in {
-    animation: none;
+  /*
+   * The mark still appears, it just appears. These lines carry meaning — a
+   * strike through a word is the only thing saying that word is crossed off —
+   * so the line is drawn outright rather than raced through a 1ms transition
+   * that can lose and leave the word looking merely quiet.
+   */
+  .draw-in,
+  .draw-in.is-drawn {
+    transition: none;
     stroke-dashoffset: 0;
   }
 
   .js .rise,
-  .rise.is-in {
+  .rise.is-in,
+  .js .rise-pop,
+  .rise-pop.is-in {
     opacity: 1;
     transform: none;
     transition: none;
@@ -480,8 +572,18 @@
 
   .shelf-object,
   .coaster,
-  .ink-link {
+  .ink-link,
+  .straighten,
+  .slot-open {
     transition-duration: 1ms;
+  }
+
+  /* The resting tilt stays — it's a position, not a motion. Only the correction goes. */
+  .straighten:hover,
+  .straighten:focus-visible,
+  .group:hover .straighten,
+  .group:focus-visible .straighten {
+    transform: rotate(var(--rest-tilt, 0deg));
   }
 
   /* The menu still fades in, it just doesn't travel or wait its turn. */

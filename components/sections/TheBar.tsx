@@ -2,7 +2,7 @@ import Link from "next/link";
 import { bar, counter } from "@/data/site";
 import { Container, Section } from "./Section";
 import { Rise } from "@/components/ink/Rise";
-import { Scribble } from "@/components/ink/Scribble";
+import { Marked } from "@/components/ink/Drawn";
 import { ScribbleNote } from "@/components/ink/Arrow";
 import { Turntable } from "@/components/art/Turntable";
 import { Bookshelf } from "@/components/art/Props";
@@ -26,14 +26,23 @@ export function TheBar() {
           <div className="col-span-12 lg:col-span-7">
             <Rise as="h1" className="font-display-hero text-hero text-ink">
               {bar.headlineLead}{" "}
-              <Scribble
-                type="underline"
-                delay={500}
-                strokeWidth={3}
-                padding={2}
-              >
+              {/*
+                This was a rough.js annotation. It is one word, at a size the
+                layout already fixes, so there was nothing for rough.js to
+                measure that we didn't know — it was rolling a fresh path on
+                mount, and again on every resize, to draw one line under one
+                word on the largest element on the page.
+
+                A stretched path with `pathLength="1"` does the same job off two
+                CSS declarations and no JavaScript at all. The multiline mark in
+                the door still goes through Scribble, because a line that has to
+                find the ends of a wrapping sentence genuinely does need
+                measuring. That is the split: known shape here, measured shape
+                there.
+              */}
+              <Marked seed={1} delay={500}>
                 {bar.underline}
-              </Scribble>{" "}
+              </Marked>{" "}
               {bar.headlineTail}
             </Rise>
 
@@ -49,9 +58,17 @@ export function TheBar() {
 
             <Rise delay={140} className="mt-10">
               <div className="flex flex-wrap items-center gap-x-7 gap-y-4">
+                {/*
+                  The box round this used to be a rectangle. It is the same one
+                  border, with four corners whose horizontal and vertical radii
+                  disagree — which is all it takes to read as drawn round the
+                  words rather than laid out around them. Nothing was added to
+                  the markup to get it, so the link is still a link and still
+                  keeps its own focus ring.
+                */}
                 <a
                   href="#the-shelf"
-                  className="group inline-flex items-center gap-2 border border-ink px-5 py-3 font-mono text-[1.26rem] text-ink no-underline transition-colors duration-[180ms] hover:border-accent hover:text-accent"
+                  className="group sketch-box inline-flex items-center gap-2 border-2 border-ink px-6 py-3 font-mono text-[1.26rem] text-ink no-underline transition-colors duration-[180ms] hover:border-accent hover:text-accent"
                 >
                   {bar.ctaPrimary}
                   <span
