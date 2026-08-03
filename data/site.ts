@@ -181,7 +181,6 @@ export const projects: Project[] = [
 export const shelf = {
   intro: ["a few things i've made."],
   stickyNote: "curiosity, caffeine, a bit of recklessness.",
-  breakScribble: "time for a break?",
   moreSoon: "more soon, promise.",
 };
 

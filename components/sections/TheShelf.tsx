@@ -259,15 +259,6 @@ export function TheShelf() {
           is the point: a wall clock belongs to the room, not to the shelf.
         */}
         {/*
-          Stacked, not side by side: the scribble sat level with the third
-          object's annotation and the two ran into each other. Above the clock
-          it is clear of the whole annotation band.
-
-          No arrow on this one. The label sits directly on top of the clock it
-          is talking about, so the arrow was pointing at something the eye had
-          already found.
-        */}
-        {/*
           `xl`, not `lg`: it is absolutely placed over the right-hand end of the
           annotation band, and between 1024 and 1280 the third object's caption
           now grows into that corner and runs under the clock. The clock is the
@@ -275,13 +266,7 @@ export function TheShelf() {
           for the room to be wide enough.
         */}
         <Rise className="pointer-events-none absolute right-0 top-0 z-10 hidden flex-col items-end xl:flex">
-          <span
-            aria-hidden="true"
-            className="mr-4 max-w-[7rem] font-hand text-3xl leading-none text-accent sm:text-4xl"
-          >
-            {shelf.breakScribble}
-          </span>
-          <HangingCuckoo className="-mt-2 h-36 w-auto text-ink xl:h-44" />
+          <HangingCuckoo className="h-36 w-auto text-ink xl:h-44" />
         </Rise>
 
         <div className="grid-12 gap-x-8 gap-y-12">
