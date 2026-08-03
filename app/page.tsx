@@ -2,7 +2,6 @@ import { Nav } from "@/components/Nav";
 import { TheBar } from "@/components/sections/TheBar";
 import { TheShelf } from "@/components/sections/TheShelf";
 import { TheRecordPlayer } from "@/components/sections/TheRecordPlayer";
-import { TheHouseRules } from "@/components/sections/TheHouseRules";
 import { TheDoor } from "@/components/sections/TheDoor";
 
 export const metadata = {
@@ -20,7 +19,6 @@ export default function Home() {
         <TheBar />
         <TheShelf />
         <TheRecordPlayer />
-        <TheHouseRules />
         <TheDoor />
       </main>
     </>

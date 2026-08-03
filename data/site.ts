@@ -270,61 +270,6 @@ export const tab = {
 };
 
 /* -------------------------------------------------------------------------
- * the house rules
- * ---------------------------------------------------------------------- */
-
-/**
- * The sign behind the bar, and the only section that says what is *not* on
- * offer before it says what is.
- *
- * Defining the work by what it rules out is the point: every portfolio on the
- * internet lists what its author can do, so a list of what they won't is the
- * only one anybody finishes reading. Which means `notOnOffer` has to stay
- * things actually worth turning down — the moment it becomes a joke reel it
- * stops being a position and starts being a bit.
- */
-export const houseRules = {
-  title: "the house rules",
-  statement: "there aren't many.",
-  intro: [
-    "no discovery call, no statement of work, no six-week",
-    "shape-up before anyone has written a line.",
-  ],
-  /** Struck through, one after another. Six is the ceiling; a wall of these reads as a rant. */
-  notOnOffer: [
-    "crunch",
-    "growth hacking",
-    "10x rockstars",
-    "resume-driven architecture",
-    "ship it friday",
-    "we'll fix it in v2",
-  ],
-  instead:
-    "what's left is the work. small pieces, shipped early, argued about properly. the details are load-bearing, and i'd rather find that out in week one than in production.",
-  /** Three, always. A fourth step is a process, and a process needs a document. */
-  steps: [
-    {
-      title: "say hi",
-      line: "tell me what you're building. rough is fine — a paragraph beats a brief.",
-    },
-    {
-      title: "we talk",
-      line: "a conversation about the problem, not an interview about me.",
-    },
-    {
-      title: "i start small",
-      line: "something real and shipped, early enough that we can both still change our minds.",
-    },
-  ],
-  /** The empty peg at the end of the row. It is a call to action wearing a shelf label. */
-  openSlot: {
-    title: "your thing here",
-    line: "this spot's free. come take it.",
-    href: "#the-door",
-  },
-};
-
-/* -------------------------------------------------------------------------
  * the door
  * ---------------------------------------------------------------------- */
 

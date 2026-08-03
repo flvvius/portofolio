@@ -22,19 +22,12 @@ if (typeof document !== "undefined") {
 export function Rise({
   as: Tag = "div",
   delay = 0,
-  pop = false,
   className,
   children,
 }: {
   as?: ElementType;
   /** Stagger, in ms. Siblings go 0, 60, 120… */
   delay?: number;
-  /**
-   * Overshoot on the way in, for things that read as drawn rather than
-   * typeset. Opt-in and meant to stay rare: if every section bounces, the
-   * bounce has stopped meaning anything.
-   */
-  pop?: boolean;
   className?: string;
   children: ReactNode;
 }) {
@@ -72,7 +65,7 @@ export function Rise({
     // the hidden start state can never strand content when JS is unavailable.
     <Tag
       ref={ref}
-      className={["rise", pop ? "rise-pop" : "", shown ? "is-in" : "", className]
+      className={["rise", shown ? "is-in" : "", className]
         .filter(Boolean)
         .join(" ")}
       style={delay ? ({ "--rise-delay": `${delay}ms` } as React.CSSProperties) : undefined}
