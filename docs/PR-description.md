@@ -32,3 +32,7 @@ Next.js, React, Tailwind 3, the existing domain and hosting remain. Node 24 fixe
 Supply Stripe Payment Links, Cal.com booking, verified Resend sender and recipient; run actual purchase and inbox checks. Supply real matched before/after pairs and approved testimonials if wanted. Confirm company/VAT details and policies. Configure optional analytics and verify account receipt. Review the remaining development-tool advisories.
 
 [Complete TODO list](https://github.com/flvvius/portofolio/blob/refactor/service-site/docs/TODO.md). Physical devices and screen readers are unverified. This branch is for review; no production merge or social posting has occurred.
+
+## Updated skill review
+
+Checked flavius-design-taste at 16dbaaeb. Its canonical palettes match and the new workflow supports the current direction. Added current-page navigation cues and an explicit case-study return. Stricter 200% text checks caught narrow overflow in the theme selector, process prose and sprint price; those are fixed. All 54 enlarged-text states and 72 ordinary layout/axe states pass. [Review and limits](https://github.com/flvvius/portofolio/blob/refactor/service-site/docs/skill-review.md).

@@ -15,7 +15,7 @@ The owner asked to remove the interests collection and reduce the long page into
 
 Main navigation now links to pages. The interests collection and rotation list are removed. Old service and portfolio fragments resolve to the corresponding pages. Retired interests links reach About.
 
-Measured main-content copy falls from 2,392 to 1,558 words across the affected pages, including all the new destinations and the unchanged Pricele detail. That is a 34.9% reduction, not just redistribution. The homepage falls from 1,077 to 181 words, an 83.2% reduction. Counts use whitespace-delimited main textContent consistently, including FAQ answers; shared navigation/footer and unchanged policies, intake and blog are outside this comparison.
+Measured main-content copy falls from 2,392 to 1,560 words across the affected pages, including all the new destinations and the unchanged Pricele detail. That is a 34.8% reduction, not just redistribution. The homepage falls from 1,077 to 181 words, an 83.2% reduction. Counts use whitespace-delimited main textContent consistently, including FAQ answers; shared navigation/footer and unchanged policies, intake and blog are outside this comparison.
 
 Verified: production build, lint, TypeScript, new internal links, all nine affected routes, 72 viewport/theme states, axe and legacy routing. See quality/page-structure.json. The heading-level issue exposed by moving pricing to its own page was corrected before the final check.
 

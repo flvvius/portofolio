@@ -1,0 +1,442 @@
+{
+  "sourceRevision": "60ef0d7642904953c0a2cc1a1312d80c7d511fd6",
+  "capturedAt": "2026-10-11T10:30:11.716677+00:00",
+  "states": [
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/work",
+      "theme": "light",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/work",
+      "theme": "light",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/work",
+      "theme": "light",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/work",
+      "theme": "dark",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/work",
+      "theme": "dark",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/work",
+      "theme": "dark",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/process",
+      "theme": "light",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/process",
+      "theme": "light",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/process",
+      "theme": "light",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/process",
+      "theme": "dark",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/process",
+      "theme": "dark",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/process",
+      "theme": "dark",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/pricing",
+      "theme": "light",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/pricing",
+      "theme": "light",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/pricing",
+      "theme": "light",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/pricing",
+      "theme": "dark",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/pricing",
+      "theme": "dark",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/pricing",
+      "theme": "dark",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/faq",
+      "theme": "light",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/faq",
+      "theme": "light",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/faq",
+      "theme": "light",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/faq",
+      "theme": "dark",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/faq",
+      "theme": "dark",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/faq",
+      "theme": "dark",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/about",
+      "theme": "light",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/about",
+      "theme": "light",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/about",
+      "theme": "light",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/about",
+      "theme": "dark",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/about",
+      "theme": "dark",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/about",
+      "theme": "dark",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/projects",
+      "theme": "light",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/projects",
+      "theme": "light",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/projects",
+      "theme": "light",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/projects",
+      "theme": "dark",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/projects",
+      "theme": "dark",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/projects",
+      "theme": "dark",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/experience",
+      "theme": "light",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/experience",
+      "theme": "light",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/experience",
+      "theme": "light",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/experience",
+      "theme": "dark",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/experience",
+      "theme": "dark",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/experience",
+      "theme": "dark",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/work/pricele",
+      "theme": "light",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/work/pricele",
+      "theme": "light",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/work/pricele",
+      "theme": "light",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/work/pricele",
+      "theme": "dark",
+      "width": 320,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/work/pricele",
+      "theme": "dark",
+      "width": 375,
+      "textScale": 2,
+      "overflow": false
+    },
+    {
+      "route": "/work/pricele",
+      "theme": "dark",
+      "width": 1280,
+      "textScale": 2,
+      "overflow": false
+    }
+  ],
+  "navigation": [
+    {
+      "route": "/",
+      "selected": null
+    },
+    {
+      "route": "/work",
+      "selected": "/work"
+    },
+    {
+      "route": "/process",
+      "selected": "/process"
+    },
+    {
+      "route": "/pricing",
+      "selected": "/pricing"
+    },
+    {
+      "route": "/faq",
+      "selected": null
+    },
+    {
+      "route": "/about",
+      "selected": "/about"
+    },
+    {
+      "route": "/projects",
+      "selected": "/about"
+    },
+    {
+      "route": "/experience",
+      "selected": "/about"
+    },
+    {
+      "route": "/work/pricele",
+      "selected": "/work"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "keyboardReturn": true,
+  "skillRevision": "16dbaaeb4128c42c32a584c13abb99fda372ed85",
+  "sourceFiles": {
+    "app/service.css": "cbf198ab15434110138abab87b80f31cc32e32949d52cfa984ae583c6604b2aa",
+    "components/service/NavLinks.tsx": "318cc2a14edbb0fb42ae83545068425d50377ee3a3d6b6877629c9a0354c7160",
+    "components/service/ServiceNav.tsx": "f4fde88c68eed853c54b8aa17d06e01c8ff0b79cbe3120876a179e510273fa25",
+    "components/service/PricingRows.tsx": "77b5548906b4d0213d3f89a00e046d8a6c6065a11db2aa89a67ce1cba9b74297",
+    "app/work/[slug]/page.tsx": "069ef47b21ee2f12a345b98d11b59c51239ceeb246a37579d71e3430b1b8126b"
+  },
+  "resolvedThemeColors": {
+    "light": {
+      "background": "lab(98.846 0.111073 0.751436)",
+      "text": "lab(3.03542 0.975616 1.60148)"
+    },
+    "dark": {
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "text": "lab(91.8947 0.282824 1.88165)"
+    }
+  }
+}

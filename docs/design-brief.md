@@ -1,27 +1,36 @@
 # Service site design brief
 
-Audience: founders with live React products, a launch deadline or budget; small SaaS teams; agencies without a designer.
+Audience: founders with live React products, a launch deadline or budget; small SaaS teams; agencies without a designer. The task is to understand the offer, see evidence, choose an audit or discuss a sprint.
 
-Primary action: buy a EUR 300 taste audit without a call. Sprint questions go to a 15-minute call. Monthly design partner is waitlist only.
+Primary action: EUR 300 taste audit without a call, when Stripe is configured. Sprint questions use a 15-minute call or email. Monthly design partner is waitlist only. External setup was explicitly deferred, so current unavailable states and email destinations remain truthful.
 
-Message: Your app works. Let's make it feel finished. Design and implementation happen in the same codebase, with reviewable pull requests.
+Constraints: Next.js 16.4.0, React 19.2.1, Tailwind 3 and TypeScript, with Node 24 for Vercel. Keep domain, repository and hosting. Preserve factual project, role, education and writing content. The owner subsequently requested removal of the interests collection, separate page destinations and at least 25% less copy.
 
-Constraints: keep Next.js 16, React 19, Tailwind 3, domain, repository and existing hosting. Preserve six project stories, experience, hackathon content, education, writing and interests. Preserve public URLs and fragment destinations. No invented client work, quotes, metrics or outcomes.
+Direction: Editorial calm owns Inter, semantic light/dark colors, graphite actions, flat sections and short motion. Personal room supplies Schoolbell annotations, one hero underline and an About note. The visual idea is marking a screen to explain a code-delivered design decision. Canonical palette matches flavius-design-taste; the optional Tailwind 4 starter is not a migration requirement.
 
-Content inventory and proof: original content lives in data/site.ts, data/blog.ts and data/backRoom.ts. Baseline captures are in docs/before. Pricele has a real current local-build capture, but no historical before or redesign PR. All homepage comparison slots are marked placeholders. Two concept drafts are excluded from production routes and sitemap.
+Composition: choose the type-led opening over the split-media option saved in compositions. The short homepage introduces the offer. Work holds comparison placeholders; Process covers steps, fit, scope and method; Pricing holds offers and waitlist; FAQ has nine answers. About links to Projects, Experience and Blog. Intake, policies and the hidden noindex Styleguide remain.
 
-Unknowns: real comparison pairs, Stripe test/live Payment Links, Cal URL, verified email sender/provider account, analytics account, company details and final policy review.
+Content and proof: data/service.ts, data/site.ts, data/blog.ts and typed data/work.ts. All comparison slots are visibly placeholders. Pricele has a real current local capture, without a historical before or redesign PR. Two concept drafts are excluded from production routes and sitemap. No invented clients, quotes, metrics or results.
 
-Pages and section order: the landing page follows the twelve sections in the brief. Work has an index and typed detail collection. About retains the portfolio. Intake follows payment. Privacy, terms, writing and a useful 404 complete the public pages. Styleguide is hidden and noindex.
+Theme entrypoints: app/layout.tsx loads local fonts and app/service.css; service.css imports service-tokens.css. Tailwind retains version 3 and semantic roles. Light/dark/system mode resolves actual colors and persists only the user's explicit theme choice.
 
-Composition A: type-led opening, purchase action immediately below the explanation, then full-width paired media. This keeps the offer and cost together and gives comparisons enough space. See compositions/a.png.
+## Behavior contract
 
-Composition B: split opening with compact service text on the left and one annotated media preview on the right. It demonstrates the work earlier but competes with the offer and collapses into a long opening on mobile. See compositions/b.png.
+| Feature | Trigger | Expected result | Verification |
+| --- | --- | --- | --- |
+| Auth/session | Visit a public route | No authentication flow on this site | Route source and HTTP checks |
+| Permissions | Visit draft work slug | No production content, return 404 | Work collection and route tests |
+| Page navigation | Select Work, Process, Pricing or About | Page URL and visible current-destination cue | Page/skill browser checks |
+| Legacy URLs | Visit old service/project fragment or back-room URL | Corresponding new page; retired interests reach About | Redirect map and browser checks |
+| Case-study return | Activate Back to work with Enter | /work | Skill browser check |
+| Forms | Submit valid, invalid or repeated fixture data | Acknowledged delivery, inline validation or honest failure; no fabricated success | check-forms.py and form-checks.json |
+| Unconfigured services | Visit Pricing/intake without provider settings | Disabled submission/email alternative; no purchase or delivery claim | Local production and API checks |
+| Draft/cancel semantics | Edit intake fields | Native fields; no server autosave, wizard or cancellation mutation | ServiceForm source |
+| Analytics | Click offers, submit acknowledged forms, view comparisons | Five named events; no field content | Local event recorder |
+| Keyboard/focus | Tab, skip link, FAQ Enter, return link | Visible focus and native activation | Browser traversal and skill review |
+| Dialogs | None in current service flow | No dialog focus contract needed | Component source |
+| Responsive reading | Narrow width, dark mode or doubled text | Readable content and available controls, no overflow | Width/theme matrices and inspected captures |
 
-Chosen direction: A. Editorial calm owns upright Inter typography, semantic colors, short motion and flat sections. Personal room supplies Schoolbell annotations and one hero underline. The specific visual idea is marking a screen to explain a code-delivered design decision.
+Code changes in the updated-skill review are POLISH within the already-authorized refactor. The earlier page split was explicitly requested by the owner. No additional navigation destinations, purchase flow, form transport or external data changes are introduced by this review.
 
-Mobile: conventional wrapped navigation, readable text, stacked media, stacked pricing and full-width fields. Keep complete prices intact. No interaction is needed to reveal scope or work.
-
-Authorization: the owner approved Phase 0, then requested all remaining work without approval stops. Keep logical commits, reviewable evidence and a final PR. Do not merge or deploy production merely to close an external test gap.
-
-New workflow availability: skills/flavius-design was absent during Phase 0 and appeared in the local design repository during implementation. Read its SKILL.md, new-site workflow, verification reference and templates once available; added this brief, two code sketches and final handoff without modifying that repository.
+Known unknowns: Stripe test/live links, Cal event, real email delivery, analytics account receipt, factual comparison pairs, testimonials and company/policy review. Physical devices and screen readers remain unverified. See TODO.md and skill-review.md.

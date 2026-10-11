@@ -14,7 +14,7 @@
     "/about": 42,
     "/projects": 243,
     "/experience": 131,
-    "/work/pricele": 388
+    "/work/pricele": 390
   },
   "states": [
     {
@@ -579,5 +579,5 @@
     }
   ],
   "homepageReductionPercent": 83.2,
-  "totalReductionPercent": 34.9
+  "totalReductionPercent": 34.8
 }

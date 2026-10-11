@@ -1,5 +1,7 @@
 # Quality evidence
 
+The updated design skill was reviewed at 16dbaaeb. See ../skill-review.md and skill-review/checks.json for current-page cues, keyboard return and 54 narrow/desktop doubled-text states. The first failed matrix is preserved alongside the corrected results.
+
 The owner requested a shorter multipage structure after the initial PR. The current follow-up check is `python3 docs/scripts/check-page-structure.py`, with results in page-structure.json. It covers the new page links, 72 route/width/theme states, axe, compatibility links and measured copy reduction. The tables below record the earlier full refactor checks; they are historical evidence rather than a claim that the page structure is unchanged.
 
 Final checks use a local production build on port 3001, Next.js 16.4.0, React 19.2.1 and Chromium 153.0.8010.12 on macOS. No real payment, booking or email account was used. The owner deferred those services in TODO.md.
