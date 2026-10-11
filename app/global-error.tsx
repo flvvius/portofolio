@@ -1,19 +1,3 @@
 "use client";
-
-import * as Sentry from "@sentry/nextjs";
-import Error from "next/error";
-import { useEffect } from "react";
-
-export default function GlobalError({ error }: { error: Error }) {
-  useEffect(() => {
-    Sentry.captureException(error);
-  }, [error]);
-
-  return (
-    <html>
-      <body>
-        <Error statusCode={500} title="An unexpected error has occurred." />
-      </body>
-    </html>
-  );
-}
+import Link from "next/link";
+export default function GlobalError({ reset }: { reset: () => void }) { return <html lang="en"><body style={{ fontFamily: "system-ui,sans-serif", padding: 32 }}><main><h1>We couldn't load this page.</h1><p>Please try again.</p><button onClick={reset}>Try again</button><p><Link href="/">Return home</Link></p></main></body></html>; }

@@ -9,63 +9,9 @@ export const site = {
   name: "flavius cojocaru",
   role: "full-stack engineer",
   location: "Bucharest",
-  email: "flaviuscojocaru19@gmail.com",
+  email: "hi@flavius.pro",
   url: "https://flavius.pro",
 };
-
-export const nav = [
-  { label: "the bar", href: "#the-bar" },
-  { label: "the shelf", href: "#the-shelf" },
-  { label: "the record player", href: "#the-record-player" },
-  { label: "the door", href: "#the-door" },
-];
-
-/* -------------------------------------------------------------------------
- * the bar
- * ---------------------------------------------------------------------- */
-
-export const bar = {
-  // TheBar renders these as three separate nodes, lead → underline → tail, and
-  // puts the hand-drawn orange stroke on `underline` itself. It is the only
-  // underlined word on the page. `headlineTail` may be empty.
-  headlineLead: "i build software that",
-  underline: "matters",
-  headlineTail: "",
-  intro: [
-    "full-stack, mostly typescript, too invested in the details.",
-    "bucharest. shipping things, breaking things.",
-  ],
-  ctaPrimary: "pull up a chair",
-  ctaSecondary: "or just say hi",
-};
-
-/**
- * The strip along the bottom of the hero: the things left lying on the
- * counter. A note and an object, nothing else.
- */
-export const counter = {
-  special: {
-    title: "today's special",
-    // Split link → tail so the anchor wraps only the name, which is the part
-    // you can actually go to. The comma belongs to the sentence, not the link.
-    linkLabel: "miez.news",
-    href: "https://miez.news",
-    lineTail: ", still warm.",
-  },
-  /**
-   * The label under the bookshelf drawing. The drawing is the link; this is
-   * here because a picture with no words under it doesn't read as clickable,
-   * however good the cursor is.
-   */
-  backRoom: {
-    label: "the back room",
-    aria: "the back room: books, film, art and places i like",
-  },
-};
-
-/* -------------------------------------------------------------------------
- * the shelf: projects as objects
- * ---------------------------------------------------------------------- */
 
 export type ShelfObjectKind =
   | "record"
@@ -182,30 +128,6 @@ export const projects: Project[] = [
   },
 ];
 
-export const shelf = {
-  intro: ["a few things i've made."],
-  stickyNote: "curiosity, caffeine, a bit of recklessness.",
-  moreSoon: "more soon, promise.",
-};
-
-/* -------------------------------------------------------------------------
- * the record player: the notes, and the tab
- * ---------------------------------------------------------------------- */
-
-export const recordPlayer = {
-  intro: [
-    "notes to myself, and four jobs told the way",
-    "you'd tell them at the bar, not on a cv.",
-  ],
-};
-
-/**
- * The roles, told as a bar tab rather than a CV.
- *
- * A story instead of a bullet list, because the bullet list is the thing every
- * portfolio already has. It's a tab in the wording and the tally, not in the
- * paper: a printed receipt in the middle of this page would be a costume.
- */
 export type TabItem = {
   /** What you'd call it if you were being funny about it. */
   line: string;
@@ -288,47 +210,6 @@ export const door = {
   footer: "brewed in Bucharest",
 };
 
-export type Social = {
-  label: string;
-  href: string;
-  /** Resting rotation of the coaster, -3deg..+3deg. */
-  tilt: number;
-  /** The handwritten aside beside it. At most one of these is ever set. */
-  nudge?: string;
-};
-
-export const socials: Social[] = [
-  { label: "github", href: "https://github.com/flvvius", tilt: -3 },
-  { label: "x", href: "https://x.com/flaviuscj1", tilt: 2 },
-  {
-    label: "linkedin",
-    href: "https://www.linkedin.com/in/flavius-cojocaru-20834a246/",
-    tilt: -1,
-  },
-  { label: "email", href: `mailto:${site.email}`, tilt: 3, nudge: "say hi" },
-];
-
-/* -------------------------------------------------------------------------
- * now playing: fallback rotation when last.fm isn't configured
- * ---------------------------------------------------------------------- */
-
-/**
- * The house record: what the chip says while the site is playing its own
- * music rather than reporting last.fm. "no end" instead of a track number is
- * literal, the loop is generated and never reaches a run-out groove.
- */
-export const houseRecord = {
-  track: "the house record",
-  artist: "played live by your browser",
-  side: "a",
-  position: "no end",
-};
-
-/**
- * The rotation. Deliberately not sorted by band: the chip steps through this in
- * order, and four songs from the same corner of a scene in a row read as a
- * generated playlist rather than a shelf somebody keeps.
- */
 export const fallbackTracks = [
   { track: "Starless", artist: "King Crimson" },
   { track: "Cockroach King", artist: "Haken" },
