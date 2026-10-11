@@ -11,9 +11,9 @@
   min-height: 100vh;
   padding: 32px 16px 64px;
 }
-.service-site[data-theme="dark"] { --annotation: #ffa194; --annotation-stroke: #ffa194; }
+:root[data-theme="dark"] .service-site { --annotation: #ffa194; --annotation-stroke: #ffa194; }
 @media (prefers-color-scheme: dark) {
-  .service-site[data-theme="auto"] { --annotation: #ffa194; --annotation-stroke: #ffa194; }
+  :root[data-theme="auto"] .service-site { --annotation: #ffa194; --annotation-stroke: #ffa194; }
 }
 body:has(.service-site)::before { display: none; }
 html:has(.service-site) { background: var(--background); scroll-behavior: auto; }
@@ -76,3 +76,62 @@ html:has(.service-site) { background: var(--background); scroll-behavior: auto; 
   .service-pricing-row { grid-template-columns: minmax(0, 1fr); }
 }
 body:has(.service-site) > a[href="#main"] { font-family: var(--font-inter), Arial, sans-serif; }
+
+body.service-site { padding: 0 20px; }
+html { scroll-padding-top: 24px; }
+.service-nav { display: flex; flex-wrap: wrap; gap: 24px; align-items: center; padding-block: 24px; border-bottom: 1px solid var(--border); }
+.service-nav .service-wordmark { margin-right: auto; font-weight: 600; text-decoration: none; }
+.service-wordmark span { display: block; font-weight: 400; margin-top: 4px; }
+.service-nav nav { display: flex; flex-wrap: wrap; gap: 20px; }
+.service-nav nav a { display: inline-flex; min-height: 44px; align-items: center; text-decoration: none; }
+.service-nav nav a:hover, .service-footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.service-opening { padding-block: 72px 24px; }
+.service-site h1.service-hero { font-size: clamp(2.5rem,5vw,3.75rem); max-width: 22ch; }
+.service-kicker { font-size: .875rem; color: var(--muted-foreground); margin-bottom: 24px; }
+.service-lead { font-size: 1.125rem; max-width: 55ch !important; margin-block: 28px 16px; }
+.service-hero-mark { position: relative; display: inline-block; }
+.service-hero-mark svg { display: block; position: absolute; bottom: -9px; left: 0; width: 100%; height: 12px; fill: none; stroke: var(--annotation-stroke); stroke-width: 1.7; }
+.service-section-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.service-proof { padding-block: 32px; border-bottom: 1px solid var(--border); }
+.service-proof-heading { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 24px; justify-content: space-between; }
+.service-study-link { display: inline-block; margin-top: 20px; }
+.service-two-columns { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 32px; }
+.service-list { list-style: disc; padding-left: 20px; margin-top: 16px; }
+.service-list li { margin-bottom: 12px; }
+.service-process { list-style: none; }
+.service-process li { display: flex; gap: 24px; padding-block: 24px; border-top: 1px solid var(--border); }
+.service-step-number { color: var(--muted-foreground); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.service-process-note { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); }
+.service-waitlist { border-top: 1px solid var(--border); margin-top: 32px; padding-top: 24px; }
+.service-waitlist .service-form { margin-top: 20px; max-width: 420px; }
+.service-footer { margin-top: 64px; padding-block: 32px; border-top: 1px solid var(--border); }
+.service-footer-links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-block: 16px; }
+.service-footer-links a { min-height: 44px; display: flex; align-items: center; }
+.service-final h2 { font-size: 1.75rem; line-height: 1.3; margin-bottom: 16px; }
+.service-theme-control { display: flex; gap: 12px; align-items: center; padding-bottom: 24px; font-size: .875rem; color: var(--muted-foreground); }
+.service-theme-control select { background: var(--background); color: var(--foreground); border: 1px solid var(--input); border-radius: var(--radius-control); min-height: 44px; padding: 8px; }
+.service-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.service-error { color: var(--destructive) !important; }
+.service-skip { position: absolute; top: -100px; left: 20px; padding: 12px; background: var(--background); color: var(--foreground); z-index: 10; }
+.service-skip:focus { top: 12px; }
+.service-page-header { padding-block: 48px 24px; }
+.service-page-header p { margin-top: 20px; }
+.service-prose p + p { margin-top: 16px; }
+.service-project { display: grid; grid-template-columns: 80px minmax(0,1fr); gap: 24px; padding-block: 24px; border-bottom: 1px solid var(--border); }
+.service-project-art { height: 100px; width: 80px; color: var(--foreground); }
+.service-project-art svg { max-height: 100%; width: 100%; }
+.service-project h3 { margin-bottom: 8px; }
+.service-note { display: inline-block; background: var(--secondary); padding: 16px; position: relative; margin-block: 24px; }
+.service-note::before { content: ''; width: 60px; height: 12px; background: var(--border); position: absolute; left: 35%; top: -6px; transform: rotate(-3deg); }
+.service-note span { font-family: var(--font-schoolbell), cursive; font-size: 1.5rem; color: var(--annotation); }
+.service-legal section { margin-block: 32px; }
+.service-legal h2 { margin-bottom: 12px; }
+.service-article p { margin-bottom: 20px; }
+@media(max-width:48rem) { .service-two-columns { grid-template-columns: minmax(0,1fr); } .service-nav { gap: 12px; } .service-nav nav { order: 3; width: 100%; justify-content: space-between; gap: 8px; } }
+@media(max-width:400px) { .service-wordmark span { max-width: 13ch; } .service-project { grid-template-columns: 60px minmax(0,1fr); gap: 16px; } .service-project-art { width: 60px; } }
+.service-experience { padding-block: 20px; border-bottom: 1px solid var(--border); }
+.service-interest { margin-top: 32px; }
+.service-interest-row { padding-block: 16px; border-bottom: 1px solid var(--border); }
+.ink-art * { vector-effect: non-scaling-stroke; }
+.service-frame { --annotation: #a44415; --annotation-stroke: #d96b2b; }
+.service-site input::placeholder, .service-site textarea::placeholder { color: var(--muted-foreground); opacity: 1; }
