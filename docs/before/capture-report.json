@@ -1,0 +1,442 @@
+{
+  "browser": "153.0.8010.12",
+  "source": "http://127.0.0.1:3000",
+  "captures": [
+    {
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "errors": [
+        "Multiple Sentry Session Replay instances are not supported"
+      ],
+      "font": "Schoolbell, \"Schoolbell Fallback\", \"Comic Sans MS\", cursive",
+      "fonts": [
+        {
+          "family": "Schoolbell",
+          "status": "loaded"
+        },
+        {
+          "family": "Schoolbell Fallback",
+          "status": "loaded"
+        },
+        {
+          "family": "__nextjs-Geist",
+          "status": "unloaded"
+        },
+        {
+          "family": "__nextjs-Geist Mono",
+          "status": "unloaded"
+        },
+        {
+          "family": "__nextjs-Geist",
+          "status": "unloaded"
+        },
+        {
+          "family": "__nextjs-Geist Mono",
+          "status": "unloaded"
+        }
+      ],
+      "links": [
+        {
+          "text": "skip to the content",
+          "href": "#main"
+        },
+        {
+          "text": "flaviusstudio",
+          "href": "#the-bar"
+        },
+        {
+          "text": "the bar",
+          "href": "#the-bar"
+        },
+        {
+          "text": "the shelf",
+          "href": "#the-shelf"
+        },
+        {
+          "text": "the record player",
+          "href": "#the-record-player"
+        },
+        {
+          "text": "the door",
+          "href": "#the-door"
+        },
+        {
+          "text": "01the bar",
+          "href": "#the-bar"
+        },
+        {
+          "text": "02the shelf",
+          "href": "#the-shelf"
+        },
+        {
+          "text": "03the record player",
+          "href": "#the-record-player"
+        },
+        {
+          "text": "04the door",
+          "href": "#the-door"
+        },
+        {
+          "text": "github",
+          "href": "https://github.com/flvvius"
+        },
+        {
+          "text": "x",
+          "href": "https://x.com/flaviuscj1"
+        },
+        {
+          "text": "linkedin",
+          "href": "https://www.linkedin.com/in/flavius-cojocaru-20834a246/"
+        },
+        {
+          "text": "email",
+          "href": "mailto:flaviuscojocaru19@gmail.com"
+        },
+        {
+          "text": "pull up a chair\u2192",
+          "href": "#the-shelf"
+        },
+        {
+          "text": "or just say hi",
+          "href": "#the-door"
+        },
+        {
+          "text": "miez.news",
+          "href": "https://miez.news"
+        },
+        {
+          "text": "the back room\u2192",
+          "href": "/the-back-room"
+        },
+        {
+          "text": "miez.news, an ai news aggregator, read the story",
+          "href": "#note-miez"
+        },
+        {
+          "text": "commit.ink, a social platform for companies, read the story",
+          "href": "#note-commit-ink"
+        },
+        {
+          "text": "the sisc platform, built by twenty people, read the story",
+          "href": "#note-sisc"
+        },
+        {
+          "text": "agrobot, a whatsapp bot for romanian farmers, read the story",
+          "href": "#note-agrobot"
+        },
+        {
+          "text": "pricele.online, a daily price-guessing game, read the story",
+          "href": "#note-pricele"
+        },
+        {
+          "text": "a chatbot that tells jokes on request, read the story",
+          "href": "#note-joke-bot"
+        },
+        {
+          "text": "miez.newsreads the news all day so you don't have to scroll it",
+          "href": "#note-miez"
+        },
+        {
+          "text": "commit.inktwelve hours, one take, first place",
+          "href": "#note-commit-ink"
+        },
+        {
+          "text": "the sisc platformtwenty people, one repo, nobody lost",
+          "href": "#note-sisc"
+        },
+        {
+          "text": "agrobota photo of a sick plant goes out, an answer comes back",
+          "href": "#note-agrobot"
+        },
+        {
+          "text": "pricele.onlinean item, a country, one number to get right",
+          "href": "#note-pricele"
+        },
+        {
+          "text": "the joke botgive it a word, it gives you a bad joke about it",
+          "href": "#note-joke-bot"
+        },
+        {
+          "text": "live \u2197",
+          "href": "https://miez.news"
+        },
+        {
+          "text": "live \u2197",
+          "href": "https://commit.ink/"
+        },
+        {
+          "text": "live \u2197",
+          "href": "https://hope.sisc.ro"
+        },
+        {
+          "text": "github \u2197",
+          "href": "https://github.com/flvvius/Agro-Bot"
+        },
+        {
+          "text": "live \u2197",
+          "href": "https://pricele.online"
+        },
+        {
+          "text": "06 Dec 2025 \u00b7 2 min readexploring something newwhat if I start a blog that does nothing for my career? a journal, where I drop whatever's in my head about programming.",
+          "href": "/blog/exploring-something-new"
+        },
+        {
+          "text": "all the notes \u2192",
+          "href": "/blog"
+        },
+        {
+          "text": "github",
+          "href": "https://github.com/flvvius"
+        },
+        {
+          "text": "x",
+          "href": "https://x.com/flaviuscj1"
+        },
+        {
+          "text": "linkedin",
+          "href": "https://www.linkedin.com/in/flavius-cojocaru-20834a246/"
+        },
+        {
+          "text": "email",
+          "href": "mailto:flaviuscojocaru19@gmail.com"
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "height": 900,
+      "status": 200,
+      "errors": [
+        "Multiple Sentry Session Replay instances are not supported"
+      ],
+      "font": "Schoolbell, \"Schoolbell Fallback\", \"Comic Sans MS\", cursive",
+      "fonts": [
+        {
+          "family": "Schoolbell",
+          "status": "loaded"
+        },
+        {
+          "family": "Schoolbell Fallback",
+          "status": "loaded"
+        },
+        {
+          "family": "__nextjs-Geist",
+          "status": "unloaded"
+        },
+        {
+          "family": "__nextjs-Geist Mono",
+          "status": "unloaded"
+        },
+        {
+          "family": "__nextjs-Geist",
+          "status": "loaded"
+        },
+        {
+          "family": "__nextjs-Geist Mono",
+          "status": "unloaded"
+        }
+      ],
+      "links": [
+        {
+          "text": "skip to the content",
+          "href": "#main"
+        },
+        {
+          "text": "flaviusstudio",
+          "href": "#the-bar"
+        },
+        {
+          "text": "the bar",
+          "href": "#the-bar"
+        },
+        {
+          "text": "the shelf",
+          "href": "#the-shelf"
+        },
+        {
+          "text": "the record player",
+          "href": "#the-record-player"
+        },
+        {
+          "text": "the door",
+          "href": "#the-door"
+        },
+        {
+          "text": "01the bar",
+          "href": "#the-bar"
+        },
+        {
+          "text": "02the shelf",
+          "href": "#the-shelf"
+        },
+        {
+          "text": "03the record player",
+          "href": "#the-record-player"
+        },
+        {
+          "text": "04the door",
+          "href": "#the-door"
+        },
+        {
+          "text": "github",
+          "href": "https://github.com/flvvius"
+        },
+        {
+          "text": "x",
+          "href": "https://x.com/flaviuscj1"
+        },
+        {
+          "text": "linkedin",
+          "href": "https://www.linkedin.com/in/flavius-cojocaru-20834a246/"
+        },
+        {
+          "text": "email",
+          "href": "mailto:flaviuscojocaru19@gmail.com"
+        },
+        {
+          "text": "pull up a chair\u2192",
+          "href": "#the-shelf"
+        },
+        {
+          "text": "or just say hi",
+          "href": "#the-door"
+        },
+        {
+          "text": "miez.news",
+          "href": "https://miez.news"
+        },
+        {
+          "text": "the back room\u2192",
+          "href": "/the-back-room"
+        },
+        {
+          "text": "miez.news, an ai news aggregator, read the story",
+          "href": "#note-miez"
+        },
+        {
+          "text": "commit.ink, a social platform for companies, read the story",
+          "href": "#note-commit-ink"
+        },
+        {
+          "text": "the sisc platform, built by twenty people, read the story",
+          "href": "#note-sisc"
+        },
+        {
+          "text": "agrobot, a whatsapp bot for romanian farmers, read the story",
+          "href": "#note-agrobot"
+        },
+        {
+          "text": "pricele.online, a daily price-guessing game, read the story",
+          "href": "#note-pricele"
+        },
+        {
+          "text": "a chatbot that tells jokes on request, read the story",
+          "href": "#note-joke-bot"
+        },
+        {
+          "text": "miez.newsreads the news all day so you don't have to scroll it",
+          "href": "#note-miez"
+        },
+        {
+          "text": "commit.inktwelve hours, one take, first place",
+          "href": "#note-commit-ink"
+        },
+        {
+          "text": "the sisc platformtwenty people, one repo, nobody lost",
+          "href": "#note-sisc"
+        },
+        {
+          "text": "agrobota photo of a sick plant goes out, an answer comes back",
+          "href": "#note-agrobot"
+        },
+        {
+          "text": "pricele.onlinean item, a country, one number to get right",
+          "href": "#note-pricele"
+        },
+        {
+          "text": "the joke botgive it a word, it gives you a bad joke about it",
+          "href": "#note-joke-bot"
+        },
+        {
+          "text": "live \u2197",
+          "href": "https://miez.news"
+        },
+        {
+          "text": "live \u2197",
+          "href": "https://commit.ink/"
+        },
+        {
+          "text": "live \u2197",
+          "href": "https://hope.sisc.ro"
+        },
+        {
+          "text": "github \u2197",
+          "href": "https://github.com/flvvius/Agro-Bot"
+        },
+        {
+          "text": "live \u2197",
+          "href": "https://pricele.online"
+        },
+        {
+          "text": "06 Dec 2025 \u00b7 2 min readexploring something newwhat if I start a blog that does nothing for my career? a journal, where I drop whatever's in my head about programming.",
+          "href": "/blog/exploring-something-new"
+        },
+        {
+          "text": "all the notes \u2192",
+          "href": "/blog"
+        },
+        {
+          "text": "github",
+          "href": "https://github.com/flvvius"
+        },
+        {
+          "text": "x",
+          "href": "https://x.com/flaviuscj1"
+        },
+        {
+          "text": "linkedin",
+          "href": "https://www.linkedin.com/in/flavius-cojocaru-20834a246/"
+        },
+        {
+          "text": "email",
+          "href": "mailto:flaviuscojocaru19@gmail.com"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "path": "/blog",
+      "status": 200
+    },
+    {
+      "path": "/blog/exploring-something-new",
+      "status": 200
+    },
+    {
+      "path": "/the-back-room",
+      "status": 200
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200
+    },
+    {
+      "path": "/robots.txt",
+      "status": 200
+    },
+    {
+      "path": "/api/now-playing",
+      "status": 200
+    },
+    {
+      "path": "/main.png",
+      "status": 200
+    },
+    {
+      "path": "/icon.svg",
+      "status": 200
+    }
+  ]
+}
