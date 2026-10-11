@@ -1,27 +1,27 @@
 import type { Metadata, Viewport } from "next";
-import { Schoolbell } from "next/font/google";
+import localFont from "next/font/local";
 
 import "./globals.css";
+import "./service.css";
 import JsonLd from "@/components/JsonLd";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { ConsoleNote } from "@/components/ConsoleNote";
 import { RoomTone } from "@/components/RoomTone";
 
-/**
- * One font, every job. Schoolbell writes the hero, the body copy and the
- * margin scribbles alike, so the whole page reads as one hand rather than
- * three voices taking turns.
- *
- * It ships a single 400 weight and no italic. Bold and italic are therefore
- * synthesised by the browser, which on a handwriting face reads as pressing
- * harder and leaning in — which is what those two are for anyway.
- */
-const schoolbell = Schoolbell({
-  subsets: ["latin"],
+const inter = localFont({
+  src: "./fonts/inter-latin-wght-normal.woff2",
+  weight: "100 900",
+  display: "swap",
+  variable: "--font-inter",
+  fallback: ["Arial"],
+});
+
+const schoolbell = localFont({
+  src: "./fonts/Schoolbell-Regular.ttf",
   weight: "400",
   display: "swap",
   variable: "--font-schoolbell",
-  preload: true,
+  fallback: ["Arial"],
 });
 
 const baseUrl = "https://flavius.pro";
@@ -117,7 +117,7 @@ export default function RootLayout({
     <html
       lang="en"
       dir="ltr"
-      className={schoolbell.variable}
+      className={`${inter.variable} ${schoolbell.variable}`}
       suppressHydrationWarning
     >
       <head>

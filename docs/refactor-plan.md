@@ -1,6 +1,6 @@
 # Service site refactor plan
 
-Checkpoint 0, 11 October 2026. Awaiting approval before Phase 1. No application source has changed.
+Checkpoint 0 approved on 11 October 2026. Phase 1 is in progress.
 
 ## Outcome and scope
 
