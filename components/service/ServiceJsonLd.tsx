@@ -40,7 +40,7 @@ export function ServiceJsonLd() {
               name: "Taste audit",
               price: "300",
               priceCurrency: "EUR",
-              url: `${origin}/#pricing`,
+              url: `${origin}/pricing`,
               itemOffered: { "@type": "Service", name: "One-flow taste audit" },
             },
             {
@@ -51,7 +51,7 @@ export function ServiceJsonLd() {
                 minPrice: "1500",
                 priceCurrency: "EUR",
               },
-              url: `${origin}/#pricing`,
+              url: `${origin}/pricing`,
               itemOffered: {
                 "@type": "Service",
                 name: "UI implementation sprint",

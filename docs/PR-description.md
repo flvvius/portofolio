@@ -1,52 +1,34 @@
-The homepage now explains the design service, public prices and deliverables before asking a founder to act. The developer portfolio moves to `/about`, with its project stories, experience, education, writing and interests retained. Old routes and project fragments reach their new homes.
+The portfolio becomes a design-service site with a short homepage and separate Work, Process, Pricing and FAQ pages. About introduces Flavius; Projects and Experience hold the developer portfolio. The owner requested this page split and removal of the interests collection after reviewing the initial refactor.
 
-The EUR 300 audit and sprint from EUR 1,500 use upright Inter, hairline sections and restrained tokens from flavius-design-taste. Schoolbell is limited to editable screenshot annotations and an About note. The partner offer is waitlist only. Light, dark and system themes are supported.
+Main navigation now uses page URLs. The homepage is 83% shorter; copy across the affected pages is down 35%, including all new destinations. Project stories and FAQs are condensed while prices, scope, refund terms and factual portfolio content remain available. Previously shared service and portfolio fragments reach their new pages.
 
-This keeps Next.js, React, Tailwind 3, the domain and existing hosting. It adds no runtime SDK for forms or analytics. The lockfile updates packages within the existing ranges and has zero runtime audit advisories. Node 24 is pinned to match local verification and override the existing Vercel project's discontinued Node 20 setting.
+The audit is EUR 300, a sprint starts at EUR 1,500 and monthly work is waitlist only. Upright Inter, restrained light/dark tokens and editable Schoolbell screenshot annotations follow flavius-design-taste. No clients, results or testimonials are invented. Work comparisons are explicitly placeholders; Pricele has a real current screenshot without a claimed redesign result.
 
-## Before and after
+Next.js, React, Tailwind 3, the existing domain and hosting remain. Node 24 fixes the existing Vercel project's discontinued Node 20 setting. Runtime dependency audit has no advisories; eleven development-tool advisories remain documented.
 
-Both sides use the same viewport, light theme, DPR 1 and reduced motion. The before source is tagged `v1-portfolio`. The original had no pricing section; that comparison shows the original experience/writing area and labels the limitation.
+## Current review captures
 
-| Hero at 1280 × 900 | Before | After |
-| --- | --- | --- |
-| | ![Original portfolio hero](https://raw.githubusercontent.com/flvvius/portofolio/refactor/service-site/docs/teardown-001/hero-1280-before.png) | ![Service hero](https://raw.githubusercontent.com/flvvius/portofolio/refactor/service-site/docs/teardown-001/hero-1280-after.png) |
+![Short homepage at 375px](https://raw.githubusercontent.com/flvvius/portofolio/refactor/service-site/docs/quality/pages-home-375.png)
 
-| Hero at 375 × 812 | Before | After |
-| --- | --- | --- |
-| | ![Original mobile hero](https://raw.githubusercontent.com/flvvius/portofolio/refactor/service-site/docs/teardown-001/hero-375-before.png) | ![Service mobile hero](https://raw.githubusercontent.com/flvvius/portofolio/refactor/service-site/docs/teardown-001/hero-375-after.png) |
+[Short About](https://github.com/flvvius/portofolio/blob/refactor/service-site/docs/quality/pages-about-375.png), [dedicated Pricing](https://github.com/flvvius/portofolio/blob/refactor/service-site/docs/quality/pages-pricing-375.png), [page map and measured copy reduction](https://github.com/flvvius/portofolio/blob/refactor/service-site/docs/page-structure.md).
 
-[Pricing and full mobile pairs, seven decisions and unposted X/LinkedIn drafts](https://github.com/flvvius/portofolio/tree/refactor/service-site/docs/teardown-001).
+[Original before/after teardown, seven decisions and unposted social drafts](https://github.com/flvvius/portofolio/tree/refactor/service-site/docs/teardown-001) record the first refactor iteration. Their long homepage captures are historical.
 
-## Acceptance criteria
+## Acceptance and validation
 
-- [x] Service homepage; portfolio on About; original writing preserved; old route and fragment handling.
-- [x] Blend respected, with upright commercial copy and conventional navigation.
-- [x] Public audit/sprint prices; monthly partner waitlist only.
-- [ ] Real Stripe TEST purchase through redirect and inbox delivery. Owner explicitly deferred Stripe, Cal.com and email setup and requested TODOs.
-- [x] Accessible before/after component with editable SVG overlays and ownership labels. Proof is clearly marked placeholder; Pricele has a real current screenshot without a fictional redesign result. Two draft concepts have no public route. Testimonials render nothing.
-- [x] Scope, exclusions, fit, process, FAQ, refund promise and VAT wording flagged for owner review.
-- [x] hi@flavius.pro throughout active content; no Gmail address.
-- [x] Lighthouse targets, axe, keyboard/focus, contrast, doubled text, reflow, reduced motion and required breakpoints.
-- [x] Canonicals, OG/Twitter image, sitemap, robots and Person/ProfessionalService offers.
-- [x] Optional Umami with all five events exercised against a local recorder.
-- [x] Teardown captures and social drafts delivered.
+- [x] Short service homepage and dedicated detail pages; portfolio stories preserved and condensed; interests removed as requested.
+- [x] Page-based navigation, legacy route/fragment handling and updated sitemap.
+- [x] Public prices, waitlist-only monthly offer, scope, fit, FAQ and owner-review VAT wording.
+- [x] Upright commercial copy, editable media annotations, honest placeholders and no fabricated testimonials.
+- [x] Build, lint and TypeScript pass. The page split passes 72 route/width/theme checks, axe, internal links and compatibility navigation.
+- [x] SEO, OG/Twitter cards, canonical URLs and Person/ProfessionalService offers.
+- [x] Intake/waitlist delivery and all five analytics events implemented; original local provider fixtures pass.
+- [ ] Actual Stripe TEST purchase, Cal booking and email inbox receipt. The owner explicitly deferred these.
 
-## Validation
+[Latest page checks](https://github.com/flvvius/portofolio/blob/refactor/service-site/docs/quality/page-structure.json), [full refactor evidence and coverage limits](https://github.com/flvvius/portofolio/blob/refactor/service-site/docs/quality/README.md), [redirect map](https://github.com/flvvius/portofolio/blob/refactor/service-site/docs/redirect-map.md).
 
-Verified locally: production build, lint and TypeScript pass. Lighthouse mobile scores are **99 / 100 / 100 / 100** for performance, accessibility, best practices and SEO. CLS is 0. Axe reports no violations across checked pages and homepage viewport/theme states. There is no horizontal overflow in the 48 required route/width/theme combinations or the additional 320px reflow cases. Keyboard traversal and reduced motion pass across eight pages.
+## Owner TODOs
 
-Local fixtures cover intake/waitlist success after provider acknowledgement, field errors, origin rejection, honeypot, rate limiting and provider failure without a false success event. They also observe audit_click, call_click, waitlist_submit, intake_submit and before_after_view. No real payment or email was sent.
+Supply Stripe Payment Links, Cal.com booking, verified Resend sender and recipient; run actual purchase and inbox checks. Supply real matched before/after pairs and approved testimonials if wanted. Confirm company/VAT details and policies. Configure optional analytics and verify account receipt. Review the remaining development-tool advisories.
 
-Fixed failures: same-origin localhost requests, an appearance selector outside a landmark and a price/description overlap found during visual review of doubled text. Final checks pass. [Full coverage and reproduction](https://github.com/flvvius/portofolio/blob/refactor/service-site/docs/quality/README.md), [checkpoint reports](https://github.com/flvvius/portofolio/blob/refactor/service-site/docs/checkpoints.md) and [redirect map](https://github.com/flvvius/portofolio/blob/refactor/service-site/docs/redirect-map.md).
-
-## Owner TODOs before launch
-
-- Supply Stripe TEST/live Payment Links and Cal.com event; run the actual purchase and booking tests.
-- Configure Resend with a verified sender and confirm inbox receipt.
-- Supply three factual matched before/after pairs, approved claims and optional real testimonials.
-- Confirm company/VAT details and review privacy/terms.
-- Configure optional analytics and deployment environment values, then verify actual account receipt.
-- Track the eleven remaining development-tool advisories; runtime dependencies have none. Full remediation needs a separate dependency decision, including Tailwind's major version.
-
-[Complete TODO list](https://github.com/flvvius/portofolio/blob/refactor/service-site/docs/TODO.md). Physical devices and screen readers are unverified. This PR is ready for review with the deferred setup visible; it has not been merged or deployed to production. Social drafts have not been posted.
+[Complete TODO list](https://github.com/flvvius/portofolio/blob/refactor/service-site/docs/TODO.md). Physical devices and screen readers are unverified. This branch is for review; no production merge or social posting has occurred.

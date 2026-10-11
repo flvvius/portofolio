@@ -177,3 +177,7 @@ Unverified: production hosting dashboard, historical URLs outside current source
 The owner approved Phase 0 and subsequently instructed continuous execution with no further approvals. Checkpoints remain evidence reports without stop gates. The root theme now applies throughout the site. Optional Umami was chosen over Vercel Analytics because it adds no runtime package and accepts an existing hosted or self-hosted account. No analytics account was provisioned.
 
 The back-room redirect is HTTP 301 to `/about?from=back-room`. The browser retains original fragments, and About resolves a bare arrival to `#interests` then removes the compatibility query. Known fragment URLs therefore reach their corresponding collections instead of losing their destination.
+
+## Follow-up structure
+
+The owner removed the interests section and requested page navigation instead of homepage anchors, with at least 25% less copy. The implementation now has separate work, process, pricing, FAQ, projects and experience pages. Copy across affected destinations is 34.9% shorter. See page-structure.md for the current contract.

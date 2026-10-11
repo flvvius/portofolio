@@ -1,9 +1,12 @@
 "use client";
 import { useEffect } from "react";
 const map: Record<string, string> = {
-  "the-shelf": "projects",
-  "the-record-player": "experience",
-  "the-door": "contact",
+  work: "/work",
+  process: "/process",
+  pricing: "/pricing",
+  "the-shelf": "/projects",
+  "the-record-player": "/experience",
+  "the-door": "/about#contact",
 };
 const projects = [
   "miez",
@@ -19,8 +22,10 @@ export function LegacyFragments() {
       const hash = location.hash.slice(1);
       const dest =
         map[hash] ||
-        (projects.some((slug) => hash === `note-${slug}`) ? hash : undefined);
-      if (dest) location.replace(`/about#${dest}`);
+        (projects.some((slug) => hash === `note-${slug}`)
+          ? `/projects#${hash}`
+          : undefined);
+      if (dest) location.replace(dest);
     }
     redirect();
     window.addEventListener("hashchange", redirect);
@@ -31,14 +36,12 @@ export function LegacyFragments() {
       <div className="service-caption">
         {Object.entries(map).map(([old, dest]) => (
           <p key={old} id={old}>
-            <a href={`/about#${dest}`}>The portfolio moved to About.</a>
+            <a href={dest}>This section has its own page.</a>
           </p>
         ))}
         {projects.map((slug) => (
           <p key={slug} id={`note-${slug}`}>
-            <a href={`/about#note-${slug}`}>
-              Read the {slug} project on About.
-            </a>
+            <a href={`/projects#note-${slug}`}>Read the {slug} project.</a>
           </p>
         ))}
       </div>

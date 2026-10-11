@@ -1,5 +1,7 @@
 # Acceptance criteria
 
+These notes describe the first refactor iteration. The owner subsequently requested shorter separate pages and removal of the interests collection. See [the current page map](page-structure.md) and quality/page-structure.json for the updated structure and checks.
+
 These checks apply to the reviewed branch and local production build. External services deferred by the owner remain unchecked.
 
 - [x] Service homepage; developer portfolio at /about; preserved writing, projects and interests; legacy route and fragment handling.

@@ -522,7 +522,7 @@ html {
   max-height: 100%;
   width: 100%;
 }
-.service-project h3 {
+.service-project h2 {
   margin-bottom: 8px;
 }
 .service-note {
@@ -584,13 +584,6 @@ html {
 }
 .service-experience {
   padding-block: 20px;
-  border-bottom: 1px solid var(--border);
-}
-.service-interest {
-  margin-top: 32px;
-}
-.service-interest-row {
-  padding-block: 16px;
   border-bottom: 1px solid var(--border);
 }
 .ink-art * {

@@ -13,7 +13,7 @@ export function AuditLink({ short = false }: { short?: boolean }) {
       </EventLink>
     );
   return (
-    <Link className="service-button" href="/#pricing">
+    <Link className="service-button" href="/pricing">
       {short ? "Get an audit" : "Get a EUR 300 taste audit"}
     </Link>
   );

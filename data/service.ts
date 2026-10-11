@@ -2,53 +2,53 @@ export const faq = [
   {
     question: "Which stacks do you work with?",
     answer:
-      "React and Next.js, with Tailwind and shadcn/ui. Lovable, Bolt and v0 exports are welcome when the code is available.",
+      "React, Next.js, Tailwind and shadcn/ui, including Lovable, Bolt and v0 exports.",
   },
   {
     question: "How do you get repo access? What about confidentiality?",
     answer:
-      "For a sprint, invite me to the specific repository with the least access needed. An audit can start with a live app and screenshots. I can sign an NDA before access. Private code, screens and business information stay private, and you can revoke access when we're done.",
+      "An audit can start with your live app. For a sprint, grant access to the specific repo. NDAs are welcome; private material stays private. Revoke access afterward.",
   },
   {
     question: "What exactly is the redesigned screen in the audit?",
     answer:
-      "One annotated high-fidelity mockup or an isolated coded preview of a screen in the agreed flow. It explains the proposed direction. It is not a merged production change; implementation in your app is the sprint.",
+      "One annotated mockup or isolated coded preview. Production implementation belongs to the sprint.",
   },
   {
     question: "What's the turnaround?",
     answer:
-      "The audit arrives within 3 business days after complete intake. Sprint timing is agreed after I check your codebase and confirm the scope.",
+      "Audits take 3 business days after complete intake. Sprint timing follows the codebase check.",
   },
   {
     question: "How do revisions work?",
     answer:
-      "We agree the scope and review expectations before work starts. Audit questions are welcome. Sprint revisions stay within the agreed flow; new screens or new direction need a separate scope. I don't offer unlimited revisions.",
+      "Revisions stay within the agreed flow. Extra screens or a new direction need separate scope. No unlimited revisions.",
   },
   {
     question: "Do you write the code or just design?",
     answer:
-      "Both. For a sprint, I change your actual components, styles and interaction states and deliver reviewable pull requests. The audit gives you recommendations and one screen preview. No Figma handoff.",
+      "Both. Sprints deliver changes as reviewable PRs. Audits deliver recommendations and one preview. No Figma handoff.",
   },
   {
     question: "What if the audit isn't useful?",
     answer:
-      "Tell me by email and I'll refund the full EUR 300 audit fee. If you upgrade to a sprint, the audit fee is credited toward the sprint.",
+      "Email me for a full EUR 300 refund. The audit fee is credited if you upgrade to a sprint.",
   },
   {
     question: "What about VAT and invoicing?",
     answer:
-      "I invoice from a Romanian company. VAT treatment depends on your location and business status; EU B2B reverse charge may apply where eligible. The quote and invoice confirm the tax treatment. Owner review pending for this wording and company details.",
+      "I invoice from a Romanian company. EU B2B reverse charge may apply. Tax treatment is confirmed on the invoice. Company details and wording await owner review.",
   },
   {
     question: "What if my app isn't React?",
     answer:
-      "Email me before buying. An audit may still be useful, but I need to check whether I can give you a useful screen preview. Implementation sprints focus on React codebases.",
+      "Email before buying. An audit may help; implementation sprints focus on React.",
   },
 ];
 export const included = [
   "UI layout and hierarchy",
   "Typography, spacing, color and tokens",
-  "Components and interaction states, including empty, loading and error",
+  "Components; empty, loading and error states",
   "Responsive polish and accessibility fixes",
   "Microcopy",
 ];
@@ -58,7 +58,7 @@ export const excluded = [
   "Logos and brand identity",
   "Figma files",
   "A whole new product",
-  "Guaranteed business outcomes or unlimited revisions",
+  "Guaranteed outcomes or unlimited revisions",
 ];
 export const testimonials: { quote: string; name: string; role: string }[] = [];
 export const testimonialsEnabled = false;

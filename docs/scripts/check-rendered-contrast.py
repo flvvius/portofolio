@@ -7,7 +7,7 @@ report={'contrast':[], 'reflow':[], 'doubledText':[]}
 with sync_playwright() as p:
  b=p.chromium.launch();page=b.new_page(viewport={'width':1280,'height':900})
  for theme in ['light','dark']:
-  page.goto('http://127.0.0.1:3001/',wait_until='networkidle')
+  page.goto('http://127.0.0.1:3001/pricing',wait_until='networkidle')
   page.locator('#site-theme').select_option(theme)
   values=page.evaluate('''()=>{
    const c=document.createElement('canvas');c.width=c.height=1;const ctx=c.getContext('2d');
@@ -26,7 +26,7 @@ with sync_playwright() as p:
    overflow=page.evaluate('document.documentElement.scrollWidth>innerWidth')
    assert not overflow,(route,theme)
    report['reflow'].append({'route':route,'theme':theme,'width':320,'overflow':overflow})
-  page.set_viewport_size({'width':1280,'height':900});page.goto('http://127.0.0.1:3001/',wait_until='networkidle')
+  page.set_viewport_size({'width':1280,'height':900});page.goto('http://127.0.0.1:3001/pricing',wait_until='networkidle')
   page.evaluate('''()=>{const entries=Array.from(document.querySelectorAll('body,body *')).map(e=>({e,size:parseFloat(getComputedStyle(e).fontSize),line:getComputedStyle(e).lineHeight}));for(const {e,size,line} of entries){e.style.fontSize=(size*2)+'px';if(line!=='normal')e.style.lineHeight=(parseFloat(line)*2)+'px'}}''')
   overflow=page.evaluate('document.documentElement.scrollWidth>innerWidth');assert not overflow
   prices=page.locator('.service-pricing-row').evaluate_all('''rows=>rows.map(row=>{const price=row.querySelector('.service-price');const range=document.createRange();range.selectNodeContents(price);const text=range.getBoundingClientRect();const next=row.children[1].getBoundingClientRect();return {right:text.right,nextLeft:next.left,stacked:next.top>=text.bottom,overlap:next.top<text.bottom&&text.right>next.left}})''')

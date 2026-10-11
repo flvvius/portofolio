@@ -7,6 +7,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     "",
     "/work",
+    "/process",
+    "/pricing",
+    "/faq",
+    "/projects",
+    "/experience",
     "/about",
     "/blog",
     "/privacy",

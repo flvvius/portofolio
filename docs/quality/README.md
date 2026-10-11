@@ -1,5 +1,7 @@
 # Quality evidence
 
+The owner requested a shorter multipage structure after the initial PR. The current follow-up check is `python3 docs/scripts/check-page-structure.py`, with results in page-structure.json. It covers the new page links, 72 route/width/theme states, axe, compatibility links and measured copy reduction. The tables below record the earlier full refactor checks; they are historical evidence rather than a claim that the page structure is unchanged.
+
 Final checks use a local production build on port 3001, Next.js 16.4.0, React 19.2.1 and Chromium 153.0.8010.12 on macOS. No real payment, booking or email account was used. The owner deferred those services in TODO.md.
 
 ## Verified
@@ -70,6 +72,7 @@ npm run start -- --port 3001
 The browser scripts require Python Playwright with Chromium installed. Axe comes from the existing development dependency tree. Lighthouse was installed in a temporary tooling directory, with no runtime package added to the site.
 
 ```bash
+python3 docs/scripts/check-page-structure.py
 python3 docs/scripts/verify-site.py
 python3 docs/scripts/check-keyboard-zoom.py
 python3 docs/scripts/check-rendered-contrast.py

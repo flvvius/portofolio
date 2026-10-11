@@ -1,16 +1,12 @@
-import { BackRoomArrival } from "@/components/service/BackRoomArrival";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageShell } from "@/components/service/PageShell";
-import { ShelfObject } from "@/components/art/ShelfObjects";
-import { projects, tab, door, fallbackTracks } from "@/data/site";
-import { backRoomShelves } from "@/data/backRoom";
-import { getAllBlogPosts } from "@/data/blog";
+import { BackRoomArrival } from "@/components/service/BackRoomArrival";
 import { serviceConfig } from "@/lib/service/config";
 export const metadata: Metadata = {
-  title: "About and developer portfolio",
+  title: "About Flavius",
   description:
-    "Flavius Cojocaru, design engineer in Bucharest. Products, engineering experience, writing and the things I keep coming back to.",
+    "Design engineer in Bucharest. Software, projects and engineering experience.",
   alternates: { canonical: "/about" },
 };
 export default function About() {
@@ -20,161 +16,35 @@ export default function About() {
       <header className="service-page-header">
         <p className="service-kicker">The person behind the PRs</p>
         <h1>I'm Flavius.</h1>
-        <p>
-          I design and build software in Bucharest. Mostly TypeScript, and
-          probably too invested in the details.
-        </p>
+        <p>I design and build software in Bucharest, mostly in TypeScript.</p>
       </header>
       <div className="service-prose">
-        {door.about.slice(1).map((text) => (
-          <p key={text}>{text}</p>
-        ))}
+        <p>
+          I've led a twenty-person engineering team. Alongside my day job, I
+          build products of my own, including miez.news and Pricele.
+        </p>
         <div className="service-note">
           <span>The details are the whole job.</span>
         </div>
       </div>
-      <section
-        className="service-section"
-        id="projects"
-        aria-labelledby="projects-title"
-      >
-        <h2 id="projects-title">The project shelf</h2>
-        {projects.map((project) => (
-          <article
-            className="service-project"
-            id={`note-${project.slug}`}
-            key={project.slug}
-          >
-            <div className="service-project-art" aria-hidden="true">
-              <ShelfObject kind={project.object} />
-            </div>
-            <div>
-              <h3>{project.title}</h3>
-              <p className="service-caption" style={{ marginBottom: 16 }}>
-                {project.caption}
-              </p>
-              <div className="service-prose">
-                {project.story.map((text) => (
-                  <p key={text}>{text}</p>
-                ))}
-              </div>
-              {project.stack.length > 0 && (
-                <p className="service-caption" style={{ marginTop: 16 }}>
-                  {project.stack.join(" · ")}
-                </p>
-              )}
-              <div className="service-actions">
-                {project.links.map((link) => (
-                  <a key={link.href} className="service-link" href={link.href}>
-                    {link.label === "live"
-                      ? "Visit the product"
-                      : "Source on GitHub"}
-                  </a>
-                ))}
-                {project.slug === "pricele" && (
-                  <Link href="/work/pricele" className="service-link">
-                    Design case-study example
-                  </Link>
-                )}
-              </div>
-            </div>
-          </article>
-        ))}
-      </section>
-      <section
-        className="service-section"
-        id="experience"
-        aria-labelledby="experience-title"
-      >
-        <h2 id="experience-title">Experience</h2>
-        {tab.items.map((item) => (
-          <article className="service-experience" key={item.place}>
-            <h3>{item.place}</h3>
-            <p className="service-caption">
-              {item.date} · {item.duration}
-            </p>
-            <p className="service-muted" style={{ marginTop: 12 }}>
-              {item.story}
-            </p>
-          </article>
-        ))}
-        <h3 style={{ marginTop: 24 }}>{tab.education.title}</h3>
-        {tab.education.lines.map((line) => (
-          <p className="service-muted" key={line.title}>
-            {line.title} · {line.years}
-          </p>
-        ))}
-      </section>
-      <section className="service-section" aria-labelledby="writing">
-        <h2 id="writing">Notes to myself</h2>
-        {getAllBlogPosts().map((post) => (
-          <p key={post.id}>
-            <Link className="service-link" href={`/blog/${post.id}`}>
-              {post.title}
-            </Link>
-          </p>
-        ))}
-        <p style={{ marginTop: 16 }}>
-          <Link className="service-link" href="/blog">
-            All writing
+      <section className="service-section" aria-label="More about me">
+        <div className="service-actions">
+          <Link className="service-link" href="/projects">
+            Projects
           </Link>
-        </p>
+          <Link className="service-link" href="/experience">
+            Experience and education
+          </Link>
+          <Link className="service-link" href="/blog">
+            Writing
+          </Link>
+        </div>
       </section>
-      <section
-        className="service-section"
-        id="interests"
-        aria-labelledby="interests-title"
-      >
-        <h2 id="interests-title">
-          Things I didn't make, but keep coming back to.
-        </h2>
-        {backRoomShelves.map((shelf) => (
-          <section
-            className="service-interest"
-            id={shelf.slug}
-            key={shelf.slug}
-          >
-            <h3>{shelf.label}</h3>
-            <p className="service-caption">{shelf.aside}</p>
-            {shelf.entries.map((entry) => (
-              <div className="service-interest-row" key={entry.title}>
-                <p>
-                  {entry.href ? (
-                    <a className="service-link" href={entry.href}>
-                      {entry.title}
-                    </a>
-                  ) : (
-                    entry.title
-                  )}
-                  {entry.by && (
-                    <span className="service-caption"> · {entry.by}</span>
-                  )}
-                </p>
-                {entry.note && <p className="service-muted">{entry.note}</p>}
-              </div>
-            ))}
-          </section>
-        ))}
-        <section className="service-interest">
-          <h3>On rotation</h3>
-          {fallbackTracks.map((track) => (
-            <p className="service-muted" key={track.track}>
-              {track.artist} · {track.track}
-            </p>
-          ))}
-        </section>
-      </section>
-      <section
-        className="service-section"
-        id="contact"
-        aria-labelledby="contact-title"
-      >
-        <h2 id="contact-title">Say hi</h2>
-        <p>
-          <a className="service-link" href={`mailto:${serviceConfig.email}`}>
-            {serviceConfig.email}
-          </a>
-        </p>
+      <section className="service-section" id="contact">
+        <h2>Say hi</h2>
+        <a className="service-link" href={`mailto:${serviceConfig.email}`}>
+          {serviceConfig.email}
+        </a>
       </section>
     </PageShell>
   );

@@ -1,54 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageShell } from "@/components/service/PageShell";
-import { AuditLink, CallLink } from "@/components/service/Actions";
-import { BeforeAfter } from "@/components/service/BeforeAfter";
-import { PricingRows } from "@/components/service/PricingRows";
-import { FAQ } from "@/components/service/FAQ";
-import { ServiceForm } from "@/components/service/ServiceForm";
-import { Testimonials } from "@/components/service/Testimonials";
-import { ComparisonView } from "@/components/service/Analytics";
+import { AuditLink } from "@/components/service/Actions";
 import { LegacyFragments } from "@/components/service/LegacyFragments";
-import { sampleAnnotations } from "@/data/annotations/styleguide";
-import { faq, included, excluded } from "@/data/service";
-import { serviceConfig, formsConfigured } from "@/lib/service/config";
-
+import { Testimonials } from "@/components/service/Testimonials";
 export const metadata: Metadata = {
   title: "Flavius: design engineer for AI-built apps",
   alternates: { canonical: "/" },
 };
-const proof = [
-  {
-    slug: "onboarding-concept",
-    title: "A clearer first step",
-    label: "Unsolicited concept",
-    decisions: [
-      "Give the first task a clear heading so the flow is easier to follow.",
-      "Choose one primary action so equal-weight buttons don't compete.",
-      "Keep guidance near its field so users can act on it.",
-    ],
-  },
-  {
-    slug: "pricele",
-    title: "Pricele, my daily price game",
-    label: "My own product",
-    decisions: [
-      "Put the price guess first so the task has a clear starting point.",
-      "Keep source and country context visible so the number has meaning.",
-      "Explain feedback with words as well as color so a guess remains understandable.",
-    ],
-  },
-  {
-    slug: "dashboard-concept",
-    title: "Less furniture, more information",
-    label: "Unsolicited concept",
-    decisions: [
-      "Use hairlines to group rows so content carries the page.",
-      "Give numbers consistent alignment so comparisons are easier.",
-      "Make error and empty states specific so the next action is apparent.",
-    ],
-  },
-];
 export default function Home() {
   return (
     <PageShell>
@@ -71,248 +30,50 @@ export default function Home() {
           </span>
         </h1>
         <p className="service-lead">
-          I redesign AI-built apps and small SaaS products directly in your
-          React codebase. Clearer screens, better interactions, reviewable pull
-          requests. No Figma handoff.
+          I redesign AI-built apps and small SaaS products in your React
+          codebase, then deliver reviewable PRs.
         </p>
         <p className="service-muted">
-          Next.js, Tailwind, shadcn/ui, and Lovable, Bolt or v0 exports.
+          Next.js, Tailwind, shadcn/ui and Lovable, Bolt or v0 exports.
         </p>
         <div className="service-actions">
           <AuditLink />
-          <a className="service-link" href="#work">
-            See before and after
-          </a>
-        </div>
-        <p className="service-caption">
-          One flow. EUR 300. Delivered within 3 business days after complete
-          intake.
-        </p>
-        {!serviceConfig.stripe && (
-          <p className="service-caption">
-            Self-serve checkout is awaiting setup.{" "}
-            <a className="service-link" href={`mailto:${serviceConfig.email}`}>
-              Email me about the audit
-            </a>
-            .
-          </p>
-        )}
-      </section>
-      <section
-        className="service-section"
-        id="work"
-        aria-labelledby="work-title"
-      >
-        <div className="service-section-heading">
-          <h2 id="work-title">The decisions are the work.</h2>
           <Link className="service-link" href="/work">
-            All case studies
+            See the work
           </Link>
         </div>
-        <p className="service-muted">
-          Before, after, and why. These three comparison slots are placeholders
-          while I prepare real pairs. They are not evidence of client results.
+        <p className="service-caption">
+          One flow. EUR 300. Within 3 business days of complete intake.
         </p>
-        {proof.map((item) => (
-          <article
-            className="service-proof"
-            id={`proof-${item.slug}`}
-            key={item.slug}
-          >
-            <div className="service-proof-heading">
-              <h3>{item.title}</h3>
-              <p className="service-caption">{item.label} · PLACEHOLDER</p>
-            </div>
-            <BeforeAfter
-              before={{
-                src: "/images/styleguide/before.svg",
-                alt: `Placeholder before interface for ${item.title}. Real screenshot pending.`,
-              }}
-              after={{
-                src: "/images/styleguide/after.svg",
-                alt: `Placeholder after interface for ${item.title}. Real screenshot pending.`,
-                annotations: sampleAnnotations,
-              }}
-              caption="Same 800 × 600 specimen viewport. Proposed direction only; real screenshots and implementation evidence are pending."
-            />
-            <ul className="service-decisions">
-              {item.decisions.map((decision) => (
-                <li key={decision}>{decision}</li>
-              ))}
-            </ul>
-            {item.slug === "pricele" ? (
-              <Link
-                className="service-link service-study-link"
-                href="/work/pricele"
-              >
-                Read the Pricele example
-              </Link>
-            ) : process.env.NODE_ENV !== "production" ? (
-              <Link
-                className="service-link service-study-link"
-                href={`/work/${item.slug}`}
-              >
-                Read draft concept
-              </Link>
-            ) : (
-              <p className="service-caption service-study-link">
-                Full case study pending. Draft excluded from production.
-              </p>
-            )}
-            <ComparisonView id={`proof-${item.slug}`} />
-          </article>
-        ))}
       </section>
-      <section className="service-section" aria-labelledby="fit">
-        <h2 id="fit">A good fit when there's something to improve.</h2>
+      <section className="service-section" aria-labelledby="services-title">
+        <h2 id="services-title">Start with one flow.</h2>
         <div className="service-two-columns">
           <div>
-            <h3>For</h3>
-            <ul className="service-list">
-              <li>Live products with users, a launch deadline or a budget.</li>
-              <li>React, Tailwind and shadcn codebases.</li>
-              <li>Founders who want design and implementation together.</li>
-              <li>Agencies without a designer.</li>
-            </ul>
+            <h3>Taste audit · EUR 300</h3>
+            <p className="service-muted">
+              A recorded walkthrough, ten ranked fixes and one redesigned screen
+              preview. Full refund if it isn't useful.
+            </p>
           </div>
           <div>
-            <h3>Not for</h3>
-            <ul className="service-list">
-              <li>Logos or brand identity.</li>
-              <li>Figma-only deliverables.</li>
-              <li>Building a whole product or apps with no code yet.</li>
-              <li>Unlimited revisions.</li>
-            </ul>
+            <h3>Polish sprint · from EUR 1,500</h3>
+            <p className="service-muted">
+              One flow or 3–5 screens, implemented in your codebase. Your audit
+              fee is credited.
+            </p>
           </div>
         </div>
-      </section>
-      <section
-        className="service-section"
-        id="process"
-        aria-labelledby="process-title"
-      >
-        <h2 id="process-title">A short path from rough to ready.</h2>
-        <ol className="service-process">
-          {[
-            {
-              title: "Send your app and goal",
-              text: "Show me the flow and tell me what isn't working for you.",
-            },
-            {
-              title: "Agree scope and pay",
-              text: "The audit is fixed price. For a sprint, I check the codebase before quoting.",
-            },
-            {
-              title: "Get the audit or PRs",
-              text: "An audit gives you a walkthrough and screen preview. A sprint implements the agreed changes.",
-            },
-            {
-              title: "Review, merge, done",
-              text: "Review the audit recommendations, or review and merge your sprint PRs.",
-            },
-          ].map((step, index) => (
-            <li key={step.title}>
-              <span className="service-step-number" aria-hidden="true">
-                0{index + 1}
-              </span>
-              <div>
-                <h3>{step.title}</h3>
-                <p className="service-muted">{step.text}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-        <p className="service-process-note">
-          Design and code by the same person, so nothing gets lost in handoff.
-        </p>
-      </section>
-      <section
-        className="service-section"
-        id="pricing"
-        aria-labelledby="pricing-title"
-      >
-        <h2 id="pricing-title">Start with one flow.</h2>
-        <PricingRows />
         <div className="service-actions">
-          <AuditLink />
-          <CallLink />
-        </div>
-        {!serviceConfig.stripe && (
-          <p className="service-caption">
-            Audit checkout is not connected yet. Prices and scope are fixed as
-            shown; email me before paying elsewhere.
-          </p>
-        )}
-        <div className="service-waitlist">
-          <h3>Ongoing design partner: waitlist</h3>
-          <p className="service-muted">
-            Monthly collaboration, one request at a time. Join the waitlist for
-            availability. No purchase or payment now.
-          </p>
-          <ServiceForm
-            kind="waitlist"
-            configured={formsConfigured}
-            email={serviceConfig.email}
-          />
-        </div>
-      </section>
-      <section className="service-section" aria-labelledby="scope">
-        <h2 id="scope">UI work, with a clear boundary.</h2>
-        <div className="service-two-columns">
-          <div>
-            <h3>Included</h3>
-            <ul className="service-list">
-              {included.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h3>Not included</h3>
-            <ul className="service-list">
-              {excluded.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
+          <Link className="service-link" href="/pricing">
+            Pricing and availability
+          </Link>
+          <Link className="service-link" href="/process">
+            How we work
+          </Link>
         </div>
       </section>
       <Testimonials />
-      <section className="service-section" aria-labelledby="faq-title">
-        <h2 id="faq-title">Before you buy</h2>
-        <FAQ items={faq} />
-      </section>
-      <section className="service-section" aria-labelledby="method">
-        <h2 id="method">I work from an open design system.</h2>
-        <p className="service-muted">
-          Type, spacing, restrained color and useful interactions. The method is
-          public, including the principles behind these pages.
-        </p>
-        {serviceConfig.method && (
-          <p style={{ marginTop: 16 }}>
-            <a className="service-link" href={serviceConfig.method}>
-              Read flavius-design-taste
-            </a>
-          </p>
-        )}
-        <p style={{ marginTop: 16 }}>
-          Use the method yourself, or hire me to apply it to your product.
-        </p>
-      </section>
-      <section
-        className="service-section service-final"
-        aria-labelledby="final-title"
-      >
-        <h2 id="final-title">Give your next screen the attention it needs.</h2>
-        <p className="service-muted">
-          Start with an audit. For sprint questions, let's talk through the
-          flow.
-        </p>
-        <div className="service-actions">
-          <AuditLink />
-          <CallLink />
-        </div>
-      </section>
     </PageShell>
   );
 }

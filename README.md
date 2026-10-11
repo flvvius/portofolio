@@ -1,6 +1,6 @@
 # flavius.pro
 
-Flavius's design-service site, with the developer portfolio at `/about`. The homepage offers a EUR 300 taste audit, a polish sprint from EUR 1,500 and a monthly partner waitlist.
+Flavius's design-service site, with the developer portfolio at `/about`. A short homepage introduces the service. Work, process, pricing and FAQ have dedicated pages. Projects and experience sit beside the concise About page. The audit costs EUR 300, a sprint starts at EUR 1,500 and monthly work is waitlist only.
 
 The site keeps Next.js 16, React 19, TypeScript, Tailwind CSS 3 and the existing Vercel deployment. Local Inter carries commercial copy; Schoolbell is limited to annotations and an About note. The theme comes from [flavius-design-taste](https://github.com/flvvius/flavius-design-taste), with complete light, dark and system modes.
 
@@ -39,11 +39,11 @@ The owner deferred live Stripe, Cal.com and email setup. [The TODO list](docs/TO
 - `data/service.ts` holds service copy, scope and FAQ.
 - `data/work.ts` is the typed case-study collection. Draft entries have no production route or sitemap entry.
 - `data/annotations/` holds editable SVG overlay instructions separately from screenshots.
-- `data/site.ts`, `data/blog.ts` and `data/backRoom.ts` retain portfolio, writing and interests.
+- `data/site.ts` and `data/blog.ts` retain portfolio and writing.
 - `components/service/BeforeAfter.tsx` renders accessible paired media with required alt text.
 - `app/service-tokens.css` defines theme tokens; `app/service.css` implements the page patterns.
 
-The three homepage proof slots are visibly marked placeholders. Pricele has a real local capture of its current screen, but no historical before or completed redesign. Testimonials render nothing until approved quotes exist and the flag is enabled.
+The three Work-page proof slots are visibly marked placeholders. Pricele has a real local capture of its current screen, but no historical before or completed redesign. Testimonials render nothing until approved quotes exist and the flag is enabled.
 
 ## Review evidence
 

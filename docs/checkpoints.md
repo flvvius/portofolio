@@ -1,5 +1,7 @@
 # Refactor checkpoint reports
 
+These notes describe the first refactor iteration. The owner subsequently requested shorter separate pages and removal of the interests collection. See [the current page map](page-structure.md) and quality/page-structure.json for the updated structure and checks.
+
 The owner approved Phase 0 and then requested the remaining work without approval stops. On 11 October 2026, they deferred Stripe, Cal.com and real email setup and asked to record those as TODOs. The reports distinguish local evidence from external setup.
 
 ## Phase 0

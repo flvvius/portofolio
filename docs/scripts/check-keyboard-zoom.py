@@ -4,7 +4,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 root=Path(__file__).resolve().parents[2]
 report={'keyboard':[], 'zoom':[], 'reducedMotion':[]}
-paths=['/','/about','/work','/work/pricele','/audit/start','/privacy','/terms','/blog']
+paths=['/','/about','/work','/work/pricele','/audit/start','/privacy','/terms','/blog','/process','/pricing','/faq','/projects','/experience']
 with sync_playwright() as p:
  b=p.chromium.launch()
  page=b.new_page(viewport={'width':1280,'height':900},reduced_motion='reduce')

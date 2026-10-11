@@ -48,8 +48,7 @@ export const projects: Project[] = [
     title: "miez.news, an ai news aggregator",
     caption: "reads the news all day so you don't have to scroll it",
     story: [
-      "miez is the core of a thing, what's left once you take the crust off. that's the whole thesis: read widely, condense, then stop. a feed you can actually get to the end of.",
-      "most of it is pipeline, kept cheap enough to just run without anyone watching. web and mobile come out of one turborepo. biggest thing i've built, still changing most weeks.",
+      "An AI news feed with an end. I built the pipeline and web/mobile apps in one turborepo, keeping running costs low.",
     ],
     stack: ["typescript", "tanstack start", "convex", "better auth", "vercel"],
     links: liveLink(process.env.NEXT_PUBLIC_MIEZ_URL),
@@ -62,8 +61,7 @@ export const projects: Project[] = [
     title: "commit.ink, a social platform for companies",
     caption: "twelve hours, one take, first place",
     story: [
-      "adobe's hackathon gave us twelve hours, which isn't enough time to design anything twice. every decision had to be the one that shipped.",
-      "feed, messages, notifications: three easy features and one state-management problem. we leaned hard on agentic tooling to hold that pace, and it won first place.",
+      "Built in twelve hours at Adobe's hackathon: feed, messages and notifications. Our team used agentic tooling and won first place.",
     ],
     stack: ["typescript", "next.js", "convex", "clerk", "openai api"],
     links: liveLink(process.env.NEXT_PUBLIC_COMMIT_INK_URL),
@@ -76,8 +74,7 @@ export const projects: Project[] = [
     title: "the sisc platform, built by twenty people",
     caption: "twenty people, one repo, nobody lost",
     story: [
-      "i led twenty engineers on this, and the hard part was never the code. at that size the git history is the real architecture, so that's where the evenings went.",
-      "what i'm proudest of isn't in the repo: people who had never shipped anything shipped something, and most of them stayed.",
+      "I led twenty engineers, many shipping for the first time. Coordination and Git history mattered as much as the code.",
     ],
     stack: ["react", "node.js", "git"],
     links: liveLink(process.env.NEXT_PUBLIC_SISC_URL),
@@ -90,8 +87,7 @@ export const projects: Project[] = [
     title: "agrobot, a whatsapp bot for romanian farmers",
     caption: "a photo of a sick plant goes out, an answer comes back",
     story: [
-      "romanian farmers are not going to install your app. whatsapp is already open all day, so that's where the tool had to live.",
-      "weather for the specific crop, live cereal prices, a plant diagnosis from a photo taken in the field. it runs on cloudflare workers, close to free, which is how a tool with no revenue survives.",
+      "A WhatsApp tool for Romanian farmers: crop weather, cereal prices and plant diagnosis from a photo. Built on Cloudflare Workers.",
     ],
     stack: [
       "typescript",
@@ -112,8 +108,7 @@ export const projects: Project[] = [
     title: "pricele.online, a daily price-guessing game",
     caption: "an item, a country, one number to get right",
     story: [
-      "something ordinary, sold somewhere specific. guess what it costs there. that's the entire game.",
-      "wordle's shape, because being 4% off and being 400% off are not the same kind of wrong and the game has to say so. turns out it isn't about prices, it's about how expensive you think a place is.",
+      "Guess what an everyday item costs in a given country. Feedback distinguishes a near miss from a wildly different guess.",
     ],
     // TODO: fill in the stack. Left empty on purpose rather than guessed:
     // both the panel and the no-js write-up skip the personnel line when it is.
@@ -128,8 +123,7 @@ export const projects: Project[] = [
     title: "a chatbot that tells jokes on request",
     caption: "give it a word, it gives you a bad joke about it",
     story: [
-      "my internship project at ubisoft: give it a keyword, get a joke back. the brief was genuinely that.",
-      "first time i'd wired a model into a product, and the lesson was how much of the job sits after the api call. shipped in docker, also a first.",
+      "My Ubisoft internship project: a keyword-driven joke chatbot. My first model integration and Docker deployment.",
     ],
     stack: ["react", "openai api", "docker"],
     links: [],
@@ -218,15 +212,3 @@ export const door = {
   tapedNote: "open late (probably)",
   footer: "brewed in Bucharest",
 };
-
-export const fallbackTracks = [
-  { track: "Starless", artist: "King Crimson" },
-  { track: "Cockroach King", artist: "Haken" },
-  { track: "Panic Attack", artist: "Dream Theater" },
-  { track: "Anesthetize", artist: "Porcupine Tree" },
-  { track: "Cousin Dupree", artist: "Steely Dan" },
-  { track: "Ashes", artist: "Pain of Salvation" },
-  { track: "Sing to God", artist: "Cardiacs" },
-  { track: "The Price", artist: "Leprous" },
-  { track: "Ants of the Sky", artist: "Between the Buried and Me" },
-];

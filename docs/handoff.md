@@ -1,5 +1,7 @@
 # Design handoff
 
+These notes describe the first refactor iteration. The owner subsequently requested shorter separate pages and removal of the interests collection. See [the current page map](page-structure.md) and quality/page-structure.json for the updated structure and checks.
+
 The original portfolio hid the service behind a room-like presentation. The new homepage states the audience, deliverables, public prices and next action. The old project stories, experience, education, writing and interests now live on About and the retained blog routes.
 
 Source baseline is v1-portfolio at b1ec959. The implementation is on refactor/service-site for review through a PR. The scope keeps the same Next.js/React/Tailwind stack, domain, repository and hosting. It includes code and review assets; production merge, external account setup and social posting are outside the delivered scope.
