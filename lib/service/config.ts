@@ -1,6 +1,11 @@
 function https(value?: string) {
   if (!value) return undefined;
-  try { const url = new URL(value); return url.protocol === "https:" ? url.href : undefined; } catch { return undefined; }
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" ? url.href : undefined;
+  } catch {
+    return undefined;
+  }
 }
 
 export const serviceConfig = {
@@ -16,4 +21,8 @@ export const serviceConfig = {
   analyticsId: process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID,
 };
 
-export const formsConfigured = Boolean(process.env.RESEND_API_KEY && process.env.FORM_FROM_EMAIL && process.env.FORM_TO_EMAIL);
+export const formsConfigured = Boolean(
+  process.env.RESEND_API_KEY &&
+  process.env.FORM_FROM_EMAIL &&
+  process.env.FORM_TO_EMAIL,
+);

@@ -59,12 +59,6 @@ export function InkArt({
 }
 
 /** Cross-hatch shading. The only shading technique used on this site. */
-export function Hatch({
-  d,
-  opacity = 0.55,
-}: {
-  d: string;
-  opacity?: number;
-}) {
+export function Hatch({ d, opacity = 0.55 }: { d: string; opacity?: number }) {
   return <path d={d} strokeWidth={1.1} opacity={opacity} />;
 }

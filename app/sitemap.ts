@@ -4,5 +4,20 @@ import { studies } from "@/data/work";
 import { serviceConfig } from "@/lib/service/config";
 export default function sitemap(): MetadataRoute.Sitemap {
   const origin = serviceConfig.origin.replace(/\/$/, "");
-  return ["", "/work", "/about", "/blog", "/privacy", "/terms", ...getAllBlogPosts().map(post => `/blog/${post.id}`), ...studies.filter(study => !study.draft).map(study => `/work/${study.slug}`)].map(path => ({ url: `${origin}${path}`, changeFrequency: "monthly", priority: path ? .7 : 1 }));
+  return [
+    "",
+    "/work",
+    "/about",
+    "/blog",
+    "/privacy",
+    "/terms",
+    ...getAllBlogPosts().map((post) => `/blog/${post.id}`),
+    ...studies
+      .filter((study) => !study.draft)
+      .map((study) => `/work/${study.slug}`),
+  ].map((path) => ({
+    url: `${origin}${path}`,
+    changeFrequency: "monthly",
+    priority: path ? 0.7 : 1,
+  }));
 }

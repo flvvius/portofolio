@@ -1,3 +1,9 @@
+import { serviceConfig } from "@/lib/service/config";
+
+function liveLink(url?: string) {
+  return url ? [{ label: "live", href: url }] : [];
+}
+
 /**
  * All the words on the site live here.
  *
@@ -9,17 +15,12 @@ export const site = {
   name: "flavius cojocaru",
   role: "full-stack engineer",
   location: "Bucharest",
-  email: "hi@flavius.pro",
-  url: "https://flavius.pro",
+  email: serviceConfig.email,
+  url: serviceConfig.origin,
 };
 
 export type ShelfObjectKind =
-  | "record"
-  | "book"
-  | "cassette"
-  | "coffee"
-  | "notebook"
-  | "jar";
+  "record" | "book" | "cassette" | "coffee" | "notebook" | "jar";
 
 export type Project = {
   slug: string;
@@ -51,7 +52,7 @@ export const projects: Project[] = [
       "most of it is pipeline, kept cheap enough to just run without anyone watching. web and mobile come out of one turborepo. biggest thing i've built, still changing most weeks.",
     ],
     stack: ["typescript", "tanstack start", "convex", "better auth", "vercel"],
-    links: [{ label: "live", href: "https://miez.news" }],
+    links: liveLink(process.env.NEXT_PUBLIC_MIEZ_URL),
     tilt: -2,
   },
   {
@@ -65,7 +66,7 @@ export const projects: Project[] = [
       "feed, messages, notifications: three easy features and one state-management problem. we leaned hard on agentic tooling to hold that pace, and it won first place.",
     ],
     stack: ["typescript", "next.js", "convex", "clerk", "openai api"],
-    links: [{ label: "live", href: "https://commit.ink/" }],
+    links: liveLink(process.env.NEXT_PUBLIC_COMMIT_INK_URL),
     tilt: 1,
   },
   {
@@ -79,7 +80,7 @@ export const projects: Project[] = [
       "what i'm proudest of isn't in the repo: people who had never shipped anything shipped something, and most of them stayed.",
     ],
     stack: ["react", "node.js", "git"],
-    links: [{ label: "live", href: "https://hope.sisc.ro" }],
+    links: liveLink(process.env.NEXT_PUBLIC_SISC_URL),
     tilt: -1,
   },
   {
@@ -92,8 +93,16 @@ export const projects: Project[] = [
       "romanian farmers are not going to install your app. whatsapp is already open all day, so that's where the tool had to live.",
       "weather for the specific crop, live cereal prices, a plant diagnosis from a photo taken in the field. it runs on cloudflare workers, close to free, which is how a tool with no revenue survives.",
     ],
-    stack: ["typescript", "hono", "drizzle", "cloudflare workers", "gemini api"],
-    links: [{ label: "github", href: "https://github.com/flvvius/Agro-Bot" }],
+    stack: [
+      "typescript",
+      "hono",
+      "drizzle",
+      "cloudflare workers",
+      "gemini api",
+    ],
+    links: process.env.NEXT_PUBLIC_AGROBOT_URL
+      ? [{ label: "github", href: process.env.NEXT_PUBLIC_AGROBOT_URL }]
+      : [],
     tilt: 2,
   },
   {
@@ -109,7 +118,7 @@ export const projects: Project[] = [
     // TODO: fill in the stack. Left empty on purpose rather than guessed:
     // both the panel and the no-js write-up skip the personnel line when it is.
     stack: [],
-    links: [{ label: "live", href: "https://pricele.online" }],
+    links: liveLink(process.env.NEXT_PUBLIC_PRICELE_URL),
     tilt: -1,
   },
   {

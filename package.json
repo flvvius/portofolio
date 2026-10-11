@@ -13,9 +13,7 @@
     "@sentry/nextjs": "^10.29.0",
     "next": "^16.0.7",
     "react": "^19.2.1",
-    "react-dom": "^19.2.1",
-    "react-rough-notation": "^1.0.8",
-    "roughjs": "^4.6.6"
+    "react-dom": "^19.2.1"
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^16.0.7",
