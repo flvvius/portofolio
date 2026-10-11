@@ -2,7 +2,7 @@ The homepage now explains the design service, public prices and deliverables bef
 
 The EUR 300 audit and sprint from EUR 1,500 use upright Inter, hairline sections and restrained tokens from flavius-design-taste. Schoolbell is limited to editable screenshot annotations and an About note. The partner offer is waitlist only. Light, dark and system themes are supported.
 
-This keeps Next.js, React, Tailwind 3, the domain and existing hosting. It adds no runtime SDK for forms or analytics. The lockfile updates packages within the existing ranges and has zero runtime audit advisories.
+This keeps Next.js, React, Tailwind 3, the domain and existing hosting. It adds no runtime SDK for forms or analytics. The lockfile updates packages within the existing ranges and has zero runtime audit advisories. Node 24 is pinned to match local verification and override the existing Vercel project's discontinued Node 20 setting.
 
 ## Before and after
 

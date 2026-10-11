@@ -44,6 +44,8 @@ Rendered canvas sampling of resolved theme colors gives these ratios. Hairlines 
 
 ## Failed and corrected
 
+The first automatic Vercel preview failed before installation because the existing project selected discontinued Node 20. The branch now pins Node 24 through package.json, matching the verified local runtime and overriding the project setting. Preview results are visible on the PR.
+
 The first full axe run reported the appearance selector outside a landmark. Moving it into the footer cleared the finding. A valid same-origin localhost form request initially returned 403 because Next's normalized origin differed; host/protocol comparison fixed it. Visual inspection of the doubled-text capture caught a sprint price overlapping its description; intrinsic price-column sizing fixed it, and the regression check now measures that overlap.
 
 The fixture recorder initially lost its events during external navigation; the test now prevents fixture navigation while preserving the React click event. This was a fixture issue, not a delivery claim. The baseline setup's symlink dependency mistake was recovered before final captures; the final baseline uses an isolated install. No unresolved final automated failure remains.

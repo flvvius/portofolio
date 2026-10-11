@@ -6,6 +6,8 @@ The site keeps Next.js 16, React 19, TypeScript, Tailwind CSS 3 and the existing
 
 ## Run locally
 
+Use Node.js 24. The package engine also overrides the existing Vercel project's discontinued Node 20 setting.
+
 ```bash
 npm ci
 cp .env.example .env.local
