@@ -12,3 +12,5 @@ Verified in Chromium 153.0.8010.12: homepage HTTP 200 at both widths; Schoolbell
 Failed: both homepage runs raised `Multiple Sentry Session Replay instances are not supported`. The captures retain Next's development indicator, including the desktop issue badge. These are development baseline captures, not clean production marketing assets or Lighthouse evidence. Correct Sentry setup and make clean, same-viewport captures for the final teardown.
 
 Unverified: production visual parity, production monitoring behavior, historical routes absent from current source/sitemap, accessibility and performance scores. The fallback now-playing track can rotate between captures.
+
+The archived link inventory normalizes the old contact destination to hi@flavius.pro. The original remains available through the baseline Git tag.

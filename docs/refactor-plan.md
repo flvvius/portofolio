@@ -171,3 +171,9 @@ Verified: clean baseline, repository identity, branch/tag, installed framework v
 Failed: both homepage browser runs raised `Multiple Sentry Session Replay instances are not supported`. Captures retain the development indicator; these are baseline evidence rather than production assets. Sandbox denied Git ref writes and Chromium launch on the first attempts. Retried with approval. Next development startup reports an old browser-mapping database, Sentry client-config deprecation and Node dependency deprecations. Record them for the quality phase; inventory does not require unrelated upgrades.
 
 Unverified: production hosting dashboard, historical URLs outside current source and live sitemap, Pricele runtime, form delivery, payment flow, analytics account, Lighthouse, axe and final responsive/accessibility targets. No redesign or launch claim is made at this checkpoint.
+
+## Execution updates
+
+The owner approved Phase 0 and subsequently instructed continuous execution with no further approvals. Checkpoints remain evidence reports without stop gates. The root theme now applies throughout the site. Optional Umami was chosen over Vercel Analytics because it adds no runtime package and accepts an existing hosted or self-hosted account. No analytics account was provisioned.
+
+The back-room redirect is HTTP 301 to `/about?from=back-room`. The browser retains original fragments, and About resolves a bare arrival to `#interests` then removes the compatibility query. Known fragment URLs therefore reach their corresponding collections instead of losing their destination.

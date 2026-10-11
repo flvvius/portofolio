@@ -1,0 +1,12 @@
+{
+  "recordedAt": "2026-10-11T09:29:32.406734+00:00",
+  "sourceRevision": "ea7016899c0a59a8fadec5a2bbc830b8841fcc63",
+  "branch": "refactor/service-site",
+  "server": "local production build on 3001",
+  "browser": "Chromium 153.0.8010.12",
+  "platform": "macOS",
+  "framework": "Next.js 16.4.0",
+  "react": "19.2.1",
+  "externalServices": "Unconfigured; local fixtures only",
+  "selfReview": true
+}

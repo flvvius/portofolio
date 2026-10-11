@@ -1,114 +1,52 @@
 # flavius.pro
 
-A personal portfolio built as a listening bar: paper, ink, hand-drawn marks, and a record you can actually put on.
+Flavius's design-service site, with the developer portfolio at `/about`. The homepage offers a EUR 300 taste audit, a polish sprint from EUR 1,500 and a monthly partner waitlist.
 
-![the bar](./public/main.png)
+The site keeps Next.js 16, React 19, TypeScript, Tailwind CSS 3 and the existing Vercel deployment. Local Inter carries commercial copy; Schoolbell is limited to annotations and an About note. The theme comes from [flavius-design-taste](https://github.com/flvvius/flavius-design-taste), with complete light, dark and system modes.
 
-Live at **[flavius.pro](https://flavius.pro)**.
-
----
-
-## The idea
-
-Most engineering portfolios are a hero, a card grid, a timeline, and a contact form. This one is a room you walk into.
-
-- **the bar** — the headline, and whatever's on the platter right now.
-- **the shelf** — projects, standing on two wooden planks as illustrated objects (a record, a cassette, a book, a moka pot). Click one and its case study opens behind it.
-- **the record player** — writing on one side, the work history on the other, set as a bar tab rather than a list of jobs.
-- **the door** — closing time: about, and socials as coasters stacked on the counter.
-- **the back room** — a side page for the things I didn't make but keep: books, film, art, places.
-
-Two rules hold the whole thing together: **every mark is drawn, not imported** — there is no icon library, no illustration PNG, no audio file, it's inline SVG and Web Audio all the way down — and **orange means one thing**, so there's a hard budget of accent marks per screen.
-
-## Stack
-
-| | |
-|---|---|
-| Framework | Next.js 16 (App Router, React 19, Server Components by default) |
-| Language | TypeScript |
-| Styling | Tailwind CSS 3, with the default palette **replaced** rather than extended |
-| Type | Fraunces (display, variable `SOFT`/`WONK` axes), Courier Prime (body), Caveat (margin notes) |
-| Drawing | Inline SVG, plus `roughjs` / `react-rough-notation` for hand-drawn strokes |
-| Audio | Web Audio API — the house record is composed in code (`lib/vinyl.ts`) |
-| Monitoring | Sentry, and Google Analytics 4 if you give it an ID |
-
-## Getting started
+## Run locally
 
 ```bash
-npm install
+npm ci
+cp .env.example .env.local
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
-
-### Scripts
+If `.env.local` already exists, copy only the missing variables. Keep secrets out of Git. Open http://localhost:3000.
 
 ```bash
-npm run dev        # dev server
-npm run build      # production build
-npm run start      # serve the production build
-npm run lint       # eslint
-npm run lint:fix   # eslint, with fixes
+npm run lint
+npm run build
+npm run start
 ```
 
-### Environment
+Public environment values are included at build time. Rebuild after changing payment, booking, project or analytics URLs. The example file explains each setting.
 
-All optional. The site runs fine on an empty `.env.local` — the pieces that need keys degrade instead of breaking.
+## Configuration and launch
 
-```bash
-# app/api/now-playing — the last.fm "on the platter" chip.
-# Without these the route reports itself unconfigured and the chip falls
-# back to a hardcoded rotation. That's the intended behaviour, not a failure.
-LASTFM_API_KEY=
-LASTFM_USER=
+Stripe Payment Links handle checkout. Set `NEXT_PUBLIC_STRIPE_AUDIT_URL` and configure the payment redirect to `/audit/start` on the same deployment. Set `NEXT_PUBLIC_CAL_URL` for sprint calls. Checkout and booking show an email fallback until configured.
 
-# Google Analytics 4 (page views + Core Web Vitals).
-# Omit it and the script never loads.
-NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
-```
+The intake and waitlist use `/api/forms` and the Resend HTTP API, with no additional SDK. Configure `RESEND_API_KEY`, a verified `FORM_FROM_EMAIL` and `FORM_TO_EMAIL`. Without these values, sending is disabled and the route returns 503. The server validates input, checks the origin, rejects the honeypot and limits requests. The in-memory limiter is best effort per process, so it does not replace a distributed abuse control if traffic warrants one.
 
-## Layout
+Umami loads only when both public analytics settings exist. Events contain action names, not form data. Sentry is optional and env-gated, with replay disabled. The Last.fm API and Sentry monitoring tunnel remain available for existing consumers.
 
-```
-app/
-  page.tsx              the bar → the shelf → the record player → the door
-  blog/                 index + [id]
-  the-back-room/        books, film, art, places
-  api/now-playing/      last.fm proxy (key stays server-side, 30s revalidate)
-  globals.css           tokens, paper grain, motion
-components/
-  sections/             the four rooms
-  art/                  every drawing: turntable, shelf objects, cuckoo, counter
-  ink/                  the hand-drawn marks: underline, arrow, scribble, rise
-  Nav.tsx               a header that is deliberately not a navbar
-  HouseRecordToggle.tsx the sound switch
-  CaseStudy.tsx         the panel behind a shelf object
-data/
-  site.ts               all the words on the site
-  blog.ts               posts
-  backRoom.ts           the back room shelves
-lib/
-  vinyl.ts              the house record, composed in code
-```
+The owner deferred live Stripe, Cal.com and email setup. [The TODO list](docs/TODO.md) records those steps, company/policy review and the real proof assets needed before launch. Local fixture tests do not establish payment or inbox delivery.
 
-### Editing content
+## Edit content
 
-Copy lives in `data/`, not in components. Adding a project is one object in `projects` (`data/site.ts`); adding a back-room shelf is one object in `backRoom` — no component changes either way. The voice is documented at the top of each data file: lowercase, one evocative line per caption, story before stack.
+- `data/service.ts` holds service copy, scope and FAQ.
+- `data/work.ts` is the typed case-study collection. Draft entries have no production route or sitemap entry.
+- `data/annotations/` holds editable SVG overlay instructions separately from screenshots.
+- `data/site.ts`, `data/blog.ts` and `data/backRoom.ts` retain portfolio, writing and interests.
+- `components/service/BeforeAfter.tsx` renders accessible paired media with required alt text.
+- `app/service-tokens.css` defines theme tokens; `app/service.css` implements the page patterns.
 
-The palette is locked in `tailwind.config.ts` — five ink-and-paper tones plus two tape values, replacing Tailwind's defaults so no stray blue can creep in. If you're reaching for a colour that isn't in that file, the answer is usually ink at a lower opacity.
+The three homepage proof slots are visibly marked placeholders. Pricele has a real local capture of its current screen, but no historical before or completed redesign. Testimonials render nothing until approved quotes exist and the flag is enabled.
 
-## Details worth knowing
+## Review evidence
 
-- **The house record is generated, not played back.** `lib/vinyl.ts` synthesises a slow four-chord loop in F on an FM Rhodes with upright bass and brushes, then ages it: surface crackle, a thump once per rotation, pitch drift because the platter isn't perfect, highs rolled off at 7k. Nothing is fetched, nothing needs licensing, and there's no mp3 in `/public`.
-- **Sound is off until you ask.** The nav toggle is the single switch. The hover and click tones in `RoomTone.tsx` ride one delegated document listener, are mouse-only (a tap would otherwise fire hover and press together), rate-limited, and silent unless the record is already on.
-- **It works without JavaScript.** Shelf objects are anchors pointing at plain sections already in the DOM; the case-study panel is enhancement on top of that.
-- **`prefers-reduced-motion` is honoured throughout** — the turntable stops spinning, ink marks appear rather than drawing themselves.
-- **SEO and a11y are wired up**: per-route metadata and OG images, JSON-LD, `sitemap.ts`, `robots.ts`, and a skip link into `#main` on every page.
+[The plan](docs/refactor-plan.md) contains the original inventory and design choices. [The redirect map](docs/redirect-map.md) records preserved routes and fragments. `/styleguide` is noindex and excluded from the sitemap.
 
-## Deploy
+[Quality evidence](docs/quality/README.md) records production checks, fixture scope and remaining limits. [Checkpoint reports](docs/checkpoints.md) cover all phases without the approval stops the owner waived. [Teardown 001](docs/teardown-001/README.md) contains matched before/after captures and unposted social drafts.
 
-Vercel. The build is wrapped in `withSentryConfig`, which uploads source maps when a Sentry auth token is present in the environment and quietly skips the step when it isn't. Client reports are tunnelled through `/monitoring` so ad-blockers don't eat them.
-
----
-
-Built by [Flavius Cojocaru](https://flavius.pro) in Bucharest. The code is here to read; the drawings, the writing and the house record are mine.
+The original portfolio is tagged `v1-portfolio`. Work lives on `refactor/service-site`; review the PR before merging into the existing deployment.

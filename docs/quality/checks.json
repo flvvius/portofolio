@@ -1,0 +1,604 @@
+{
+  "routes": [
+    {
+      "route": "/",
+      "status": 200
+    },
+    {
+      "route": "/about",
+      "status": 200
+    },
+    {
+      "route": "/work",
+      "status": 200
+    },
+    {
+      "route": "/work/pricele",
+      "status": 200
+    },
+    {
+      "route": "/audit/start",
+      "status": 200
+    },
+    {
+      "route": "/privacy",
+      "status": 200
+    },
+    {
+      "route": "/terms",
+      "status": 200
+    },
+    {
+      "route": "/blog",
+      "status": 200
+    },
+    {
+      "route": "/blog/exploring-something-new",
+      "status": 200
+    },
+    {
+      "route": "/styleguide",
+      "status": 200
+    }
+  ],
+  "responsive": [
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 375,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/about",
+      "theme": "light",
+      "width": 375,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/work/pricele",
+      "theme": "light",
+      "width": 375,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/audit/start",
+      "theme": "light",
+      "width": 375,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/privacy",
+      "theme": "light",
+      "width": 375,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/terms",
+      "theme": "light",
+      "width": 375,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 375,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/about",
+      "theme": "dark",
+      "width": 375,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/work/pricele",
+      "theme": "dark",
+      "width": 375,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/audit/start",
+      "theme": "dark",
+      "width": 375,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/privacy",
+      "theme": "dark",
+      "width": 375,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/terms",
+      "theme": "dark",
+      "width": 375,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 768,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/about",
+      "theme": "light",
+      "width": 768,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/work/pricele",
+      "theme": "light",
+      "width": 768,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/audit/start",
+      "theme": "light",
+      "width": 768,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/privacy",
+      "theme": "light",
+      "width": 768,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/terms",
+      "theme": "light",
+      "width": 768,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 768,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/about",
+      "theme": "dark",
+      "width": 768,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/work/pricele",
+      "theme": "dark",
+      "width": 768,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/audit/start",
+      "theme": "dark",
+      "width": 768,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/privacy",
+      "theme": "dark",
+      "width": 768,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/terms",
+      "theme": "dark",
+      "width": 768,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 1280,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/about",
+      "theme": "light",
+      "width": 1280,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/work/pricele",
+      "theme": "light",
+      "width": 1280,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/audit/start",
+      "theme": "light",
+      "width": 1280,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/privacy",
+      "theme": "light",
+      "width": 1280,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/terms",
+      "theme": "light",
+      "width": 1280,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 1280,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/about",
+      "theme": "dark",
+      "width": 1280,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/work/pricele",
+      "theme": "dark",
+      "width": 1280,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/audit/start",
+      "theme": "dark",
+      "width": 1280,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/privacy",
+      "theme": "dark",
+      "width": 1280,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/terms",
+      "theme": "dark",
+      "width": 1280,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 1536,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/about",
+      "theme": "light",
+      "width": 1536,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/work/pricele",
+      "theme": "light",
+      "width": 1536,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/audit/start",
+      "theme": "light",
+      "width": 1536,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/privacy",
+      "theme": "light",
+      "width": 1536,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/terms",
+      "theme": "light",
+      "width": 1536,
+      "overflow": false,
+      "background": "lab(98.846 0.111073 0.751436)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 1536,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/about",
+      "theme": "dark",
+      "width": 1536,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/work/pricele",
+      "theme": "dark",
+      "width": 1536,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/audit/start",
+      "theme": "dark",
+      "width": 1536,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/privacy",
+      "theme": "dark",
+      "width": 1536,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "route": "/terms",
+      "theme": "dark",
+      "width": 1536,
+      "overflow": false,
+      "background": "lab(2.45562 0.0755936 -1.50316)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    }
+  ],
+  "axe": [
+    {
+      "route": "/",
+      "violations": []
+    },
+    {
+      "route": "/about",
+      "violations": []
+    },
+    {
+      "route": "/work",
+      "violations": []
+    },
+    {
+      "route": "/work/pricele",
+      "violations": []
+    },
+    {
+      "route": "/audit/start",
+      "violations": []
+    },
+    {
+      "route": "/privacy",
+      "violations": []
+    },
+    {
+      "route": "/terms",
+      "violations": []
+    },
+    {
+      "route": "/blog",
+      "violations": []
+    },
+    {
+      "route": "/blog/exploring-something-new",
+      "violations": []
+    },
+    {
+      "route": "/styleguide",
+      "violations": []
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 375,
+      "violations": []
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 768,
+      "violations": []
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 768,
+      "violations": []
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 1280,
+      "violations": []
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 1280,
+      "violations": []
+    },
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 1536,
+      "violations": []
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 1536,
+      "violations": []
+    }
+  ],
+  "errors": [],
+  "links": [
+    "/",
+    "/about",
+    "/work",
+    "/work/pricele",
+    "/privacy",
+    "/terms",
+    "/blog/exploring-something-new",
+    "/blog"
+  ],
+  "fragments": [
+    {
+      "from": "/#the-shelf",
+      "to": "/about#projects"
+    },
+    {
+      "from": "/#the-record-player",
+      "to": "/about#experience"
+    },
+    {
+      "from": "/#the-door",
+      "to": "/about#contact"
+    },
+    {
+      "from": "/#note-miez",
+      "to": "/about#note-miez"
+    },
+    {
+      "from": "/#note-commit-ink",
+      "to": "/about#note-commit-ink"
+    },
+    {
+      "from": "/#note-sisc",
+      "to": "/about#note-sisc"
+    },
+    {
+      "from": "/#note-agrobot",
+      "to": "/about#note-agrobot"
+    },
+    {
+      "from": "/#note-pricele",
+      "to": "/about#note-pricele"
+    },
+    {
+      "from": "/#note-joke-bot",
+      "to": "/about#note-joke-bot"
+    },
+    {
+      "from": "/the-back-room",
+      "to": "/about#interests"
+    },
+    {
+      "from": "/the-back-room#books",
+      "to": "/about#books"
+    },
+    {
+      "from": "/the-back-room#film",
+      "to": "/about#film"
+    },
+    {
+      "from": "/the-back-room#art",
+      "to": "/about#art"
+    },
+    {
+      "from": "/the-back-room#places",
+      "to": "/about#places"
+    },
+    {
+      "from": "/the-back-room#aesthetics",
+      "to": "/about#aesthetics"
+    }
+  ],
+  "browser": "153.0.8010.12",
+  "draftsExcluded": true,
+  "keyboardSkipAndFaq": true,
+  "themePersists": true,
+  "textEnlargementOverflow": false,
+  "textSpacingOverflow": false,
+  "fontFallbackOverflow": false,
+  "forcedColorFocus": "solid",
+  "noScriptReading": true,
+  "ogStatus": 200,
+  "missingConfigurationStatus": 503
+}
