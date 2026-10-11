@@ -1,0 +1,4 @@
+{
+  "findings": [],
+  "limits": "Lexical heuristics, not an intent or accessibility audit. Deliberate exceptions need a reason."
+}

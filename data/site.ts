@@ -1,3 +1,9 @@
+import { serviceConfig } from "@/lib/service/config";
+
+function liveLink(url?: string) {
+  return url ? [{ label: "live", href: url }] : [];
+}
+
 /**
  * All the words on the site live here.
  *
@@ -9,71 +15,12 @@ export const site = {
   name: "flavius cojocaru",
   role: "full-stack engineer",
   location: "Bucharest",
-  email: "flaviuscojocaru19@gmail.com",
-  url: "https://flavius.pro",
+  email: serviceConfig.email,
+  url: serviceConfig.origin,
 };
-
-export const nav = [
-  { label: "the bar", href: "#the-bar" },
-  { label: "the shelf", href: "#the-shelf" },
-  { label: "the record player", href: "#the-record-player" },
-  { label: "the door", href: "#the-door" },
-];
-
-/* -------------------------------------------------------------------------
- * the bar
- * ---------------------------------------------------------------------- */
-
-export const bar = {
-  // TheBar renders these as three separate nodes, lead → underline → tail, and
-  // puts the hand-drawn orange stroke on `underline` itself. It is the only
-  // underlined word on the page. `headlineTail` may be empty.
-  headlineLead: "i build software that",
-  underline: "matters",
-  headlineTail: "",
-  intro: [
-    "full-stack, mostly typescript, too invested in the details.",
-    "bucharest. shipping things, breaking things.",
-  ],
-  ctaPrimary: "pull up a chair",
-  ctaSecondary: "or just say hi",
-};
-
-/**
- * The strip along the bottom of the hero: the things left lying on the
- * counter. A note and an object, nothing else.
- */
-export const counter = {
-  special: {
-    title: "today's special",
-    // Split link → tail so the anchor wraps only the name, which is the part
-    // you can actually go to. The comma belongs to the sentence, not the link.
-    linkLabel: "miez.news",
-    href: "https://miez.news",
-    lineTail: ", still warm.",
-  },
-  /**
-   * The label under the bookshelf drawing. The drawing is the link; this is
-   * here because a picture with no words under it doesn't read as clickable,
-   * however good the cursor is.
-   */
-  backRoom: {
-    label: "the back room",
-    aria: "the back room: books, film, art and places i like",
-  },
-};
-
-/* -------------------------------------------------------------------------
- * the shelf: projects as objects
- * ---------------------------------------------------------------------- */
 
 export type ShelfObjectKind =
-  | "record"
-  | "book"
-  | "cassette"
-  | "coffee"
-  | "notebook"
-  | "jar";
+  "record" | "book" | "cassette" | "coffee" | "notebook" | "jar";
 
 export type Project = {
   slug: string;
@@ -101,11 +48,10 @@ export const projects: Project[] = [
     title: "miez.news, an ai news aggregator",
     caption: "reads the news all day so you don't have to scroll it",
     story: [
-      "miez is the core of a thing, what's left once you take the crust off. that's the whole thesis: read widely, condense, then stop. a feed you can actually get to the end of.",
-      "most of it is pipeline, kept cheap enough to just run without anyone watching. web and mobile come out of one turborepo. biggest thing i've built, still changing most weeks.",
+      "An AI news feed with an end. I built the pipeline and web/mobile apps in one turborepo, keeping running costs low.",
     ],
     stack: ["typescript", "tanstack start", "convex", "better auth", "vercel"],
-    links: [{ label: "live", href: "https://miez.news" }],
+    links: liveLink(process.env.NEXT_PUBLIC_MIEZ_URL),
     tilt: -2,
   },
   {
@@ -115,11 +61,10 @@ export const projects: Project[] = [
     title: "commit.ink, a social platform for companies",
     caption: "twelve hours, one take, first place",
     story: [
-      "adobe's hackathon gave us twelve hours, which isn't enough time to design anything twice. every decision had to be the one that shipped.",
-      "feed, messages, notifications: three easy features and one state-management problem. we leaned hard on agentic tooling to hold that pace, and it won first place.",
+      "Built in twelve hours at Adobe's hackathon: feed, messages and notifications. Our team used agentic tooling and won first place.",
     ],
     stack: ["typescript", "next.js", "convex", "clerk", "openai api"],
-    links: [{ label: "live", href: "https://commit.ink/" }],
+    links: liveLink(process.env.NEXT_PUBLIC_COMMIT_INK_URL),
     tilt: 1,
   },
   {
@@ -129,11 +74,10 @@ export const projects: Project[] = [
     title: "the sisc platform, built by twenty people",
     caption: "twenty people, one repo, nobody lost",
     story: [
-      "i led twenty engineers on this, and the hard part was never the code. at that size the git history is the real architecture, so that's where the evenings went.",
-      "what i'm proudest of isn't in the repo: people who had never shipped anything shipped something, and most of them stayed.",
+      "I led twenty engineers, many shipping for the first time. Coordination and Git history mattered as much as the code.",
     ],
     stack: ["react", "node.js", "git"],
-    links: [{ label: "live", href: "https://hope.sisc.ro" }],
+    links: liveLink(process.env.NEXT_PUBLIC_SISC_URL),
     tilt: -1,
   },
   {
@@ -143,11 +87,18 @@ export const projects: Project[] = [
     title: "agrobot, a whatsapp bot for romanian farmers",
     caption: "a photo of a sick plant goes out, an answer comes back",
     story: [
-      "romanian farmers are not going to install your app. whatsapp is already open all day, so that's where the tool had to live.",
-      "weather for the specific crop, live cereal prices, a plant diagnosis from a photo taken in the field. it runs on cloudflare workers, close to free, which is how a tool with no revenue survives.",
+      "A WhatsApp tool for Romanian farmers: crop weather, cereal prices and plant diagnosis from a photo. Built on Cloudflare Workers.",
     ],
-    stack: ["typescript", "hono", "drizzle", "cloudflare workers", "gemini api"],
-    links: [{ label: "github", href: "https://github.com/flvvius/Agro-Bot" }],
+    stack: [
+      "typescript",
+      "hono",
+      "drizzle",
+      "cloudflare workers",
+      "gemini api",
+    ],
+    links: process.env.NEXT_PUBLIC_AGROBOT_URL
+      ? [{ label: "github", href: process.env.NEXT_PUBLIC_AGROBOT_URL }]
+      : [],
     tilt: 2,
   },
   {
@@ -157,13 +108,12 @@ export const projects: Project[] = [
     title: "pricele.online, a daily price-guessing game",
     caption: "an item, a country, one number to get right",
     story: [
-      "something ordinary, sold somewhere specific. guess what it costs there. that's the entire game.",
-      "wordle's shape, because being 4% off and being 400% off are not the same kind of wrong and the game has to say so. turns out it isn't about prices, it's about how expensive you think a place is.",
+      "Guess what an everyday item costs in a given country. Feedback distinguishes a near miss from a wildly different guess.",
     ],
     // TODO: fill in the stack. Left empty on purpose rather than guessed:
     // both the panel and the no-js write-up skip the personnel line when it is.
     stack: [],
-    links: [{ label: "live", href: "https://pricele.online" }],
+    links: liveLink(process.env.NEXT_PUBLIC_PRICELE_URL),
     tilt: -1,
   },
   {
@@ -173,8 +123,7 @@ export const projects: Project[] = [
     title: "a chatbot that tells jokes on request",
     caption: "give it a word, it gives you a bad joke about it",
     story: [
-      "my internship project at ubisoft: give it a keyword, get a joke back. the brief was genuinely that.",
-      "first time i'd wired a model into a product, and the lesson was how much of the job sits after the api call. shipped in docker, also a first.",
+      "My Ubisoft internship project: a keyword-driven joke chatbot. My first model integration and Docker deployment.",
     ],
     stack: ["react", "openai api", "docker"],
     links: [],
@@ -182,30 +131,6 @@ export const projects: Project[] = [
   },
 ];
 
-export const shelf = {
-  intro: ["a few things i've made."],
-  stickyNote: "curiosity, caffeine, a bit of recklessness.",
-  moreSoon: "more soon, promise.",
-};
-
-/* -------------------------------------------------------------------------
- * the record player: the notes, and the tab
- * ---------------------------------------------------------------------- */
-
-export const recordPlayer = {
-  intro: [
-    "notes to myself, and four jobs told the way",
-    "you'd tell them at the bar, not on a cv.",
-  ],
-};
-
-/**
- * The roles, told as a bar tab rather than a CV.
- *
- * A story instead of a bullet list, because the bullet list is the thing every
- * portfolio already has. It's a tab in the wording and the tally, not in the
- * paper: a printed receipt in the middle of this page would be a costume.
- */
 export type TabItem = {
   /** What you'd call it if you were being funny about it. */
   line: string;
@@ -287,56 +212,3 @@ export const door = {
   tapedNote: "open late (probably)",
   footer: "brewed in Bucharest",
 };
-
-export type Social = {
-  label: string;
-  href: string;
-  /** Resting rotation of the coaster, -3deg..+3deg. */
-  tilt: number;
-  /** The handwritten aside beside it. At most one of these is ever set. */
-  nudge?: string;
-};
-
-export const socials: Social[] = [
-  { label: "github", href: "https://github.com/flvvius", tilt: -3 },
-  { label: "x", href: "https://x.com/flaviuscj1", tilt: 2 },
-  {
-    label: "linkedin",
-    href: "https://www.linkedin.com/in/flavius-cojocaru-20834a246/",
-    tilt: -1,
-  },
-  { label: "email", href: `mailto:${site.email}`, tilt: 3, nudge: "say hi" },
-];
-
-/* -------------------------------------------------------------------------
- * now playing: fallback rotation when last.fm isn't configured
- * ---------------------------------------------------------------------- */
-
-/**
- * The house record: what the chip says while the site is playing its own
- * music rather than reporting last.fm. "no end" instead of a track number is
- * literal, the loop is generated and never reaches a run-out groove.
- */
-export const houseRecord = {
-  track: "the house record",
-  artist: "played live by your browser",
-  side: "a",
-  position: "no end",
-};
-
-/**
- * The rotation. Deliberately not sorted by band: the chip steps through this in
- * order, and four songs from the same corner of a scene in a row read as a
- * generated playlist rather than a shelf somebody keeps.
- */
-export const fallbackTracks = [
-  { track: "Starless", artist: "King Crimson" },
-  { track: "Cockroach King", artist: "Haken" },
-  { track: "Panic Attack", artist: "Dream Theater" },
-  { track: "Anesthetize", artist: "Porcupine Tree" },
-  { track: "Cousin Dupree", artist: "Steely Dan" },
-  { track: "Ashes", artist: "Pain of Salvation" },
-  { track: "Sing to God", artist: "Cardiacs" },
-  { track: "The Price", artist: "Leprous" },
-  { track: "Ants of the Sky", artist: "Between the Buried and Me" },
-];

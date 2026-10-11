@@ -1,0 +1,583 @@
+{
+  "beforeWords": {
+    "/": 1077,
+    "/about": 865,
+    "/work": 62,
+    "/work/pricele": 388
+  },
+  "afterWords": {
+    "/": 181,
+    "/work": 118,
+    "/process": 125,
+    "/pricing": 133,
+    "/faq": 197,
+    "/about": 42,
+    "/projects": 243,
+    "/experience": 131,
+    "/work/pricele": 390
+  },
+  "states": [
+    {
+      "route": "/",
+      "width": 375,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/",
+      "width": 375,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/",
+      "width": 1280,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/",
+      "width": 1280,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/",
+      "width": 1536,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/",
+      "width": 1536,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/work",
+      "width": 375,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/work",
+      "width": 375,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/work",
+      "width": 768,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/work",
+      "width": 768,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/work",
+      "width": 1280,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/work",
+      "width": 1280,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/work",
+      "width": 1536,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/work",
+      "width": 1536,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/process",
+      "width": 375,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/process",
+      "width": 375,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/process",
+      "width": 768,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/process",
+      "width": 768,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/process",
+      "width": 1280,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/process",
+      "width": 1280,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/process",
+      "width": 1536,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/process",
+      "width": 1536,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/pricing",
+      "width": 375,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/pricing",
+      "width": 375,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/pricing",
+      "width": 768,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/pricing",
+      "width": 768,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/pricing",
+      "width": 1280,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/pricing",
+      "width": 1280,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/pricing",
+      "width": 1536,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/pricing",
+      "width": 1536,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/faq",
+      "width": 375,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/faq",
+      "width": 375,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/faq",
+      "width": 768,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/faq",
+      "width": 768,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/faq",
+      "width": 1280,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/faq",
+      "width": 1280,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/faq",
+      "width": 1536,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/faq",
+      "width": 1536,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/about",
+      "width": 375,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/about",
+      "width": 375,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/about",
+      "width": 768,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/about",
+      "width": 768,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/about",
+      "width": 1280,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/about",
+      "width": 1280,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/about",
+      "width": 1536,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/about",
+      "width": 1536,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/projects",
+      "width": 375,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/projects",
+      "width": 375,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/projects",
+      "width": 768,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/projects",
+      "width": 768,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/projects",
+      "width": 1280,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/projects",
+      "width": 1280,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/projects",
+      "width": 1536,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/projects",
+      "width": 1536,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/experience",
+      "width": 375,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/experience",
+      "width": 375,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/experience",
+      "width": 768,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/experience",
+      "width": 768,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/experience",
+      "width": 1280,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/experience",
+      "width": 1280,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/experience",
+      "width": 1536,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/experience",
+      "width": 1536,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/work/pricele",
+      "width": 375,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/work/pricele",
+      "width": 375,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/work/pricele",
+      "width": 768,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/work/pricele",
+      "width": 768,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/work/pricele",
+      "width": 1280,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/work/pricele",
+      "width": 1280,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/work/pricele",
+      "width": 1536,
+      "theme": "light",
+      "overflow": false,
+      "axeViolations": []
+    },
+    {
+      "route": "/work/pricele",
+      "width": 1536,
+      "theme": "dark",
+      "overflow": false,
+      "axeViolations": []
+    }
+  ],
+  "links": [
+    "/",
+    "/work",
+    "/process",
+    "/pricing",
+    "/about",
+    "/faq",
+    "/privacy",
+    "/terms",
+    "/work/pricele",
+    "/projects",
+    "/experience",
+    "/blog"
+  ],
+  "legacy": [
+    {
+      "from": "/#work",
+      "to": "/work"
+    },
+    {
+      "from": "/#process",
+      "to": "/process"
+    },
+    {
+      "from": "/#pricing",
+      "to": "/pricing"
+    },
+    {
+      "from": "/#the-shelf",
+      "to": "/projects"
+    },
+    {
+      "from": "/#the-record-player",
+      "to": "/experience"
+    },
+    {
+      "from": "/#note-pricele",
+      "to": "/projects#note-pricele"
+    },
+    {
+      "from": "/about#projects",
+      "to": "/projects"
+    },
+    {
+      "from": "/about#experience",
+      "to": "/experience"
+    },
+    {
+      "from": "/about#note-miez",
+      "to": "/projects#note-miez"
+    },
+    {
+      "from": "/the-back-room#books",
+      "to": "/about"
+    }
+  ],
+  "homepageReductionPercent": 83.2,
+  "totalReductionPercent": 34.8
+}

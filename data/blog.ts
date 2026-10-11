@@ -39,6 +39,6 @@ export const getBlogPost = (id: string): BlogPost | undefined => {
 
 export const getAllBlogPosts = (): BlogPost[] => {
   return blogPosts.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
 };

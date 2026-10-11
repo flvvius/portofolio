@@ -1,0 +1,44 @@
+{
+  "createdAt": "2026-10-11T09:28:33.813161+00:00",
+  "baseline": "v1-portfolio / b1ec959",
+  "after": "refactor/service-site",
+  "viewports": [
+    {
+      "version": "before",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "font": "Schoolbell, \"Schoolbell Fallback\", \"Comic Sans MS\", cursive"
+    },
+    {
+      "version": "after",
+      "width": 375,
+      "height": 812,
+      "status": 200,
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    },
+    {
+      "version": "before",
+      "width": 1280,
+      "height": 900,
+      "status": 200,
+      "font": "Schoolbell, \"Schoolbell Fallback\", \"Comic Sans MS\", cursive"
+    },
+    {
+      "version": "after",
+      "width": 1280,
+      "height": 900,
+      "status": 200,
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif"
+    }
+  ],
+  "notes": [
+    "The original site had no pricing section. Its experience/writing area is the before comparison for the new pricing section.",
+    "Baseline uses the tagged application source in an isolated temporary checkout.",
+    "Next development indicators are hidden only for baseline captures. No application content is removed."
+  ],
+  "browser": "153.0.8010.12",
+  "afterSourceRevision": "ea7016899c0a59a8fadec5a2bbc830b8841fcc63",
+  "baselineNextVersion": "16.0.7",
+  "afterNextVersion": "16.4.0"
+}

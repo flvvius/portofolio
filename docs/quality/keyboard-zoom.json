@@ -1,0 +1,1274 @@
+{
+  "keyboard": [
+    {
+      "route": "/",
+      "tabStops": [
+        {
+          "tag": "A",
+          "name": "Skip to content",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "FlaviusDesign engineer, Bucharest",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Work",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Process",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Pricing",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "About",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Get an audit",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Get a EUR 300 taste audit",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "See before and after",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Email me about the audit",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "All case studies",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Read the Pricele example",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Get a EUR 300 taste audit",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Ask about a sprint by email",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "INPUT",
+          "name": "email",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Send your details by email",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "How I handle your details",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SUMMARY",
+          "name": "Which stacks do you work with?",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SUMMARY",
+          "name": "How do you get repo access? What about confidentiality?",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SUMMARY",
+          "name": "What exactly is the redesigned screen in the audit?",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SUMMARY",
+          "name": "What's the turnaround?",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SUMMARY",
+          "name": "How do revisions work?",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SUMMARY",
+          "name": "Do you write the code or just design?",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SUMMARY",
+          "name": "What if the audit isn't useful?",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SUMMARY",
+          "name": "What about VAT and invoicing?",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SUMMARY",
+          "name": "What if my app isn't React?",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Read flavius-design-taste",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Get a EUR 300 taste audit",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Ask about a sprint by email",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "hi@flavius.pro",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "GitHub",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "X",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "LinkedIn",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "About",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Work",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SELECT",
+          "name": "SystemLightDark",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Skip to content",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "FlaviusDesign engineer, Bucharest",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/about",
+      "tabStops": [
+        {
+          "tag": "A",
+          "name": "Skip to content",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "FlaviusDesign engineer, Bucharest",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Work",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Process",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Pricing",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "About",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Get an audit",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Visit the product",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Visit the product",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Visit the product",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Source on GitHub",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Visit the product",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Design case-study example",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "exploring something new",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "All writing",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "hi@flavius.pro",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "hi@flavius.pro",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "GitHub",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "X",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "LinkedIn",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "About",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Work",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SELECT",
+          "name": "SystemLightDark",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Skip to content",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "FlaviusDesign engineer, Bucharest",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/work",
+      "tabStops": [
+        {
+          "tag": "A",
+          "name": "Skip to content",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "FlaviusDesign engineer, Bucharest",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Work",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Process",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Pricing",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "About",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Get an audit",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Pricele: making the price the task",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "hi@flavius.pro",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "GitHub",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "X",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "LinkedIn",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "About",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Work",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SELECT",
+          "name": "SystemLightDark",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Skip to content",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "FlaviusDesign engineer, Bucharest",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/work/pricele",
+      "tabStops": [
+        {
+          "tag": "A",
+          "name": "Skip to content",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "FlaviusDesign engineer, Bucharest",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Work",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Process",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Pricing",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "About",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Get an audit",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "hi@flavius.pro",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "GitHub",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "X",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "LinkedIn",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "About",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Work",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SELECT",
+          "name": "SystemLightDark",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Skip to content",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "FlaviusDesign engineer, Bucharest",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/audit/start",
+      "tabStops": [
+        {
+          "tag": "A",
+          "name": "Skip to content",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "FlaviusDesign engineer, Bucharest",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Work",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Process",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Pricing",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "About",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Get an audit",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "INPUT",
+          "name": "name",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "INPUT",
+          "name": "email",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "INPUT",
+          "name": "company",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "INPUT",
+          "name": "appUrl",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "INPUT",
+          "name": "repoUrl",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "TEXTAREA",
+          "name": "flow",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "TEXTAREA",
+          "name": "goal",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "INPUT",
+          "name": "stack",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "INPUT",
+          "name": "loomUrl",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "INPUT",
+          "name": "contact",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Send your details by email",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "How I handle your details",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "hi@flavius.pro",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "GitHub",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "X",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "LinkedIn",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "About",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Work",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SELECT",
+          "name": "SystemLightDark",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Skip to content",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "FlaviusDesign engineer, Bucharest",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/privacy",
+      "tabStops": [
+        {
+          "tag": "A",
+          "name": "Skip to content",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "FlaviusDesign engineer, Bucharest",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Work",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Process",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Pricing",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "About",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Get an audit",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "hi@flavius.pro",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "hi@flavius.pro",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "GitHub",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "X",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "LinkedIn",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "About",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Work",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SELECT",
+          "name": "SystemLightDark",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Skip to content",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "FlaviusDesign engineer, Bucharest",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/terms",
+      "tabStops": [
+        {
+          "tag": "A",
+          "name": "Skip to content",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "FlaviusDesign engineer, Bucharest",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Work",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Process",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Pricing",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "About",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Get an audit",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "hi@flavius.pro",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "hi@flavius.pro",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "GitHub",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "X",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "LinkedIn",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "About",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Work",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SELECT",
+          "name": "SystemLightDark",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Skip to content",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "FlaviusDesign engineer, Bucharest",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        }
+      ]
+    },
+    {
+      "route": "/blog",
+      "tabStops": [
+        {
+          "tag": "A",
+          "name": "Skip to content",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "FlaviusDesign engineer, Bucharest",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Work",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Process",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Pricing",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "About",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Get an audit",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "exploring something new",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "hi@flavius.pro",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "GitHub",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "X",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "LinkedIn",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "About",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Work",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Privacy",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Terms",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "SELECT",
+          "name": "SystemLightDark",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "Skip to content",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        {
+          "tag": "A",
+          "name": "FlaviusDesign engineer, Bucharest",
+          "outline": "solid",
+          "outlineWidth": "2px"
+        }
+      ]
+    }
+  ],
+  "zoom": [
+    {
+      "route": "/",
+      "cssZoom": 2,
+      "viewport": 1280,
+      "overflow": false
+    },
+    {
+      "route": "/about",
+      "cssZoom": 2,
+      "viewport": 1280,
+      "overflow": false
+    },
+    {
+      "route": "/work",
+      "cssZoom": 2,
+      "viewport": 1280,
+      "overflow": false
+    },
+    {
+      "route": "/work/pricele",
+      "cssZoom": 2,
+      "viewport": 1280,
+      "overflow": false
+    },
+    {
+      "route": "/audit/start",
+      "cssZoom": 2,
+      "viewport": 1280,
+      "overflow": false
+    },
+    {
+      "route": "/privacy",
+      "cssZoom": 2,
+      "viewport": 1280,
+      "overflow": false
+    },
+    {
+      "route": "/terms",
+      "cssZoom": 2,
+      "viewport": 1280,
+      "overflow": false
+    },
+    {
+      "route": "/blog",
+      "cssZoom": 2,
+      "viewport": 1280,
+      "overflow": false
+    }
+  ],
+  "reducedMotion": [
+    {
+      "route": "/",
+      "maximumDurationMs": 0
+    },
+    {
+      "route": "/about",
+      "maximumDurationMs": 0
+    },
+    {
+      "route": "/work",
+      "maximumDurationMs": 0
+    },
+    {
+      "route": "/work/pricele",
+      "maximumDurationMs": 0
+    },
+    {
+      "route": "/audit/start",
+      "maximumDurationMs": 0
+    },
+    {
+      "route": "/privacy",
+      "maximumDurationMs": 0
+    },
+    {
+      "route": "/terms",
+      "maximumDurationMs": 0
+    },
+    {
+      "route": "/blog",
+      "maximumDurationMs": 0
+    }
+  ]
+}

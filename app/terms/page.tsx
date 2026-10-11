@@ -1,0 +1,97 @@
+import type { Metadata } from "next";
+import { PageShell } from "@/components/service/PageShell";
+import { serviceConfig } from "@/lib/service/config";
+export const metadata: Metadata = {
+  title: "Terms",
+  alternates: { canonical: "/terms" },
+};
+export default function Terms() {
+  return (
+    <PageShell>
+      <header className="service-page-header">
+        <h1>Terms of the work</h1>
+        <p className="service-caption">
+          Draft for owner review. Company identity, revision terms and invoice
+          details must be confirmed before launch.
+        </p>
+      </header>
+      <div className="service-legal">
+        <section>
+          <h2>Taste audit</h2>
+          <p>
+            EUR 300 fixed for one agreed flow: a recorded walkthrough, the top
+            10 fixes ranked and one redesigned screen as an annotated
+            high-fidelity mockup or isolated coded preview. Delivery is within 3
+            business days after complete intake. The preview is not a merged
+            production change.
+          </p>
+        </section>
+        <section>
+          <h2>Refunds</h2>
+          <p>
+            If the audit isn't useful, email{" "}
+            <a className="service-link" href={`mailto:${serviceConfig.email}`}>
+              {serviceConfig.email}
+            </a>{" "}
+            for a full refund. The audit fee is credited if you upgrade to a
+            polish sprint.
+          </p>
+        </section>
+        <section>
+          <h2>Polish sprint</h2>
+          <p>
+            From EUR 1,500 for one flow or 3 to 5 screens, delivered as
+            reviewable PRs. I check the codebase before a final quote and agree
+            timing and review expectations in writing. You review and choose
+            when to merge. New scope needs a new agreement; revisions are not
+            unlimited.
+          </p>
+        </section>
+        <section>
+          <h2>Scope</h2>
+          <p>
+            UI layout, hierarchy, typography, spacing, color and tokens,
+            components, interaction states, responsive polish, accessibility
+            fixes and microcopy are included. Backend features, database
+            migrations, unrelated major refactors, brand identity, Figma files
+            and guaranteed business outcomes are excluded.
+          </p>
+        </section>
+        <section>
+          <h2>Confidentiality and access</h2>
+          <p>
+            Invite me only to the repository and permissions needed. We can
+            agree an NDA before access. Private work stays confidential. Revoke
+            access when the work is complete. Don't share credentials through
+            the intake form.
+          </p>
+        </section>
+        <section>
+          <h2>Ownership</h2>
+          <p>
+            After payment, you own the custom work delivered for your project.
+            Existing tools, libraries and open-source components keep their
+            original licenses. You retain ownership of your codebase. Public
+            case-study use requires your permission.
+          </p>
+        </section>
+        <section>
+          <h2>VAT and invoices</h2>
+          <p>
+            I invoice from a Romanian company. VAT treatment depends on your
+            location and business status. EU B2B reverse charge may apply where
+            eligible. The quote and invoice confirm applicable taxes. Owner
+            review pending for company details and this wording.
+          </p>
+        </section>
+        <section>
+          <h2>Design partner</h2>
+          <p>
+            The monthly service is waitlist only, one request at a time. Joining
+            does not reserve a paid subscription or authorize a charge.
+          </p>
+        </section>
+      </div>
+    </PageShell>
+  );
+}

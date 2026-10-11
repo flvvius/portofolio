@@ -1,0 +1,178 @@
+{
+  "contrast": [
+    {
+      "theme": "light",
+      "measurements": [
+        {
+          "role": "body text",
+          "ratio": 19.193111494067868,
+          "minimum": 4.5
+        },
+        {
+          "role": "muted text",
+          "ratio": 5.845535323949666,
+          "minimum": 4.5
+        },
+        {
+          "role": "button text",
+          "ratio": 13.320031335410473,
+          "minimum": 4.5
+        },
+        {
+          "role": "input boundary",
+          "ratio": 3.5304279193602275,
+          "minimum": 3
+        },
+        {
+          "role": "focus ring",
+          "ratio": 7.249213937918908,
+          "minimum": 3
+        }
+      ]
+    },
+    {
+      "theme": "dark",
+      "measurements": [
+        {
+          "role": "body text",
+          "ratio": 16.13278026071185,
+          "minimum": 4.5
+        },
+        {
+          "role": "muted text",
+          "ratio": 6.169190281716384,
+          "minimum": 4.5
+        },
+        {
+          "role": "button text",
+          "ratio": 15.304971659604353,
+          "minimum": 4.5
+        },
+        {
+          "role": "input boundary",
+          "ratio": 4.256847442219242,
+          "minimum": 3
+        },
+        {
+          "role": "focus ring",
+          "ratio": 5.025280129145372,
+          "minimum": 3
+        }
+      ]
+    }
+  ],
+  "reflow": [
+    {
+      "route": "/",
+      "theme": "light",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/about",
+      "theme": "light",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/work/pricele",
+      "theme": "light",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/audit/start",
+      "theme": "light",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/privacy",
+      "theme": "light",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/terms",
+      "theme": "light",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/",
+      "theme": "dark",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/about",
+      "theme": "dark",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/work/pricele",
+      "theme": "dark",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/audit/start",
+      "theme": "dark",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/privacy",
+      "theme": "dark",
+      "width": 320,
+      "overflow": false
+    },
+    {
+      "route": "/terms",
+      "theme": "dark",
+      "width": 320,
+      "overflow": false
+    }
+  ],
+  "doubledText": [
+    {
+      "theme": "light",
+      "overflow": false,
+      "prices": [
+        {
+          "right": 427.390625,
+          "nextLeft": 585.375,
+          "stacked": false,
+          "overlap": false
+        },
+        {
+          "right": 630.875,
+          "nextLeft": 654.875,
+          "stacked": false,
+          "overlap": false
+        }
+      ],
+      "method": "Double each computed font size and pixel line height once, including inherited and explicit sizes."
+    },
+    {
+      "theme": "dark",
+      "overflow": false,
+      "prices": [
+        {
+          "right": 427.390625,
+          "nextLeft": 585.375,
+          "stacked": false,
+          "overlap": false
+        },
+        {
+          "right": 630.875,
+          "nextLeft": 654.875,
+          "stacked": false,
+          "overlap": false
+        }
+      ],
+      "method": "Double each computed font size and pixel line height once, including inherited and explicit sizes."
+    }
+  ]
+}

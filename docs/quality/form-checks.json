@@ -1,0 +1,14 @@
+{
+  "auditClick": true,
+  "callClick": true,
+  "waitlistSubmit": true,
+  "intakeSubmit": true,
+  "serverValidation": true,
+  "originProtection": true,
+  "honeypot": true,
+  "providerFailureNoSuccessEvent": true,
+  "rateLimit": true,
+  "comparisonView": true,
+  "providerRequests": 8,
+  "scope": "Local contract fixtures only. No Stripe payment and no actual email delivery."
+}

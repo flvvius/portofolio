@@ -1,0 +1,121 @@
+{
+  "checks": [
+    {
+      "width": 375,
+      "overflow": false,
+      "theme": "light",
+      "background": "oklch(0.99 0.002 80)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif",
+      "fonts": [
+        "inter",
+        "schoolbell"
+      ],
+      "noindex": true,
+      "motion": "0s",
+      "comparisonColumns": "335px"
+    },
+    {
+      "width": 375,
+      "overflow": false,
+      "theme": "dark",
+      "background": "oklch(0.14 0.008 270)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif",
+      "fonts": [
+        "inter",
+        "schoolbell"
+      ],
+      "noindex": true,
+      "motion": "0s",
+      "comparisonColumns": "335px"
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "theme": "light",
+      "background": "oklch(0.99 0.002 80)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif",
+      "fonts": [
+        "inter",
+        "schoolbell"
+      ],
+      "noindex": true,
+      "motion": "0s",
+      "comparisonColumns": "358px 358px"
+    },
+    {
+      "width": 768,
+      "overflow": false,
+      "theme": "dark",
+      "background": "oklch(0.14 0.008 270)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif",
+      "fonts": [
+        "inter",
+        "schoolbell"
+      ],
+      "noindex": true,
+      "motion": "0s",
+      "comparisonColumns": "358px 358px"
+    },
+    {
+      "width": 1280,
+      "overflow": false,
+      "theme": "light",
+      "background": "oklch(0.99 0.002 80)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif",
+      "fonts": [
+        "inter",
+        "schoolbell"
+      ],
+      "noindex": true,
+      "motion": "0s",
+      "comparisonColumns": "438px 438px"
+    },
+    {
+      "width": 1280,
+      "overflow": false,
+      "theme": "dark",
+      "background": "oklch(0.14 0.008 270)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif",
+      "fonts": [
+        "inter",
+        "schoolbell"
+      ],
+      "noindex": true,
+      "motion": "0s",
+      "comparisonColumns": "438px 438px"
+    },
+    {
+      "width": 1536,
+      "overflow": false,
+      "theme": "light",
+      "background": "oklch(0.99 0.002 80)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif",
+      "fonts": [
+        "inter",
+        "schoolbell"
+      ],
+      "noindex": true,
+      "motion": "0s",
+      "comparisonColumns": "438px 438px"
+    },
+    {
+      "width": 1536,
+      "overflow": false,
+      "theme": "dark",
+      "background": "oklch(0.14 0.008 270)",
+      "font": "inter, \"inter Fallback\", Arial, Arial, sans-serif",
+      "fonts": [
+        "inter",
+        "schoolbell"
+      ],
+      "noindex": true,
+      "motion": "0s",
+      "comparisonColumns": "438px 438px"
+    }
+  ],
+  "errors": [],
+  "browser": "153.0.8010.12",
+  "textEnlargementOverflow": false,
+  "sitemapExcluded": true,
+  "noScriptContent": true
+}
