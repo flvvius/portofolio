@@ -22,7 +22,9 @@ export function PricingRows({ headingLevel = 3 }: { headingLevel?: 2 | 3 }) {
       <article className="service-pricing-row">
         <div>
           <Heading>Polish sprint</Heading>
-          <p className="service-price">From EUR 1,500</p>
+          <p className="service-price">
+            From <span className="service-price-amount">EUR 1,500</span>
+          </p>
         </div>
         <div>
           <p>One flow or 3 to 5 screens, implemented as reviewable PRs.</p>

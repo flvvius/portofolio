@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NavLinks } from "./NavLinks";
 import { AuditLink } from "./Actions";
 export function ServiceNav() {
   return (
@@ -7,12 +8,7 @@ export function ServiceNav() {
         Flavius
         <span className="service-caption">Design engineer, Bucharest</span>
       </Link>
-      <nav aria-label="Main navigation">
-        <Link href="/work">Work</Link>
-        <Link href="/process">Process</Link>
-        <Link href="/pricing">Pricing</Link>
-        <Link href="/about">About</Link>
-      </nav>
+      <NavLinks />
       <AuditLink short />
     </header>
   );

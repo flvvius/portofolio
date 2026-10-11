@@ -224,7 +224,7 @@ html:has(.service-site) {
   font-size: 1.75rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
+  white-space: normal;
   margin-top: 8px;
 }
 .service-faq details {
@@ -597,4 +597,21 @@ html {
 .service-site textarea::placeholder {
   color: var(--muted-foreground);
   opacity: 1;
+}
+
+.service-nav nav a[aria-current] {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+.service-price-amount {
+  white-space: nowrap;
+}
+.service-theme-control {
+  flex-wrap: wrap;
+}
+.service-process li > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }

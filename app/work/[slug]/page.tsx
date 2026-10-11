@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { PageShell } from "@/components/service/PageShell";
 import { BeforeAfter } from "@/components/service/BeforeAfter";
@@ -35,6 +36,9 @@ export default async function WorkDetail({
   return (
     <PageShell>
       <header className="service-page-header">
+        <Link className="service-link" href="/work">
+          Back to work
+        </Link>
         <p className="service-kicker">
           {study.ownership} ·{" "}
           {study.draft ? "DRAFT / PLACEHOLDER" : "Example / comparison pending"}
